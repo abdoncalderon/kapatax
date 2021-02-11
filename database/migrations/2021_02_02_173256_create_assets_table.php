@@ -22,7 +22,7 @@ class CreateAssetsTable extends Migration
             $table->foreignId('brand_id');
             $table->foreign('brand_id')->references('id')->on('brands')->onUpdate('cascade')->onDelete('restrict');
             $table->foreignId('model_id');
-            $table->foreign('model_id')->references('id')->on('models')->onUpdate('cascade')->onDelete('restrict');
+            $table->foreign('model_id')->references('id')->on('mode1s')->onUpdate('cascade')->onDelete('restrict');
             $table->timestamps();
         });
     }
