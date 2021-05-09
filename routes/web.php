@@ -18,7 +18,17 @@ use Illuminate\Support\Facades\Route;
 });
  */
 
+ // Route::get('/home', 'HomeController@index')->name('home');
+
 Auth::routes();
 
-// Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/', 'HomeController@index')->name('home');
+
+/* Routes Roles */
+Route::resource('roles','RoleController');
+
+/* Routes Users */
+Route::resource('users','UserController');
+
+/* Routes Profiles */
+Route::resource('profiles','ProfileController');
