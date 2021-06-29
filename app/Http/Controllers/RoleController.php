@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Role;
-use App\Http\Requests\SaveRoleRequest;
+use App\Http\Requests\StoreRoleRequest;
 use App\Http\Requests\UpdateRoleRequest;
 
 class RoleController extends Controller
@@ -11,15 +11,15 @@ class RoleController extends Controller
     public function index()
     {
         $roles = Role::get();
-        return view('roles.index', compact('roles'));
+        return view('admin.roles.index', compact('roles'));
     }
 
     public function create()
     {
-        return view('roles.create');
+        return view('admin.roles.create');
     }
 
-    public function store(SaveRoleRequest $request )
+    public function store(StoreRoleRequest $request )
     {
         Role::create($request ->validated());
         return redirect()->route('roles.index');
@@ -27,14 +27,14 @@ class RoleController extends Controller
 
     public function show(Role $role)
     {
-        return view('roles.show',[
+        return view('admin.roles.show',[
             'role'=>$role
             ]);
     }
 
     public function edit(Role $role)
     {
-        return view('roles.edit',[
+        return view('admin.roles.edit',[
             'role'=>$role
             ]);
     }

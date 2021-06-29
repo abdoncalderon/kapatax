@@ -202,8 +202,10 @@ return [
     'say'=>'Dice',
     'document'=>'Documento',
     'agreement'=>'Contrato',
-    
-    
+    'warehouse'=>'Almacen',
+    'assets'=>'Activos',
+    'purchases'=>'Compras',
+    'materials'=>'Materiales',
 
     'currency'=>'US$',
     

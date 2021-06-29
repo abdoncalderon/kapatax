@@ -8,14 +8,14 @@
 
         <!-- Dashboard Menu -->
 
-        {{-- <li><a href="#"><i class="fa fa-bar-chart"></i> <span>Panel</span></a></li> --}}
+        <li><a href="#"><i class="fa fa-bar-chart"></i> <span>Panel</span></a></li>
         
         <!-- Project Menu -->
 
         <li class="treeview">
             <a href="#">
                 <i class="fa fa-certificate"></i>
-                <span> {{ __('content.agreement') }} </span>
+                <span> {{ __('content.project') }} </span>
                 <span class="pull-right-container">
                     <i class="fa fa-angle-left pull-right"></i>
                 </span>
@@ -66,30 +66,225 @@
             </ul>
         </li>
 
+        <!-- Purchases Menu -->
+
+        <li class="treeview">
+
+            <a href="#">
+                <i class="fa fa-shopping-cart"></i>
+                <span> {{ __('content.purchases') }} </span>
+                <span class="pull-right-container">
+                    <i class="fa fa-angle-left pull-right"></i>
+                </span>
+            </a>
+            
+            <ul class="treeview-menu">
+
+                <li class="treeview">
+                    <a href="#"><i class="fa fa-industry"></i> {{ __('content.materials') }} 
+                        <span class="pull-right-container">
+                        <i class="fa fa-angle-left pull-right"></i> 
+                        </span>
+                    </a>
+                    <ul class="treeview-menu">
+                        <li class="treeview">
+                            <a href="#"><i class="fa fa-file-text-o"></i> {{ __('content.documents') }} 
+                                <span class="pull-right-container">
+                                <i class="fa fa-angle-left pull-right"></i>
+                                </span>
+                            </a>
+                            <ul class="treeview-menu">
+                                <li><a href="#"><i class="fa fa-circle-o"></i> {{ __('content.folios') }} </a></li>
+                                <li><a href="#"><i class="fa fa-circle-o"></i> {{ __('content.dailyreports') }} </a></li>
+                                <li><a href="#"><i class="fa fa-circle-o"></i> {{ __('content.notes') }} </a></li>
+                            </ul>
+                        </li>
+                        <li class="treeview">
+                            <a href="#"><i class="fa fa-file-text-o"></i> {{ __('content.documents') }} 
+                                <span class="pull-right-container">
+                                <i class="fa fa-angle-left pull-right"></i>
+                                </span>
+                            </a>
+                            <ul class="treeview-menu">
+                                <li><a href="#"><i class="fa fa-circle-o"></i> {{ __('content.folios') }} </a></li>
+                                <li><a href="#"><i class="fa fa-circle-o"></i> {{ __('content.dailyreports') }} </a></li>
+                                <li><a href="#"><i class="fa fa-circle-o"></i> {{ __('content.notes') }} </a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                </li>
+
+                <li class="treeview">
+                    <a href="#"><i class="fa fa-industry"></i> {{ __('content.assets') }} 
+                        <span class="pull-right-container">
+                        <i class="fa fa-angle-left pull-right"></i> 
+                        </span>
+                    </a>
+                    <ul class="treeview-menu">
+                        <li class="treeview">
+                            <a href="#"><i class="fa fa-file-text-o"></i> {{ __('content.documents') }} 
+                                <span class="pull-right-container">
+                                <i class="fa fa-angle-left pull-right"></i>
+                                </span>
+                            </a>
+                            <ul class="treeview-menu">
+                                {{-- <li><a href="{{ route('dailyReports.index') }}"> {{ __('content.dailyreports') }} </a></li> --}}
+                                {{-- <li><a href="{{ route('notes.index') }}"> {{ __('content.notes') }} </a></li> --}}
+                                <li><a href="#"><i class="fa fa-circle-o"></i> {{ __('content.folios') }} </a></li>
+                                <li><a href="#"><i class="fa fa-circle-o"></i> {{ __('content.dailyreports') }} </a></li>
+                                <li><a href="#"><i class="fa fa-circle-o"></i> {{ __('content.notes') }} </a></li>
+                            </ul>
+                        </li>
+                        <li class="treeview">
+                            <a href="#"><i class="fa fa-file-text-o"></i> {{ __('content.documents') }} 
+                                <span class="pull-right-container">
+                                <i class="fa fa-angle-left pull-right"></i>
+                                </span>
+                            </a>
+                            <ul class="treeview-menu">
+                                <li><a href="#"><i class="fa fa-circle-o"></i> {{ __('content.folios') }} </a></li>
+                                <li><a href="#"><i class="fa fa-circle-o"></i> {{ __('content.dailyreports') }} </a></li>
+                                <li><a href="#"><i class="fa fa-circle-o"></i> {{ __('content.notes') }} </a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                </li>
+
+                <li class="treeview">
+                    <a href="#"><i class="fa fa-industry"></i> {{ __('content.orders') }} 
+                        <span class="pull-right-container">
+                        <i class="fa fa-angle-left pull-right"></i> 
+                        </span>
+                    </a>
+                    <ul class="treeview-menu">
+                        <li class="treeview">
+                            <a href="#"><i class="fa fa-file-text-o"></i> {{ __('content.documents') }} 
+                                <span class="pull-right-container">
+                                <i class="fa fa-angle-left pull-right"></i>
+                                </span>
+                            </a>
+                            <ul class="treeview-menu">
+                                <li><a href="#"><i class="fa fa-circle-o"></i> {{ __('content.folios') }} </a></li>
+                                <li><a href="#"><i class="fa fa-circle-o"></i> {{ __('content.dailyreports') }} </a></li>
+                                <li><a href="#"><i class="fa fa-circle-o"></i> {{ __('content.notes') }} </a></li>
+                            </ul>
+                        </li>
+                        <li class="treeview">
+                            <a href="#"><i class="fa fa-file-text-o"></i> {{ __('content.documents') }} 
+                                <span class="pull-right-container">
+                                <i class="fa fa-angle-left pull-right"></i>
+                                </span>
+                            </a>
+                            <ul class="treeview-menu">
+                                <li><a href="#"><i class="fa fa-circle-o"></i> {{ __('content.folios') }} </a></li>
+                                <li><a href="#"><i class="fa fa-circle-o"></i> {{ __('content.dailyreports') }} </a></li>
+                                <li><a href="#"><i class="fa fa-circle-o"></i> {{ __('content.notes') }} </a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                </li>
+                <li class="treeview">
+                    <a href="#"><i class="fa fa-industry"></i> {{ __('content.warehouse') }} 
+                        <span class="pull-right-container">
+                        <i class="fa fa-angle-left pull-right"></i> 
+                        </span>
+                    </a>
+                    <ul class="treeview-menu">
+                        <li class="treeview">
+                            <a href="#"><i class="fa fa-file-text-o"></i> {{ __('content.documents') }} 
+                                <span class="pull-right-container">
+                                <i class="fa fa-angle-left pull-right"></i>
+                                </span>
+                            </a>
+                            <ul class="treeview-menu">
+                                <li><a href="#"><i class="fa fa-circle-o"></i> {{ __('content.folios') }} </a></li>
+                                <li><a href="#"><i class="fa fa-circle-o"></i> {{ __('content.dailyreports') }} </a></li>
+                                <li><a href="#"><i class="fa fa-circle-o"></i> {{ __('content.notes') }} </a></li>
+                            </ul>
+                        </li>
+                        <li class="treeview">
+                            <a href="#"><i class="fa fa-file-text-o"></i> {{ __('content.documents') }} 
+                                <span class="pull-right-container">
+                                <i class="fa fa-angle-left pull-right"></i>
+                                </span>
+                            </a>
+                            <ul class="treeview-menu">
+                                <li><a href="#"><i class="fa fa-circle-o"></i> {{ __('content.folios') }} </a></li>
+                                <li><a href="#"><i class="fa fa-circle-o"></i> {{ __('content.dailyreports') }} </a></li>
+                                <li><a href="#"><i class="fa fa-circle-o"></i> {{ __('content.notes') }} </a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                </li>
+                
+                
+
+                <li class="treeview">
+                    <a href="#"><i class="fa fa-industry"></i> {{ __('content.assets') }} 
+                        <span class="pull-right-container">
+                        <i class="fa fa-angle-left pull-right"></i> 
+                        </span>
+                    </a>
+                    <ul class="treeview-menu">
+                        <li class="treeview">
+                            <a href="#"><i class="fa fa-file-text-o"></i> {{ __('content.documents') }} 
+                                <span class="pull-right-container">
+                                <i class="fa fa-angle-left pull-right"></i>
+                                </span>
+                            </a>
+                            <ul class="treeview-menu">
+                                {{-- <li><a href="{{ route('dailyReports.index') }}"> {{ __('content.dailyreports') }} </a></li> --}}
+                                {{-- <li><a href="{{ route('notes.index') }}"> {{ __('content.notes') }} </a></li> --}}
+                                <li><a href="#"><i class="fa fa-circle-o"></i> {{ __('content.folios') }} </a></li>
+                                <li><a href="#"><i class="fa fa-circle-o"></i> {{ __('content.dailyreports') }} </a></li>
+                                <li><a href="#"><i class="fa fa-circle-o"></i> {{ __('content.notes') }} </a></li>
+                            </ul>
+                        </li>
+                        <li class="treeview">
+                            <a href="#"><i class="fa fa-file-text-o"></i> {{ __('content.documents') }} 
+                                <span class="pull-right-container">
+                                <i class="fa fa-angle-left pull-right"></i>
+                                </span>
+                            </a>
+                            <ul class="treeview-menu">
+                                <li><a href="#"><i class="fa fa-circle-o"></i> {{ __('content.folios') }} </a></li>
+                                <li><a href="#"><i class="fa fa-circle-o"></i> {{ __('content.dailyreports') }} </a></li>
+                                <li><a href="#"><i class="fa fa-circle-o"></i> {{ __('content.notes') }} </a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                </li>
+
+                <li><a href="#"><i class="fa fa-circle-o"></i> Level One</a></li>
+            </ul>
+
+            
+        </li>
+
         <!-- Management Menu -->
 
-        {{-- <li class="treeview">
+        <li class="treeview">
             <a href="#">
                 <i class="fa fa-line-chart"></i>
-                <span>Gestión</span>
+                <span> {{ __('content.persons') }} </span>
                 <span class="pull-right-container">
                     <i class="fa fa-angle-left pull-right"></i>
                 </span>
             </a>
             <ul class="treeview-menu">
-                <li><a href="{{ route('providers.index')}}"> Proveedores </a></li>
-                <li><a href="{{ route('accounts.index')}}"> Cuentas </a></li>
-                <li><a href="{{ route('billings.index')}}"> Facturas </a></li>
-                <li><a href="{{ route('budgets.resume')}}"> Presupuestos </a></li>
+                <li><a href="#"> Proveedores </a></li>
+                <li><a href="#"> Cuentas </a></li>
+                <li><a href="#"> Facturas </a></li>
+                <li><a href="#"> Presupuestos </a></li>
             </ul>
-        </li> --}}
+        </li>
 
         <!-- Report Menu -->
 
-        {{-- <li class="treeview">
+        <li class="treeview">
             <a href="#">
                 <i class="fa fa-print"></i>
-                <span>Informes</span>
+                <span> {{ __('content.assets') }} </span>
                 <span class="pull-right-container">
                     <i class="fa fa-angle-left pull-right"></i>
                 </span>
@@ -100,7 +295,7 @@
                 <li><a href="#"> Historial de Uso </a></li>
                 <li><a href="#"> Auditoria </a></li>
             </ul>
-        </li> --}}
+        </li>
 
         <!-- Settings Menu -->
 
@@ -143,7 +338,7 @@
             <ul class="treeview-menu">
                 <li><a href="{{ route('roles.index') }}"> {{ __('content.roles') }} </a></li>
                 {{-- <li><a href="{{ route('menus.index') }}"> {{ __('content.menus') }} </a></li> --}}
-                <li><a href="{{ route('users.index') }}"> {{ __('users.roles') }} </a></li>
+                <li><a href="{{ route('users.index') }}"> {{ __('content.users') }} </a></li>
                 <li><a href="#"> {{ __('content.parameters') }} </a></li>
             </ul>
         </li>
