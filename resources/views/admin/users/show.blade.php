@@ -63,30 +63,12 @@
                                 </div>
                             </div>
 
-                            {{-- Contractor  --}}
-
-                            <div class="form-group">
-                                <label class="col-sm-2 control-label">{{ __('content.contractor') }}</label>
-                                <div class="col-sm-10">
-                                    <input disabled class="form-control" value="{{ $user->contractor->name }}">
-                                </div>
-                            </div>
-
-                            {{-- Role  --}}
-
-                            <div class="form-group">
-                                <label class="col-sm-2 control-label">{{ __('content.role') }}</label>
-                                <div class="col-sm-10">
-                                    <input disabled class="form-control" value="{{ $user->role->name }}">
-                                </div>
-                            </div>
-
                             {{-- State  --}}
                             
                             <div class="form-group">
                                 <label class="col-sm-2 control-label">{{ __('content.state') }}</label>
                                 <div class="col-sm-10">
-                                    @IF($user->status==1)
+                                    @IF($user->isActive())
                                         <input disabled class="form-control" value="{{ __('content.active') }}">
                                     @ELSE
                                         <input disabled class="form-control" value="{{ __('content.inactive') }}">
@@ -110,7 +92,7 @@
 
                     <div class="box-footer">
                         <a class="btn btn-success btn-sm" href="{{ route('users.edit', $user) }}">{{ __('content.edit') }}</a>
-                        <a class="btn btn-info btn-sm" href="{{ route('users.index') }}">{{ __('messages.returntolist') }}</a>
+                        <a class="btn btn-info btn-sm" href="{{ route('users.index') }}">{{ __('messages.returnToList') }}</a>
                     </div>
                     
                 </form>

@@ -44,24 +44,24 @@
 
                     <tbody>
                         @foreach($roles as $role)
-                        <tr
-                        @IF($role->status==0)
-                        class='warning'
-                        @ENDIF
-                        >
-                            <td>{{ $role->name }}</td>
-                            @IF($role->status==1)
-                                <td>{{ __('content.active') }}</td>
-                            @ELSE
-                                <td>{{ __('content.inactive') }}</td>
-                            @ENDIF
-                            <td>
-                                @IF($role->name!='SUPERUSER')
-                                <a class="btn btn-info btn-xs" href="{{ route('roles.show', $role)}}">Ver</a>
+                            <tr
+                                @IF(!$role->isActive())
+                                    class='warning'
                                 @ENDIF
-                            </td>
+                            >
+                                <td>{{ $role->name }}</td>
+                                @IF($role->isActive())
+                                    <td>{{ __('content.active') }}</td>
+                                @ELSE
+                                    <td>{{ __('content.inactive') }}</td>
+                                @ENDIF
+                                <td>
+                                    @IF($role->name!='SUPERUSER')
+                                    <a class="btn btn-info btn-xs" href="{{ route('roles.show', $role)}}">Ver</a>
+                                    @ENDIF
+                                </td>
 
-                        </tr>
+                            </tr>
                         @endforeach
                     </tbody>
 

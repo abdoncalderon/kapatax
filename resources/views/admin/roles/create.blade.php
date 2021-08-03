@@ -53,7 +53,7 @@
 
                         <div class="form-group">
                             <div class="col-sm-10">
-                                <input id="status" type="hidden" class="form-control" name="status" value=1>
+                                <input id="isActive" type="hidden" class="form-control" name="status" value=1>
                             </div>
                         </div>
 

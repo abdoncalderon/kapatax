@@ -20,11 +20,9 @@ class CreateUsersTable extends Migration
             $table->string('email')->unique();
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
-            $table->foreignId('role_id');
-            $table->foreign('role_id')->references('id')->on('roles')->onUpdate('cascade')->onDelete('restrict');
             $table->string('avatar')->default('noavatar.png');
             $table->string('signature')->default('nosignature.png');
-            $table->boolean('active')->default(true);
+            $table->boolean('isActive')->default(true);
             $table->rememberToken();
             $table->timestamps();
         });

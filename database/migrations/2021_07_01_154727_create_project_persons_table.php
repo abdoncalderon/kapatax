@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateSubsidiaryPersonsTable extends Migration
+class CreateProjectPersonsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,14 +13,12 @@ class CreateSubsidiaryPersonsTable extends Migration
      */
     public function up()
     {
-        Schema::create('subsidiary_persons', function (Blueprint $table) {
+        Schema::create('project_persons', function (Blueprint $table) {
             $table->id();
             $table->foreignId('person_id');
             $table->foreign('person_id')->references('id')->on('persons')->onUpdate('cascade')->onDelete('restrict');
-            $table->foreignId('subsidiary_id');
-            $table->foreign('subsidiary_id')->references('id')->on('subsidiaries')->onUpdate('cascade')->onDelete('restrict');
-            $table->foreignId('company_id');
-            $table->foreign('company_id')->references('id')->on('companies')->onUpdate('cascade')->onDelete('restrict');
+            $table->foreignId('project_id');
+            $table->foreign('project_id')->references('id')->on('projects')->onUpdate('cascade')->onDelete('restrict');
             $table->string('jobId')->unique()->nullable();
             $table->foreignId('position_id');
             $table->foreign('position_id')->references('id')->on('positions')->onUpdate('cascade')->onDelete('restrict');
@@ -29,6 +27,8 @@ class CreateSubsidiaryPersonsTable extends Migration
             $table->unsignedBigInteger('leader')->nullable();
             $table->date('contractFrom');
             $table->date('contractTo');
+            $table->date('dateOut');
+            $table->boolean('isActive')->default(true);
             $table->timestamps();
         });
     }
@@ -40,6 +40,6 @@ class CreateSubsidiaryPersonsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('subsidiary_persons');
+        Schema::dropIfExists('project_persons');
     }
 }

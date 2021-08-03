@@ -22,6 +22,15 @@
 
             <div class="box box-info">
 
+                {{-- Error Messages --}}
+
+                @if($errors->any())
+                    <div class="alert alert-danger alert-dismissible">
+                        <button type="button" class="close" data-dismiss="alert">&times;</button>
+                        {{ $errors->first() }}
+                    </div>
+                @endif
+
                 <div class="box-header with-border">
                     <h3 class="box-title"><strong>{{ __('content.edit') }} {{ $role->name }}</strong></h3>
                 </div>
@@ -55,14 +64,14 @@
                         <div class="form-group">
                             <label class="col-sm-2 control-label">{{ __('content.state') }}</label>
                             <div class="col-sm-10">
-                                <select name="status" class="form-control" data-placeholder="Estado" style="width: 100%;" value="{{ old('status', $role->status) }}">
+                                <select name="isActive" class="form-control" data-placeholder="Estado" style="width: 100%;" value="{{ old('status', $role->status) }}">
                                     <option value="0"
-                                        @if($role->status==0):
+                                        @if(!$role->isActive()):
                                             selected="selected"
                                         @endif
                                         >{{ __('content.inactive') }}</option>
                                     <option value="1"
-                                        @if($role->status==1):
+                                        @if($role->isActive()):
                                             selected="selected"
                                         @endif
                                         >{{ __('content.active') }}</option>

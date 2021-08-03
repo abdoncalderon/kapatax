@@ -13,7 +13,7 @@ class UpdateUserRequest extends FormRequest
      */
     public function authorize()
     {
-        return false;
+        return true;
     }
 
     /**
@@ -26,9 +26,7 @@ class UpdateUserRequest extends FormRequest
         return [
             'name'=>'required|string|max:255', 
             'email'=>'required|email|max:255|unique:users,email,'.$this->route('user'),
-            'role_id'=>'required',
-            'contractor_id'=>'required',
-            'active'=>'required',
+            'isActive'=>'required',
         ];
     }
 }

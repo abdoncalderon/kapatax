@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateSubsidiaryUsersTable extends Migration
+class CreateProjectUsersTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,12 +13,14 @@ class CreateSubsidiaryUsersTable extends Migration
      */
     public function up()
     {
-        Schema::create('subsidiary_users', function (Blueprint $table) {
+        Schema::create('project_users', function (Blueprint $table) {
             $table->id();
             $table->foreignId('user_id');
             $table->foreign('user_id')->references('id')->on('users')->onUpdate('cascade')->onDelete('restrict');
-            $table->foreignId('subsidiary_id');
-            $table->foreign('subsidiary_id')->references('id')->on('subsidiaries')->onUpdate('cascade')->onDelete('restrict');
+            $table->foreignId('project_id');
+            $table->foreign('project_id')->references('id')->on('projects')->onUpdate('cascade')->onDelete('restrict');
+            $table->foreignId('role_id');
+            $table->foreign('role_id')->references('id')->on('roles')->onUpdate('cascade')->onDelete('restrict');
             $table->timestamps();
         });
     }
@@ -30,6 +32,6 @@ class CreateSubsidiaryUsersTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('subsidiary_users');
+        Schema::dropIfExists('project_users');
     }
 }

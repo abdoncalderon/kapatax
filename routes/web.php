@@ -9,30 +9,41 @@ Route::get('/', 'HomeController@index')->name('home');
 /* Routes Roles */
 Route::resource('roles','RoleController');
 
+/* Routes Menus */
+Route::resource('menus','MenuController');
+
 /* Routes Users */
 Route::resource('users','UserController');
 
 /* Routes Profiles */
 Route::resource('profiles','ProfileController');
 
+/* Routes Companies */
+Route::resource('companies','CompanyController');
+
+/* Routes Divisions */
+Route::resource('divisions','DivisionController');
+
+/* Routes Regions */
+Route::resource('regions','RegionController');
+
 /* Routes Contractors */
-Route::resource('contractors','Agreement\ContractorController');
-Route::get('/contractor/destroy/{contractor}','Agreement\ContractorController@destroy')->name('contractors.destroy');
+/* Route::resource('contractors','Agreement\ContractorController');
+/* Route::get('/contractor/destroy/{contractor}','Agreement\ContractorController@destroy')->name('contractors.destroy'); 
 
 /* Routes Equipments */
-Route::resource('equipments','Agreement\EquipmentController');
-Route::get('/equipment/destroy/{equipment}','EquipmentController@destroy')->name('equipments.destroy');
+/* Route::resource('equipments','Agreement\EquipmentController');
+/* Route::get('/equipment/destroy/{equipment}','EquipmentController@destroy')->name('equipments.destroy');
 
 /* Routes Positions */
-Route::resource('positions','PositionController');
-Route::get('/position/destroy/{position}','PositionController@destroy')->name('positions.destroy');
+/* Route::resource('positions','PositionController');
+/* Route::get('/position/destroy/{position}','PositionController@destroy')->name('positions.destroy');
 
 /* Routes Sectors */
 Route::resource('sectors','SectorController');
 Route::get('/sector/destroy/{sector}','SectorController@destroy')->name('sectors.destroy');
 
-/* Routes Menus */
-Route::resource('menus','MenuController');
+
 
 /* Routes Projects */
 Route::resource('projects','ProjectController');
@@ -56,9 +67,9 @@ Route::get('folios/print/{folio}','FolioController@print')->name('folios.print')
 Route::patch('folios/updateNumber/{folio}','FolioController@update')->name('folios.update');
 
 /* Routes Permits */
-Route::get('/permits/{user}','Agreement\PermitController@index')->name('permits.index');
-Route::get('/permits/edit/{permit}','Agreement\PermitController@edit')->name('permits.edit');
-Route::patch('/permits/{permit}','Agreement\PermitController@update')->name('permits.update');
+/* Route::get('/permits/{user}','Agreement\PermitController@index')->name('permits.index');
+/* Route::get('/permits/edit/{permit}','Agreement\PermitController@edit')->name('permits.edit');
+/* Route::patch('/permits/{permit}','Agreement\PermitController@update')->name('permits.update');
 
 /* Routes Locations x User */
 Route::get('/locationsUsers/{user}','LocationUserController@index')->name('locationsUsers.index');

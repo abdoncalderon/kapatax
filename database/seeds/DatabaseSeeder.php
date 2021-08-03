@@ -40,14 +40,25 @@ class DatabaseSeeder extends Seeder
 
         DB::table('companies')->insert([
             'name' => 'MY ENTERPRISE',
-            'city_id' => '1',
+        ]);
+
+        DB::table('divisions')->insert([
+            'name' => 'INFRASTRUCTURE',
         ]);
 
         DB::table('subsidiaries')->insert([
+            'name' => 'SUBSIDIARY EXAMPLE',
+            'code' => 'EXAMPLE',
+            'country_id' => '1',
+            'company_id' => '1',
+            'division_id' => '1',
+        ]);
+
+        DB::table('projects')->insert([
             'name' => 'PROJECT EXAMPLE',
             'code' => 'EXAMPLE',
             'city_id' => '1',
-            'company_id' => '1',
+            'subsidiary_id' => '1',
         ]);
 
         DB::table('users')->insert([
@@ -55,12 +66,12 @@ class DatabaseSeeder extends Seeder
             'user' => 'superuser',
             'email' => 'example@email.com',
             'password' => Hash::make('IdonSoft'),
-            'role_id' => '1',
         ]);
 
-        DB::table('subsidiary_users')->insert([
+        DB::table('project_users')->insert([
             'user_id' => '1',
-            'subsidiary_id' => '1',
+            'project_id' => '1',
+            'role_id' => '1',
         ]);
     }
 }

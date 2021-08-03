@@ -2,21 +2,22 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Menu;
+use App\Menu;
 use App\Http\Requests\StoreMenuRequest;
 use App\Http\Requests\UpdateMenuRequest;
+use Illuminate\Http\Request;
 
 class MenuController extends Controller
 {
     public function index()
     {
-        $menus = Menu::get();
-        return view('menus.index', compact('menus'));
+        $users = Menu::get();
+        return view('admin.user.index', compact('users'));
     }
-
+ 
     public function create()
     {
-        return view('menus.create');
+        return view('admin.menus.create');
     }
 
     public function store(StoreMenuRequest $request )
@@ -27,14 +28,14 @@ class MenuController extends Controller
 
     public function show(Menu $menu)
     {
-        return view('menus.show',[
+        return view('admin.menus.show',[
             'menu'=>$menu
             ]);
     }
 
     public function edit(Menu $menu)
     {
-        return view('menus.edit',[
+        return view('admin.menus.edit',[
             'menu'=>$menu
             ]);
     }

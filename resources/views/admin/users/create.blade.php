@@ -89,32 +89,6 @@
                                 </div>
                             </div>
 
-                            {{-- contractor --}}
-    
-                            <div class="form-group">
-                                <label class="col-sm-2 control-label">{{ __('content.contractor') }}</label>
-                                <div class="col-sm-10" >
-                                    <select name="contractor_id" class="form-control" style="width: 100%;">
-                                        @foreach ($contractors as $contractor)
-                                            <option value="{{ $contractor->id }}">{{ $contractor->name }}</option>
-                                        @endforeach
-                                    </select>
-                                </div>
-                            </div>
-    
-                            {{-- role --}}
-    
-                            <div class="form-group">
-                                <label class="col-sm-2 control-label">{{ __('content.role') }}</label>
-                                <div class="col-sm-10" >
-                                    <select name="role_id" class="form-control" style="width: 100%;">
-                                        @foreach ($roles as $role)
-                                            <option value="{{ $role->id }}">{{ $role->name }}</option>
-                                        @endforeach
-                                    </select>
-                                </div>
-                            </div>
-    
                             {{-- password --}}
     
                             <div class="form-group">

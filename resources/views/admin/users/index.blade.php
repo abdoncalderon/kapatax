@@ -35,7 +35,7 @@
                     <thead>
                         <tr>
                             <th>{{ __('content.name') }}</th>
-                            <th>{{ __('content.role') }}</th>
+                            <th>{{ __('content.email') }}</th>
                             <th>{{ __('content.state') }}</th>
                             <th>{{ __('content.actions') }}</th>
                         </tr>
@@ -45,25 +45,22 @@
 
                     <tbody>
                         @foreach($users as $user)
-                        <tr 
-                        @IF($user->status==0)
-                        class='warning'
-                        @ENDIF
-                        >
-                            <td>{{ $user->name }}</td>
-                            <td>{{ $user->role->name }}</td>
-                           {{--  <td>{{ $user->statusValue }}</td> --}}
-                            @IF($user->status==1)
-                                <td>{{ __('content.active') }}</td>
-                            @ELSE
-                                <td>{{ __('content.inactive') }}</td>
+                            <tr 
+                            @IF(!$user->isActive())
+                                class='warning'
                             @ENDIF
-                            <td>
-                                <a style="margin: 0.3em" class="btn btn-info btn-xs" href="{{ route('users.show', $user) }}">{{  __('content.view')  }}</a>
-                                <a style="margin: 0.3em" class="btn btn-info btn-xs" href="{{ route('locationsUsers.index', $user) }}">{{  __('content.locations')  }}</a>
-                                <a style="margin: 0.3em" class="btn btn-info btn-xs" href="{{ route('permits.index', $user) }}">{{  __('content.permits')  }}</a>
-                            </td>
-                        </tr>
+                            >
+                                <td>{{ $user->name }}</td>
+                                <td>{{ $user->email }}</td>
+                                @IF($user->isActive())
+                                    <td>{{ __('content.active') }}</td>
+                                @ELSE
+                                    <td>{{ __('content.inactive') }}</td>
+                                @ENDIF
+                                <td>
+                                    <a style="margin: 0.3em" class="btn btn-info btn-xs" href="{{ route('users.show', $user) }}">{{  __('content.view')  }}</a>
+                                </td>
+                            </tr>
                         @endforeach
                     </tbody>
                     

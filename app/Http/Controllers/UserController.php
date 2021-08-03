@@ -22,11 +22,7 @@ class UserController extends Controller
     
     public function create()
     {
-        $roles = Role::where('status', '=', 1)->get();
-        $contractors = Company::all();
-        return view('admin.users.create')
-        ->with('roles',$roles)
-        ->with('contractors',$contractors);
+        return view('admin.users.create');
     }
     
     public function store(StoreUserRequest $request)
@@ -37,13 +33,7 @@ class UserController extends Controller
             'user'  => $request['user'],
             'email' => $request['email'],
             'password' => Hash::make($request['password']),
-            'role_id' => $request['role_id'],
-            'contractor_id' => $request['contractor_id'],
         ]);
-        Permit::create([
-            'user_id' => $user->id,
-        ]);
-
         return redirect()->route('users.index');
     }
 
@@ -56,13 +46,9 @@ class UserController extends Controller
     
     public function edit(User $user)
     {
-        $roles = Role::where('status', '=', 1)->get();
-        $contractors = Company::all();
         return view('admin.users.edit',[
             'user'=>$user
-            ])
-        ->with('roles', $roles)
-        ->with('contractors', $contractors);
+            ]);
     }
 
     public function update($id, UpdateUserRequest $request)

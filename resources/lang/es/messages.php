@@ -30,7 +30,7 @@ return [
     'ourHighlights'=>'Nuestros Destacados',
     'showAll'=>'Mostar Todos',
     'closeSession'=>'Cerrar Sesión',
-    'returntolist' => 'Regresar a la lista',
+    'returnToList' => 'Regresar a la lista',
     'cheapexpensive'=>'De Menor Precio a Mayor Precio',
     'expensivecheap'=>'De Mayor Precio a Menor Precio',
     'orderBy'=>'Ordenar por',
@@ -70,7 +70,10 @@ return [
     'revieweddby'=>'REVISADO por ',
     'approvedby'=>'APROBADO por ',
     'madeby'=>'Hecha por ',
-    'contractManagement'=>'Gestión del Contrato',
+    'managementOfContract'=>'Gestión de Contrato',
+    'myOrders'=>'Mis pedidos'
+
+
 
     
 

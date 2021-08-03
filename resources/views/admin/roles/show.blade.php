@@ -55,7 +55,7 @@
                         <div class="form-group">
                             <label class="col-sm-2 control-label">{{ __('content.state') }}</label>
                             <div class="col-sm-10">
-                                @IF($role->status==1)
+                                @IF($role->isActive())
                                     <input disabled class="form-control" value="{{ __('content.active') }}">
                                 @ELSE
                                     <input disabled class="form-control" value="{{ __('content.inactive') }}">
@@ -69,7 +69,7 @@
 
                     <div class="box-footer">
                         <a class="btn btn-success btn-sm" href=" {{ route('roles.edit', $role) }} ">{{ __('content.edit') }}</a>
-                        <a class="btn btn-info btn-sm" href=" {{ route('roles.index') }} ">{{ __('content.returntolist') }}</a>
+                        <a class="btn btn-info btn-sm" href=" {{ route('roles.index') }} ">{{ __('messages.returnToList') }}</a>
                     </div>
 
                 </form>

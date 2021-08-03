@@ -90,62 +90,23 @@
                                 </div>
                             </div>
 
-                            {{-- Contractor --}}
-
-                            <div class="form-group">
-                                <label class="col-sm-2 control-label">{{ __('content.contractor') }}</label>
-                                <div class="col-sm-10" >
-                                    <select name="contractor_id" class="form-control" style="width: 100%;" value="{{ old('contractor', $user->contractor->name) }}">
-                                        @foreach ($contractors as $contractor)
-                                            <option value="{{ $contractor->id }}"
-                                                @if($user->contractor_id==$contractor->id):
-                                                    selected="selected"
-                                                @endif
-                                                >{{ $contractor->name }}</option>
-                                        @endforeach
-                                    </select>
-                                </div>
-                            </div>
-
-                            {{-- Role --}}
-
-                            <div class="form-group">
-                                <label class="col-sm-2 control-label">{{ __('content.role') }}</label>
-                                <div class="col-sm-10" >
-                                                
-                                    <select name="role_id" 
-                                    @if($user->name=='ADMIN')
-                                        disabled
-                                    @endif
-                                    class="form-control" style="width: 100%;" value="{{ old('role', $user->role->name) }}">
-                                        @foreach ($roles as $role)
-                                            <option value="{{ $role->id }}"
-                                                @if($user->role_id==$role->id):
-                                                    selected="selected"
-                                                @endif
-                                                >{{ $role->name }}</option>
-                                        @endforeach
-                                    </select>
-                                </div>
-                            </div>
-
                             {{-- status --}}
 
                             <div class="form-group">
                                 <label class="col-sm-2 control-label">{{ __('content.state') }}</label>
                                 <div class="col-sm-10">
-                                    <select name="status" 
+                                    <select name="isActive" 
                                     @if($user->name=='ADMIN')
                                         disabled
                                     @endif
-                                    class="form-control" data-placeholder="Estado" style="width: 100%;" value="{{ old('status', $user->status) }}">
+                                    class="form-control" data-placeholder="Estado" style="width: 100%;" value="{{ old('isActive', $user->isActive) }}">
                                         <option value="0"
-                                            @if($user->status==0):
+                                            @if($user->isActive()):
                                                 selected="selected"
                                             @endif
                                             >{{ __('content.inactive') }}</option>
                                         <option value="1"
-                                            @if($user->status==1):
+                                            @if($user->isActive()):
                                                 selected="selected"
                                             @endif
                                             >{{ __('content.active') }}</option>

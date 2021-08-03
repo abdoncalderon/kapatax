@@ -44,7 +44,7 @@
                             @AUTH
                             {{ auth()->user()->name }}
                             @ENDAUTH</span>
-                            <small>{{ auth()->user()->role->name }}</small>
+                            {{-- <small>{{ auth()->user()->role->name }}</small> --}}
                         </p>
                     </li>
                     

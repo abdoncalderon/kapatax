@@ -30,7 +30,7 @@ class CreatePersonsTable extends Migration
             $table->string('mobilePhone')->nullable();
             $table->string('photo')->default('nophoto.png');
             $table->string('signature')->default('nosignature.png');
-            $table->boolean('active')->default(true);
+            $table->boolean('isActive')->default(true);
             $table->boolean('blocked')->default(false);
             $table->timestamps();
         });
