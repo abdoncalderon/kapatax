@@ -20,8 +20,8 @@ class CreateUsersTable extends Migration
             $table->string('email')->unique();
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
-            $table->string('avatar')->default('noavatar.png');
-            $table->string('signature')->default('nosignature.png');
+            $table->string('avatar')->default('noAvatar.png');
+            $table->string('signature')->default('noSignature.png');
             $table->boolean('isActive')->default(true);
             $table->rememberToken();
             $table->timestamps();

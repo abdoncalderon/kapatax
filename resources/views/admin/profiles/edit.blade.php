@@ -84,12 +84,12 @@
 
                             {{-- role --}}
 
-                            <div class="form-group">
+                            {{-- <div class="form-group">
                                 <label class="col-sm-2 control-label">{{ __('content.role') }}</label>
                                 <div class="col-sm-10" >
                                     <input id="role" disabled type="text" class="form-control @error('role') is-invalid @enderror" name="role" value="{{ old('role', $user->role) }}">
                                 </div>
-                            </div>
+                            </div> --}}
                             
                             {{-- avatar --}}
     
@@ -126,7 +126,7 @@
 
                         <div class="col-sm-2 col-md-2 col-lg-2">
                             <div>
-                                <img src="../../images/users/{{ old('avatar', $user->avatar) }}" class="img-circle" width="150" height="150" style="display: block; margin: auto;">
+                                <img src="../../images/admin/avatars/{{ old('avatar', $user->avatar) }}" class="img-circle" width="150" height="150" style="display: block; margin: auto;">
                             </div>
                         </div>
                         

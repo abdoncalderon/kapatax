@@ -7,7 +7,6 @@ use App\Models\DailyReport;
 use App\Models\Folio;
 use App\Models\Equipment;
 use App\Models\Position;
-use App\Models\Location;
 use App\Models\LocationUser;
 use App\Http\Requests\StoreDailyReportRequest;
 use App\Http\Requests\UpdateDailyReportRequest;

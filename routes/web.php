@@ -10,22 +10,25 @@ Route::get('/', 'HomeController@index')->name('home');
 Route::resource('roles','RoleController');
 
 /* Routes Menus */
-Route::resource('menus','MenuController');
+Route::resource('menus','Admin\MenuController');
 
 /* Routes Users */
 Route::resource('users','UserController');
 
 /* Routes Profiles */
-Route::resource('profiles','ProfileController');
+Route::resource('profiles','Admin\ProfileController');
 
 /* Routes Companies */
-Route::resource('companies','CompanyController');
+Route::resource('companies','Admin\CompanyController');
 
 /* Routes Divisions */
-Route::resource('divisions','DivisionController');
+Route::resource('divisions','Admin\DivisionController');
 
 /* Routes Regions */
-Route::resource('regions','RegionController');
+Route::resource('regions','Admin\RegionController');
+
+/* Routes Countries */
+Route::resource('countries','Admin\CountryController');
 
 /* Routes Contractors */
 /* Route::resource('contractors','Agreement\ContractorController');
@@ -42,8 +45,6 @@ Route::resource('regions','RegionController');
 /* Routes Sectors */
 Route::resource('sectors','SectorController');
 Route::get('/sector/destroy/{sector}','SectorController@destroy')->name('sectors.destroy');
-
-
 
 /* Routes Projects */
 Route::resource('projects','ProjectController');

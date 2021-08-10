@@ -64,19 +64,19 @@
 
                             {{-- Role  --}}
 
-                            <div class="form-group">
+                            {{-- <div class="form-group">
                                 <label class="col-sm-2 control-label">{{ __('content.role') }}</label>
                                 <div class="col-sm-10">
                                     <input disabled class="form-control" value="{{ $user->role }}">
                                 </div>
-                            </div>
+                            </div> --}}
 
                             {{-- State  --}}
                             
                             <div class="form-group">
                                 <label class="col-sm-2 control-label">{{ __('content.state') }}</label>
                                 <div class="col-sm-10">
-                                    @IF($user->status==1)
+                                    @IF($user->isActive())
                                         <input disabled class="form-control" value="{{ __('content.active') }}">
                                     @ELSE
                                         <input disabled class="form-control" value="{{ __('content.inactive') }}">
@@ -90,7 +90,7 @@
 
                         <div class="col-sm-2 col-md-2 col-lg-2">
                             <div>
-                            <img src="../../images/users/{{ $user->avatar }}" class="img-circle" width="150" height="150" style="display: block; margin: auto;">
+                            <img src="../../images/admin/avatars/{{ $user->avatar }}" class="img-circle" width="150" height="150" style="display: block; margin: auto;">
                             </div>
                         </div>
 

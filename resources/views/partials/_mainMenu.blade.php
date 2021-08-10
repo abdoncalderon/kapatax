@@ -21,7 +21,7 @@
                 </span>
             </a>
             <ul class="treeview-menu">
-                <li><a href="#"><i class="fa fa-user"></i> {{ __('content.profile') }} </a></li>
+                <li><a href="{{ route('profiles.show', auth()->user()->id) }}"><i class="fa fa-user"></i> {{ __('content.profile') }} </a></li>
                 <li>
                     <a href="#">
                         <i class="fa fa-shopping-cart"></i>
@@ -157,7 +157,6 @@
                     </ul>
                 </li>
             </ul>
-
             
         </li>
 
@@ -284,7 +283,7 @@
                 <li><a href="{{ route('companies.index') }}"><i class="fa fa-circle-o"></i> {{ __('content.companies') }} </a></li>
                 <li><a href="{{ route('divisions.index') }}"><i class="fa fa-circle-o"></i> {{ __('content.divisions') }} </a></li>
                 <li><a href="{{ route('regions.index') }}"><i class="fa fa-circle-o"></i> {{ __('content.regions') }} </a></li>
-                <li><a href="#"><i class="fa fa-circle-o"></i> {{ __('content.countries') }} </a></li>
+                <li><a href="{{ route('countries.index') }}"><i class="fa fa-circle-o"></i> {{ __('content.countries') }} </a></li>
                 <li><a href="#"><i class="fa fa-circle-o"></i> {{ __('content.states') }} </a></li>
                 <li><a href="#"><i class="fa fa-circle-o"></i> {{ __('content.cities') }} </a></li>
                 <li><a href="#"><i class="fa fa-circle-o"></i> {{ __('content.subsidiaries') }} </a></li>

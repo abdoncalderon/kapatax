@@ -5,7 +5,6 @@ namespace App\Http\Controllers;
 use App\Models\EventDailyReport;
 use App\Models\DailyReport;
 use App\Http\Requests\StoreEventDailyReportRequest;
-use Illuminate\Http\Request;
 use Exception;
 
 class EventDailyReportController extends Controller
