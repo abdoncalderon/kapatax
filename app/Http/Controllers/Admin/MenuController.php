@@ -11,8 +11,8 @@ class MenuController extends Controller
 {
     public function index()
     {
-        $users = Menu::get();
-        return view('admin.user.index', compact('users'));
+        $menus = Menu::get();
+        return view('admin.menus.index', compact('menus'));
     }
  
     public function create()
