@@ -24,7 +24,7 @@ class HomeController extends Controller
      */
     public function index()
     {
-        $roleMenus = RoleMenu::where('role_id',auth()->user()->role()->id);
+        // $roleMenus = RoleMenu::where('role_id',auth()->user()->role()->id);
         return view('layouts.main');
     }
 }

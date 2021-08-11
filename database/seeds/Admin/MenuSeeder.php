@@ -12,6 +12,8 @@ class MenuSeeder extends Seeder
      */
     public function run()
     {
+        // Home Menu 
+
         DB::table('menus')->insert([
             'code' => 'home',
             'showName' => 'Inicio',
@@ -43,6 +45,8 @@ class MenuSeeder extends Seeder
             'route' => '',
             'icon' => 'fa fa-envelope',
         ]);
+
+        // Production Menu 
 
         DB::table('menus')->insert([
             'code' => 'production',
@@ -97,7 +101,7 @@ class MenuSeeder extends Seeder
             'showName' => 'Reportes',
             'menu_id' => '6',
             'route' => '',
-            'icon' => 'fa fa-file-text',
+            'icon' => 'fa fa-print',
         ]);
 
         DB::table('menus')->insert([
@@ -129,7 +133,7 @@ class MenuSeeder extends Seeder
             'showName' => 'Reportes',
             'menu_id' => '6',
             'route' => '',
-            'icon' => 'fa fa-file-text',
+            'icon' => 'fa fa-cogs',
         ]);
 
         DB::table('menus')->insert([
@@ -152,6 +156,242 @@ class MenuSeeder extends Seeder
             'code' => 'production.workbook.settings.locations',
             'showName' => 'Anotaciones',
             'menu_id' => '15',
+            'route' => '',
+            'icon' => 'fa fa-circle-o',
+        ]);
+
+        // Commercial Menu 
+
+        DB::table('menus')->insert([
+            'code' => 'commercial',
+            'showName' => 'Comercial',
+            'menu_id' => '',
+            'route' => '',
+            'icon' => 'fa fa-money',
+        ]);
+
+        DB::table('menus')->insert([
+            'code' => 'commercial.purchases',
+            'showName' => 'Compras',
+            'menu_id' => '19',
+            'route' => '',
+            'icon' => 'fa fa-shopping-cart',
+        ]);
+
+        DB::table('menus')->insert([
+            'code' => 'commercial.purchases.orders',
+            'showName' => 'Pedidos',
+            'menu_id' => '20',
+            'route' => '',
+            'icon' => 'fa fa-check-square',
+        ]);
+
+        DB::table('menus')->insert([
+            'code' => 'commercial.purchases.agreements',
+            'showName' => 'Contratos',
+            'menu_id' => '20',
+            'route' => '',
+            'icon' => 'fa fa-file',
+        ]);
+
+        DB::table('menus')->insert([
+            'code' => 'commercial.purchases.reports',
+            'showName' => 'Reportes',
+            'menu_id' => '20',
+            'route' => '',
+            'icon' => 'fa fa-print',
+        ]);
+
+        DB::table('menus')->insert([
+            'code' => 'commercial.warehouse',
+            'showName' => 'Almacen',
+            'menu_id' => '19',
+            'route' => '',
+            'icon' => 'fa fa-industry',
+        ]);
+
+        DB::table('menus')->insert([
+            'code' => 'commercial.warehouse.warehouses',
+            'showName' => 'Almacenes',
+            'menu_id' => '24',
+            'route' => '',
+            'icon' => 'fa fa-industry',
+        ]);
+
+        DB::table('menus')->insert([
+            'code' => 'commercial.warehouse.materials',
+            'showName' => 'Materiales',
+            'menu_id' => '24',
+            'route' => '',
+            'icon' => 'fa fa-cubes',
+        ]);
+
+        DB::table('menus')->insert([
+            'code' => 'commercial.warehouse.reports',
+            'showName' => 'Reportes',
+            'menu_id' => '24',
+            'route' => '',
+            'icon' => 'fa fa-print',
+        ]);
+
+        DB::table('menus')->insert([
+            'code' => 'commercial.assets',
+            'showName' => 'Activos',
+            'menu_id' => '19',
+            'route' => '',
+            'icon' => 'fa fa-cube',
+        ]);
+
+        DB::table('menus')->insert([
+            'code' => 'commercial.assets.record',
+            'showName' => 'Registro',
+            'menu_id' => '28',
+            'route' => '',
+            'icon' => 'fa fa-pencil',
+        ]);
+
+        DB::table('menus')->insert([
+            'code' => 'commercial.assets.assigments',
+            'showName' => 'Asignaciones',
+            'menu_id' => '28',
+            'route' => '',
+            'icon' => 'fa fa-check-square',
+        ]);
+
+        DB::table('menus')->insert([
+            'code' => 'commercial.assets.updates',
+            'showName' => 'Actualizaciones',
+            'menu_id' => '28',
+            'route' => '',
+            'icon' => 'fa fa-refresh',
+        ]);
+
+        DB::table('menus')->insert([
+            'code' => 'commercial.assets.reports',
+            'showName' => 'Reportes',
+            'menu_id' => '28',
+            'route' => '',
+            'icon' => 'fa fa-print',
+        ]);
+
+        // Administration Menu
+
+        DB::table('menus')->insert([
+            'code' => 'administration',
+            'showName' => 'Administración',
+            'menu_id' => '',
+            'route' => '',
+            'icon' => 'fa fa-lock',
+        ]);
+
+        DB::table('menus')->insert([
+            'code' => 'administration.companies',
+            'showName' => 'Empresas',
+            'menu_id' => '33',
+            'route' => '',
+            'icon' => 'fa fa-circle-o',
+        ]);
+
+        DB::table('menus')->insert([
+            'code' => 'administration.divisions',
+            'showName' => 'Divisiones',
+            'menu_id' => '33',
+            'route' => '',
+            'icon' => 'fa fa-circle-o',
+        ]);
+
+        DB::table('menus')->insert([
+            'code' => 'administration.regions',
+            'showName' => 'Regiones',
+            'menu_id' => '33',
+            'route' => '',
+            'icon' => 'fa fa-circle-o',
+        ]);
+
+        DB::table('menus')->insert([
+            'code' => 'administration.countries',
+            'showName' => 'Paises',
+            'menu_id' => '33',
+            'route' => '',
+            'icon' => 'fa fa-circle-o',
+        ]);
+
+        DB::table('menus')->insert([
+            'code' => 'administration.states',
+            'showName' => 'Estados',
+            'menu_id' => '33',
+            'route' => '',
+            'icon' => 'fa fa-circle-o',
+        ]);
+
+        DB::table('menus')->insert([
+            'code' => 'administration.cities',
+            'showName' => 'Ciudades',
+            'menu_id' => '33',
+            'route' => '',
+            'icon' => 'fa fa-circle-o',
+        ]);
+
+        DB::table('menus')->insert([
+            'code' => 'administration.subsidiaries',
+            'showName' => 'Subsidiarias',
+            'menu_id' => '33',
+            'route' => '',
+            'icon' => 'fa fa-circle-o',
+        ]);
+
+        DB::table('menus')->insert([
+            'code' => 'administration.projects',
+            'showName' => 'Proyectos',
+            'menu_id' => '33',
+            'route' => '',
+            'icon' => 'fa fa-circle-o',
+        ]);
+
+        DB::table('menus')->insert([
+            'code' => 'administration.sectors',
+            'showName' => 'Sectores',
+            'menu_id' => '33',
+            'route' => '',
+            'icon' => 'fa fa-circle-o',
+        ]);
+
+        DB::table('menus')->insert([
+            'code' => 'administration.unities',
+            'showName' => 'Unidades',
+            'menu_id' => '33',
+            'route' => '',
+            'icon' => 'fa fa-circle-o',
+        ]);
+
+        DB::table('menus')->insert([
+            'code' => 'administration.roles',
+            'showName' => 'Roles',
+            'menu_id' => '33',
+            'route' => '',
+            'icon' => 'fa fa-circle-o',
+        ]);
+
+        DB::table('menus')->insert([
+            'code' => 'administration.menus',
+            'showName' => 'Menus',
+            'menu_id' => '33',
+            'route' => '',
+            'icon' => 'fa fa-circle-o',
+        ]);
+
+        DB::table('menus')->insert([
+            'code' => 'administration.users',
+            'showName' => 'Usuarios',
+            'menu_id' => '33',
+            'route' => '',
+            'icon' => 'fa fa-circle-o',
+        ]);
+
+        DB::table('menus')->insert([
+            'code' => 'administration.parameters',
+            'showName' => 'Parametros',
+            'menu_id' => '33',
             'route' => '',
             'icon' => 'fa fa-circle-o',
         ]);

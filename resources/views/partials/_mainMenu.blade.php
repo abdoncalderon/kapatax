@@ -12,49 +12,6 @@
 
         <!-- Home Menu -->
 
-        @foreach ($menusUser as $menuUser)
-
-            @if (empty($menuUser->menu->menu_id))
-                <li class="treeview">
-                    <a href="#">
-                        <i class="fa fa-home"></i>
-                        <span> {{ __('content.home') }} </span>
-                        <span class="pull-right-container">
-                            <i class="fa fa-angle-left pull-right"></i>
-                        </span>
-                    </a>
-                    <ul class="treeview-menu">
-                        <li>
-                            <a href="{{ route('profiles.show', auth()->user()->id) }}"><i class="fa fa-user"></i> {{ __('content.profile') }} </a>
-                        </li>
-                        <li>
-                            <a href="#">
-                                <i class="fa fa-shopping-cart"></i>
-                                    {{ __('messages.myOrders') }} 
-                                <span class="pull-right-container">
-                                    <small class="label pull-right bg-yellow">12</small>
-                                </span>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="#">
-                                <i class="fa fa-envelope"></i>
-                                    {{ __('content.notifications') }} 
-                                <span class="pull-right-container">
-                                    <small class="label pull-right bg-yellow">12</small>
-                                </span>
-                            </a>
-                        </li>
-                    </ul>
-                </li>
-            @endif
-            
-        @endforeach
-
-
-
-        
-
         <li class="treeview">
             <a href="#">
                 <i class="fa fa-home"></i>
