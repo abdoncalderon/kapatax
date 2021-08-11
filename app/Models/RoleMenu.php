@@ -6,5 +6,15 @@ use Illuminate\Database\Eloquent\Model;
 
 class RoleMenu extends Model
 {
-    //
+    protected $fillable = ['menu_id','role_id',];
+
+    public function menu()
+    {
+        return $this->belongsTo(Menu::class);
+    }
+
+    public function role()
+    {
+        return $this->belongsTo(Role::class);
+    }
 }

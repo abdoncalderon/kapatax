@@ -21,7 +21,7 @@ return [
     'required'=>'Es requerido el campo ',
     'unique'=>'Este valor ya existe para campo ',
     'minimun'=>'Se requiere un valor minimo para campo ',
-    'exists'=>'El Registro ya existe en esta tabla',
+    'exists'=>'El registro ya existe en esta tabla',
     'isFather'=>'Este registro no se puede eliminar porque esta asociado a otro',
     'select'=>'Seleccione',
     'isDefault'=>'Este registro no se puede eliminar porque es el predeterminado',
@@ -71,7 +71,8 @@ return [
     'approvedby'=>'APROBADO por ',
     'madeby'=>'Hecha por ',
     'managementOfContract'=>'Gestión de Contrato',
-    'myOrders'=>'Mis pedidos'
+    'myOrders'=>'Mis pedidos',
+    'showName'=>'Nombre a Mostrar',
 
 
 

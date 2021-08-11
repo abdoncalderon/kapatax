@@ -34,8 +34,10 @@
 
                     <thead>
                         <tr>
-                            <th>{{ __('content.name') }}</th>
-                            <th>{{ __('content.state') }}</th>
+                            <th>{{ __('content.code') }}</th>
+                            <th>{{ __('content.father') }}</th>
+                            <th>{{ __('content.route') }}</th>
+                            <th>{{ __('content.status') }}</th>
                             <th>{{ __('content.actions') }}</th>
                         </tr>
                     </thead>
@@ -49,7 +51,9 @@
                                     class='warning'
                                 @ENDIF
                             >
-                                <td>{{ $menu->name }}</td>
+                                <td>{{ $menu->code }}</td>
+                                <td>{{ $menu->menu->code ?? '' }}</td>
+                                <td>{{ $menu->route }}</td>
                                 @IF($menu->isActive())
                                     <td>{{ __('content.active') }}</td>
                                 @ELSE
@@ -57,7 +61,7 @@
                                 @ENDIF
                                 <td>
                                     @IF($menu->name!='SUPERUSER')
-                                    <a class="btn btn-info btn-xs" href="{{ route('menus.show', $menu)}}">Ver</a>
+                                    <a class="btn btn-info btn-xs" href="{{ route('menus.show', $menu)}}">{{ __('content.show') }}</a>
                                     @ENDIF
                                 </td>
 

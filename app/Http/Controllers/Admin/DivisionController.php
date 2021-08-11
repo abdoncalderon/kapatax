@@ -4,8 +4,8 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Models\Division;
-use App\Http\Requests\StoreDivisionRequest;
-use App\Http\Requests\UpdateDivisionRequest;
+use App\Http\Requests\Admin\StoreDivisionRequest;
+use App\Http\Requests\Admin\UpdateDivisionRequest;
 use Illuminate\Http\Request;
 
 class DivisionController extends Controller

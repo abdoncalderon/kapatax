@@ -2,10 +2,11 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\Http\Controllers\Controller;
+
 use App\Models\Menu;
-use App\Http\Requests\StoreMenuRequest;
-use App\Http\Requests\UpdateMenuRequest;
+use App\Http\Controllers\Controller;
+use App\Http\Requests\Admin\StoreMenuRequest;
+use App\Http\Requests\Admin\UpdateMenuRequest;
 
 class MenuController extends Controller
 {
@@ -17,7 +18,8 @@ class MenuController extends Controller
  
     public function create()
     {
-        return view('admin.menus.create');
+        $menus = Menu::get();
+        return view('admin.menus.create', compact('menus'));
     }
 
     public function store(StoreMenuRequest $request )
@@ -35,9 +37,10 @@ class MenuController extends Controller
 
     public function edit(Menu $menu)
     {
+        $fathers = Menu::where('id','!=',$menu->id)->get();
         return view('admin.menus.edit',[
             'menu'=>$menu
-            ]);
+            ])->with(compact('fathers'));
     }
     
     public function update(Menu $menu, UpdateMenuRequest $request)

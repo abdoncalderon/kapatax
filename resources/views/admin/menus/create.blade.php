@@ -35,13 +35,27 @@
 
                     <div class="box-body">
 
-                        {{-- name --}}
+                        {{-- father --}}
 
                         <div class="form-group">
-                            <label class="col-sm-2 control-label">{{ __('content.name') }}</label>
+                            <label class="col-sm-2 control-label">Menu {{ __('content.father') }}</label>
                             <div class="col-sm-10" >
-                                <input id="name" type="text" class="form-control" name="name" value="{{ old('name') }}" placeholder="Nombre">
-                                @error('name')
+                                <select name="menu_id" class="form-control" style="width: 100%;">
+                                    <option value=""></option>
+                                    @foreach ($menus as $menu)
+                                        <option value="{{ $menu->id }}">{{ $menu->code }}</option>
+                                    @endforeach
+                                </select>
+                            </div>
+                        </div>
+
+                        {{-- code --}}
+
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label">{{ __('content.code') }}</label>
+                            <div class="col-sm-10" >
+                                <input id="code" type="text" class="form-control" name="code" value="{{ old('code') }}" placeholder="{{ __('content.code') }}">
+                                @error('code')
                                     <span class="invalid-feedback" menu="alert" style="color:red">
                                         <strong>{{ $message }}</strong>
                                     </span>
@@ -49,11 +63,45 @@
                             </div>
                         </div>
 
-                        {{-- status (hide) --}}
+                        {{-- showName --}}
 
                         <div class="form-group">
-                            <div class="col-sm-10">
-                                <input id="isActive" type="hidden" class="form-control" name="status" value=1>
+                            <label class="col-sm-2 control-label">{{ __('messages.showName') }}</label>
+                            <div class="col-sm-10" >
+                                <input id="showName" type="text" class="form-control" name="showName" value="{{ old('showName') }}" placeholder="{{ __('messages.showName') }}">
+                                @error('showName')
+                                    <span class="invalid-feedback" menu="alert" style="color:red">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
+                            </div>
+                        </div>
+
+                        {{-- route --}}
+
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label">{{ __('content.route') }} (LARAVEL)</label>
+                            <div class="col-sm-10" >
+                                <input id="route" type="text" class="form-control" name="route" value="{{ old('route') }}" placeholder="{{ __('content.route') }}">
+                                @error('route')
+                                    <span class="invalid-feedback" menu="alert" style="color:red">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
+                            </div>
+                        </div>
+
+                        {{-- fa icon --}}
+
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label">{{ __('content.icon') }}</label>
+                            <div class="col-sm-10" >
+                                <input id="icon" type="text" class="form-control" name="icon" value="{{ old('icon') }}" placeholder="FA {{ __('content.icon') }}">
+                                @error('icon')
+                                    <span class="invalid-feedback" menu="alert" style="color:red">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
                             </div>
                         </div>
 

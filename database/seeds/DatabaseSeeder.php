@@ -73,5 +73,7 @@ class DatabaseSeeder extends Seeder
             'project_id' => '1',
             'role_id' => '1',
         ]);
+
+        
     }
 }

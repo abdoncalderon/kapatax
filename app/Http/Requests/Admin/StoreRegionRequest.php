@@ -4,9 +4,8 @@ namespace App\Http\Requests\Admin;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class UpdateCountryRequest extends FormRequest
+class StoreRegionRequest extends FormRequest
 {
-    
     public function authorize()
     {
         return true;
@@ -15,9 +14,8 @@ class UpdateCountryRequest extends FormRequest
     public function rules()
     {
         return [
-            'code'=> 'required|unique:countries,code',
-            'ccc'=> 'required|unique:countries,ccc',
-            'region_id'=> 'required', 
+            'name'=>'required|unique:regions',
         ];
+    }];
     }
 }

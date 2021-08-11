@@ -102,7 +102,7 @@
 
                             {{-- status --}}
                         
-                            <div class="form-group">
+                            <!-- <div class="form-group">
                                 <label class="col-sm-2 control-label">{{ __('content.state') }}</label>
                                 <div class="col-sm-10">
                                     <select name="status" disabled class="form-control" data-placeholder="Estado" style="width: 100%;" value="{{ old('status', $user->status) }}">
@@ -117,6 +117,19 @@
                                             @endif
                                             >{{ __('content.active') }}</option>
                                     </select>
+                                </div>
+                            </div> -->
+
+                            {{-- State  --}}
+                            
+                            <div class="form-group">
+                                <label class="col-sm-2 control-label">{{ __('content.state') }}</label>
+                                <div class="col-sm-10">
+                                    @IF($user->isActive())
+                                        <input disabled class="form-control" value="{{ __('content.active') }}">
+                                    @ELSE
+                                        <input disabled class="form-control" value="{{ __('content.inactive') }}">
+                                    @ENDIF
                                 </div>
                             </div>
 

@@ -1,22 +1,20 @@
 <?php
 
-namespace App\Http\Requests;
+namespace App\Http\Requests\Admin;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class StoreDivisionRequest extends FormRequest
+class UpdateDivisionRequest extends FormRequest
 {
-    
     public function authorize()
     {
-        return true;
+        return false;
     }
 
-    
     public function rules()
     {
         return [
-            'name'=>'required|unique:divisions',
+            //
         ];
     }
 }

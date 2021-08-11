@@ -252,9 +252,11 @@ return [
     'department'=>'Departamento',
     'departments'=>'Departamentos',
     'prefix'=>'Prefijo',
+    'father'=>'Padre',
+    'route'=>'Ruta',
+    'icon'=>'Icono',
 
-
-
+    
     'currency'=>'US$',
     
 ];

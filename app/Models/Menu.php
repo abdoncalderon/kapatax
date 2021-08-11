@@ -6,5 +6,17 @@ use Illuminate\Database\Eloquent\Model;
 
 class Menu extends Model
 {
-    protected $fillable = ['name',];
+    protected $fillable = ['code', 'menu_id', 'showName', 'route', 'icon', 'isActive',];
+
+    public function menu(){
+        return $this->belongsTo(Menu::class);
+    }
+
+    public function isActive(){
+        if($this->isActive==1){
+            return true;
+        }else{
+            return false;
+        }
+    }
 }

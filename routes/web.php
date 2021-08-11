@@ -9,11 +9,11 @@ Route::get('/', 'HomeController@index')->name('home');
 /* Routes Roles */
 Route::resource('roles','RoleController');
 
-/* Routes Menus */
-Route::resource('menus','Admin\MenuController');
-
 /* Routes Users */
 Route::resource('users','UserController');
+
+/* Routes Menus */
+Route::resource('menus','Admin\MenuController');
 
 /* Routes Profiles */
 Route::resource('profiles','Admin\ProfileController');
@@ -29,6 +29,12 @@ Route::resource('regions','Admin\RegionController');
 
 /* Routes Countries */
 Route::resource('countries','Admin\CountryController');
+
+/* Routes States */
+Route::resource('states','Admin\StateController');
+
+/* Routes Cities */
+Route::resource('cities','Admin\CityController');
 
 /* Routes Contractors */
 /* Route::resource('contractors','Agreement\ContractorController');

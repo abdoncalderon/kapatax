@@ -4,8 +4,8 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Models\Region;
-use App\Http\Requests\StoreRegionRequest;
-use App\Http\Requests\UpdateRegionRequest;
+use App\Http\Requests\Admin\StoreRegionRequest;
+use App\Http\Requests\Admin\UpdateRegionRequest;
 use Illuminate\Http\Request;
 
 class RegionController extends Controller

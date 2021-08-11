@@ -4,7 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Models\Region;
 use App\Models\Country;
-use App\Http\Requests\StoreCountryRequest;
+use App\Http\Requests\Admin\StoreCountryRequest;
 use App\Http\Requests\Admin\UpdateCountryRequest;
 use App\Http\Controllers\Controller;
 

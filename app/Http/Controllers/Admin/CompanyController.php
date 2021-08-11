@@ -3,8 +3,8 @@
 namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Models\Company;
-use App\Http\Requests\StoreCompanyRequest;
-use App\Http\Requests\UpdateCompanyRequest;
+use App\Http\Requests\Admin\StoreCompanyRequest;
+use App\Http\Requests\Admin\UpdateCompanyRequest;
 
 class CompanyController extends Controller
 {
@@ -21,7 +21,7 @@ class CompanyController extends Controller
 
     public function store(StoreCompanyRequest $request )
     {
-        Company::create($request ->validated());
+        Company::create($request ->validated()); 
         return redirect()->route('companies.index');
     }
 
