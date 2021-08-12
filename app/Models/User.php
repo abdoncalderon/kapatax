@@ -38,6 +38,10 @@ class User extends Model
         'email_verified_at' => 'datetime',
     ];
 
+    public function projects(){
+        return $this->hasMany(ProjectUser::class);
+    }
+
     public function isActive(){
         if($this->isActive==1){
             return true;

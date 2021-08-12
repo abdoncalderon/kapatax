@@ -4,10 +4,15 @@ use Illuminate\Support\Facades\Route;
 
 Auth::routes();
 
-Route::get('/', 'HomeController@index')->name('home');
+// Route::get('/', 'HomeController@index')->name('home');
+
+Route::get('/', 'HomeController@project')->name('project');
+Route::post('/','HomeController@menu')->name('menu');
+Route::get('/main', 'HomeController@index')->name('home');
 
 /* Routes Roles */
 Route::resource('roles','RoleController');
+
 
 /* Routes Users */
 Route::resource('users','UserController');

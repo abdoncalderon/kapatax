@@ -73,7 +73,8 @@ return [
     'managementOfContract'=>'Gestión de Contrato',
     'myOrders'=>'Mis pedidos',
     'showName'=>'Nombre a Mostrar',
-
+    'startSession'=>'Iniciar Sesión',
+    'selectProject'=>'Seleccione Proyecto',
 
 
     

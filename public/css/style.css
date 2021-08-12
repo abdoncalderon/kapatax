@@ -31,7 +31,7 @@ body {
 }
 
 .img-1 {
-    background-image: url('../admin/logos/img-1.jpg');
+    background-image: url('../images/admin/logos/img-1.jpg');
     background-size: cover;
     background-position: center;
 }

@@ -8,8 +8,9 @@ class Role extends Model
 {
     protected $fillable = ['name', 'isActive',];
 
-    public function users(){
-        return $this->hasMany(User::class);
+    public function menus()
+    {
+        return $this->hasMany(RoleMenu::class);
     }
 
     public function isActive(){
