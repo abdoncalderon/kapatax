@@ -255,6 +255,8 @@ return [
     'father'=>'Padre',
     'route'=>'Ruta',
     'icon'=>'Icono',
+    'organizations'=>'Organizaciones',
+    'menu'=>'Menú',
 
     
     'currency'=>'US$',

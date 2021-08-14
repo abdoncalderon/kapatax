@@ -68,7 +68,9 @@
                     {{-- Submit  --}}
 
                     <div class="box-footer">
+                        @IF($role->name!='SUPERUSER')
                         <a class="btn btn-success btn-sm" href=" {{ route('roles.edit', $role) }} ">{{ __('content.edit') }}</a>
+                        @ENDIF
                         <a class="btn btn-info btn-sm" href=" {{ route('roles.index') }} ">{{ __('messages.returnToList') }}</a>
                     </div>
 

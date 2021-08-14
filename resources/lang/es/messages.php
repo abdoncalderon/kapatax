@@ -75,6 +75,7 @@ return [
     'showName'=>'Nombre a Mostrar',
     'startSession'=>'Iniciar Sesión',
     'selectProject'=>'Seleccione Proyecto',
+    'roleMenus'=>'Menus del Rol'
 
 
     

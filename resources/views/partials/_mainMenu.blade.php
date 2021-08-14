@@ -60,7 +60,7 @@
             @endif
 
                 <i class="{{ $roleMenu->menu->icon }}"></i>
-                <span> {{ $roleMenu->menu->showName }} </span>
+                <span> {{ __($roleMenu->menu->showName) }} </span>
                 <span class="pull-right-container">
                     <i class="fa fa-angle-left pull-right"></i>
                 </span>
@@ -77,9 +77,9 @@
                 @endif
 
                     @if (is_null($submenu1->route))
-                    <a href="#"><i class="{{ $submenu1->icon }}"></i> {{ $submenu1->showName }} 
+                    <a href="#"><i class="{{ $submenu1->icon }}"></i> {{ __($submenu1->showName) }} 
                     @else
-                    <a href="{{ route($submenu1->route) }}"><i class="{{ $submenu1->icon }}"></i> {{ $submenu1->showName }} 
+                    <a href="{{ route($submenu1->route) }}"><i class="{{ $submenu1->icon }}"></i> {{ __($submenu1->showName) }} 
                     @endif
 
                         @if (!$submenu1->menus->isEmpty())
@@ -100,9 +100,9 @@
                         @endif
 
                             @if (is_null($submenu2->route))
-                            <a href="#"><i class="{{ $submenu2->icon }}"></i> {{ $submenu2->showName }} 
+                            <a href="#"><i class="{{ $submenu2->icon }}"></i> {{ __($submenu2->showName) }} 
                             @else
-                            <a href="{{ route($submenu2->route) }}"><i class="{{ $submenu2->icon }}"></i> {{ $submenu2->showName }} 
+                            <a href="{{ route($submenu2->route) }}"><i class="{{ $submenu2->icon }}"></i> {{ __($submenu2->showName) }} 
                             @endif  
                                 @if (!$submenu2->menus->isEmpty())
                                     <span class="pull-right-container">
@@ -115,9 +115,9 @@
                                 <ul class="treeview-menu">
                                 @foreach ($submenu2->menus as $submenu3 )
                                     @if (is_null($submenu3->route))
-                                    <li><a href="#"><i class="{{ $submenu3->icon }}"></i> {{ $submenu3->showName }} </a></li>
+                                    <li><a href="#"><i class="{{ $submenu3->icon }}"></i> {{ __($submenu3->showName) }} </a></li>
                                     @else
-                                    <li><a href="{{ route($submenu3->route) }}"><i class="{{ $submenu3->icon }}"></i> {{ $submenu3->showName }} </a></li>
+                                    <li><a href="{{ route($submenu3->route) }}"><i class="{{ $submenu3->icon }}"></i> {{ __($submenu3->showName) }} </a></li>
                                     @endif
                                 @endforeach
                                 </ul>

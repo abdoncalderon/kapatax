@@ -222,6 +222,160 @@ class RoleMenuSeeder extends Seeder
             'role_id' => '1',
         ]);
         
+        DB::table('role_menus')->insert([
+            'menu_id' => '44',
+            'role_id' => '1',
+        ]);
+
+        DB::table('role_menus')->insert([
+            'menu_id' => '45',
+            'role_id' => '1',
+        ]);
+
+        DB::table('role_menus')->insert([
+            'menu_id' => '46',
+            'role_id' => '1',
+        ]);
+
+        DB::table('role_menus')->insert([
+            'menu_id' => '47',
+            'role_id' => '1',
+        ]);
+
+        DB::table('role_menus')->insert([
+            'menu_id' => '48',
+            'role_id' => '1',
+        ]);
+
+        DB::table('role_menus')->insert([
+            'menu_id' => '49',
+            'role_id' => '1',
+        ]);
+
+        DB::table('role_menus')->insert([
+            'menu_id' => '50',
+            'role_id' => '1',
+        ]);
+
+        DB::table('role_menus')->insert([
+            'menu_id' => '51',
+            'role_id' => '1',
+        ]);
+
+        DB::table('role_menus')->insert([
+            'menu_id' => '52',
+            'role_id' => '1',
+        ]);
+
+        DB::table('role_menus')->insert([
+            'menu_id' => '53',
+            'role_id' => '1',
+        ]);
+
+        DB::table('role_menus')->insert([
+            'menu_id' => '54',
+            'role_id' => '1',
+        ]);
+
+        DB::table('role_menus')->insert([
+            'menu_id' => '55',
+            'role_id' => '1',
+        ]);
+
+        DB::table('role_menus')->insert([
+            'menu_id' => '56',
+            'role_id' => '1',
+        ]);
+
+        DB::table('role_menus')->insert([
+            'menu_id' => '57',
+            'role_id' => '1',
+        ]);
+
+        DB::table('role_menus')->insert([
+            'menu_id' => '58',
+            'role_id' => '1',
+        ]);
+
+        DB::table('role_menus')->insert([
+            'menu_id' => '59',
+            'role_id' => '1',
+        ]);
+
+        DB::table('role_menus')->insert([
+            'menu_id' => '60',
+            'role_id' => '1',
+        ]);
+
+        DB::table('role_menus')->insert([
+            'menu_id' => '61',
+            'role_id' => '1',
+        ]);
+
+        DB::table('role_menus')->insert([
+            'menu_id' => '62',
+            'role_id' => '1',
+        ]);
+
+        DB::table('role_menus')->insert([
+            'menu_id' => '63',
+            'role_id' => '1',
+        ]);
+
+        DB::table('role_menus')->insert([
+            'menu_id' => '64',
+            'role_id' => '1',
+        ]);
+
+        DB::table('role_menus')->insert([
+            'menu_id' => '65',
+            'role_id' => '1',
+        ]);
+
+        DB::table('role_menus')->insert([
+            'menu_id' => '66',
+            'role_id' => '1',
+        ]);
+
+        DB::table('role_menus')->insert([
+            'menu_id' => '67',
+            'role_id' => '1',
+        ]);
+
+        DB::table('role_menus')->insert([
+            'menu_id' => '68',
+            'role_id' => '1',
+        ]);
+
+        DB::table('role_menus')->insert([
+            'menu_id' => '69',
+            'role_id' => '1',
+        ]);
+
+        DB::table('role_menus')->insert([
+            'menu_id' => '70',
+            'role_id' => '1',
+        ]);
+
+        DB::table('role_menus')->insert([
+            'menu_id' => '71',
+            'role_id' => '1',
+        ]);
+
+        DB::table('role_menus')->insert([
+            'menu_id' => '72',
+            'role_id' => '1',
+        ]);
+
+        DB::table('role_menus')->insert([
+            'menu_id' => '73',
+            'role_id' => '1',
+        ]);
+
+        DB::table('role_menus')->insert([
+            'menu_id' => '74',
+            'role_id' => '1',
+        ]);
     }
 
     

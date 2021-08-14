@@ -56,9 +56,8 @@
                                     <td>{{ __('content.inactive') }}</td>
                                 @ENDIF
                                 <td>
-                                    @IF($role->name!='SUPERUSER')
-                                    <a class="btn btn-info btn-xs" href="{{ route('roles.show', $role)}}">Ver</a>
-                                    @ENDIF
+                                    <a class="btn btn-info btn-xs" href="{{ route('roles.show', $role)}}">{{ __('content.show') }}</a>
+                                    <a class="btn btn-info btn-xs" href="{{ route('roleMenus.index', $role)}}">{{ __('content.menus') }}</a>
                                 </td>
 
                             </tr>

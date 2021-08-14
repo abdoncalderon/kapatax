@@ -13,6 +13,13 @@ Route::get('/main', 'HomeController@index')->name('home');
 /* Routes Roles */
 Route::resource('roles','RoleController');
 
+ /* Routes Roles Menus  */
+ Route::get('/roleMenus/{role}','Admin\RoleMenuController@index')->name('roleMenus.index');
+ Route::get('create/{role}','Admin\RoleMenuController@create')->name('roleMenus.create');
+ Route::post('/roleMenus/{role}','Admin\RoleMenuController@store')->name('roleMenus.store');
+ Route::get('/roleMenus/destroy/{roleMenu}','Admin\RoleMenuController@destroy')->name('roleMenus.destroy');
+
+
 
 /* Routes Users */
 Route::resource('users','UserController');

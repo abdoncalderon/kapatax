@@ -231,8 +231,6 @@
             </ul>
         </li>
 
-        
-
         <!-- Settings Menu -->
 
         <li class="treeview">
