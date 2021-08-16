@@ -42,7 +42,7 @@
                 </section>
                 @yield('mainContent')
             </div>
-            
+
             {{-- Footer --}}
 
             <footer class="main-footer">

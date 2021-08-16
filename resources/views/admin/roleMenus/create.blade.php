@@ -59,7 +59,7 @@
                         <div class="form-group">
                             <label class="col-sm-2 control-label">{{ __('content.menu') }}</label>
                             <div class="col-sm-10" >
-                                <select id="multiple-checkboxes" name="menu_id" class="form-control" multiple style="width: 100%;">
+                                <select name="menu_id" class="form-control select2" multiple="multiple" style="width: 100%;">
                                     @foreach ($availablesMenus as $menu)
                                         <option value="{{ $menu->id }}">{{ $menu->code }}</option>
                                     @endforeach
@@ -96,10 +96,6 @@
 
     </section>
 
-    <script type="text/javascript">  
-        $(document).ready(function() {  
-            $('#multiple-checkboxes').multiselect();  
-        });  
-    </script>  
+      
 
 @endsection

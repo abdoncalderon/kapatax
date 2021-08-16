@@ -30,6 +30,10 @@
 
 <script src="../../bower_components/chart.js/Chart.js"></script>
 
+<!-- Select2 -->
+
+<script src="../../bower_components/select2/dist/js/select2.full.min.js"></script>
+
 <!-- AdminLTE dashboard demo (This is only for demo purposes) -->
 
 {{-- <script src="../../dist/js/pages/dashboard2.js"></script> --}}
@@ -44,6 +48,8 @@
 
 <script>
     $(function () {
+        $('.select2').select2()
+
         $('#example1').DataTable(
            {
             "sFilterInput": "form-control",
