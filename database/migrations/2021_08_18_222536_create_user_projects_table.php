@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateProjectUsersTable extends Migration
+class CreateUserProjectsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,7 +13,7 @@ class CreateProjectUsersTable extends Migration
      */
     public function up()
     {
-        Schema::create('project_users', function (Blueprint $table) {
+        Schema::create('user_projects', function (Blueprint $table) {
             $table->id();
             $table->foreignId('user_id');
             $table->foreign('user_id')->references('id')->on('users')->onUpdate('cascade')->onDelete('restrict');
@@ -32,6 +32,6 @@ class CreateProjectUsersTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('project_users');
+        Schema::dropIfExists('user_projects');
     }
 }

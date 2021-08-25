@@ -8,7 +8,7 @@
 
 @section('breadcrumb')
     <ol class="breadcrumb">
-        <li><a href="/"><i class="fa fa-home"></i>Home</a></li>
+        <li><a href="{{ route('home') }}"><i class="fa fa-home"></i>Home</a></li>
         <li><a href="{{ route('companies.index')}}"> {{ __('content.companies') }} </a></li>
         <li class="active">{{ __('content.edit') }}</li>
     </ol>
@@ -31,6 +31,8 @@
                     </div>
                 @endif
 
+                {{-- Title --}}
+
                 <div class="box-header with-border">
                     <h3 class="box-title"><strong>{{ __('content.edit') }} {{ $company->name }}</strong></h3>
                 </div>
@@ -50,32 +52,27 @@
                         <div class="form-group">
                             <label class="col-sm-2 control-label">{{ __('content.name') }}</label>
                             <div class="col-sm-10" >
-                                <input id="name" type="text" class="form-control" name="name" value="{{ old('name', $company->name) }}" placeholder="Nombre">
+                                <input id="name" type="text" class="form-control" name="name" value="{{ old('name', $company->name) }}" placeholder="{{ __('content.name') }}">
                                 @error('name')
-                                    <span class="invalid-feedback" company="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
+                                <span class="invalid-feedback" role="alert" style="color:red">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                            @enderror
                             </div>
+                            
                         </div>
 
-                        {{-- status --}}
+                        {{-- code --}}
 
                         <div class="form-group">
-                            <label class="col-sm-2 control-label">{{ __('content.state') }}</label>
-                            <div class="col-sm-10">
-                                <select name="isActive" class="form-control" data-placeholder="Estado" style="width: 100%;" value="{{ old('status', $company->status) }}">
-                                    <option value="0"
-                                        @if(!$company->isActive()):
-                                            selected="selected"
-                                        @endif
-                                        >{{ __('content.inactive') }}</option>
-                                    <option value="1"
-                                        @if($company->isActive()):
-                                            selected="selected"
-                                        @endif
-                                        >{{ __('content.active') }}</option>
-                                </select>
+                            <label class="col-sm-2 control-label">{{ __('content.code') }}</label>
+                            <div class="col-sm-10" >
+                                <input id="code" type="text" class="form-control" name="code" value="{{ old('code', $company->code) }}" placeholder="{{ __('content.code') }}">
+                                @error('name')
+                                <span class="invalid-feedback" role="alert" style="color:red">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                            @enderror
                             </div>
                         </div>
 
@@ -97,5 +94,7 @@
         </div>
 
     </section>
+
+    
 
 @endsection

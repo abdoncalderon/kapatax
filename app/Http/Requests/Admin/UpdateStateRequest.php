@@ -15,7 +15,7 @@ class UpdateStateRequest extends FormRequest
     
     public function rules()
     {   
-        $name = $this->get('name');
+        /* $name = $this->get('name');
         
         $country_id = $this->get('country_id');
         
@@ -26,22 +26,22 @@ class UpdateStateRequest extends FormRequest
 
         if (count($states)<1){
             return [
-                'name'=>'required',
                 'country_id'=>'required',
             ];
         }else{
             return [
-                'name'=>'max:0',
                 'country_id'=>'size:0',
             ];
-        }
-    }
-
-    public function messages()
-    {
+        } */
         return [
-            'name.max' => __('messages.exists'),
-            'country_id.size' => __('messages.exists'),
+            'country_id'=>'required',
         ];
     }
+
+    /* public function messages()
+    {
+        return [
+            'country_id.size' => __('messages.exists'),
+        ];
+    } */
 }

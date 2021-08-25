@@ -17,12 +17,6 @@ class CreateSubsidiariesTable extends Migration
             $table->id();
             $table->string('name')->unique();
             $table->string('code')->unique();
-            $table->string('taxId')->unique()->nullable();
-            $table->foreignId('country_id');
-            $table->foreign('country_id')->references('id')->on('countries')->onUpdate('cascade')->onDelete('restrict');
-            $table->string('address')->nullable();
-            $table->string('zipCode')->nullable();
-            $table->string('phoneNumber')->nullable();
             $table->foreignId('company_id');
             $table->foreign('company_id')->references('id')->on('companies')->onUpdate('cascade')->onDelete('restrict');
             $table->foreignId('division_id');

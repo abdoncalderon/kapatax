@@ -45,8 +45,13 @@ class RoleMenuController extends Controller
 
     public function store(StoreRoleMenuRequest $request, Role $role)
     {
-        RoleMenu::create($request ->validated());
-        return redirect()->route('roleMenus.index',$role);
+        try{
+            RoleMenu::create($request ->validated());
+            return redirect()->route('roleMenus.index',$role);
+        }catch(Exception $e){
+            return back()->withErrors($e->getMessage());
+        }
+        
     }
     
 

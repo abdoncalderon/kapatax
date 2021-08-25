@@ -16,6 +16,5 @@ class StoreRegionRequest extends FormRequest
         return [
             'name'=>'required|unique:regions',
         ];
-    }];
     }
 }

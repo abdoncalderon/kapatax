@@ -8,8 +8,8 @@
 
 @section('breadcrumb')
     <ol class="breadcrumb">
-        <li><a href="/"><i class="fa fa-home"></i>Home</a></li>
-        <li><a href="{{ route('states.index')}}"> {{ __('content.states') }} </a></li>
+        <li><a href="{{ route('home') }}"><i class="fa fa-home"></i>Home</a></li>
+        <li><a href="{{ route('states.index') }}"> {{ __('content.states') }} </a></li>
         <li class="active">{{ __('content.details') }}</li>
     </ol>
 @endsection
@@ -22,6 +22,8 @@
 
             <div class="box box-info">
 
+                {{-- Title  --}}
+
                 <div class="box-header with-border">
                     <h3 class="box-title"><strong>{{ $state->name }}</strong></h3>
                 </div>
@@ -32,7 +34,7 @@
 
                     <div class="box-body">
 
-                        {{-- Name  --}}
+                        {{-- name  --}}
 
                         <div class="form-group">
                             <label class="col-sm-2 control-label">{{ __('content.name') }}</label>
@@ -41,12 +43,12 @@
                             </div>
                         </div>
 
-                        {{-- Country  --}}
+                        {{-- country  --}}
 
                         <div class="form-group">
-                            <label class="col-sm-2 control-label">{{ __('content.region') }}</label>
+                            <label class="col-sm-2 control-label">{{ __('content.country') }}</label>
                             <div class="col-sm-10">
-                                <input disabled class="form-control" value="{{ $state->region->name }}">
+                                <input disabled class="form-control" value="{{ $state->country->name }}">
                             </div>
                         </div>
 

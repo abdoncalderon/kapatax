@@ -6,11 +6,7 @@ use Illuminate\Support\Facades\Schema;
 
 class CreateCompaniesTable extends Migration
 {
-    /**
-     * Run the migrations.
-     *
-     * @return void
-     */
+    
     public function up()
     {
         Schema::create('companies', function (Blueprint $table) {
@@ -18,16 +14,12 @@ class CreateCompaniesTable extends Migration
             $table->string('name')->unique();
             $table->string('code')->unique()->nullable();
             $table->boolean('isActive')->default(true);
-            $table->boolean('blocked')->default(false);
+            $table->boolean('isLocked')->default(false);
             $table->timestamps();
         });
     }
 
-    /**
-     * Reverse the migrations.
-     *
-     * @return void
-     */
+    
     public function down()
     {
         Schema::dropIfExists('companies');

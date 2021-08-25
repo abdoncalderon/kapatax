@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Division;
 use App\Http\Requests\Admin\StoreDivisionRequest;
 use App\Http\Requests\Admin\UpdateDivisionRequest;
+use Exception;
 
 
 class DivisionController extends Controller
@@ -43,7 +44,12 @@ class DivisionController extends Controller
     
     public function update(Division $division, UpdateDivisionRequest $request)
     {
-        $division->update($request->validated());
-        return redirect()->route('divisions.index');
+        try{
+            $division->update($request->validated());
+            return redirect()->route('divisions.index');
+        }catch(Exception $e){
+            return back()->withErrors($e->getMessage());
+        }
+        
     }
 }

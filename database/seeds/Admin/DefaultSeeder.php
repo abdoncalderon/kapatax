@@ -5,11 +5,7 @@ use Illuminate\Support\Facades\DB;
 
 class DefaultSeeder extends Seeder
 {
-    /**
-     * Run the database seeds.
-     *
-     * @return void
-     */
+    
     public function run()
     {
         DB::table('roles')->insert([
@@ -47,8 +43,7 @@ class DefaultSeeder extends Seeder
 
         DB::table('subsidiaries')->insert([
             'name' => 'SUBSIDIARY EXAMPLE',
-            'code' => 'EXAMPLE',
-            'country_id' => '1',
+            'code' => 'SE',
             'company_id' => '1',
             'division_id' => '1',
         ]);

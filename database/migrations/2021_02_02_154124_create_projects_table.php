@@ -25,6 +25,8 @@ class CreateProjectsTable extends Migration
             $table->string('phoneNumber')->nullable();
             $table->foreignId('subsidiary_id');
             $table->foreign('subsidiary_id')->references('id')->on('subsidiaries')->onUpdate('cascade')->onDelete('restrict');
+            $table->date('startDate')->nullable();
+            $table->date('finishDate')->nullable();
             $table->boolean('isActive')->default(true);
             $table->boolean('blocked')->default(false);
             $table->timestamps();

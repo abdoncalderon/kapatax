@@ -8,8 +8,8 @@
 
 @section('breadcrumb')
     <ol class="breadcrumb">
-        <li><a href="/"><i class="fa fa-home"></i>Home</a></li>
-        <li><a href="{{ route('states.index')}}"> {{ __('content.states') }} </a></li>
+        <li><a href="{{ route('home') }}"><i class="fa fa-home"></i>Home</a></li>
+        <li><a href="{{ route('states.index') }}"> {{ __('content.states') }} </a></li>
         <li class="active">{{ __('content.edit') }}</li>
     </ol>
 @endsection
@@ -22,22 +22,24 @@
 
             <div class="box box-info">
 
-                {{-- Error Messages --}}
+                 {{-- Error Messages --}}
 
-                @if($errors->any())
+                 @if($errors->any())
                     <div class="alert alert-danger alert-dismissible">
                         <button type="button" class="close" data-dismiss="alert">&times;</button>
                         {{ $errors->first() }}
                     </div>
                 @endif
 
+                {{-- Title --}}
+                
                 <div class="box-header with-border">
-                    <h3 class="box-title"><strong>{{ __('content.edit') }} {{ $country->name }}</strong></h3>
+                    <h3 class="box-title"><strong>{{ __('content.edit') }} {{ $state->name }}</strong></h3>
                 </div>
 
                 {{-- Start Form  --}}
 
-                <form class="form-horizontal" method="POST" action="{{ route('states.update', $country) }}">
+                <form class="form-horizontal" method="POST" action="{{ route('states.update', $state) }}">
                     @csrf
                     @method('PATCH')
 
@@ -50,7 +52,7 @@
                         <div class="form-group">
                             <label class="col-sm-2 control-label">{{ __('content.name') }}</label>
                             <div class="col-sm-10" >
-                                <input id="name" disabled type="text" class="form-control" name="name" value="{{ old('name', $country->name) }}" placeholder="Nombre">
+                                <input id="name" disabled type="text" class="form-control" name="name" value="{{ old('name', $state->name) }}" placeholder="Nombre">
                                 @error('name')
                                     <span class="invalid-feedback" country="alert">
                                         <strong>{{ $message }}</strong>
@@ -64,7 +66,7 @@
                         <div class="form-group">
                             <label class="col-sm-2 control-label">{{ __('content.country') }}</label>
                             <div class="col-sm-10" >
-                                <select name="region_id" class="form-control" data-placeholder="Tipo" style="width: 100%;">
+                                <select name="country_id" class="form-control" style="width: 100%;">
                                     @foreach ($countries as $country)
                                         <option value="{{ $country->id }}"
                                             @if($country->country_id==$country->id):

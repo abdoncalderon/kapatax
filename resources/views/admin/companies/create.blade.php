@@ -8,8 +8,8 @@
 
 @section('breadcrumb')
     <ol class="breadcrumb">
-        <li><a href="/"><i class="fa fa-home"></i>Home</a></li>
-        <li><a href="{{ route('companies.index')}}"> {{ __('content.companies') }} </a></li>
+        <li><a href="{{ route('home') }}"><i class="fa fa-home"></i>Home</a></li>
+        <li><a href="{{ route('companies.index') }}"> {{ __('content.companies') }} </a></li>
         <li class="active">{{ __('content.add') }}</li>
     </ol>
 @endsection
@@ -22,8 +22,19 @@
 
             <div class="box box-info">
 
+                {{-- Error Messages --}}
+
+                @if($errors->any())
+                    <div class="alert alert-danger alert-dismissible">
+                        <button type="button" class="close" data-dismiss="alert">&times;</button>
+                        {{ $errors->first() }}
+                    </div>
+                @endif
+
+                {{-- Title --}}
+
                 <div class="box-header with-border">
-                    <h3 class="box-title"><strong>{{ __('content.add') }}</strong></h3>
+                    <h3 class="box-title"><strong>{{ __('content.add') }} {{ __('content.company') }}</strong></h3>
                 </div>
 
                 {{-- Start Form  --}}
@@ -40,7 +51,7 @@
                         <div class="form-group">
                             <label class="col-sm-2 control-label">{{ __('content.name') }}</label>
                             <div class="col-sm-10" >
-                                <input id="name" type="text" class="form-control" name="name" value="{{ old('name') }}" placeholder="Nombre">
+                                <input id="name" type="text" class="form-control" name="name" value="{{ old('name') }}" placeholder="{{ __('content.name') }}">
                                 @error('name')
                                     <span class="invalid-feedback" role="alert" style="color:red">
                                         <strong>{{ $message }}</strong>
@@ -49,11 +60,17 @@
                             </div>
                         </div>
 
-                        {{-- status (hide) --}}
+                        {{-- code --}}
 
                         <div class="form-group">
-                            <div class="col-sm-10">
-                                <input id="isActive" type="hidden" class="form-control" name="status" value=1>
+                            <label class="col-sm-2 control-label">{{ __('content.code') }}</label>
+                            <div class="col-sm-10" >
+                                <input id="code" type="text" class="form-control" name="code" value="{{ old('code') }}" placeholder="{{ __('content.code') }}">
+                                @error('code')
+                                    <span class="invalid-feedback" role="alert" style="color:red">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
                             </div>
                         </div>
 

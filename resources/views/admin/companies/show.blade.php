@@ -8,7 +8,7 @@
 
 @section('breadcrumb')
     <ol class="breadcrumb">
-        <li><a href="/"><i class="fa fa-home"></i>Home</a></li>
+        <li><a href="{{ route('home') }}"><i class="fa fa-home"></i>Home</a></li>
         <li><a href="{{ route('companies.index')}}"> {{ __('content.companies') }} </a></li>
         <li class="active">{{ __('content.details') }}</li>
     </ol>
@@ -22,6 +22,8 @@
 
             <div class="box box-info">
 
+                {{-- Title --}}
+
                 <div class="box-header with-border">
                     <h3 class="box-title"><strong>{{ $company->name }}</strong></h3>
                 </div>
@@ -32,16 +34,7 @@
 
                     <div class="box-body">
 
-                        {{-- Id  --}}
-
-                        <div class="form-group">
-                            <label class="col-sm-2 control-label">Id</label>
-                            <div class="col-sm-10">
-                                <input disabled class="form-control" value="{{ $company->id }}">
-                            </div>
-                        </div>
-
-                        {{-- Name  --}}
+                        {{-- name  --}}
 
                         <div class="form-group">
                             <label class="col-sm-2 control-label">{{ __('content.name') }}</label>
@@ -49,17 +42,13 @@
                                 <input disabled class="form-control" value="{{ $company->name }}">
                             </div>
                         </div>
-                        
-                        {{-- State  --}}
+
+                        {{-- code  --}}
 
                         <div class="form-group">
-                            <label class="col-sm-2 control-label">{{ __('content.state') }}</label>
+                            <label class="col-sm-2 control-label">{{ __('content.code') }}</label>
                             <div class="col-sm-10">
-                                @IF($company->isActive())
-                                    <input disabled class="form-control" value="{{ __('content.active') }}">
-                                @ELSE
-                                    <input disabled class="form-control" value="{{ __('content.inactive') }}">
-                                @ENDIF
+                                <input disabled class="form-control" value="{{ $company->code }}">
                             </div>
                         </div>
 

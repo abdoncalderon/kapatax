@@ -7,6 +7,7 @@ use App\Models\Country;
 use App\Http\Requests\Admin\StoreCountryRequest;
 use App\Http\Requests\Admin\UpdateCountryRequest;
 use App\Http\Controllers\Controller;
+use Exception;
 
 class CountryController extends Controller
 {
@@ -25,9 +26,12 @@ class CountryController extends Controller
 
     public function store(StoreCountryRequest $request )
     {
-        Country::create($request ->validated());
-        
-        return redirect()->route('countries.index');
+        try{
+            Country::create($request ->validated());
+            return redirect()->route('countries.index');
+        }catch(Exception $e){
+            return back()->withErrors($e->getMessage());
+        }
     }
 
     public function show(Country $country)
@@ -49,9 +53,12 @@ class CountryController extends Controller
     
     public function update(Country $country, UpdateCountryRequest $request)
     {
-        $country->update($request->validated());
-        
-        return redirect()->route('countries.index');
+        try{
+            $country->update($request->validated());
+            return redirect()->route('countries.index');
+        }catch(Exception $e){
+            return back()->withErrors($e->getMessage());
+        }
     }
 
     /* public function delete(Country $country)

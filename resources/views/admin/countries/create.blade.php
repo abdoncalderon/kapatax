@@ -8,7 +8,7 @@
 
 @section('breadcrumb')
     <ol class="breadcrumb">
-        <li><a href="/"><i class="fa fa-home"></i>Home</a></li>
+        <li><a href="{{ route('home') }}"><i class="fa fa-home"></i>Home</a></li>
         <li><a href="{{ route('countries.index')}}"> {{ __('content.countries') }} </a></li>
         <li class="active">{{ __('content.add') }}</li>
     </ol>
@@ -23,6 +23,7 @@
             <div class="box box-info">
 
                 {{-- Error Messages --}}
+
                 @if($errors->any())
                     <div class="alert alert-danger alert-dismissible">
                         <button type="button" class="close" data-dismiss="alert">&times;</button>
@@ -30,8 +31,10 @@
                     </div>
                 @endif
 
+                {{-- Title --}}
+
                 <div class="box-header with-border">
-                    <h3 class="box-title"><strong>{{ __('content.add') }}</strong></h3>
+                    <h3 class="box-title"><strong>{{ __('content.add') }} {{ __('content.country') }}</strong></h3>
                 </div>
 
                 {{-- Start Form  --}}
@@ -53,6 +56,11 @@
                                         <option value="{{ $region->id }}">{{ $region->name }}</option>
                                     @endforeach
                                 </select>
+                                @error('region_id')
+                                    <span class="invalid-feedback" role="alert" style="color:red">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
                             </div>
                         </div>
 
@@ -90,7 +98,7 @@
                             <label class="col-sm-2 control-label">{{ __('content.prefix') }}</label>
                             <div class="col-sm-10" >
                                 <input id="ccc" type="text" class="form-control" name="ccc" value="{{ old('ccc') }}" placeholder="{{ __('content.prefix') }}" maxlength="3">
-                                @error('name')
+                                @error('ccc')
                                     <span class="invalid-feedback" role="alert" style="color:red">
                                         <strong>{{ $message }}</strong>
                                     </span>

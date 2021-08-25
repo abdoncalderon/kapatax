@@ -8,7 +8,7 @@
 
 @section('breadcrumb')
     <ol class="breadcrumb">
-        <li><a href="/"><i class="fa fa-home"></i>Home</a></li>
+        <li><a href="{{ route('home') }}"><i class="fa fa-home"></i>Home</a></li>
         <li><a href="{{ route('roles.index')}}"> {{ __('content.roles') }} </a></li>
         <li><a href="{{ route('roleMenus.index',$role)}}"> {{ __('content.menus') }} </a></li>
         <li class="active">{{ __('content.add') }}</li>
@@ -22,6 +22,17 @@
         <div>
 
             <div class="box box-info">
+
+                {{-- Error Messages --}}
+
+                @if($errors->any())
+                    <div class="alert alert-danger alert-dismissible">
+                        <button type="button" class="close" data-dismiss="alert">&times;</button>
+                        {{ $errors->first() }}
+                    </div>
+                @endif
+
+                {{-- Title --}}
 
                 <div class="box-header with-border">
                     <h3 class="box-title"><strong>{{ __('content.add').' '.__('content.menu')  }}</strong></h3>

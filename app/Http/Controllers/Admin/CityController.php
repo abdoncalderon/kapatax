@@ -7,6 +7,7 @@ use App\Models\City;
 use App\Models\State;
 use App\Http\Requests\Admin\StoreCityRequest;
 use App\Http\Requests\Admin\UpdateCityRequest;
+use Exception;
 
 class CityController extends Controller
 {
@@ -25,29 +26,39 @@ class CityController extends Controller
 
     public function store(StoreCityRequest $request )
     {
+        try{
+
+        }catch(Exception $e){
+            return back()->withErrors($e->getMessage());
+        }
         City::create($request ->validated());
         return redirect()->route('cities.index');
     }
 
-    public function show(City $state)
+    public function show(City $city)
     {
         return view('admin.cities.show',[
-            'state'=>$state
+            'city'=>$city
             ]);
     }
 
-    public function edit(City $state)
+    public function edit(City $city)
     {
         $states = State::get();
         return view('admin.cities.edit',[
-            'state'=>$state
+            'city'=>$city
             ])
         ->with(compact('states'));
     }
     
-    public function update(City $state, UpdateCityRequest $request)
+    public function update(City $city, UpdateCityRequest $request)
     {
-        $state->update($request->validated());
-        return redirect()->route('cities.index');
+        try{
+            $city->update($request->validated());
+            return redirect()->route('cities.index');
+        }catch(Exception $e){
+            return back()->withErrors($e->getMessage());
+        }
+        
     }
 }

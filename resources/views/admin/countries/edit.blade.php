@@ -8,7 +8,7 @@
 
 @section('breadcrumb')
     <ol class="breadcrumb">
-        <li><a href="/"><i class="fa fa-home"></i>Home</a></li>
+        <li><a href="{{ route('home') }}"><i class="fa fa-home"></i>Home</a></li>
         <li><a href="{{ route('countries.index')}}"> {{ __('content.countries') }} </a></li>
         <li class="active">{{ __('content.edit') }}</li>
     </ol>
@@ -30,6 +30,8 @@
                         {{ $errors->first() }}
                     </div>
                 @endif
+
+                {{-- Title --}}
 
                 <div class="box-header with-border">
                     <h3 class="box-title"><strong>{{ __('content.edit') }} {{ $country->name }}</strong></h3>
@@ -73,6 +75,11 @@
                                         >{{ $region->name }}</option>
                                     @endforeach
                                 </select>
+                                @error('region_id')
+                                    <span class="invalid-feedback" country="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
                             </div>
                         </div>
 

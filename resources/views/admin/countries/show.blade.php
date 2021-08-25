@@ -8,7 +8,7 @@
 
 @section('breadcrumb')
     <ol class="breadcrumb">
-        <li><a href="/"><i class="fa fa-home"></i>Home</a></li>
+        <li><a href="{{ route('home') }}"><i class="fa fa-home"></i>Home</a></li>
         <li><a href="{{ route('countries.index')}}"> {{ __('content.countries') }} </a></li>
         <li class="active">{{ __('content.details') }}</li>
     </ol>
@@ -31,15 +31,6 @@
                 <form class="form-horizontal">
 
                     <div class="box-body">
-
-                        {{-- Id  --}}
-
-                        {{-- <div class="form-group">
-                            <label class="col-sm-2 control-label">Id</label>
-                            <div class="col-sm-10">
-                                <input disabled class="form-control" value="{{ $country->id }}">
-                            </div>
-                        </div> --}}
 
                         {{-- Name  --}}
 

@@ -14,7 +14,7 @@ class StoreCityRequest extends FormRequest
 
     public function rules()
     {
-        $name = $this->get('name');
+        /* $name = $this->get('name');
         
         $state_id = $this->get('state_id');
         
@@ -33,7 +33,11 @@ class StoreCityRequest extends FormRequest
                 'name'=>'max:0',
                 'state_id'=>'size:0',
             ];
-        }
+        } */
+        return [
+            'name'=>'required',
+            'state_id'=>'required',
+        ];
     }
 
     public function messages()

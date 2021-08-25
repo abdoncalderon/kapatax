@@ -7,7 +7,7 @@ use App\Models\State;
 use App\Http\Requests\Admin\StoreStateRequest;
 use App\Http\Requests\Admin\UpdateStateRequest;
 use App\Http\Controllers\Controller;
-use Illuminate\Http\Request;
+use Exception;
 
 class StateController extends Controller
 {
@@ -26,8 +26,13 @@ class StateController extends Controller
 
     public function store(StoreStateRequest $request )
     {
-        State::create($request ->validated());
-        return redirect()->route('states.index');
+        try{
+            State::create($request ->validated());
+            return redirect()->route('states.index');
+        }catch(Exception $e){
+            return back()->withErrors($e->getMessage());
+        }
+        
     }
 
     public function show(State $state)
@@ -48,7 +53,12 @@ class StateController extends Controller
     
     public function update(State $state, UpdateStateRequest $request)
     {
-        $state->update($request->validated());
-        return redirect()->route('states.index');
+        try{
+            $state->update($request->validated());
+            return redirect()->route('states.index');
+        }catch(Exception $e){
+            return back()->withErrors($e->getMessage());
+        }
+        
     }
 }

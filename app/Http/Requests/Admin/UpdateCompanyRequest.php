@@ -15,7 +15,9 @@ class UpdateCompanyRequest extends FormRequest
     {
         return [
             'name'=>'required', 
-            'isActive'=>'required', 
+            'code'=>'nullable',
+            'isActive'=>'nullable', 
+            'isLocked'=>'nullable',
         ];
     }
 }

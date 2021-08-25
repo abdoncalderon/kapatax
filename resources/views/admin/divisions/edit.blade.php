@@ -8,7 +8,7 @@
 
 @section('breadcrumb')
     <ol class="breadcrumb">
-        <li><a href="/"><i class="fa fa-home"></i>Home</a></li>
+        <li><a href="{{ route('home') }}"><i class="fa fa-home"></i>Home</a></li>
         <li><a href="{{ route('divisions.index')}}"> {{ __('content.divisions') }} </a></li>
         <li class="active">{{ __('content.edit') }}</li>
     </ol>
@@ -30,6 +30,8 @@
                         {{ $errors->first() }}
                     </div>
                 @endif
+
+                {{-- Title --}}
 
                 <div class="box-header with-border">
                     <h3 class="box-title"><strong>{{ __('content.edit') }} {{ $division->name }}</strong></h3>

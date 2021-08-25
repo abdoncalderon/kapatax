@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Company extends Model
 {
-    protected $fillable = ['name','code', 'isActive', 'blocked'];
+    protected $fillable = ['name','code', 'isActive', 'isLocked'];
 
     public function users(){
         return $this->hasMany(User::class);
@@ -20,8 +20,8 @@ class Company extends Model
         }
     }
 
-    public function isBlocked(){
-        if($this->blocked==1){
+    public function isLocked(){
+        if($this->isLocked==1){
             return true;
         }else{
             return false;

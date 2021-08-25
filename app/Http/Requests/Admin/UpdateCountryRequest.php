@@ -15,8 +15,8 @@ class UpdateCountryRequest extends FormRequest
     public function rules()
     {
         return [
-            'code'=> 'required|unique:countries,code',
-            'ccc'=> 'required|unique:countries,ccc',
+            'code'=> 'required',
+            'ccc'=> 'required',
             'region_id'=> 'required', 
         ];
     }

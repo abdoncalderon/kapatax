@@ -8,8 +8,8 @@
 
 @section('breadcrumb')
     <ol class="breadcrumb">
-        <li><a href="/"><i class="fa fa-home"></i>Home</a></li>
-        <li><a href="{{ route('menus.index')}}"> {{ __('content.menus') }} </a></li>
+        <li><a href="{{ route('home') }}"><i class="fa fa-home"></i>Home</a></li>
+        <li><a href="{{ route('menus.index') }}"> {{ __('content.menus') }} </a></li>
         <li class="active">{{ __('content.edit') }}</li>
     </ol>
 @endsection
@@ -30,6 +30,8 @@
                         {{ $errors->first() }}
                     </div>
                 @endif
+
+                {{-- Title --}}
 
                 <div class="box-header with-border">
                     <h3 class="box-title"><strong>{{ __('content.edit') }} {{ $menu->name }}</strong></h3>

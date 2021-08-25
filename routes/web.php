@@ -32,9 +32,15 @@ Route::resource('profiles','Admin\ProfileController');
 
 /* Routes Companies */
 Route::resource('companies','Admin\CompanyController');
+Route::get('/activate/{company}/{value}','Admin\CompanyController@activate')->name('companies.activate');
+Route::get('/lock/{company}/{value}','Admin\CompanyController@lock')->name('companies.lock');
+
 
 /* Routes Divisions */
 Route::resource('divisions','Admin\DivisionController');
+
+/* Routes Subsidiary */
+Route::resource('subsidiaries','Admin\SubsidiaryController');
 
 /* Routes Regions */
 Route::resource('regions','Admin\RegionController');
@@ -47,6 +53,9 @@ Route::resource('states','Admin\StateController');
 
 /* Routes Cities */
 Route::resource('cities','Admin\CityController');
+
+/* Routes Projects */
+Route::resource('projects','Admin\ProjectController');
 
 /* Routes Contractors */
 /* Route::resource('contractors','Agreement\ContractorController');
@@ -63,9 +72,6 @@ Route::resource('cities','Admin\CityController');
 /* Routes Sectors */
 Route::resource('sectors','SectorController');
 Route::get('/sector/destroy/{sector}','SectorController@destroy')->name('sectors.destroy');
-
-/* Routes Projects */
-Route::resource('projects','ProjectController');
 
 /* Routes Locations */
 Route::resource('locations','LocationController');

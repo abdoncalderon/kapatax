@@ -31,6 +31,8 @@
                     </div>
                 @endif
 
+                {{-- Title --}}
+
                 <div class="box-header with-border">
                     <h3 class="box-title"><strong>{{ __('content.edit') }} {{ $role->name }}</strong></h3>
                 </div>

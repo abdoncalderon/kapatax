@@ -22,6 +22,14 @@
 
             <div class="box box-info">
 
+                {{-- Error Messages --}}
+                @if($errors->any())
+                    <div class="alert alert-danger alert-dismissible">
+                        <button type="button" class="close" data-dismiss="alert">&times;</button>
+                        {{ $errors->first() }}
+                    </div>
+                @endif
+
                 <div class="box-header with-border">
                     <h3 class="box-title"><strong>{{ __('content.add') }}</strong></h3>
                 </div>

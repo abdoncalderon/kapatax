@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Models\User;
 use App\Http\Requests\Admin\UpdateProfileRequest;
+use Exception;
 
 class ProfileController extends Controller
 {

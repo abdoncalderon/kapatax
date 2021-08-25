@@ -22,6 +22,17 @@
 
             <div class="box box-info">
 
+                {{-- Error Messages --}}
+
+                @if($errors->any())
+                    <div class="alert alert-danger alert-dismissible">
+                        <button type="button" class="close" data-dismiss="alert">&times;</button>
+                        {{ $errors->first() }}
+                    </div>
+                @endif
+
+                {{-- Title --}}
+
                 <div class="box-header with-border">
                     <h3 class="box-title"><strong>{{ __('content.edit') }} {{ $user->name }}</strong></h3>
                 </div>
@@ -82,54 +93,12 @@
                                 </div>
                             </div>
 
-                            {{-- role --}}
-
-                            {{-- <div class="form-group">
-                                <label class="col-sm-2 control-label">{{ __('content.role') }}</label>
-                                <div class="col-sm-10" >
-                                    <input id="role" disabled type="text" class="form-control @error('role') is-invalid @enderror" name="role" value="{{ old('role', $user->role) }}">
-                                </div>
-                            </div> --}}
-                            
                             {{-- avatar --}}
     
                             <div class="form-group">
                                 <label class="col-sm-2 control-label">{{ __('content.avatar') }}</label>
                                 <div class="col-sm-10">
                                     <input id="avatar" type="file" class="form-control" name="avatar"}}>
-                                </div>
-                            </div>
-
-                            {{-- status --}}
-                        
-                            <!-- <div class="form-group">
-                                <label class="col-sm-2 control-label">{{ __('content.state') }}</label>
-                                <div class="col-sm-10">
-                                    <select name="status" disabled class="form-control" data-placeholder="Estado" style="width: 100%;" value="{{ old('status', $user->status) }}">
-                                        <option value="0"
-                                            @if($user->status==0):
-                                                selected="selected"
-                                            @endif
-                                            >{{ __('content.inactive') }}</option>
-                                        <option value="1"
-                                            @if($user->status==1):
-                                                selected="selected"
-                                            @endif
-                                            >{{ __('content.active') }}</option>
-                                    </select>
-                                </div>
-                            </div> -->
-
-                            {{-- State  --}}
-                            
-                            <div class="form-group">
-                                <label class="col-sm-2 control-label">{{ __('content.state') }}</label>
-                                <div class="col-sm-10">
-                                    @IF($user->isActive())
-                                        <input disabled class="form-control" value="{{ __('content.active') }}">
-                                    @ELSE
-                                        <input disabled class="form-control" value="{{ __('content.inactive') }}">
-                                    @ENDIF
                                 </div>
                             </div>
 

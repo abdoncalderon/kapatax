@@ -8,8 +8,8 @@
 
 @section('breadcrumb')
     <ol class="breadcrumb">
-        <li><a href="/"><i class="fa fa-home"></i>Home</a></li>
-        <li><a href="{{ route('cities.index')}}"> {{ __('content.cities') }} </a></li>
+        <li><a href="{{ route('home') }}"><i class="fa fa-home"></i>Home</a></li>
+        <li><a href="{{ route('cities.index') }}"> {{ __('content.cities') }} </a></li>
         <li class="active">{{ __('content.add') }}</li>
     </ol>
 @endsection
@@ -23,6 +23,7 @@
             <div class="box box-info">
 
                 {{-- Error Messages --}}
+
                 @if($errors->any())
                     <div class="alert alert-danger alert-dismissible">
                         <button type="button" class="close" data-dismiss="alert">&times;</button>
@@ -30,8 +31,10 @@
                     </div>
                 @endif
 
+                {{-- Title --}}
+
                 <div class="box-header with-border">
-                    <h3 class="box-title"><strong>{{ __('content.add') }}</strong></h3>
+                    <h3 class="box-title"><strong>{{ __('content.add') }} {{ __('content.city') }}</strong></h3>
                 </div>
 
                 {{-- Start Form  --}}
@@ -46,13 +49,18 @@
                         {{-- state --}}
 
                         <div class="form-group">
-                            <label class="col-sm-2 control-label">{{ __('content.city') }}</label>
+                            <label class="col-sm-2 control-label">{{ __('content.state') }}</label>
                             <div class="col-sm-10" >
                                 <select name="state_id" class="form-control" style="width: 100%;">
                                     @foreach ($states as $state)
                                         <option value="{{ $state->id }}">{{ $state->name }}</option>
                                     @endforeach
                                 </select>
+                                @error('state_id')
+                                    <span class="invalid-feedback" role="alert" style="color:red">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
                             </div>
                         </div>
 
@@ -61,7 +69,7 @@
                         <div class="form-group">
                             <label class="col-sm-2 control-label">{{ __('content.name') }}</label>
                             <div class="col-sm-10" >
-                                <input id="name" type="text" class="form-control" name="name" value="{{ old('name') }}" placeholder="{{ __('content.name') }}">
+                                <input id="name" class="form-control" name="name" value="{{ old('name') }}" type="text" placeholder="{{ __('content.name') }}" maxlength="255" required>
                                 @error('name')
                                     <span class="invalid-feedback" role="alert" style="color:red">
                                         <strong>{{ $message }}</strong>

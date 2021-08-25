@@ -19,6 +19,17 @@
 
         <div class="box box-info">
 
+            {{-- Error Messages --}}
+
+            @if($errors->any())
+                <div class="alert alert-danger alert-dismissible">
+                    <button type="button" class="close" data-dismiss="alert">&times;</button>
+                    {{ $errors->first() }}
+                </div>
+            @endif
+
+            {{-- Title --}}
+
             <div class="box-header with-border center-block">
                 <h3 class="box-title"><strong>{{ __('content.states') }}</strong></h3> | 
                 <a class="btn btn-success btn-sm" href="{{ route('states.create') }}">{{ __('content.add') }}</a>
@@ -28,7 +39,7 @@
                 
                  {{-- Start Table  --}}
 
-                <table id="example1" class="table table-bordered table-striped">
+                <table id="datatable" class="table table-bordered table-striped">
 
                     {{-- Header  --}}
 

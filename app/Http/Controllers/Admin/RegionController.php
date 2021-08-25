@@ -7,6 +7,7 @@ use App\Models\Region;
 use App\Http\Requests\Admin\StoreRegionRequest;
 use App\Http\Requests\Admin\UpdateRegionRequest;
 use Illuminate\Http\Request;
+use Exception;
 
 class RegionController extends Controller
 {
@@ -43,7 +44,12 @@ class RegionController extends Controller
     
     public function update(Region $region, UpdateRegionRequest $request)
     {
-        $region->update($request->validated());
-        return redirect()->route('regions.index');
+        try{
+            $region->update($request->validated());
+            return redirect()->route('regions.index');
+        }catch(Exception $e){
+            return back()->withErrors($e->getMessage());
+        }
+        
     }
 }
