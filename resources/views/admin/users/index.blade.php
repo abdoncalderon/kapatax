@@ -47,7 +47,7 @@
                         <tr>
                             <th>{{ __('content.name') }}</th>
                             <th>{{ __('content.email') }}</th>
-                            <th>{{ __('content.state') }}</th>
+                            <th>{{ __('content.status') }}</th>
                             <th>{{ __('content.actions') }}</th>
                         </tr>
                     </thead>
