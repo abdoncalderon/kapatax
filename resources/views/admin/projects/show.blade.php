@@ -208,7 +208,7 @@
 
                     <div class="box-footer">
                         <a class="btn btn-success btn-sm" href=" {{ route('projects.edit', $project) }} ">{{ __('content.edit') }}</a>
-                        <a class="btn btn-info btn-sm" href=" {{ route('projects.index') }} ">{{ __('messages.returntolist') }}</a>
+                        <a class="btn btn-info btn-sm" href=" {{ route('projects.index') }} ">{{ __('messages.returnToList') }}</a>
                     </div>
 
                 </form>

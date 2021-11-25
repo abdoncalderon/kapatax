@@ -59,7 +59,9 @@
                                 <td>{{ $state->name }}</td>
                                 <td>{{ $state->country->name }}</td>
                                 <td>
-                                    <a class="btn btn-info btn-xs" href="{{ route('states.show', $state)}}">{{ __('content.show') }}</a>
+                                    {{-- <a class="btn btn-info btn-xs" href="{{ route('states.show', $state)}}">{{ __('content.show') }}</a> --}}
+                                    <a class="btn btn-info btn-xs" href="{{ route('states.edit', $state)}}">{{ __('content.edit') }}</a>
+                                    <a class="btn btn-danger btn-xs" href="{{ route('states.destroy', $state)}}">{{ __('content.delete') }}</a>
                                 </td>
                             </tr>
                         @endforeach

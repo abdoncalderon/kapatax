@@ -62,6 +62,7 @@
                                 <td>{{ $subsidiary->division->name }}</td>
                                 <td>
                                     <a class="btn btn-info btn-xs" href="{{ route('subsidiaries.show', $subsidiary)}}">{{ __('content.show') }}</a>
+                                    <a class="btn btn-danger btn-xs" href="{{ route('subsidiaries.destroy', $subsidiary)}}">{{ __('content.delete') }}</a>
                                 </td>
                             </tr>
                         @endforeach

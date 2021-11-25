@@ -73,10 +73,31 @@ class MenuController extends Controller
         }catch(Exception $e){
             return back()->withErrors($e->getMessage());
         }
-        
     }
 
     private function checkRoute($route) {
         return Route::has($route);
     }
+
+    public function activate(Menu $menu, $value){
+        $menu->update([
+            'isActive'=>$value,
+        ]);
+        return redirect()->route('menus.index');
+
+    }
+
+    public function destroy(Menu $menu)
+    {
+        try{
+            $menu->delete();
+            return redirect()->route('menus.index');
+        }catch(Exception $e){
+            return back()->withErrors($e->getMessage());
+        }
+    }
+
+
+
+
 }

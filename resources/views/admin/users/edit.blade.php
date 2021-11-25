@@ -93,37 +93,13 @@
                                 </div>
                             </div>
 
-                            {{-- status --}}
-
-                            <div class="form-group">
-                                <label class="col-sm-2 control-label">{{ __('content.state') }}</label>
-                                <div class="col-sm-10">
-                                    <select name="isActive" 
-                                    @if($user->name=='ADMIN')
-                                        disabled
-                                    @endif
-                                    class="form-control" data-placeholder="Estado" style="width: 100%;" value="{{ old('isActive', $user->isActive) }}">
-                                        <option value="0"
-                                            @if($user->isActive()):
-                                                selected="selected"
-                                            @endif
-                                            >{{ __('content.inactive') }}</option>
-                                        <option value="1"
-                                            @if($user->isActive()):
-                                                selected="selected"
-                                            @endif
-                                            >{{ __('content.active') }}</option>
-                                    </select>
-                                </div>
-                            </div>
-
                         </div>
 
                         {{-- Avatar --}}
 
                         <div class="col-sm-2 col-md-2 col-lg-2">
                             <div>
-                                <img src="../../images/users/{{ old('avatar', $user->avatar) }}" class="img-circle" width="150" height="150" style="display: block; margin: auto;">
+                                <img src="../../images/admin/avatars/{{ old('avatar', $user->avatar) }}" class="img-circle" width="150" height="150" style="display: block; margin: auto;">
                             </div>
                         </div>
                         

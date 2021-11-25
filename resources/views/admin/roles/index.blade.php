@@ -19,6 +19,17 @@
 
         <div class="box box-info">
 
+            {{-- Error Messages --}}
+
+            @if($errors->any())
+                <div class="alert alert-danger alert-dismissible">
+                    <button type="button" class="close" data-dismiss="alert">&times;</button>
+                    {{ $errors->first() }}
+                </div>
+            @endif
+
+            {{-- Title --}}
+
             <div class="box-header with-border center-block">
                 <h3 class="box-title"><strong>{{ __('content.roles') }}</strong></h3> | 
                 <a class="btn btn-success btn-sm" href="{{ route('roles.create') }}">{{ __('content.add') }}</a>
@@ -35,7 +46,7 @@
                     <thead>
                         <tr>
                             <th>{{ __('content.name') }}</th>
-                            <th>{{ __('content.state') }}</th>
+                            <th>{{ __('content.status') }}</th>
                             <th>{{ __('content.actions') }}</th>
                         </tr>
                     </thead>
@@ -45,19 +56,27 @@
                     <tbody>
                         @foreach($roles as $role)
                             <tr
-                                @IF(!$role->isActive())
+                                @if(!$role->isActive())
                                     class='warning'
-                                @ENDIF
+                                @endif
                             >
                                 <td>{{ $role->name }}</td>
-                                @IF($role->isActive())
+                                @if($role->isActive())
                                     <td>{{ __('content.active') }}</td>
-                                @ELSE
+                                @else
                                     <td>{{ __('content.inactive') }}</td>
-                                @ENDIF
+                                @endif
                                 <td>
-                                    <a class="btn btn-info btn-xs" href="{{ route('roles.show', $role)}}">{{ __('content.show') }}</a>
+                                    <a class="btn btn-info btn-xs" href="{{ route('roles.edit', $role)}}">{{ __('content.edit') }}</a>
                                     <a class="btn btn-info btn-xs" href="{{ route('roleMenus.index', $role)}}">{{ __('content.menus') }}</a>
+                                    @if($role->id!=1)
+                                        @if ($role->isActive())
+                                            <a class="btn btn-danger btn-xs" href="{{ route('roles.activate', [$role, '0']) }}">{{ __('content.deactivate') }}</a>
+                                        @else
+                                            <a class="btn btn-info btn-xs" href="{{ route('roles.activate', [$role, '1']) }}">{{ __('content.activate') }}</a>
+                                        @endif
+                                        <a class="btn btn-danger btn-xs" href="{{ route('roles.destroy', $role)}}">{{ __('content.delete') }}</a>
+                                    @endif
                                 </td>
 
                             </tr>

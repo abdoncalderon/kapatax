@@ -64,6 +64,31 @@ class ProjectController extends Controller
         }catch(Exception $e){
             return back()->withErrors($e->getMessage());
         }
-        
     }
+
+    public function activate(Project $project, $value){
+        $project->update([
+            'isActive'=>$value,
+        ]);
+        return redirect()->route('projects.index');
+    }
+
+    public function lock(Project $project, $value){
+        $project->update([
+            'isLocked'=>$value,
+        ]);
+        return redirect()->route('projects.index');
+    }
+
+    public function destroy(Project $project)
+    {
+        try{
+            $project->delete();
+            return redirect()->route('projects.index');
+        }catch(Exception $e){
+            return back()->withErrors($e->getMessage());
+        }
+    }  
+
+    
 }

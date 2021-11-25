@@ -34,7 +34,7 @@
                 {{-- Title --}}
 
                 <div class="box-header with-border">
-                    <h3 class="box-title"><strong>{{ __('content.add') }} {{ __('content.equipment') }}</strong></h3>
+                    <h3 class="box-title"><strong>{{ __('content.add') }} {{ __('content.project') }}</strong></h3>
                 </div>
 
                 {{-- Start Form  --}}
@@ -53,7 +53,7 @@
                             <div class="col-sm-10" >
                                 <input id="name" class="form-control" name="name" type="text" placeholder="{{ __('content.name') }}" >
                                 @error('name')
-                                    <span class="invalid-feedback" menu="alert" style="color:red">
+                                    <span class="invalid-feedback" role="alert" style="color:red">
                                         <strong>{{ $message }}</strong>
                                     </span>
                                 @enderror
@@ -67,7 +67,7 @@
                             <div class="col-sm-10" >
                                 <input id="code" class="form-control" name="code" type="text" placeholder="{{ __('content.code') }}" >
                                 @error('code')
-                                    <span class="invalid-feedback" menu="alert" style="color:red">
+                                    <span class="invalid-feedback" role="alert" style="color:red">
                                         <strong>{{ $message }}</strong>
                                     </span>
                                 @enderror
@@ -81,7 +81,7 @@
                             <div class="col-sm-10" >
                                 <input id="taxId" class="form-control" name="taxId" type="text" placeholder="{{ __('content.taxId') }}" >
                                 @error('taxId')
-                                    <span class="invalid-feedback" menu="alert" style="color:red">
+                                    <span class="invalid-feedback" role="alert" style="color:red">
                                         <strong>{{ $message }}</strong>
                                     </span>
                                 @enderror
@@ -99,7 +99,7 @@
                                     @endforeach
                                 </select>
                                 @error('city')
-                                    <span class="invalid-feedback" menu="alert" style="color:red">
+                                    <span class="invalid-feedback" role="alert" style="color:red">
                                         <strong>{{ $message }}</strong>
                                     </span>
                                 @enderror
@@ -113,7 +113,7 @@
                             <div class="col-sm-10" >
                                 <input id="address" class="form-control" name="address" type="text" placeholder="{{ __('content.address') }}" >
                                 @error('address')
-                                    <span class="invalid-feedback" menu="alert" style="color:red">
+                                    <span class="invalid-feedback" role="alert" style="color:red">
                                         <strong>{{ $message }}</strong>
                                     </span>
                                 @enderror
@@ -127,7 +127,7 @@
                             <div class="col-sm-10" >
                                 <input id="zipCode" class="form-control" name="zipCode" type="text" placeholder="{{ __('content.zipCode') }}" >
                                 @error('zipCode')
-                                    <span class="invalid-feedback" menu="alert" style="color:red">
+                                    <span class="invalid-feedback" role="alert" style="color:red">
                                         <strong>{{ $message }}</strong>
                                     </span>
                                 @enderror
@@ -141,7 +141,7 @@
                             <div class="col-sm-10" >
                                 <input id="phoneNumber" class="form-control" name="phoneNumber" type="text" placeholder="{{ __('content.phoneNumber') }}">
                                 @error('phoneNumber')
-                                    <span class="invalid-feedback" menu="alert" style="color:red">
+                                    <span class="invalid-feedback" role="alert" style="color:red">
                                         <strong>{{ $message }}</strong>
                                     </span>
                                 @enderror
@@ -159,7 +159,7 @@
                                     @endforeach
                                 </select>
                                 @error('subsidiary_id')
-                                    <span class="invalid-feedback" menu="alert" style="color:red">
+                                    <span class="invalid-feedback" role="alert" style="color:red">
                                         <strong>{{ $message }}</strong>
                                     </span>
                                 @enderror
@@ -173,7 +173,7 @@
                             <div class="col-sm-10">
                                 <input id="startDate" class="form-control pull-right" type="date"  name="startDate" >
                                 @error('startDate')
-                                    <span class="invalid-feedback" menu="alert" style="color:red">
+                                    <span class="invalid-feedback" role="alert" style="color:red">
                                         <strong>{{ $message }}</strong>
                                     </span>
                                 @enderror
@@ -187,14 +187,12 @@
                             <div class="col-sm-10">
                                 <input id="finishDate" class="form-control pull-right" type="date"  name="finishDate" >
                                 @error('finishDate')
-                                    <span class="invalid-feedback" menu="alert" style="color:red">
+                                    <span class="invalid-feedback" role="alert" style="color:red">
                                         <strong>{{ $message }}</strong>
                                     </span>
                                 @enderror
                             </div>
                         </div>
-
-                    
 
                      {{-- Form Footer --}}
 

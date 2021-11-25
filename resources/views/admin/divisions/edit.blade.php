@@ -54,7 +54,7 @@
                             <div class="col-sm-10" >
                                 <input id="name" type="text" class="form-control" name="name" value="{{ old('name', $division->name) }}" placeholder="Nombre">
                                 @error('name')
-                                    <span class="invalid-feedback" division="alert">
+                                    <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
                                     </span>
                                 @enderror

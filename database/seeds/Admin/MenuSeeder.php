@@ -88,10 +88,10 @@ class MenuSeeder extends Seeder
         ]);
 
         DB::table('menus')->insert([
-            'code' => 'administration.sectors',
-            'showName' => 'content.sectors',
+            'code' => 'administration.areas',
+            'showName' => 'content.areas',
             'menu_id' => '1',
-            'route' => null,
+            'route' => 'areas.index',
             'icon' => 'fa fa-circle-o',
         ]);
 
@@ -99,7 +99,7 @@ class MenuSeeder extends Seeder
             'code' => 'administration.unities',
             'showName' => 'content.unities',
             'menu_id' => '1',
-            'route' => null,
+            'route' => 'unities.index',
             'icon' => 'fa fa-circle-o',
         ]);
 
@@ -148,7 +148,7 @@ class MenuSeeder extends Seeder
             'code' => 'settings.project',
             'showName' => 'content.project',
             'menu_id' => '16',
-            'route' => null,
+            'route' => 'project.show',
             'icon' => 'fa fa-circle-o',
         ]);
 
@@ -156,7 +156,7 @@ class MenuSeeder extends Seeder
             'code' => 'settings.zones',
             'showName' => 'content.zones',
             'menu_id' => '16',
-            'route' => null,
+            'route' => 'zones.index',
             'icon' => 'fa fa-circle-o',
         ]);
 
@@ -164,7 +164,7 @@ class MenuSeeder extends Seeder
             'code' => 'settings.locations',
             'showName' => 'content.locations',
             'menu_id' => '16',
-            'route' => null,
+            'route' => 'locations.index',
             'icon' => 'fa fa-circle-o',
         ]);
 

@@ -31,7 +31,7 @@ class CreatePersonsTable extends Migration
             $table->string('photo')->default('nophoto.png');
             $table->string('signature')->default('nosignature.png');
             $table->boolean('isActive')->default(true);
-            $table->boolean('blocked')->default(false);
+            $table->boolean('isLocked')->default(false);
             $table->timestamps();
         });
     }

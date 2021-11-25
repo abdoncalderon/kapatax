@@ -54,7 +54,7 @@
                             <div class="col-sm-10" >
                                 <input id="name" disabled type="text" class="form-control" name="name" value="{{ old('name', $country->name) }}" placeholder="Nombre">
                                 @error('name')
-                                    <span class="invalid-feedback" country="alert">
+                                    <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
                                     </span>
                                 @enderror
@@ -85,7 +85,7 @@
                             <div class="col-sm-10" >
                                 <input id="code" type="text" class="form-control" name="code" value="{{ old('code', $country->code) }}" placeholder="{{ __('content.code') }}">
                                 @error('code')
-                                    <span class="invalid-feedback" country="alert">
+                                    <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
                                     </span>
                                 @enderror
@@ -99,7 +99,7 @@
                             <div class="col-sm-10" >
                                 <input id="ccc" type="text" class="form-control" name="ccc" value="{{ old('ccc', $country->ccc) }}" placeholder="{{ __('content.prefix') }}">
                                 @error('ccc')
-                                    <span class="invalid-feedback" country="alert">
+                                    <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
                                     </span>
                                 @enderror

@@ -56,12 +56,7 @@
                             <div class="form-group">
                                 <label class="col-sm-2 control-label">{{ __('content.name') }}</label>
                                 <div class="col-sm-10" >
-                                    <input id="name" disabled type="text" class="form-control @error('name') is-invalid @enderror" name="name" value="{{ old('name', $user->name) }}">
-                                    @error('name')
-                                        <span class="invalid-feedback" role="alert">
-                                            <strong>{{ $message }}</strong>
-                                        </span>
-                                    @enderror
+                                    <input id="name" disabled class="form-control" name="name" value="{{ old('name', $user->name) }}">
                                 </div>
                             </div>
                             
@@ -70,12 +65,7 @@
                             <div class="form-group">
                                 <label class="col-sm-2 control-label">{{ __('content.user') }}</label>
                                 <div class="col-sm-10" >
-                                    <input id="user" disabled type="text" class="form-control @error('user') is-invalid @enderror" name="user" value="{{ old('user', $user->user) }}" required autocomplete="user">
-                                    @error('user')
-                                        <span class="invalid-feedback" role="alert">
-                                            <strong>{{ $message }}</strong>
-                                        </span>
-                                    @enderror
+                                    <input id="user" disabled class="form-control" name="user" value="{{ old('user', $user->user) }}">
                                 </div>
                             </div>
 
@@ -84,12 +74,34 @@
                             <div class="form-group">
                                 <label class="col-sm-2 control-label">{{ __('content.email') }}</label>
                                 <div class="col-sm-10" >
-                                    <input id="email" disabled type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email', $user->email) }}">
-                                    @error('email')
-                                        <span class="invalid-feedback" role="alert">
-                                            <strong>{{ $message }}</strong>
-                                        </span>
-                                    @enderror
+                                    <input id="email" disabled class="form-control" name="email" value="{{ old('email', $user->email) }}">
+                                </div>
+                            </div>
+
+                            {{-- Role  --}}
+
+                            <div class="form-group">
+                                <label class="col-sm-2 control-label">{{ __('content.role') }}</label>
+                                <div class="col-sm-10">
+                                    <input disabled class="form-control" value="{{ current_user()->role->name }}">
+                                </div>
+                            </div>
+
+                            {{-- Project --}}
+                            
+                            <div class="form-group">
+                                <label class="col-sm-2 control-label">{{ __('content.project') }}</label>
+                                <div class="col-sm-10">
+                                    <input disabled class="form-control" value="{{ current_user()->project->name }}">
+                                </div>
+                            </div>
+
+                            {{-- Subsidiary --}}
+                            
+                            <div class="form-group">
+                                <label class="col-sm-2 control-label">{{ __('content.subsidiary') }}</label>
+                                <div class="col-sm-10">
+                                    <input disabled class="form-control" value="{{ current_user()->project->subsidiary->name }}">
                                 </div>
                             </div>
 
@@ -102,6 +114,15 @@
                                 </div>
                             </div>
 
+                            {{-- signature --}}
+    
+                            <div class="form-group">
+                                <label class="col-sm-2 control-label">{{ __('content.signature') }}</label>
+                                <div class="col-sm-10">
+                                    <input id="signature" type="file" class="form-control" name="signature"}}>
+                                </div>
+                            </div>
+
                         </div>
 
                         {{-- Avatar --}}
@@ -109,6 +130,14 @@
                         <div class="col-sm-2 col-md-2 col-lg-2">
                             <div>
                                 <img src="../../images/admin/avatars/{{ old('avatar', $user->avatar) }}" class="img-circle" width="150" height="150" style="display: block; margin: auto;">
+                            </div>
+                        </div>
+
+                        {{-- Signature --}}
+
+                        <div class="col-sm-2 col-md-2 col-lg-2">
+                            <div>
+                                <img src="../../images/admin/signatures/{{ old('signature', $user->signature) }}" class="img-circle" width="150" height="150" style="display: block; margin: auto;">
                             </div>
                         </div>
                         

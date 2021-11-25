@@ -83,7 +83,7 @@
                             <div class="col-sm-10" >
                                 <input id="showName" type="text" class="form-control" name="showName" value="{{ old('showName', $menu->showName) }}" placeholder="{{ __('messages.showName') }}">
                                 @error('name')
-                                    <span class="invalid-feedback" menu="alert">
+                                    <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
                                     </span>
                                 @enderror
@@ -97,7 +97,7 @@
                             <div class="col-sm-10" >
                                 <input id="route" type="text" class="form-control" name="route" value="{{ old('route', $menu->route) }}" placeholder="{{ __('content.route') }}">
                                 @error('route')
-                                    <span class="invalid-feedback" menu="alert">
+                                    <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
                                     </span>
                                 @enderror
@@ -111,7 +111,7 @@
                             <div class="col-sm-10" >
                                 <input id="icon" type="text" class="form-control" name="icon" value="{{ old('icon', $menu->icon) }}" placeholder="Fa {{ __('content.icon') }}">
                                 @error('icon')
-                                    <span class="invalid-feedback" menu="alert">
+                                    <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
                                     </span>
                                 @enderror

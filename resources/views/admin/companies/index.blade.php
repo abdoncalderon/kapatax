@@ -75,7 +75,8 @@
                                     @endif
                                 </td>
                                 <td>
-                                    <a class="btn btn-info btn-xs" href="{{ route('companies.show', $company)}}">{{ __('content.show') }}</a>
+                                    {{-- <a class="btn btn-info btn-xs" href="{{ route('companies.show', $company)}}">{{ __('content.show') }}</a> --}}
+                                    <a class="btn btn-info btn-xs" href="{{ route('companies.edit', $company)}}">{{ __('content.edit') }}</a>
                                     @if ($company->isActive())
                                         <a class="btn btn-danger btn-xs" href="{{ route('companies.activate', [$company, '0']) }}">{{ __('content.deactivate') }}</a>
                                     @else
@@ -86,6 +87,7 @@
                                     @else
                                         <a class="btn btn-danger btn-xs" href="{{ route('companies.lock', [$company, '1'])}}">{{ __('content.lock') }}</a>
                                     @endif
+                                    <a class="btn btn-danger btn-xs" href="{{ route('companies.destroy', $company)}}">{{ __('content.delete') }}</a>
                                 </td>
 
                             </tr>

@@ -60,6 +60,19 @@
                                 <td>{{ $project->subsidiary->name }}</td>
                                 <td>
                                     <a class="btn btn-info btn-xs" href="{{ route('projects.show', $project)}}">{{ __('content.show') }}</a>
+                                    @if($project->id!=1)
+                                        @if ($project->isActive())
+                                            <a class="btn btn-danger btn-xs" href="{{ route('projects.activate', [$project, '0']) }}">{{ __('content.deactivate') }}</a>
+                                        @else
+                                            <a class="btn btn-info btn-xs" href="{{ route('projects.activate', [$project, '1']) }}">{{ __('content.activate') }}</a>
+                                        @endif
+                                        @if ($project->isLocked())
+                                            <a class="btn btn-info btn-xs" href="{{ route('projects.lock', [$project, '0']) }}">{{ __('content.unlock') }}</a>
+                                        @else
+                                            <a class="btn btn-danger btn-xs" href="{{ route('projects.lock', [$project, '1']) }}">{{ __('content.lock') }}</a>
+                                        @endif
+                                        <a class="btn btn-danger btn-xs" href="{{ route('projects.destroy', $project)}}">{{ __('content.delete') }}</a>
+                                    @endif
                                 </td>
                             </tr>
                         @endforeach

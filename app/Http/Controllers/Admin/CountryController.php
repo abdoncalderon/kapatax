@@ -61,17 +61,14 @@ class CountryController extends Controller
         }
     }
 
-    /* public function delete(Country $country)
-    {
-        return view('admin.countries.delete',[
-            'country'=>$country
-            ]);
-    }                             
-
     public function destroy(Country $country)
     {
-        $country->delete();
-
-        return redirect()->route('countries.index');
-    } */
+        try{
+            $country->delete();
+            return redirect()->route('countries.index');
+        }catch(Exception $e){
+            return back()->withErrors($e->getMessage());
+        }
+    }                         
+   
 }

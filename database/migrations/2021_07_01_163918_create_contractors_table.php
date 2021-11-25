@@ -26,7 +26,7 @@ class CreateContractorsTable extends Migration
             $table->foreignId('subsidiary_id');
             $table->foreign('subsidiary_id')->references('id')->on('subsidiaries')->onUpdate('cascade')->onDelete('restrict');
             $table->boolean('isActive')->default(true);
-            $table->boolean('blocked')->default(false);
+            $table->boolean('isLocked')->default(false);
             $table->timestamps();
         });
     }

@@ -38,10 +38,5 @@ class UpdateCityRequest extends FormRequest
         ];
     }
 
-    /* public function messages()
-    {
-        return [
-            'state_id.size' => __('messages.exists'),
-        */ ];
-    }
+    
 }

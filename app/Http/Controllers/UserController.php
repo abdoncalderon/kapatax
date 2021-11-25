@@ -6,8 +6,9 @@ use App\Models\User;
 use App\Role;
 use App\Permit;
 use Illuminate\Support\Facades\Hash;
-use App\Http\Requests\StoreUserRequest;
-use App\Http\Requests\UpdateUserRequest;
+use App\Http\Requests\Admin\StoreUserRequest;
+use App\Http\Requests\Admin\UpdateUserRequest;
+use Exception;
 
 class UserController extends Controller
 {
@@ -55,6 +56,24 @@ class UserController extends Controller
         $user = User::where('id',$id)->first();
         $user->update($request->validated());
         return redirect()->route('users.index');
+    }
+
+    public function activate(User $user, $value){
+        $user->update([
+            'isActive'=>$value,
+        ]);
+        return redirect()->route('users.index');
+
+    }
+
+    public function destroy(User $user)
+    {
+        try{
+            $user->delete();
+            return redirect()->route('users.index');
+        }catch(Exception $e){
+            return back()->withErrors($e->getMessage());
+        }
     }
     
     

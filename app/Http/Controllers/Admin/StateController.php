@@ -59,6 +59,17 @@ class StateController extends Controller
         }catch(Exception $e){
             return back()->withErrors($e->getMessage());
         }
-        
     }
+
+    public function destroy(State $state)
+    {
+        try{
+            $state->delete();
+            return redirect()->route('states.index');
+        }catch(Exception $e){
+            return back()->withErrors($e->getMessage());
+        }
+    }
+
+
 }

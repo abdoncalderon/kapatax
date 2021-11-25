@@ -67,7 +67,7 @@
                             <div class="col-sm-10" >
                                 <input id="code" type="text" class="form-control" name="code" value="{{ old('code') }}" placeholder="{{ __('content.code') }}">
                                 @error('code')
-                                    <span class="invalid-feedback" menu="alert" style="color:red">
+                                    <span class="invalid-feedback" role="alert" style="color:red">
                                         <strong>{{ $message }}</strong>
                                     </span>
                                 @enderror
@@ -81,7 +81,7 @@
                             <div class="col-sm-10" >
                                 <input id="showName" type="text" class="form-control" name="showName" value="{{ old('showName') }}" placeholder="{{ __('messages.showName') }}">
                                 @error('showName')
-                                    <span class="invalid-feedback" menu="alert" style="color:red">
+                                    <span class="invalid-feedback" role="alert" style="color:red">
                                         <strong>{{ $message }}</strong>
                                     </span>
                                 @enderror
@@ -95,7 +95,7 @@
                             <div class="col-sm-10" >
                                 <input id="route" type="text" class="form-control" name="route" value="{{ old('route') }}" placeholder="{{ __('content.route') }}">
                                 @error('route')
-                                    <span class="invalid-feedback" menu="alert" style="color:red">
+                                    <span class="invalid-feedback" role="alert" style="color:red">
                                         <strong>{{ $message }}</strong>
                                     </span>
                                 @enderror
@@ -109,7 +109,7 @@
                             <div class="col-sm-10" >
                                 <input id="icon" type="text" class="form-control" name="icon" value="{{ old('icon') }}" placeholder="FA {{ __('content.icon') }}">
                                 @error('icon')
-                                    <span class="invalid-feedback" menu="alert" style="color:red">
+                                    <span class="invalid-feedback" role="alert" style="color:red">
                                         <strong>{{ $message }}</strong>
                                     </span>
                                 @enderror

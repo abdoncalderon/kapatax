@@ -59,6 +59,15 @@ class CityController extends Controller
         }catch(Exception $e){
             return back()->withErrors($e->getMessage());
         }
-        
     }
+    
+    public function destroy(City $city)
+    {
+        try{
+            $city->delete();
+            return redirect()->route('cities.index');
+        }catch(Exception $e){
+            return back()->withErrors($e->getMessage());
+        }
+    }   
 }

@@ -64,23 +64,28 @@
 
                             {{-- Role  --}}
 
-                            {{-- <div class="form-group">
+                            <div class="form-group">
                                 <label class="col-sm-2 control-label">{{ __('content.role') }}</label>
                                 <div class="col-sm-10">
-                                    <input disabled class="form-control" value="{{ $user->role }}">
+                                    <input disabled class="form-control" value="{{ current_user()->role->name }}">
                                 </div>
-                            </div> --}}
+                            </div>
 
-                            {{-- State  --}}
+                            {{-- Project --}}
                             
                             <div class="form-group">
-                                <label class="col-sm-2 control-label">{{ __('content.state') }}</label>
+                                <label class="col-sm-2 control-label">{{ __('content.project') }}</label>
                                 <div class="col-sm-10">
-                                    @IF($user->isActive())
-                                        <input disabled class="form-control" value="{{ __('content.active') }}">
-                                    @ELSE
-                                        <input disabled class="form-control" value="{{ __('content.inactive') }}">
-                                    @ENDIF
+                                    <input disabled class="form-control" value="{{ current_user()->project->name }}">
+                                </div>
+                            </div>
+
+                            {{-- Subsidiary --}}
+                            
+                            <div class="form-group">
+                                <label class="col-sm-2 control-label">{{ __('content.subsidiary') }}</label>
+                                <div class="col-sm-10">
+                                    <input disabled class="form-control" value="{{ current_user()->project->subsidiary->name }}">
                                 </div>
                             </div>
 
@@ -91,6 +96,14 @@
                         <div class="col-sm-2 col-md-2 col-lg-2">
                             <div>
                             <img src="../../images/admin/avatars/{{ $user->avatar }}" class="img-circle" width="150" height="150" style="display: block; margin: auto;">
+                            </div>
+                        </div>
+
+                        {{-- Signature --}}
+
+                        <div class="col-sm-2 col-md-2 col-lg-2">
+                            <div>
+                                <img src="../../images/admin/signatures/{{ old('signature', $user->signature) }}" class="img-circle" width="150" height="150" style="display: block; margin: auto;">
                             </div>
                         </div>
 

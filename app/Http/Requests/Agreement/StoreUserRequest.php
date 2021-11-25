@@ -17,7 +17,7 @@ class StoreUserRequest extends FormRequest
             'name'=>'required|string|max:255', 
             'user'=>'required|string|unique:users|max:30', 
             'email'=> 'required|string|email|unique:users|max:255',
-            'role_id'=>'required',
+            // 'role_id'=>'required',
             'contractor_id'=>'required',
             'password'=>'required|string|confirmed|min:8',
         ];

@@ -63,6 +63,15 @@ class CompanyController extends Controller
             'isLocked'=>$value,
         ]);
         return redirect()->route('companies.index');
-
     }
+
+    public function destroy(Company $company)
+    {
+        try{
+            $company->delete();
+            return redirect()->route('companies.index');
+        }catch(Exception $e){
+            return back()->withErrors($e->getMessage());
+        }
+    }  
 }

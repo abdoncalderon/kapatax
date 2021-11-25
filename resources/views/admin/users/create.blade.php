@@ -116,15 +116,7 @@
                             </div>
 
                         </div>
-
-                        {{-- Avatar --}}
-
-                        <div class="col-sm-2 col-md-2 col-lg-2">
-                            <div>
-                                <img src="../../images/users/avatar.jpg" class="img-circle" width="150" height="150" style="display: block; margin: auto;">
-                            </div>
-                        </div>
-
+                        
                     </div>
 
                     {{-- Form Footer --}}

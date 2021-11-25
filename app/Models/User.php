@@ -39,7 +39,7 @@ class User extends Model
     ];
 
     public function projects(){
-        return $this->hasMany(ProjectUser::class);
+        return $this->hasMany(UserProject::class);
     }
 
     public function isActive(){

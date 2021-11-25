@@ -28,7 +28,7 @@ class CreateProjectsTable extends Migration
             $table->date('startDate')->nullable();
             $table->date('finishDate')->nullable();
             $table->boolean('isActive')->default(true);
-            $table->boolean('blocked')->default(false);
+            $table->boolean('isLocked')->default(false);
             $table->timestamps();
         });
     }

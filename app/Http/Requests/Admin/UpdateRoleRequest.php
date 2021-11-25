@@ -15,7 +15,6 @@ class UpdateRoleRequest extends FormRequest
     {
         return [
             'name'=>'required', 
-            'isActive'=>'required', 
         ];
     }
 }

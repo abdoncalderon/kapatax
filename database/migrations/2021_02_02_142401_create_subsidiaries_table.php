@@ -22,7 +22,7 @@ class CreateSubsidiariesTable extends Migration
             $table->foreignId('division_id');
             $table->foreign('division_id')->references('id')->on('divisions')->onUpdate('cascade')->onDelete('restrict');
             $table->boolean('isActive')->default(true);
-            $table->boolean('blocked')->default(false);
+            $table->boolean('isLocked')->default(false);
             $table->timestamps();
         });
     }

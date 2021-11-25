@@ -54,7 +54,7 @@
                             <div class="col-sm-10" >
                                 <input id="name" disabled type="text" class="form-control" name="name" value="{{ old('name', $state->name) }}" placeholder="Nombre">
                                 @error('name')
-                                    <span class="invalid-feedback" country="alert">
+                                    <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
                                     </span>
                                 @enderror

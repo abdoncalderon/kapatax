@@ -50,6 +50,16 @@ class DivisionController extends Controller
         }catch(Exception $e){
             return back()->withErrors($e->getMessage());
         }
-        
     }
+
+    public function destroy(Division $division)
+    {
+        try{
+            $division->delete();
+            return redirect()->route('divisions.index');
+        }catch(Exception $e){
+            return back()->withErrors($e->getMessage());
+        }
+    }  
+
 }

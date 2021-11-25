@@ -58,22 +58,26 @@
                     <tbody>
                         @foreach($menus as $menu)
                             <tr
-                                @IF(!$menu->isActive())
+                                @if(!$menu->isActive())
                                     class='warning'
-                                @ENDIF
+                                @endif
                             >
                                 <td>{{ $menu->code }}</td>
                                 <td>{{ $menu->menu->code ?? '' }}</td>
                                 <td>{{ $menu->route }}</td>
-                                @IF($menu->isActive())
+                                @if($menu->isActive())
                                     <td>{{ __('content.active') }}</td>
-                                @ELSE
+                                @else
                                     <td>{{ __('content.inactive') }}</td>
-                                @ENDIF
+                                @endif
                                 <td>
-                                    @IF($menu->name!='SUPERUSER')
                                     <a class="btn btn-info btn-xs" href="{{ route('menus.show', $menu)}}">{{ __('content.show') }}</a>
-                                    @ENDIF
+                                    @if ($menu->isActive())
+                                        <a class="btn btn-danger btn-xs" href="{{ route('menus.activate', [$menu, '0']) }}">{{ __('content.deactivate') }}</a>
+                                    @else
+                                        <a class="btn btn-info btn-xs" href="{{ route('menus.activate', [$menu, '1']) }}">{{ __('content.activate') }}</a>
+                                    @endif
+                                    <a class="btn btn-danger btn-xs" href="{{ route('menus.destroy', $menu)}}">{{ __('content.delete') }}</a>
                                 </td>
 
                             </tr>

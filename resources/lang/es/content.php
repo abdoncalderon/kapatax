@@ -15,7 +15,7 @@ return [
     'insert'=>'Insertar',
     'new'=>'Nuevo',
     'print'=>'Imprimir',
-    
+        
     
     'actions' => 'Acciones',
     'home' => 'Inicio',
@@ -83,8 +83,8 @@ return [
     'signatures'=>'Firmas',
     'documents'=>'Documentos',
     'person'=>'Persona',
-
-
+    'area'=>'Area',
+    'areas'=>'Areas',
     
     'user' => 'Usuario',
     'fullname' => 'Nombre Completo',
@@ -266,7 +266,7 @@ return [
     'unlock'=>'Desbloquear',
     'locked'=>'Bloqueado',
     'unlocked'=>'Desbloqueado',
-
+    'to'=>'a',
     
     'currency'=>'US$',
     

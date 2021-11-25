@@ -6,7 +6,6 @@ use App\Http\Controllers\Controller;
 use App\Models\Region;
 use App\Http\Requests\Admin\StoreRegionRequest;
 use App\Http\Requests\Admin\UpdateRegionRequest;
-use Illuminate\Http\Request;
 use Exception;
 
 class RegionController extends Controller
@@ -52,4 +51,14 @@ class RegionController extends Controller
         }
         
     }
+
+    public function destroy(Region $region)
+    {
+        try{
+            $region->delete();
+            return redirect()->route('regions.index');
+        }catch(Exception $e){
+            return back()->withErrors($e->getMessage());
+        }
+    } 
 }

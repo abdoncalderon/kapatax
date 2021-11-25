@@ -7,6 +7,7 @@ use App\Models\ProjectUser;
 use App\Models\Role;
 use App\Http\Requests\Admin\StoreRoleRequest;
 use App\Http\Requests\Admin\UpdateRoleRequest;
+use Exception;
 
 class RoleController extends Controller
 {
@@ -47,6 +48,22 @@ class RoleController extends Controller
         return redirect()->route('roles.index');
     }
 
-    
+    public function activate(Role $role, $value){
+        $role->update([
+            'isActive'=>$value,
+        ]);
+        return redirect()->route('roles.index');
+
+    }
+
+    public function destroy(Role $role)
+    {
+        try{
+            $role->delete();
+            return redirect()->route('roles.index');
+        }catch(Exception $e){
+            return back()->withErrors($e->getMessage());
+        }
+    }  
 
 }

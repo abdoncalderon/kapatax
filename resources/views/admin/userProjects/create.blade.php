@@ -10,7 +10,7 @@
     <ol class="breadcrumb">
         <li><a href="{{ route('home') }}"><i class="fa fa-home"></i>Home</a></li>
         <li><a href="{{ route('users.index')}}"> {{ __('content.users') }} </a></li>
-        <li><a href="{{ route('userProjects.index',$role)}}"> {{ __('content.projects') }} </a></li>
+        <li><a href="{{ route('userProjects.index',$user)}}"> {{ __('content.projects') }} </a></li>
         <li class="active">{{ __('content.add') }}</li>
     </ol>
 @endsection
@@ -35,12 +35,12 @@
                 {{-- Title --}}
 
                 <div class="box-header with-border">
-                    <h3 class="box-title"><strong>{{ __('content.add').' '.__('content.project')  }}</strong></h3>
+                    <h3 class="box-title"><strong>{{ __('content.add').' '.__('content.project').' '.__('content.to').' '.$user->name }}</strong></h3>
                 </div>
 
                 {{-- Start Form  --}}
                
-                <form class="form-horizontal" method="POST" action="{{ route('roleMenus.store', $role) }}">
+                <form class="form-horizontal" method="POST" action="{{ route('userProjects.store', $user) }}">
                     @csrf
 
                     {{-- Form Body --}}
@@ -58,9 +58,9 @@
                         {{-- user --}}
 
                         <div class="form-group">
-                            <label class="col-sm-2 control-label">{{ __('content.role') }}</label>
+                            <label class="col-sm-2 control-label">{{ __('content.user') }}</label>
                             <div class="col-sm-10">
-                                <input id="role" type="text" class="form-control" name="role" value="{{ $user->name }}">
+                                <input id="user" disabled type="text" class="form-control" name="user" value="{{ $user->name }}">
 
                             </div>
                         </div>
@@ -72,7 +72,7 @@
                             <div class="col-sm-10" >
                                 <select name="project_id" class="form-control" style="width: 100%;">
                                     @foreach ($availablesProjects as $project)
-                                        <option value="{{ $project->id }}">{{ $project->code }}</option>
+                                        <option value="{{ $project->id }}">{{ $project->name }}</option>
                                     @endforeach
                                 </select>
                                 @error('project_id')
@@ -87,7 +87,7 @@
                         {{-- role --}}
 
                         <div class="form-group">
-                            <label class="col-sm-2 control-label">{{ __('content.rolet') }}</label>
+                            <label class="col-sm-2 control-label">{{ __('content.role') }}</label>
                             <div class="col-sm-10" >
                                 <select name="role_id" class="form-control" style="width: 100%;">
                                     @foreach ($roles as $role)
@@ -103,17 +103,13 @@
                             </div>
                         </div>
 
-                        
-
-                        
-
                     </div>
 
                      {{-- Form Footer --}}
 
                     <div class="box-footer">
                         <button type="submit" class="btn btn-success pull-left btn-sm" style="margin: 0px 5px;">{{ __('content.save') }}</button>
-                        <a class="btn btn-info btn-sm" href=" {{ route('roleMenus.index',$role) }} ">{{ __('content.cancel') }}</a>
+                        <a class="btn btn-info btn-sm" href=" {{ route('userProjects.index',$user) }} ">{{ __('content.cancel') }}</a>
                     </div>
                     
                 </form>

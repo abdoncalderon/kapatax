@@ -17,7 +17,7 @@ class DatabaseSeeder extends Seeder
             UserSeeder::class,
             MenuSeeder::class,
             RoleMenuSeeder::class,
-            ProjectUserSeeder::class,
+            UserProjectSeeder::class,
         ]);
 
         

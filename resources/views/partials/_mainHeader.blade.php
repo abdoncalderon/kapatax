@@ -18,6 +18,8 @@
     {{-- <div class="col-lg-4 col-sm-10 p-2">
         <ul class="nav navbar-nav ">
             <li class="nav-item">
+                <input>
+
                 <select name="project" class="form-control form-select" style="margin-top: 6px" id="project">
                     <option value="proyecto">projecto consorcio linea 1 metro de quito </option>
                 </select>
@@ -29,8 +31,6 @@
         
 
         <ul class="nav navbar-nav">
-
-           
 
         <!-- Messages: style can be found in dropdown.less-->
 
@@ -56,7 +56,7 @@
                             @AUTH
                             {{ auth()->user()->name }}
                             @ENDAUTH</span>
-                            {{-- <small>{{ auth()->user()->role->name }}</small> --}}
+                            <small>{{ current_user()->role->name }}</small>
                         </p>
                     </li>
                     

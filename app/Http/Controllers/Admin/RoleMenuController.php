@@ -51,10 +51,9 @@ class RoleMenuController extends Controller
         }catch(Exception $e){
             return back()->withErrors($e->getMessage());
         }
-        
     }
     
-
+    
     public function destroy(RoleMenu $roleMenu)
     {
         try{

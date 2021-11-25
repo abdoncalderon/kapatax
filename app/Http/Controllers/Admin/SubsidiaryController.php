@@ -63,6 +63,15 @@ class SubsidiaryController extends Controller
         }catch(Exception $e){
             return back()->withErrors($e->getMessage());
         }
-        
     }
+
+    public function destroy(Subsidiary $subsidiary)
+    {
+        try{
+            $subsidiary->delete();
+            return redirect()->route('subsidiaries.index');
+        }catch(Exception $e){
+            return back()->withErrors($e->getMessage());
+        }
+    }   
 }
