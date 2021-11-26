@@ -50,10 +50,10 @@
                             </div>
                         </div>
                         
-                        {{-- State  --}}
+                        {{-- Status  --}}
 
                         <div class="form-group">
-                            <label class="col-sm-2 control-label">{{ __('content.state') }}</label>
+                            <label class="col-sm-2 control-label">{{ __('content.status') }}</label>
                             <div class="col-sm-10">
                                 @IF($role->isActive())
                                     <input disabled class="form-control" value="{{ __('content.active') }}">

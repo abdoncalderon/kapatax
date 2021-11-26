@@ -8,7 +8,10 @@ use App\Permit;
 use Illuminate\Support\Facades\Hash;
 use App\Http\Requests\Admin\StoreUserRequest;
 use App\Http\Requests\Admin\UpdateUserRequest;
+<<<<<<< HEAD
 use Exception;
+=======
+>>>>>>> origin/master
 
 class UserController extends Controller
 {

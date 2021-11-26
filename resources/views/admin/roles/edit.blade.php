@@ -63,7 +63,11 @@
 
                         {{-- status --}}
 
+<<<<<<< HEAD
                         {{-- <div class="form-group">
+=======
+                        <div class="form-group">
+>>>>>>> origin/master
                             <label class="col-sm-2 control-label">{{ __('content.status') }}</label>
                             <div class="col-sm-10">
                                 <select name="isActive" class="form-control" data-placeholder="Estado" style="width: 100%;" value="{{ old('status', $role->status) }}">

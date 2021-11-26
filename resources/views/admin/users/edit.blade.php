@@ -93,6 +93,33 @@
                                 </div>
                             </div>
 
+<<<<<<< HEAD
+=======
+                            {{-- status --}}
+
+                            <div class="form-group">
+                                <label class="col-sm-2 control-label">{{ __('content.status') }}</label>
+                                <div class="col-sm-10">
+                                    <select name="isActive" 
+                                    @if($user->name=='ADMIN')
+                                        disabled
+                                    @endif
+                                    class="form-control" data-placeholder="Estado" style="width: 100%;" value="{{ old('isActive', $user->isActive) }}">
+                                        <option value="0"
+                                            @if($user->isActive()):
+                                                selected="selected"
+                                            @endif
+                                            >{{ __('content.inactive') }}</option>
+                                        <option value="1"
+                                            @if($user->isActive()):
+                                                selected="selected"
+                                            @endif
+                                            >{{ __('content.active') }}</option>
+                                    </select>
+                                </div>
+                            </div>
+
+>>>>>>> origin/master
                         </div>
 
                         {{-- Avatar --}}

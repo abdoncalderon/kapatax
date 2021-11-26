@@ -80,10 +80,17 @@
                                 </div>
                             </div>
 
+<<<<<<< HEAD
                             {{-- Subsidiary --}}
                             
                             <div class="form-group">
                                 <label class="col-sm-2 control-label">{{ __('content.subsidiary') }}</label>
+=======
+                            {{-- Status  --}}
+                            
+                            <div class="form-group">
+                                <label class="col-sm-2 control-label">{{ __('content.status') }}</label>
+>>>>>>> origin/master
                                 <div class="col-sm-10">
                                     <input disabled class="form-control" value="{{ current_user()->project->subsidiary->name }}">
                                 </div>
