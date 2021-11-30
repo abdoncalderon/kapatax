@@ -45,22 +45,27 @@ Route::resource('companies','Admin\CompanyController');
 Route::get('/companies/activate/{company}/{value}','Admin\CompanyController@activate')->name('companies.activate');
 Route::get('/companies/lock/{company}/{value}','Admin\CompanyController@lock')->name('companies.lock');
 Route::get('/companies/destroy/{company}','Admin\CompanyController@destroy')->name('companies.destroy');
+Route::post('/companies/add','Admin\CompanyController@add')->name('companies.add');
 
 /* Routes Divisions */
 Route::resource('divisions','Admin\DivisionController');
 Route::get('/division/destroy/{division}','Admin\DivisionController@destroy')->name('divisions.destroy');
+Route::post('/division/add','Admin\DivisionController@add')->name('divisions.add');
 
 /* Routes Subsidiary */
 Route::resource('subsidiaries','Admin\SubsidiaryController');
 Route::get('/subsidiary/destroy/{subsidiary}','Admin\SubsidiaryController@destroy')->name('subsidiaries.destroy');
 
+
 /* Routes Regions */
 Route::resource('regions','Admin\RegionController');
 Route::get('/region/destroy/{region}','Admin\RegionController@destroy')->name('regions.destroy');
+Route::post('/regons/add','Admin\RegionController@add')->name('regions.add');
 
 /* Routes Countries */
 Route::resource('countries','Admin\CountryController');
 Route::get('/countries/destroy/{country}','Admin\CountryController@destroy')->name('countries.destroy');
+
 
 /* Routes States */
 Route::resource('states','Admin\StateController');
@@ -92,6 +97,7 @@ Route::patch('project/update/{project}','Settings\ProjectController@update')->na
 /* Routes Zones */
 Route::resource('zones','Settings\ZoneController');
 Route::get('/zones/destroy/{zone}','Settings\ZoneController@destroy')->name('zones.destroy');
+Route::post('/zones/add','Settings\ZoneController@add')->name('zones.add');
 
 /* Routes Contractors */
 /* Route::resource('contractors','Agreement\ContractorController');
@@ -102,8 +108,8 @@ Route::get('/zones/destroy/{zone}','Settings\ZoneController@destroy')->name('zon
 /* Route::get('/equipment/destroy/{equipment}','EquipmentController@destroy')->name('equipments.destroy');
 
 /* Routes Positions */
-/* Route::resource('positions','PositionController');
-/* Route::get('/position/destroy/{position}','PositionController@destroy')->name('positions.destroy');
+Route::resource('positions','Admin\PositionController');
+Route::get('/position/destroy/{position}','Admin\PositionController@destroy')->name('positions.destroy');
 
 /* Routes Sectors */
 Route::resource('sectors','SectorController');

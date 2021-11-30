@@ -32,22 +32,28 @@
 
                     <div class="box-body">
 
-                        {{-- name  --}}
+                        {{-- Fields --}}
 
-                        <div class="form-group">
-                            <label class="col-sm-2 control-label">{{ __('content.name') }}</label>
-                            <div class="col-sm-10">
-                                <input disabled class="form-control" value="{{ $zone->name }}">
+                        <div class="col-sm-11 col-md-11 col-lg-11">
+
+                            {{-- name  --}}
+
+                            <div class="form-group">
+                                <label class="col-sm-2 control-label">{{ __('content.name') }}</label>
+                                <div class="col-sm-10">
+                                    <input disabled class="form-control" value="{{ $zone->name }}">
+                                </div>
                             </div>
-                        </div>
 
-                        {{-- project --}}
+                            {{-- project --}}
 
-                        <div class="form-group">
-                            <label class="col-sm-2 control-label">{{ __('content.project') }}</label>
-                            <div class="col-sm-10">
-                                <input disabled class="form-control" value="{{ $zone->project->name }}">
+                            <div class="form-group">
+                                <label class="col-sm-2 control-label">{{ __('content.project') }}</label>
+                                <div class="input-group input-group-sm col-xs-12 col-sm-10">
+                                    <input disabled class="form-control" value="{{ $zone->project->name }}">
+                                </div>
                             </div>
+
                         </div>
 
                     </div>

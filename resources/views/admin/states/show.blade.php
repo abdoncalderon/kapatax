@@ -34,23 +34,30 @@
 
                     <div class="box-body">
 
-                        {{-- name  --}}
+                        {{-- Fields  --}}
 
-                        <div class="form-group">
-                            <label class="col-sm-2 control-label">{{ __('content.name') }}</label>
-                            <div class="col-sm-10">
-                                <input disabled class="form-control" value="{{ $state->name }}">
+                        <div class="col-sm-11 col-md-11 col-lg-11">
+
+                            {{-- name  --}}
+
+                            <div class="form-group">
+                                <label class="col-sm-2 control-label">{{ __('content.name') }}</label>
+                                <div class="input-group input-group-sm col-xs-12 col-sm-10">
+                                    <input disabled class="form-control" value="{{ $state->name }}">
+                                </div>
                             </div>
-                        </div>
 
-                        {{-- country  --}}
+                            {{-- country  --}}
 
-                        <div class="form-group">
-                            <label class="col-sm-2 control-label">{{ __('content.country') }}</label>
-                            <div class="col-sm-10">
-                                <input disabled class="form-control" value="{{ $state->country->name }}">
+                            <div class="form-group">
+                                <label class="col-sm-2 control-label">{{ __('content.country') }}</label>
+                                <div class="input-group input-group-sm col-xs-12 col-sm-10">
+                                    <input disabled class="form-control" value="{{ $state->country->name }}">
+                                </div>
                             </div>
+
                         </div>
+                        
 
                     </div>
 

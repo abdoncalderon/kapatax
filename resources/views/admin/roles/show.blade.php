@@ -30,37 +30,36 @@
 
                 <form class="form-horizontal">
 
+                    {{-- Form Body --}}
+
                     <div class="box-body">
 
-                        {{-- Id  --}}
+                        {{-- Fields --}}
 
-                        <div class="form-group">
-                            <label class="col-sm-2 control-label">Id</label>
-                            <div class="col-sm-10">
-                                <input disabled class="form-control" value="{{ $role->id }}">
+                        <div class="col-sm-11 col-md-11 col-lg-11">
+
+                            {{-- Name  --}}
+
+                            <div class="form-group">
+                                <label class="col-sm-2 control-label">{{ __('content.name') }}</label>
+                                <div class="input-group-sm col-xs-12 col-sm-10">
+                                    <input disabled class="form-control" value="{{ $role->name }}">
+                                </div>
                             </div>
-                        </div>
+                            
+                            {{-- Status  --}}
 
-                        {{-- Name  --}}
-
-                        <div class="form-group">
-                            <label class="col-sm-2 control-label">{{ __('content.name') }}</label>
-                            <div class="col-sm-10">
-                                <input disabled class="form-control" value="{{ $role->name }}">
+                            <div class="form-group">
+                                <label class="col-sm-2 control-label">{{ __('content.status') }}</label>
+                                <div class="input-group input-group-sm col-xs-12 col-sm-10">
+                                    @IF($role->isActive())
+                                        <input disabled class="form-control" value="{{ __('content.active') }}">
+                                    @ELSE
+                                        <input disabled class="form-control" value="{{ __('content.inactive') }}">
+                                    @ENDIF
+                                </div>
                             </div>
-                        </div>
-                        
-                        {{-- Status  --}}
 
-                        <div class="form-group">
-                            <label class="col-sm-2 control-label">{{ __('content.status') }}</label>
-                            <div class="col-sm-10">
-                                @IF($role->isActive())
-                                    <input disabled class="form-control" value="{{ __('content.active') }}">
-                                @ELSE
-                                    <input disabled class="form-control" value="{{ __('content.inactive') }}">
-                                @ENDIF
-                            </div>
                         </div>
 
                     </div>

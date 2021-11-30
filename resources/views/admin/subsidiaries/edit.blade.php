@@ -47,66 +47,70 @@
 
                     <div class="box-body">
 
-                        {{-- name --}}
+                         {{-- Fields --}}
 
-                        <div class="form-group">
-                            <label class="col-sm-2 control-label">{{ __('content.name') }}</label>
-                            <div class="col-sm-10" >
-                                <input id="name" disabled type="text" class="form-control" name="name" value="{{ old('name', $country->name) }}" placeholder="Nombre">
-                                @error('name')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
+                        <div class="col-sm-11 col-md-11 col-lg-11">
+
+                             {{-- name --}}
+
+                            <div class="form-group">
+                                <label class="col-sm-2 control-label">{{ __('content.name') }}</label>
+                                <div class="input-group input-group-sm col-xs-12 col-sm-10" >
+                                    <input id="name" disabled type="text" class="form-control" name="name" value="{{ old('name', $country->name) }}" placeholder="Nombre">
+                                    @error('name')
+                                        <span class="invalid-feedback" role="alert">
+                                            <strong>{{ $message }}</strong>
+                                        </span>
+                                    @enderror
+                                </div>
                             </div>
-                        </div>
 
-                        {{-- region --}}
+                            {{-- region --}}
 
-                        <div class="form-group">
-                            <label class="col-sm-2 control-label">{{ __('content.region') }}</label>
-                            <div class="col-sm-10" >
-                                <select name="region_id" class="form-control" data-placeholder="Tipo" style="width: 100%;">
-                                    @foreach ($regions as $region)
-                                        <option value="{{ $region->id }}"
-                                            @if($country->region_id==$region->id):
-                                                selected="selected"
-                                            @endif
-                                        >{{ $region->name }}</option>
-                                    @endforeach
-                                </select>
+                            <div class="form-group">
+                                <label class="col-sm-2 control-label">{{ __('content.region') }}</label>
+                                <div class="input-group input-group-sm col-xs-12 col-sm-10" >
+                                    <select name="region_id" class="form-control" data-placeholder="Tipo" style="width: 100%;">
+                                        @foreach ($regions as $region)
+                                            <option value="{{ $region->id }}"
+                                                @if($country->region_id==$region->id):
+                                                    selected="selected"
+                                                @endif
+                                            >{{ $region->name }}</option>
+                                        @endforeach
+                                    </select>
+                                </div>
                             </div>
-                        </div>
 
-                        {{-- code --}}
+                            {{-- code --}}
 
-                        <div class="form-group">
-                            <label class="col-sm-2 control-label">{{ __('content.name') }}</label>
-                            <div class="col-sm-10" >
-                                <input id="code" type="text" class="form-control" name="code" value="{{ old('code', $country->code) }}" placeholder="{{ __('content.code') }}">
-                                @error('code')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
+                            <div class="form-group">
+                                <label class="col-sm-2 control-label">{{ __('content.name') }}</label>
+                                <div class="input-group input-group-sm col-xs-12 col-sm-10" >
+                                    <input id="code" type="text" class="form-control" name="code" value="{{ old('code', $country->code) }}" placeholder="{{ __('content.code') }}">
+                                    @error('code')
+                                        <span class="invalid-feedback" role="alert">
+                                            <strong>{{ $message }}</strong>
+                                        </span>
+                                    @enderror
+                                </div>
                             </div>
-                        </div>
 
-                        {{-- ccc --}}
+                            {{-- ccc --}}
 
-                        <div class="form-group">
-                            <label class="col-sm-2 control-label">{{ __('content.prefix') }}</label>
-                            <div class="col-sm-10" >
-                                <input id="ccc" type="text" class="form-control" name="ccc" value="{{ old('ccc', $country->ccc) }}" placeholder="{{ __('content.prefix') }}">
-                                @error('ccc')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
+                            <div class="form-group">
+                                <label class="col-sm-2 control-label">{{ __('content.prefix') }}</label>
+                                <div class="input-group input-group-sm col-xs-12 col-sm-10" >
+                                    <input id="ccc" type="text" class="form-control" name="ccc" value="{{ old('ccc', $country->ccc) }}" placeholder="{{ __('content.prefix') }}">
+                                    @error('ccc')
+                                        <span class="invalid-feedback" role="alert">
+                                            <strong>{{ $message }}</strong>
+                                        </span>
+                                    @enderror
+                                </div>
                             </div>
-                        </div>
 
-                        
+                        </div>
 
                     </div>
 

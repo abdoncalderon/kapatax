@@ -45,18 +45,24 @@
 
                     <div class="box-body">
 
-                        {{-- name --}}
+                        {{-- Fields --}}
 
-                        <div class="form-group">
-                            <label class="col-sm-2 control-label">{{ __('content.name') }}</label>
-                            <div class="col-sm-10" >
-                                <input id="name" type="text" class="form-control" name="name" value="{{ old('name', $region->name) }}" placeholder="{{ __('content.name') }}">
-                                @error('name')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
+                        <div class="col-sm-11 col-md-11 col-lg-11">
+
+                             {{-- name --}}
+
+                            <div class="form-group">
+                                <label class="col-sm-2 control-label">{{ __('content.name') }}</label>
+                                <div class="input-group input-group-sm col-xs-12 col-sm-10" >
+                                    <input id="name" type="text" class="form-control" name="name" value="{{ old('name', $region->name) }}" placeholder="{{ __('content.name') }}">
+                                    @error('name')
+                                        <span class="invalid-feedback" role="alert">
+                                            <strong>{{ $message }}</strong>
+                                        </span>
+                                    @enderror
+                                </div>
                             </div>
+
                         </div>
 
                     </div>

@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Location extends Model
 {
-    protected $fillable = ['name','code','project_id','sequence','dateStart','dateFinish','zone_id','latitude','longitude','max_time_open_folio','max_time_create_dailyreport','max_time_create_note','max_time_create_comment',];
+    protected $fillable = ['name','code','project_id','sequence','startDate','finishDate','zone_id','latitude','longitude','max_time_open_folio','max_time_create_dailyreport','max_time_create_note','max_time_create_comment',];
 
     public function project()
     {

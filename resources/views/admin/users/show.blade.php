@@ -34,13 +34,13 @@
 
                         {{-- Fields --}}
 
-                        <div class="col-sm-4 col-md-6 col-lg-10">
+                        <div class="col-sm-11 col-md-11 col-lg-11">
 
                             {{-- Name  --}}
 
                             <div class="form-group">
                                 <label class="col-sm-2 control-label">{{ __('content.name') }}</label>
-                                <div class="col-sm-10">
+                                <div class="input-group input-group-sm col-xs-12 col-sm-10">
                                     <input disabled class="form-control" value="{{ $user->name }}">
                                 </div>
                             </div>
@@ -49,7 +49,7 @@
 
                             <div class="form-group">
                                 <label class="col-sm-2 control-label">{{ __('content.user') }}</label>
-                                <div class="col-sm-10">
+                                <div class="input-group input-group-sm col-xs-12 col-sm-10">
                                     <input disabled class="form-control" value="{{ $user->user }}">
                                 </div>
                             </div>
@@ -58,7 +58,7 @@
 
                             <div class="form-group">
                                 <label class="col-sm-2 control-label">{{ __('content.email') }}</label>
-                                <div class="col-sm-10">
+                                <div class="input-group input-group-sm col-xs-12 col-sm-10">
                                     <input disabled class="form-control" value="{{ $user->email }}">
                                 </div>
                             </div>
@@ -67,7 +67,7 @@
                             
                             <div class="form-group">
                                 <label class="col-sm-2 control-label">{{ __('content.status') }}</label>
-                                <div class="col-sm-10">
+                                <div class="input-group input-group-sm col-xs-12 col-sm-10">
                                     @IF($user->isActive())
                                         <input disabled class="form-control" value="{{ __('content.active') }}">
                                     @ELSE

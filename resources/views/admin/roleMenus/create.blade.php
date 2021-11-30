@@ -59,7 +59,7 @@
 
                         <div class="form-group">
                             <label class="col-sm-2 control-label">{{ __('content.role') }}</label>
-                            <div class="col-sm-10">
+                            <div class="input-group input-group-sm col-xs-12 col-sm-10">
                                 <input id="role" type="text" class="form-control" name="role" value="{{ $role->name }}">
 
                             </div>
@@ -69,7 +69,7 @@
 
                         <div class="form-group">
                             <label class="col-sm-2 control-label">{{ __('content.menu') }}</label>
-                            <div class="col-sm-10" >
+                            <div class="input-group input-group-sm col-xs-12 col-sm-10" >
                                 <select name="menu_id" class="form-control select2" multiple="multiple" style="width: 100%;">
                                     @foreach ($availablesMenus as $menu)
                                         <option value="{{ $menu->id }}">{{ $menu->code }}</option>

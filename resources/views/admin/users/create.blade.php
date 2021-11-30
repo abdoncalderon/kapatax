@@ -48,13 +48,13 @@
 
                         {{-- Fields --}}
 
-                        <div class="col-sm-4 col-md-6 col-lg-10">
+                        <div class="col-sm-11 col-md-11 col-lg-11">
 
                             {{-- name --}}
     
                             <div class="form-group">
                                 <label class="col-sm-2 control-label">{{ __('content.name') }}</label>
-                                <div class="col-sm-10" >
+                                <div class="input-group input-group-sm col-xs-12 col-sm-10" >
                                     <input id="name" type="text" class="form-control @error('name') is-invalid @enderror" name="name" value="{{ old('name') }}" required autocomplete="name" autofocus>
                                     @error('name')
                                         <span class="invalid-feedback" role="alert">
@@ -68,7 +68,7 @@
     
                             <div class="form-group">
                                 <label class="col-sm-2 control-label">{{ __('content.user') }}</label>
-                                <div class="col-sm-10" >
+                                <div class="input-group input-group-sm col-xs-12 col-sm-10" >
                                     <input id="user" type="text" class="form-control @error('user') is-invalid @enderror" name="user" value="{{ old('user') }}" required autocomplete="user">
                                     @error('user')
                                         <span class="invalid-feedback" role="alert">
@@ -82,7 +82,7 @@
     
                             <div class="form-group">
                                 <label class="col-sm-2 control-label">{{ __('content.email') }}</label>
-                                <div class="col-sm-10" >
+                                <div class="input-group input-group-sm col-xs-12 col-sm-10" >
                                     <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email">
                                     @error('email')
                                         <span class="invalid-feedback" role="alert">
@@ -96,7 +96,7 @@
     
                             <div class="form-group">
                                 <label class="col-sm-2 control-label">{{ __('content.password') }}</label>
-                                <div class="col-sm-10" >
+                                <div class="input-group input-group-sm col-xs-12 col-sm-10" >
                                     <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="new-password">
                                     @error('password')
                                         <span class="invalid-feedback" role="alert">
@@ -110,7 +110,7 @@
     
                             <div class="form-group">
                                 <label class="col-sm-2 control-label">{{ __('content.confirmpassword') }}</label>
-                                <div class="col-sm-10" >
+                                <div class="input-group input-group-sm col-xs-12 col-sm-10" >
                                     <input id="password-confirm" type="password" class="form-control" name="password_confirmation" required autocomplete="new-password">
                                 </div>
                             </div>

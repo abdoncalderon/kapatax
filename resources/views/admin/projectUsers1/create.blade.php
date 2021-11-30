@@ -47,45 +47,45 @@
 
                     <div class="box-body">
 
-                        {{-- Role Id (hide) --}}
+                        <div class="col-sm-11 col-md-11 col-lg-11">
 
-                        <div class="form-group">
-                            <div class="col-sm-10">
-                                <input id="role_id" type="hidden" class="form-control" name="role_id" value="{{ $role->id}}">
+                            {{-- Role Id (hide) --}}
+
+                            <div class="form-group">
+                                <div class="input-group input-group-sm col-xs-12 col-sm-10">
+                                    <input id="role_id" type="hidden" class="form-control" name="role_id" value="{{ $role->id}}">
+                                </div>
                             </div>
-                        </div>
 
-                        {{-- Role --}}
+                            {{-- Role --}}
 
-                        <div class="form-group">
-                            <label class="col-sm-2 control-label">{{ __('content.role') }}</label>
-                            <div class="col-sm-10">
-                                <input id="role" type="text" class="form-control" name="role" value="{{ $role->name }}">
+                            <div class="form-group">
+                                <label class="col-sm-2 control-label">{{ __('content.role') }}</label>
+                                <div class="input-group input-group-sm col-xs-12 col-sm-10">
+                                    <input id="role" type="text" class="form-control" name="role" value="{{ $role->name }}">
+                                </div>
                             </div>
-                        </div>
 
-                        {{-- Menu --}}
+                            {{-- Menu --}}
 
-                        <div class="form-group">
-                            <label class="col-sm-2 control-label">{{ __('content.menu') }}</label>
-                            <div class="col-sm-10" >
-                                <select name="menu_id" class="form-control select2" multiple="multiple" style="width: 100%;">
-                                    @foreach ($availablesMenus as $menu)
-                                        <option value="{{ $menu->id }}">{{ $menu->code }}</option>
-                                    @endforeach
-                                </select>
-                                @error('menu_id')
-                                    <span class="invalid-feedback" role="alert" style="color:red">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
+                            <div class="form-group">
+                                <label class="col-sm-2 control-label">{{ __('content.menu') }}</label>
+                                <div class="input-group input-group-sm col-xs-12 col-sm-10" >
+                                    <select name="menu_id" class="form-control select2" multiple="multiple" style="width: 100%;">
+                                        @foreach ($availablesMenus as $menu)
+                                            <option value="{{ $menu->id }}">{{ $menu->code }}</option>
+                                        @endforeach
+                                    </select>
+                                    @error('menu_id')
+                                        <span class="invalid-feedback" role="alert" style="color:red">
+                                            <strong>{{ $message }}</strong>
+                                        </span>
+                                    @enderror
 
+                                </div>
                             </div>
+
                         </div>
-
-                        
-
-                        
 
                     </div>
 

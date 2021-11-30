@@ -30,42 +30,50 @@
 
                 <form class="form-horizontal">
 
+                    {{-- Form Body --}}
+
                     <div class="box-body">
 
-                        {{-- Name  --}}
+                        {{-- Fields --}}
 
-                        <div class="form-group">
-                            <label class="col-sm-2 control-label">{{ __('content.name') }}</label>
-                            <div class="col-sm-10">
-                                <input disabled class="form-control" value="{{ $country->name }}">
+                        <div class="col-sm-11 col-md-11 col-lg-11">
+
+                            {{-- Name  --}}
+
+                            <div class="form-group">
+                                <label class="col-sm-2 control-label">{{ __('content.name') }}</label>
+                                <div class="input-group input-group-sm col-xs-12 col-sm-10">
+                                    <input disabled class="form-control" value="{{ $country->name }}">
+                                </div>
                             </div>
-                        </div>
 
-                        {{-- Region  --}}
+                            {{-- Region  --}}
 
-                        <div class="form-group">
-                            <label class="col-sm-2 control-label">{{ __('content.region') }}</label>
-                            <div class="col-sm-10">
-                                <input disabled class="form-control" value="{{ $country->region->name }}">
+                            <div class="form-group">
+                                <label class="col-sm-2 control-label">{{ __('content.region') }}</label>
+                                <div class="input-group input-group-sm col-xs-12 col-sm-10">
+                                    <input disabled class="form-control" value="{{ $country->region->name }}">
+                                </div>
                             </div>
-                        </div>
 
-                        {{-- Code  --}}
+                            {{-- Code  --}}
 
-                        <div class="form-group">
-                            <label class="col-sm-2 control-label">{{ __('content.code') }}</label>
-                            <div class="col-sm-10">
-                                <input disabled class="form-control" value="{{ $country->code }}">
+                            <div class="form-group">
+                                <label class="col-sm-2 control-label">{{ __('content.code') }}</label>
+                                <div class="input-group input-group-sm col-xs-12 col-sm-10">
+                                    <input disabled class="form-control" value="{{ $country->code }}">
+                                </div>
                             </div>
-                        </div>
 
-                        {{-- CCC  --}}
+                            {{-- CCC  --}}
 
-                        <div class="form-group">
-                            <label class="col-sm-2 control-label">{{ __('content.prefix') }}</label>
-                            <div class="col-sm-10">
-                                <input disabled class="form-control" value="{{ $country->ccc }}">
+                            <div class="form-group">
+                                <label class="col-sm-2 control-label">{{ __('content.prefix') }}</label>
+                                <div class="input-group input-group-sm col-xs-12 col-sm-10">
+                                    <input disabled class="form-control" value="{{ $country->ccc }}">
+                                </div>
                             </div>
+
                         </div>
 
                     </div>

@@ -32,11 +32,15 @@
 
                     <div class="box-body">
 
+
+                        <div class="col-sm-11 col-md-11 col-lg-11">
+                        </div>
+
                         {{-- Father  --}}
 
                         <div class="form-group">
                             <label class="col-sm-2 control-label">{{ __('content.father') }}</label>
-                            <div class="col-sm-10">
+                            <div class="input-group input-group-sm col-xs-12 col-sm-10">
                                 <input disabled class="form-control" value="{{ $menu->menu->code ?? '' }}">
                             </div>
                         </div>
@@ -45,7 +49,7 @@
 
                         <div class="form-group">
                             <label class="col-sm-2 control-label">{{ __('content.code') }}</label>
-                            <div class="col-sm-10">
+                            <div class="input-group input-group-sm col-xs-12 col-sm-10">
                                 <input disabled class="form-control" value="{{ $menu->code }}">
                             </div>
                         </div>
@@ -54,7 +58,7 @@
 
                         <div class="form-group">
                             <label class="col-sm-2 control-label">{{ __('messages.showName') }}</label>
-                            <div class="col-sm-10">
+                            <div class="input-group input-group-sm col-xs-12 col-sm-10">
                                 <input disabled class="form-control" value="{{ $menu->showName }}">
                             </div>
                         </div>
@@ -63,7 +67,7 @@
 
                         <div class="form-group">
                             <label class="col-sm-2 control-label">{{ __('content.route') }}</label>
-                            <div class="col-sm-10">
+                            <div class="input-group input-group-sm col-xs-12 col-sm-10">
                                 <input disabled class="form-control" value="{{ $menu->route }}">
                             </div>
                         </div>
@@ -72,7 +76,7 @@
 
                         <div class="form-group">
                             <label class="col-sm-2 control-label">{{ __('content.icon') }}</label>
-                            <div class="col-sm-10">
+                            <div class="input-group input-group-sm col-xs-12 col-sm-10">
                                 <input disabled class="form-control" value="{{ $menu->icon }}">
                             </div>
                         </div>
@@ -81,7 +85,7 @@
 
                         <div class="form-group">
                             <label class="col-sm-2 control-label">{{ __('content.status') }}</label>
-                            <div class="col-sm-10">
+                            <div class="input-group input-group-sm col-xs-12 col-sm-10">
                                 @IF($menu->isActive())
                                     <input disabled class="form-control" value="{{ __('content.active') }}">
                                 @ELSE

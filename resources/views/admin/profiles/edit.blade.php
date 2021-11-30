@@ -49,13 +49,13 @@
 
                         {{-- Fields --}}
 
-                        <div class="col-sm-4 col-md-6 col-lg-10">
+                        <div class="col-sm-11 col-md-11 col-lg-11">
 
                             {{-- name --}}
 
                             <div class="form-group">
                                 <label class="col-sm-2 control-label">{{ __('content.name') }}</label>
-                                <div class="col-sm-10" >
+                                <div class="input-group input-group-sm col-xs-12 col-sm-10" >
                                     <input id="name" disabled class="form-control" name="name" value="{{ old('name', $user->name) }}">
                                 </div>
                             </div>
@@ -64,7 +64,7 @@
 
                             <div class="form-group">
                                 <label class="col-sm-2 control-label">{{ __('content.user') }}</label>
-                                <div class="col-sm-10" >
+                                <div class="input-group input-group-sm col-xs-12 col-sm-10" >
                                     <input id="user" disabled class="form-control" name="user" value="{{ old('user', $user->user) }}">
                                 </div>
                             </div>
@@ -73,7 +73,7 @@
 
                             <div class="form-group">
                                 <label class="col-sm-2 control-label">{{ __('content.email') }}</label>
-                                <div class="col-sm-10" >
+                                <div class="input-group input-group-sm col-xs-12 col-sm-10" >
                                     <input id="email" disabled class="form-control" name="email" value="{{ old('email', $user->email) }}">
                                 </div>
                             </div>
@@ -82,7 +82,7 @@
 
                             <div class="form-group">
                                 <label class="col-sm-2 control-label">{{ __('content.role') }}</label>
-                                <div class="col-sm-10">
+                                <div class="input-group input-group-sm col-xs-12 col-sm-10">
                                     <input disabled class="form-control" value="{{ current_user()->role->name }}">
                                 </div>
                             </div>
@@ -91,7 +91,7 @@
                             
                             <div class="form-group">
                                 <label class="col-sm-2 control-label">{{ __('content.project') }}</label>
-                                <div class="col-sm-10">
+                                <div class="input-group input-group-sm col-xs-12 col-sm-10">
                                     <input disabled class="form-control" value="{{ current_user()->project->name }}">
                                 </div>
                             </div>
@@ -100,7 +100,7 @@
                             
                             <div class="form-group">
                                 <label class="col-sm-2 control-label">{{ __('content.subsidiary') }}</label>
-                                <div class="col-sm-10">
+                                <div class="input-group input-group-sm col-xs-12 col-sm-10">
                                     <input disabled class="form-control" value="{{ current_user()->project->subsidiary->name }}">
                                 </div>
                             </div>
@@ -109,7 +109,7 @@
     
                             <div class="form-group">
                                 <label class="col-sm-2 control-label">{{ __('content.avatar') }}</label>
-                                <div class="col-sm-10">
+                                <div class="input-group input-group-sm col-xs-12 col-sm-10">
                                     <input id="avatar" type="file" class="form-control" name="avatar"}}>
                                 </div>
                             </div>
@@ -118,7 +118,7 @@
     
                             <div class="form-group">
                                 <label class="col-sm-2 control-label">{{ __('content.signature') }}</label>
-                                <div class="col-sm-10">
+                                <div class="input-group input-group-sm col-xs-12 col-sm-10">
                                     <input id="signature" type="file" class="form-control" name="signature"}}>
                                 </div>
                             </div>

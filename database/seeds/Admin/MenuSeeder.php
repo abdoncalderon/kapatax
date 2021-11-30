@@ -188,7 +188,7 @@ class MenuSeeder extends Seeder
             'code' => 'settings.positions',
             'showName' => 'content.positions',
             'menu_id' => '16',
-            'route' => null,
+            'route' => 'positions.index',
             'icon' => 'fa fa-circle-o',
         ]);
 

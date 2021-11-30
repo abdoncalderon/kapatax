@@ -62,4 +62,14 @@ class DivisionController extends Controller
         }
     }  
 
+    public function add(StoreDivisionRequest $request )
+    {
+        try{
+            Division::create($request ->validated());
+            return back();
+        }catch(Exception $e){
+            return back()->withErrors($e->getMessage());
+        }
+    }
+
 }

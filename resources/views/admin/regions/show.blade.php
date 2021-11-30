@@ -32,22 +32,17 @@
 
                     <div class="box-body">
 
-                        {{-- Id  --}}
+                        <div class="col-sm-11 col-md-11 col-lg-11">
 
-                        <div class="form-group">
-                            <label class="col-sm-2 control-label">Id</label>
-                            <div class="col-sm-10">
-                                <input disabled class="form-control" value="{{ $region->id }}">
+                            {{-- Name  --}}
+
+                            <div class="form-group">
+                                <label class="col-sm-2 control-label">{{ __('content.name') }}</label>
+                                <div class="input-group input-group-sm col-xs-12 col-sm-10">
+                                    <input disabled class="form-control" value="{{ $region->name }}">
+                                </div>
                             </div>
-                        </div>
 
-                        {{-- Name  --}}
-
-                        <div class="form-group">
-                            <label class="col-sm-2 control-label">{{ __('content.name') }}</label>
-                            <div class="col-sm-10">
-                                <input disabled class="form-control" value="{{ $region->name }}">
-                            </div>
                         </div>
 
                     </div>

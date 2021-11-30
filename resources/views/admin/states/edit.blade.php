@@ -47,36 +47,43 @@
 
                     <div class="box-body">
 
-                        {{-- name --}}
+                        {{-- Fields --}}
 
-                        <div class="form-group">
-                            <label class="col-sm-2 control-label">{{ __('content.name') }}</label>
-                            <div class="col-sm-10" >
-                                <input id="name" disabled type="text" class="form-control" name="name" value="{{ old('name', $state->name) }}" placeholder="Nombre">
-                                @error('name')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
+                        <div class="col-sm-11 col-md-11 col-lg-11">
+
+                            {{-- name --}}
+
+                            <div class="form-group">
+                                <label class="col-sm-2 control-label">{{ __('content.name') }}</label>
+                                <div class="input-group input-group-sm col-xs-12 col-sm-10" >
+                                    <input id="name" disabled type="text" class="form-control" name="name" value="{{ old('name', $state->name) }}" placeholder="Nombre">
+                                    @error('name')
+                                        <span class="invalid-feedback" role="alert">
+                                            <strong>{{ $message }}</strong>
+                                        </span>
+                                    @enderror
+                                </div>
                             </div>
-                        </div>
 
-                        {{-- country --}}
+                            {{-- country --}}
 
-                        <div class="form-group">
-                            <label class="col-sm-2 control-label">{{ __('content.country') }}</label>
-                            <div class="col-sm-10" >
-                                <select name="country_id" class="form-control" style="width: 100%;">
-                                    @foreach ($countries as $country)
-                                        <option value="{{ $country->id }}"
-                                            @if($country->country_id==$country->id):
-                                                selected="selected"
-                                            @endif
-                                        >{{ $country->name }}</option>
-                                    @endforeach
-                                </select>
+                            <div class="form-group">
+                                <label class="col-sm-2 control-label">{{ __('content.country') }}</label>
+                                <div class="input-group input-group-sm col-xs-12 col-sm-10" >
+                                    <select name="country_id" class="form-control" style="width: 100%;">
+                                        @foreach ($countries as $country)
+                                            <option value="{{ $country->id }}"
+                                                @if($country->country_id==$country->id):
+                                                    selected="selected"
+                                                @endif
+                                            >{{ $country->name }}</option>
+                                        @endforeach
+                                    </select>
+                                </div>
                             </div>
+
                         </div>
+                        
 
                     </div>
 

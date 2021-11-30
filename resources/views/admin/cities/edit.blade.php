@@ -47,40 +47,46 @@
 
                     <div class="box-body">
 
-                        {{-- name --}}
+                        {{-- Fields --}}
 
-                        <div class="form-group">
-                            <label class="col-sm-2 control-label">{{ __('content.name') }}</label>
-                            <div class="col-sm-10" >
-                                <input id="name" disabled type="text" class="form-control" name="name" value="{{ old('name', $city->name) }}" placeholder="{{ __('content.name') }}">
-                                @error('name')
-                                    <span class="invalid-feedback" role="alert" style="color:red">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
+                        <div class="col-sm-11 col-md-11 col-lg-11">
+
+                            {{-- name --}}
+
+                            <div class="form-group">
+                                <label class="col-sm-2 control-label">{{ __('content.name') }}</label>
+                                <div class="input-group input-group-sm col-xs-12 col-sm-10" >
+                                    <input id="name" disabled type="text" class="form-control" name="name" value="{{ old('name', $city->name) }}" placeholder="{{ __('content.name') }}">
+                                    @error('name')
+                                        <span class="invalid-feedback" role="alert" style="color:red">
+                                            <strong>{{ $message }}</strong>
+                                        </span>
+                                    @enderror
+                                </div>
                             </div>
-                        </div>
 
-                        {{-- state --}}
+                            {{-- state --}}
 
-                        <div class="form-group">
-                            <label class="col-sm-2 control-label">{{ __('content.state') }}</label>
-                            <div class="col-sm-10" >
-                                <select name="state_id" class="form-control" style="width: 100%;">
-                                    @foreach ($states as $state)
-                                        <option value="{{ $state->id }}"
-                                            @if($city->state_id==$state->id):
-                                                selected="selected"
-                                            @endif
-                                        >{{ $state->name }}</option>
-                                    @endforeach
-                                </select>
-                                @error('state_id')
-                                    <span class="invalid-feedback" role="alert" style="color:red">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
+                            <div class="form-group">
+                                <label class="col-sm-2 control-label">{{ __('content.state') }}</label>
+                                <div class="input-group input-group-sm col-xs-12 col-sm-10" >
+                                    <select name="state_id" class="form-control" style="width: 100%;">
+                                        @foreach ($states as $state)
+                                            <option value="{{ $state->id }}"
+                                                @if($city->state_id==$state->id):
+                                                    selected="selected"
+                                                @endif
+                                            >{{ $state->name }}</option>
+                                        @endforeach
+                                    </select>
+                                    @error('state_id')
+                                        <span class="invalid-feedback" role="alert" style="color:red">
+                                            <strong>{{ $message }}</strong>
+                                        </span>
+                                    @enderror
+                                </div>
                             </div>
+
                         </div>
 
                     </div>

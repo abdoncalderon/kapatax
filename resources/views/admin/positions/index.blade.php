@@ -1,15 +1,15 @@
 @extends('layouts.main')
 
-@section('title', __('content.regions'))
+@section('title', __('content.positions'))
 
-@section('section', __('content.regions'))
+@section('section', __('content.positions'))
 
 @section('level', __('content.administration'))
 
 @section('breadcrumb')
     <ol class="breadcrumb">
         <li><a href="{{ route('home') }}"><i class="fa fa-home"></i>Home</a></li>
-        <li class="active">{{ __('content.regions') }}</li>
+        <li class="active">{{ __('content.positions') }}</li>
     </ol>
 @endsection
 
@@ -31,8 +31,8 @@
             {{-- Title --}}
 
             <div class="box-header with-border center-block">
-                <h3 class="box-title"><strong>{{ __('content.regions') }}</strong></h3> | 
-                <a class="btn btn-success btn-sm" href="{{ route('regions.create') }}">{{ __('content.add') }}</a>
+                <h3 class="box-title"><strong>{{ __('content.positions') }}</strong></h3> | 
+                <a class="btn btn-success btn-sm" href="{{ route('positions.create') }}">{{ __('content.add') }}</a>
             </div>
             
             <div class="box-body">
@@ -53,12 +53,12 @@
                     {{-- Rows  --}}
 
                     <tbody>
-                        @foreach($regions as $region)
+                        @foreach($positions as $position)
                             <tr>
-                                <td>{{ $region->name }}</td>
+                                <td>{{ $position->name }}</td>
                                 <td>
-                                    <a class="btn btn-info btn-xs" href="{{ route('regions.edit', $region)}}">{{ __('content.edit') }}</a>
-                                    <a class="btn btn-danger btn-xs" href="{{ route('regions.destroy', $region)}}">{{ __('content.delete') }}</a>
+                                    <a class="btn btn-info btn-xs" href="{{ route('positions.edit', $position)}}">{{ __('content.edit') }}</a>
+                                    <a class="btn btn-danger btn-xs" href="{{ route('positions.destroy', $position)}}">{{ __('content.delete') }}</a>
                                 </td>
                             </tr>
                         @endforeach

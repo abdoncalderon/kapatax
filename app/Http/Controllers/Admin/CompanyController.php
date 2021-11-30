@@ -73,5 +73,15 @@ class CompanyController extends Controller
         }catch(Exception $e){
             return back()->withErrors($e->getMessage());
         }
-    }  
+    } 
+    
+    public function add(StoreCompanyRequest $request )
+    {
+        try{
+            Company::create($request ->validated());
+            return back();
+        }catch(Exception $e){
+            return back()->withErrors($e->getMessage());
+        }
+    }
 }

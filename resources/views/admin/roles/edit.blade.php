@@ -47,43 +47,25 @@
 
                     <div class="box-body">
 
-                        {{-- name --}}
+                        {{-- Fields --}}
 
-                        <div class="form-group">
-                            <label class="col-sm-2 control-label">{{ __('content.name') }}</label>
-                            <div class="col-sm-10" >
-                                <input id="name" type="text" class="form-control" name="name" value="{{ old('name', $role->name) }}" placeholder="Nombre">
-                                @error('name')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
+                        <div class="col-sm-11 col-md-11 col-lg-11">
+
+                            {{-- name --}}
+
+                            <div class="form-group">
+                                <label class="col-sm-2 control-label">{{ __('content.name') }}</label>
+                                <div class="input-group input-group-sm col-xs-12 col-sm-10" >
+                                    <input id="name" type="text" class="form-control" name="name" value="{{ old('name', $role->name) }}" placeholder="Nombre">
+                                    @error('name')
+                                        <span class="invalid-feedback" role="alert">
+                                            <strong>{{ $message }}</strong>
+                                        </span>
+                                    @enderror
+                                </div>
                             </div>
+
                         </div>
-
-                        {{-- status --}}
-
-<<<<<<< HEAD
-                        {{-- <div class="form-group">
-=======
-                        <div class="form-group">
->>>>>>> origin/master
-                            <label class="col-sm-2 control-label">{{ __('content.status') }}</label>
-                            <div class="col-sm-10">
-                                <select name="isActive" class="form-control" data-placeholder="Estado" style="width: 100%;" value="{{ old('status', $role->status) }}">
-                                    <option value="0"
-                                        @if(!$role->isActive()):
-                                            selected="selected"
-                                        @endif
-                                        >{{ __('content.inactive') }}</option>
-                                    <option value="1"
-                                        @if($role->isActive()):
-                                            selected="selected"
-                                        @endif
-                                        >{{ __('content.active') }}</option>
-                                </select>
-                            </div>
-                        </div> --}}
 
                     </div>
 

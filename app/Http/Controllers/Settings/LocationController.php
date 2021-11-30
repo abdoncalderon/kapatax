@@ -4,8 +4,9 @@ namespace App\Http\Controllers\Settings;
 
 use App\Models\Location;
 use App\Models\Project;
-use App\Http\Requests\StoreLocationRequest;
-use App\Http\Requests\UpdateLocationRequest;
+use App\Models\Zone;
+use App\Http\Requests\Settings\StoreLocationRequest;
+use App\Http\Requests\Settings\UpdateLocationRequest;
 use App\Http\Controllers\Controller;
 use Exception;
 
@@ -14,14 +15,17 @@ class LocationController extends Controller
     public function index()
     {
         $locations = Location::get();
-        return view('locations.index', compact('locations'));
+        return view('settings.locations.index', compact('locations'));
     }
 
     public function create()
     {
-        $projects = Project::get();
-        return view('locations.create')
-        ->with('projects',$projects);
+        $zones = Zone::all();
+        $project_id = session('current_project_id');
+        $project = Project::where('id',$project_id)->first();
+        return view('settings.locations.create')
+        ->with('project',$project)
+        ->with('zones',$zones);
     }
 
     public function store(StoreLocationRequest $request )
@@ -32,16 +36,19 @@ class LocationController extends Controller
 
     public function show(Location $location)
     {
-        return view('locations.show',[
+        return view('settings.locations.show',[
             'location'=>$location
             ]);
     }
 
     public function edit(Location $location)
     {
-        return view('locations.edit',[
+        $zones = Zone::all();
+        $project_id = session('current_project_id');
+        $project = Project::where('id',$project_id)->first();
+        return view('settings.locations.edit',[
             'location'=>$location
-            ]);
+            ])->with('project',$project)->with('zones',$zones);
     }
     
     public function update(Location $location, UpdateLocationRequest $request)

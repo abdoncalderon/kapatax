@@ -28,12 +28,12 @@ class ZoneController extends Controller
     public function store(StoreZoneRequest $request )
     {
         try{
-
+            Zone::create($request ->validated());
+            return redirect()->route('zones.index');
         }catch(Exception $e){
             return back()->withErrors($e->getMessage());
         }
-        Zone::create($request ->validated());
-        return redirect()->route('zones.index');
+        
     }
 
     public function show(Zone $zone)
@@ -72,4 +72,14 @@ class ZoneController extends Controller
             return back()->withErrors($e->getMessage());
         }
     }   
+
+    public function add(StoreZoneRequest $request )
+    {
+        try{
+            Zone::create($request ->validated());
+            return back();
+        }catch(Exception $e){
+            return back()->withErrors($e->getMessage());
+        }
+    }
 }

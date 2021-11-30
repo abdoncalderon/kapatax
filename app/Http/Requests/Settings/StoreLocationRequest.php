@@ -6,25 +6,28 @@ use Illuminate\Foundation\Http\FormRequest;
 
 class StoreLocationRequest extends FormRequest
 {
-    /**
-     * Determine if the user is authorized to make this request.
-     *
-     * @return bool
-     */
     public function authorize()
     {
-        return false;
+        return true;
     }
 
-    /**
-     * Get the validation rules that apply to the request.
-     *
-     * @return array
-     */
+    
     public function rules()
     {
         return [
-            //
+            'name'=>'required|unique:locations',
+            'code'=>'required|unique:locations',
+            'project_id'=>'required',
+            'zone_id'=>'required',
+            'sequence'=>'required',
+            'latitude'=>'nullable',
+            'longitude'=>'nullable',
+            'startDate'=>'required',
+            'finishDate'=>'required',
+            'max_time_open_folio'=>'required',
+            'max_time_create_dailyreport'=>'required',
+            'max_time_create_note'=>'required',
+            'max_time_create_comment'=>'required',
         ];
     }
 }

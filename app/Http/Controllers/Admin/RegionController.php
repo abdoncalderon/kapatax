@@ -61,4 +61,14 @@ class RegionController extends Controller
             return back()->withErrors($e->getMessage());
         }
     } 
+
+    public function add(StoreRegionRequest $request )
+    {
+        try{
+            Region::create($request ->validated());
+            return back();
+        }catch(Exception $e){
+            return back()->withErrors($e->getMessage());
+        }
+    }
 }

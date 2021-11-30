@@ -46,74 +46,80 @@
 
                     <div class="box-body">
 
-                        {{-- father --}}
+                        {{-- Fields --}}
 
-                        <div class="form-group">
-                            <label class="col-sm-2 control-label">Menu {{ __('content.father') }}</label>
-                            <div class="col-sm-10" >
-                                <select name="menu_id" class="form-control" style="width: 100%;">
-                                    <option value=""></option>
-                                    @foreach ($menus as $menu)
-                                        <option value="{{ $menu->id }}">{{ $menu->code }}</option>
-                                    @endforeach
-                                </select>
+                        <div class="col-sm-11 col-md-11 col-lg-11">
+
+                            {{-- father --}}
+
+                            <div class="form-group">
+                                <label class="col-sm-2 control-label">Menu {{ __('content.father') }}</label>
+                                <div class="input-group input-group-sm col-xs-12 col-sm-10" >
+                                    <select name="menu_id" class="form-control" style="width: 100%;">
+                                        <option value=""></option>
+                                        @foreach ($menus as $menu)
+                                            <option value="{{ $menu->id }}">{{ $menu->code }}</option>
+                                        @endforeach
+                                    </select>
+                                </div>
                             </div>
-                        </div>
 
-                        {{-- code --}}
+                            {{-- code --}}
 
-                        <div class="form-group">
-                            <label class="col-sm-2 control-label">{{ __('content.code') }}</label>
-                            <div class="col-sm-10" >
-                                <input id="code" type="text" class="form-control" name="code" value="{{ old('code') }}" placeholder="{{ __('content.code') }}">
-                                @error('code')
-                                    <span class="invalid-feedback" role="alert" style="color:red">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
+                            <div class="form-group">
+                                <label class="col-sm-2 control-label">{{ __('content.code') }}</label>
+                                <div class="input-group input-group-sm col-xs-12 col-sm-10" >
+                                    <input id="code" type="text" class="form-control" name="code" value="{{ old('code') }}" placeholder="{{ __('content.code') }}">
+                                    @error('code')
+                                        <span class="invalid-feedback" role="alert" style="color:red">
+                                            <strong>{{ $message }}</strong>
+                                        </span>
+                                    @enderror
+                                </div>
                             </div>
-                        </div>
 
-                        {{-- showName --}}
+                            {{-- showName --}}
 
-                        <div class="form-group">
-                            <label class="col-sm-2 control-label">{{ __('messages.showName') }}</label>
-                            <div class="col-sm-10" >
-                                <input id="showName" type="text" class="form-control" name="showName" value="{{ old('showName') }}" placeholder="{{ __('messages.showName') }}">
-                                @error('showName')
-                                    <span class="invalid-feedback" role="alert" style="color:red">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
+                            <div class="form-group">
+                                <label class="col-sm-2 control-label">{{ __('messages.showName') }}</label>
+                                <div class="input-group input-group-sm col-xs-12 col-sm-10" >
+                                    <input id="showName" type="text" class="form-control" name="showName" value="{{ old('showName') }}" placeholder="{{ __('messages.showName') }}">
+                                    @error('showName')
+                                        <span class="invalid-feedback" role="alert" style="color:red">
+                                            <strong>{{ $message }}</strong>
+                                        </span>
+                                    @enderror
+                                </div>
                             </div>
-                        </div>
 
-                        {{-- route --}}
+                            {{-- route --}}
 
-                        <div class="form-group">
-                            <label class="col-sm-2 control-label">{{ __('content.route') }} (LARAVEL)</label>
-                            <div class="col-sm-10" >
-                                <input id="route" type="text" class="form-control" name="route" value="{{ old('route') }}" placeholder="{{ __('content.route') }}">
-                                @error('route')
-                                    <span class="invalid-feedback" role="alert" style="color:red">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
+                            <div class="form-group">
+                                <label class="col-sm-2 control-label">{{ __('content.route') }} (LARAVEL)</label>
+                                <div class="input-group input-group-sm col-xs-12 col-sm-10" >
+                                    <input id="route" type="text" class="form-control" name="route" value="{{ old('route') }}" placeholder="{{ __('content.route') }}">
+                                    @error('route')
+                                        <span class="invalid-feedback" role="alert" style="color:red">
+                                            <strong>{{ $message }}</strong>
+                                        </span>
+                                    @enderror
+                                </div>
                             </div>
-                        </div>
 
-                        {{-- fa icon --}}
+                            {{-- fa icon --}}
 
-                        <div class="form-group">
-                            <label class="col-sm-2 control-label">{{ __('content.icon') }}</label>
-                            <div class="col-sm-10" >
-                                <input id="icon" type="text" class="form-control" name="icon" value="{{ old('icon') }}" placeholder="FA {{ __('content.icon') }}">
-                                @error('icon')
-                                    <span class="invalid-feedback" role="alert" style="color:red">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
+                            <div class="form-group">
+                                <label class="col-sm-2 control-label">{{ __('content.icon') }}</label>
+                                <div class="input-group input-group-sm col-xs-12 col-sm-10" >
+                                    <input id="icon" type="text" class="form-control" name="icon" value="{{ old('icon') }}" placeholder="FA {{ __('content.icon') }}">
+                                    @error('icon')
+                                        <span class="invalid-feedback" role="alert" style="color:red">
+                                            <strong>{{ $message }}</strong>
+                                        </span>
+                                    @enderror
+                                </div>
                             </div>
+
                         </div>
 
                     </div>

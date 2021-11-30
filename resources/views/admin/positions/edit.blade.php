@@ -1,15 +1,15 @@
 @extends('layouts.main')
 
-@section('title', __('content.areas'))
+@section('title', __('content.positions'))
 
-@section('section',__('content.areas'))
+@section('section',__('content.positions'))
 
 @section('level',__('content.administration'))
 
 @section('breadcrumb')
     <ol class="breadcrumb">
         <li><a href="/"><i class="fa fa-home"></i>Home</a></li>
-        <li><a href="{{ route('areas.index')}}"> {{ __('content.areas') }} </a></li>
+        <li><a href="{{ route('positions.index')}}"> {{ __('content.positions') }} </a></li>
         <li class="active">{{ __('content.edit') }}</li>
     </ol>
 @endsection
@@ -32,12 +32,12 @@
                 @endif
 
                 <div class="box-header with-border">
-                    <h3 class="box-title"><strong>{{ __('content.edit') }} {{ $area->name }}</strong></h3>
+                    <h3 class="box-title"><strong>{{ __('content.edit') }} {{ $position->name }}</strong></h3>
                 </div>
 
                 {{-- Start Form  --}}
 
-                <form class="form-horizontal" method="POST" action="{{ route('areas.update', $area) }}">
+                <form class="form-horizontal" method="POST" action="{{ route('positions.update', $position) }}">
                     @csrf
                     @method('PATCH')
 
@@ -54,7 +54,7 @@
                             <div class="form-group">
                                 <label class="col-sm-2 control-label">{{ __('content.name') }}</label>
                                 <div class="input-group input-group-sm col-xs-12 col-sm-10" >
-                                    <input id="name" type="text" class="form-control" name="name" value="{{ old('name', $area->name) }}" placeholder="{{ __('content.name') }}">
+                                    <input id="name" type="text" class="form-control" name="name" value="{{ old('name', $position->name) }}" placeholder="{{ __('content.name') }}">
                                     @error('name')
                                         <span class="invalid-feedback" role="alert">
                                             <strong>{{ $message }}</strong>
@@ -71,7 +71,7 @@
                     
                     <div class="box-footer">
                         <button type="submit" class="btn btn-success pull-left btn-sm" style="margin: 0px 5px;">{{ __('content.save') }}</button>
-                        <a class="btn btn-info btn-sm" href=" {{ route('areas.index') }} ">{{ __('content.cancel') }}</a>
+                        <a class="btn btn-info btn-sm" href=" {{ route('positions.index') }} ">{{ __('content.cancel') }}</a>
                     </div>
 
                 </form>

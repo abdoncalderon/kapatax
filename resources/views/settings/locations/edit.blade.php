@@ -44,30 +44,24 @@
 
                     <div class="box-body">
 
-                        <div class="col-sm-4 col-md-6 col-lg-10">
+                        {{-- Fields --}}
+
+                        <div class="col-sm-11 col-md-11 col-lg-11">
 
                             {{-- Id  --}}
 
-                            <input type="text" hidden name="name" value="{{ $location->id }}">
+                            <input type="text" hidden name="id" value="{{ $location->id }}">
 
                             {{-- Project ID  --}}
 
                             <input type="text" hidden name="project_id" value="{{ $location->project_id }}">
 
-                            {{-- Project  --}}
-
-                            <div class="form-group">
-                                <label class="col-sm-2 control-label">{{ __('content.project') }}</label>
-                                <div class="col-sm-10">
-                                    <input disabled class="form-control" value="{{ $location->project->name }}">
-                                </div>
-                            </div>
-
+                            
                             {{-- Name  --}}
 
                             <div class="form-group">
                                 <label class="col-sm-2 control-label">{{ __('content.name') }}</label>
-                                <div class="col-sm-10">
+                                <div class="input-group input-group-sm col-xs-12 col-sm-10">
                                     <input type="text" class="form-control" name="name" value="{{ $location->name }}" required>
                                 </div>
                             </div>
@@ -76,8 +70,29 @@
 
                             <div class="form-group">
                                 <label class="col-sm-2 control-label">{{ __('content.code') }}</label>
-                                <div class="col-sm-10">
+                                <div class="input-group input-group-sm col-xs-12 col-sm-10">
                                     <input type="text" class="form-control" name="code" value="{{ $location->code }}" required>
+                                </div>
+                            </div>
+
+
+                            {{-- Zone --}}
+
+                            <div class="form-group">
+                                <label class="col-sm-2 control-label">{{ __('content.zone') }}</label>
+                                <div class="input-group input-group-sm col-xs-12 col-sm-10">
+                                    <select id="zone_id" name="zone_id" class="form-control" required style="width: 100%;" >
+                                        @foreach ($zones as $zone)
+                                            <option value="{{ $zone->id }}"
+                                                @if($location->zone_id==$zone->id):
+                                                    selected="selected"
+                                                @endif
+                                            >{{ $zone->name }}</option>
+                                        @endforeach
+                                        <span class="input-group-btn">
+                                            <button type="button" class="btn btn-info btn-flat" data-toggle="modal" data-target="#add"> + </button>
+                                        </span>
+                                    </select>
                                 </div>
                             </div>
 
@@ -85,8 +100,56 @@
 
                             <div class="form-group">
                                 <label class="col-sm-2 control-label">{{ __('content.sequence') }}</label>
-                                <div class="col-sm-10">
+                                <div class="input-group input-group-sm col-xs-12 col-sm-10">
                                     <input type="number" class="form-control" name="sequence" value="{{ $location->sequence }}">
+                                </div>
+                            </div>
+
+                            {{-- latitude  --}}
+
+                            <div class="form-group">
+                                <label class="col-sm-2 control-label">{{ __('content.latitude') }}</label>
+                                <div class="input-group input-group-sm col-xs-12 col-sm-10">
+                                    <input type="number" class="form-control" name="latitude" value="{{ $location->latitude }}" required>
+                                </div>
+                            </div>
+
+                            {{-- longitude  --}}
+
+                            <div class="form-group">
+                                <label class="col-sm-2 control-label">{{ __('content.longitude') }}</label>
+                                <div class="input-group input-group-sm col-xs-12 col-sm-10">
+                                    <input type="number" class="form-control" name="longitude" value="{{ $location->longitude }}" required>
+                                </div>
+                            </div>
+
+                            {{-- start date --}}
+
+                            <div class="form-group">
+
+                                <label class="col-sm-2 control-label">{{ __('content.startDate') }}</label>
+                                <div class="input-group input-group-sm col-xs-12 col-sm-10">
+                                    <input id="startDate" class="form-control pull-right" type="date"  name="startDate" value="{{ $location->startDate }}">
+                                    @error('startDate')
+                                        <span class="invalid-feedback" role="alert" style="color:red">
+                                            <strong>{{ $message }}</strong>
+                                        </span>
+                                    @enderror
+                                </div>
+                            </div>
+
+                            {{-- finish date --}}
+                            
+                            <div class="form-group">
+
+                                <label class="col-sm-2 control-label">{{ __('content.finishDate') }}</label>
+                                <div class="input-group input-group-sm col-xs-12 col-sm-10">
+                                    <input id="finishDate" class="form-control pull-right" type="date"  name="finishDate" value="{{ $location->finishDate }}">
+                                    @error('finishDate')
+                                        <span class="invalid-feedback" role="alert" style="color:red">
+                                            <strong>{{ $message }}</strong>
+                                        </span>
+                                    @enderror
                                 </div>
                             </div>
                             
@@ -94,8 +157,8 @@
 
                             <div class="form-group">
                                 <label class="col-sm-2 control-label">{{ __('messages.maxtimeopenfolio') }}</label>
-                                <div class="col-sm-10">
-                                    <input type="number" class="form-control" name="maxtimeopen" value="{{ $location->max_time_open_folio }}">
+                                <div class="input-group input-group-sm col-xs-12 col-sm-10">
+                                    <input type="number" class="form-control" name="max_time_open_folio" value="{{ $location->max_time_open_folio }}">
                                 </div>
                             </div>
 
@@ -103,8 +166,8 @@
 
                             <div class="form-group">
                                 <label class="col-sm-2 control-label">{{ __('messages.maxtimecreatedailyreport') }}</label>
-                                <div class="col-sm-10">
-                                    <input type="number" class="form-control" name="maxtimeopen" value="{{ $location->max_time_create_dailyreport }}">
+                                <div class="input-group input-group-sm col-xs-12 col-sm-10">
+                                    <input type="number" class="form-control" name="max_time_create_dailyreport" value="{{ $location->max_time_create_dailyreport }}">
                                 </div>
                             </div>
 
@@ -112,8 +175,8 @@
 
                             <div class="form-group">
                                 <label class="col-sm-2 control-label">{{ __('messages.maxtimecreatenote') }}</label>
-                                <div class="col-sm-10">
-                                    <input type="number" class="form-control" name="maxtimenote" value="{{ $location->max_time_create_note }}">
+                                <div class="input-group input-group-sm col-xs-12 col-sm-10">
+                                    <input type="number" class="form-control" name="max_time_create_note" value="{{ $location->max_time_create_note }}">
                                 </div>
                             </div>
 
@@ -121,8 +184,8 @@
 
                             <div class="form-group">
                                 <label class="col-sm-2 control-label">{{ __('messages.maxtimecreatecomment') }}</label>
-                                <div class="col-sm-10">
-                                    <input type="number" class="form-control" name="maxtimecomment" value="{{ $location->max_time_create_comment }}">
+                                <div class="input-group input-group-sm col-xs-12 col-sm-10">
+                                    <input type="number" class="form-control" name="max_time_create_comment" value="{{ $location->max_time_create_comment }}">
                                 </div>
                             </div>
                        
@@ -146,5 +209,42 @@
         </div>
 
     </section>
+
+    {{-- Modal Window Add Zone --}}
+
+    <div class="modal fade" id="add" tabindex="-1" role="dialog" aria-labelledby="addModal" aria-hidden="true">
+
+        <div class="modal-dialog modal-dialog-centered" role="document">
+
+            <form method="POST" action="{{ route('zones.add') }}">
+                @csrf
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLongTitle">{{ __('content.add') }} {{ __('content.location') }}</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <input id="project_id" type="hidden" class="form-control" name="project_id" value="{{ $project->id }}" type="text">
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label">{{ __('content.name') }}</label>
+                            <div class="input-group col-sm-10">
+                                <input type="text" class="form-control" name="name" maxlength="255" required>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <div class="col-md-6 offset-md-4">
+                            <button type="submit" class="btn btn-success pull-left btn-sm" style="margin: 0px 5px;">{{ __('content.save') }}</button>
+                            <button type="button" class="btn btn-secondary pull-left btn-sm" data-dismiss="modal">{{ __('content.cancel') }}</button>
+                        </div>
+                    </div>
+                </div>
+            </form>
+            
+        </div>
+
+    </div>
 
 @endsection

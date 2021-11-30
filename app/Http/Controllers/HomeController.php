@@ -2,13 +2,10 @@
 
 namespace App\Http\Controllers;
 
-<<<<<<< HEAD
 
-=======
+
 use App\Models\UserProject;
->>>>>>> origin/master
 use App\Models\Project;
-use App\Models\UserProject;
 use App\User;
 use Illuminate\Http\Request;
 use App\Models\RoleMenu;
@@ -36,10 +33,9 @@ class HomeController extends Controller
     {
         $user = User::where('id',auth()->user()->id)->first();
         $projects = UserProject::where('user_id',$user->id)->get();
-<<<<<<< HEAD
-=======
+
         // return view('layouts.main');
->>>>>>> origin/master
+
         return view('layouts.project')
         ->with(compact('user'))
         ->with(compact('projects'));
