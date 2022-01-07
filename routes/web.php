@@ -10,10 +10,15 @@ Route::get('/', 'HomeController@project')->name('project');
 Route::post('/','HomeController@menu')->name('menu');
 Route::get('/main', 'HomeController@index')->name('home');
 
+/* Routes Menus */
+Route::resource('menus','Admin\MenuController');
+Route::get('/menus/activate/{menu}/{value}','Admin\MenuController@activate')->name('menus.activate');
+Route::get('/menus/destroy/{menu}','Admin\MenuController@destroy')->name('menus.destroy');
+
 /* Routes Roles */
-Route::resource('roles','RoleController');
-Route::get('/roles/activate/{role}/{value}','RoleController@activate')->name('roles.activate');
-Route::get('/role/destroy/{role}','RoleController@destroy')->name('roles.destroy');
+Route::resource('roles','Admin\RoleController');
+Route::get('/roles/activate/{role}/{value}','Admin\RoleController@activate')->name('roles.activate');
+Route::get('/role/destroy/{role}','Admin\RoleController@destroy')->name('roles.destroy');
 
 /* Routes Roles Menus  */
 Route::get('/roleMenus/{role}','Admin\RoleMenuController@index')->name('roleMenus.index');
@@ -31,11 +36,6 @@ Route::get('/userProjects/{user}','Admin\UserProjectController@index')->name('us
 Route::get('/create/project/{user}','Admin\UserProjectController@create')->name('userProjects.create');
 Route::post('/userProjects/{user}','Admin\UserProjectController@store')->name('userProjects.store');
 Route::get('/userProjects/destroy/{userProject}','Admin\UserProjectController@destroy')->name('userProjects.destroy');
-
-/* Routes Menus */
-Route::resource('menus','Admin\MenuController');
-Route::get('/menus/activate/{menu}/{value}','Admin\MenuController@activate')->name('menus.activate');
-Route::get('/menus/destroy/{menu}','Admin\MenuController@destroy')->name('menus.destroy');
 
 /* Routes Profiles */
 Route::resource('profiles','Admin\ProfileController');
@@ -56,7 +56,6 @@ Route::post('/division/add','Admin\DivisionController@add')->name('divisions.add
 Route::resource('subsidiaries','Admin\SubsidiaryController');
 Route::get('/subsidiary/destroy/{subsidiary}','Admin\SubsidiaryController@destroy')->name('subsidiaries.destroy');
 
-
 /* Routes Regions */
 Route::resource('regions','Admin\RegionController');
 Route::get('/region/destroy/{region}','Admin\RegionController@destroy')->name('regions.destroy');
@@ -65,7 +64,6 @@ Route::post('/regons/add','Admin\RegionController@add')->name('regions.add');
 /* Routes Countries */
 Route::resource('countries','Admin\CountryController');
 Route::get('/countries/destroy/{country}','Admin\CountryController@destroy')->name('countries.destroy');
-
 
 /* Routes States */
 Route::resource('states','Admin\StateController');
@@ -85,43 +83,53 @@ Route::get('/projects/destroy/{project}','Admin\ProjectController@destroy')->nam
 Route::resource('unities','Admin\UnityController');
 Route::get('/unity/destroy/{unity}','Admin\UnityController@destroy')->name('unities.destroy');
 
-/* Routes Areas */
-Route::resource('areas','Admin\AreaController');
-Route::get('/areas/destroy/{country}','Admin\AreaController@destroy')->name('areas.destroy');
-
-/* Routes Project */
-Route::get('/project/show','Settings\ProjectController@show')->name('project.show');
-Route::get('/project/edit/{project}','Settings\ProjectController@edit')->name('project.edit');
-Route::patch('project/update/{project}','Settings\ProjectController@update')->name('project.update');
-
-/* Routes Zones */
-Route::resource('zones','Settings\ZoneController');
-Route::get('/zones/destroy/{zone}','Settings\ZoneController@destroy')->name('zones.destroy');
-Route::post('/zones/add','Settings\ZoneController@add')->name('zones.add');
-
-/* Routes Contractors */
-/* Route::resource('contractors','Agreement\ContractorController');
-/* Route::get('/contractor/destroy/{contractor}','Agreement\ContractorController@destroy')->name('contractors.destroy'); 
-
-/* Routes Equipments */
-/* Route::resource('equipments','Agreement\EquipmentController');
-/* Route::get('/equipment/destroy/{equipment}','EquipmentController@destroy')->name('equipments.destroy');
-
-/* Routes Positions */
-Route::resource('positions','Admin\PositionController');
-Route::get('/position/destroy/{position}','Admin\PositionController@destroy')->name('positions.destroy');
+/* Routes Organizations */
+Route::resource('organizations','Admin\OrganizationController');
+Route::get('/organization/destroy/{organization}','Admin\OrganizationController@destroy')->name('organizations.destroy');
 
 /* Routes Sectors */
-Route::resource('sectors','SectorController');
-Route::get('/sector/destroy/{sector}','SectorController@destroy')->name('sectors.destroy');
+Route::resource('sectors','Admin\SectorController');
+Route::get('/sector/destroy/{sector}','Admin\SectorController@destroy')->name('sectors.destroy');
+
+
+
+
+
+/* Routes Departments */
+Route::resource('departments','Project\DepartmentController');
+Route::get('/departments/destroy/{country}','Project\DepartmentController@destroy')->name('departments.destroy');
+
+/* Routes Project */
+Route::get('/project/show','Project\ProjectController@show')->name('project.show');
+Route::get('/project/edit/{project}','Project\ProjectController@edit')->name('project.edit');
+Route::patch('project/update/{project}','Project\ProjectController@update')->name('project.update');
+
+/* Routes Zones */
+Route::resource('zones','Project\ZoneController');
+Route::get('/zones/destroy/{zone}','Project\ZoneController@destroy')->name('zones.destroy');
+Route::post('/zones/add','Project\ZoneController@add')->name('zones.add');
+
+/* Routes Positions */
+Route::resource('positions','Project\PositionController');
+Route::get('/position/destroy/{position}','Project\PositionController@destroy')->name('positions.destroy');
 
 /* Routes Locations */
 Route::resource('locations','Settings\LocationController');
 Route::get('/location/destroy/{location}','Settings\LocationController@destroy')->name('locations.destroy');
 
+
+
+
+
+
 /* Routes Turns */
 Route::resource('turns','TurnController');
 Route::get('/turns/destroy/{turn}','TurnController@destroy')->name('turns.destroy');
+
+/* Routes Brands */
+Route::resource('brands','Admin\BrandController');
+Route::get('/brand/destroy/{brand}','Admin\BrandController@destroy')->name('brands.destroy');
+Route::post('/regons/add','Admin\BrandController@add')->name('brands.add');
 
 /* Routes Folios */
 Route::get('folios/{location_id?}','FolioController@index')->name('folios.index');
@@ -132,6 +140,14 @@ Route::get('filterFoliosXLocation','FolioController@filterLocation')->name('foli
 Route::get('getNumber/{location}','FolioController@getNumber')->name('folios.getNumber');
 Route::get('folios/print/{folio}','FolioController@print')->name('folios.print');
 Route::patch('folios/updateNumber/{folio}','FolioController@update')->name('folios.update');
+
+/* Routes Contractors */
+/* Route::resource('contractors','Agreement\ContractorController');
+/* Route::get('/contractor/destroy/{contractor}','Agreement\ContractorController@destroy')->name('contractors.destroy'); 
+
+/* Routes Equipments */
+/* Route::resource('equipments','Agreement\EquipmentController');
+/* Route::get('/equipment/destroy/{equipment}','EquipmentController@destroy')->name('equipments.destroy');
 
 /* Routes Permits */
 /* Route::get('/permits/{user}','Agreement\PermitController@index')->name('permits.index');

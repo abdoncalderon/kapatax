@@ -1,21 +1,20 @@
 <?php
 
-namespace App\Http\Requests\Settings;
+namespace App\Http\Requests\Admin;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class UpdateZoneRequest extends FormRequest
+class StoreBrandRequest extends FormRequest
 {
     public function authorize()
     {
         return true;
     }
-
+    
     public function rules()
-    {   
+    {
         return [
-            'name'=>'required',
-            'project_id'=>'required',
+            'name'=>'required|unique:brands',
         ];
     }
 }

@@ -1,9 +1,8 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Admin;
 
-use App\Admin\RoleMenu;
-use App\Models\ProjectUser;
+use App\Http\Controllers\Controller;
 use App\Models\Role;
 use App\Http\Requests\Admin\StoreRoleRequest;
 use App\Http\Requests\Admin\UpdateRoleRequest;
@@ -11,7 +10,7 @@ use Exception;
 
 class RoleController extends Controller
 {
-    /* public function index()
+    public function index()
     {
         $roles = Role::get();
         return view('admin.roles.index', compact('roles'));
@@ -64,6 +63,5 @@ class RoleController extends Controller
         }catch(Exception $e){
             return back()->withErrors($e->getMessage());
         }
-    } */  
-
+    }  
 }

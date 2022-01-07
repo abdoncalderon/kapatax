@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Requests\Settings;
+namespace App\Http\Requests\Project;
 
 use Illuminate\Foundation\Http\FormRequest;
 
@@ -10,7 +10,6 @@ class StoreLocationRequest extends FormRequest
     {
         return true;
     }
-
     
     public function rules()
     {

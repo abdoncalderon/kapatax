@@ -53,7 +53,6 @@ class MenuSeeder extends Seeder
             'icon' => 'fa fa-circle-o',
         ]);
 
-        
         DB::table('menus')->insert([
             'code' => 'administration.companies',
             'showName' => 'content.companies',
@@ -69,7 +68,6 @@ class MenuSeeder extends Seeder
             'route' => 'divisions.index',
             'icon' => 'fa fa-circle-o',
         ]);
-
 
         DB::table('menus')->insert([
             'code' => 'administration.subsidiaries',
@@ -88,10 +86,26 @@ class MenuSeeder extends Seeder
         ]);
 
         DB::table('menus')->insert([
-            'code' => 'administration.areas',
-            'showName' => 'content.areas',
+            'code' => 'administration.organizations',
+            'showName' => 'content.organizations',
+            'menu_id' => '16',
+            'route' => 'organizations.index',
+            'icon' => 'fa fa-circle-o',
+        ]);
+
+        DB::table('menus')->insert([
+            'code' => 'administration.sectors',
+            'showName' => 'content.sectors',
             'menu_id' => '1',
-            'route' => 'areas.index',
+            'route' => 'sectors.index',
+            'icon' => 'fa fa-circle-o',
+        ]);
+
+        DB::table('menus')->insert([
+            'code' => 'administration.departments',
+            'showName' => 'content.departments',
+            'menu_id' => '16',
+            'route' => 'departments.index',
             'icon' => 'fa fa-circle-o',
         ]);
 
@@ -168,21 +182,7 @@ class MenuSeeder extends Seeder
             'icon' => 'fa fa-circle-o',
         ]);
 
-        DB::table('menus')->insert([
-            'code' => 'settings.organizations',
-            'showName' => 'content.organizations',
-            'menu_id' => '16',
-            'route' => null,
-            'icon' => 'fa fa-circle-o',
-        ]);
-
-        DB::table('menus')->insert([
-            'code' => 'settings.departments',
-            'showName' => 'content.departments',
-            'menu_id' => '16',
-            'route' => null,
-            'icon' => 'fa fa-circle-o',
-        ]);
+        
 
         DB::table('menus')->insert([
             'code' => 'settings.positions',
@@ -196,7 +196,7 @@ class MenuSeeder extends Seeder
             'code' => 'settings.brands',
             'showName' => 'content.brands',
             'menu_id' => '16',
-            'route' => null,
+            'route' => 'brands.index',
             'icon' => 'fa fa-circle-o',
         ]);
 

@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\Admin;
+namespace App\Http\Controllers\Project;
 
 use App\Http\Controllers\Controller;
 use App\Models\Position;
@@ -13,12 +13,12 @@ class PositionController extends Controller
     public function index()
     {
         $positions = Position::get();
-        return view('admin.positions.index', compact('positions'));
+        return view('project.positions.index', compact('positions'));
     }
 
     public function create()
     {
-        return view('admin.positions.create');
+        return view('project.positions.create');
     }
 
     public function store(StorePositionRequest $request )
@@ -29,14 +29,14 @@ class PositionController extends Controller
 
     public function show(Position $position)
     {
-        return view('admin.positions.show',[
+        return view('project.positions.show',[
             'position'=>$position
             ]);
     }
 
     public function edit(Position $position)
     {
-        return view('admin.positions.edit',[
+        return view('project.positions.edit',[
             'position'=>$position
             ]);
     }

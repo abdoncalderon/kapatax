@@ -17,8 +17,6 @@ class CreateLocationsTable extends Migration
             $table->id();
             $table->string('name')->unique();
             $table->string('code')->unique();
-            $table->foreignId('project_id');
-            $table->foreign('project_id')->references('id')->on('projects')->onUpdate('cascade')->onDelete('restrict');
             $table->foreignId('zone_id');
             $table->foreign('zone_id')->references('id')->on('zones')->onUpdate('cascade')->onDelete('restrict');
             $table->string('latitude')->nullable();

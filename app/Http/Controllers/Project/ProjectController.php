@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\Settings;
+namespace App\Http\Controllers\Project;
 
 use App\Models\Project;
 use App\Models\Subsidiary;
@@ -15,7 +15,7 @@ class ProjectController extends Controller
     {
         $project_id = session('current_project_id');
         $project = Project::where('id',$project_id)->first();
-        return view('settings.project.show',[
+        return view('project.project.show',[
             'project'=>$project
             ]);
     }
@@ -24,7 +24,7 @@ class ProjectController extends Controller
     {
         $subsidiaries = Subsidiary::get();
         $cities = City::get();
-        return view('settings.project.edit',[
+        return view('project.project.edit',[
             'project'=>$project
             ])
         ->with(compact('subsidiaries'))

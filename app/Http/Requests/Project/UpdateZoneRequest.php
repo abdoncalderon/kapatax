@@ -1,10 +1,10 @@
 <?php
 
-namespace App\Http\Requests\Settings;
+namespace App\Http\Requests\Project;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class StoreZoneRequest extends FormRequest
+class UpdateZoneRequest extends FormRequest
 {
     public function authorize()
     {
@@ -12,9 +12,9 @@ class StoreZoneRequest extends FormRequest
     }
 
     public function rules()
-    {
+    {   
         return [
-            'name'=>'required|unique:zones',
+            'name'=>'required',
             'project_id'=>'required',
         ];
     }

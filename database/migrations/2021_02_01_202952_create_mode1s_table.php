@@ -16,6 +16,8 @@ class CreateMode1sTable extends Migration
         Schema::create('mode1s', function (Blueprint $table) {
             $table->id();
             $table->string('name')->unique();
+            $table->foreignId('brand_id');
+            $table->foreign('brand_id')->references('id')->on('brands')->onUpdate('cascade')->onDelete('restrict');
             $table->timestamps();
         });
     }

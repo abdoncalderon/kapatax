@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\Settings;
+namespace App\Http\Controllers\Project;
 
 use App\Http\Controllers\Controller;
 use App\Models\Zone;
@@ -14,14 +14,14 @@ class ZoneController extends Controller
     public function index()
     {
         $zones = Zone::get();
-        return view('settings.zones.index', compact('zones'));
+        return view('project.zones.index', compact('zones'));
     }
 
     public function create()
     {
         $project_id = session('current_project_id');
         $project = Project::where('id',$project_id)->first();
-        return view('settings.zones.create')
+        return view('project.zones.create')
         ->with(compact('project'));
     }
 
@@ -33,12 +33,11 @@ class ZoneController extends Controller
         }catch(Exception $e){
             return back()->withErrors($e->getMessage());
         }
-        
     }
 
     public function show(Zone $zone)
     {
-        return view('settings.zones.show',[
+        return view('project.zones.show',[
             'zone'=>$zone
             ]);
     }
@@ -47,7 +46,7 @@ class ZoneController extends Controller
     {
         $project_id = session('current_project_id');
         $project = Project::where('id',$project_id)->first();
-        return view('settings.zones.edit',[
+        return view('project.zones.edit',[
             'zone'=>$zone
             ])
         ->with(compact('project'));

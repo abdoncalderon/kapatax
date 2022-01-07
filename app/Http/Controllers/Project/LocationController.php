@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\Settings;
+namespace App\Http\Controllers\Project;
 
 use App\Models\Location;
 use App\Models\Project;
@@ -15,7 +15,7 @@ class LocationController extends Controller
     public function index()
     {
         $locations = Location::get();
-        return view('settings.locations.index', compact('locations'));
+        return view('project.locations.index', compact('locations'));
     }
 
     public function create()
@@ -23,7 +23,7 @@ class LocationController extends Controller
         $zones = Zone::all();
         $project_id = session('current_project_id');
         $project = Project::where('id',$project_id)->first();
-        return view('settings.locations.create')
+        return view('project.locations.create')
         ->with('project',$project)
         ->with('zones',$zones);
     }
@@ -36,7 +36,7 @@ class LocationController extends Controller
 
     public function show(Location $location)
     {
-        return view('settings.locations.show',[
+        return view('project.locations.show',[
             'location'=>$location
             ]);
     }
@@ -46,7 +46,7 @@ class LocationController extends Controller
         $zones = Zone::all();
         $project_id = session('current_project_id');
         $project = Project::where('id',$project_id)->first();
-        return view('settings.locations.edit',[
+        return view('project.locations.edit',[
             'location'=>$location
             ])->with('project',$project)->with('zones',$zones);
     }
