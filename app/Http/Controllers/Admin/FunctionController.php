@@ -12,31 +12,31 @@ class FunctionController extends Controller
 {
     public function index()
     {
-        $sectors = Funct1on::get();
-        return view('admin.sectors.index', compact('sectors'));
+        $functions = Funct1on::get();
+        return view('admin.functions.index', compact('functions'));
     }
 
     public function create()
     {
-        return view('admin.sectors.create');
+        return view('admin.functions.create');
     }
 
     public function store(StoreFunctionRequest $request )
     {
         Funct1on::create($request ->validated());
-        return redirect()->route('sectors.index');
+        return redirect()->route('functions.index');
     }
 
     public function show(Funct1on $funct1on)
     {
-        return view('admin.sectors.show',[
+        return view('admin.functions.show',[
             'funct1on'=>$funct1on
             ]);
     }
 
     public function edit(Funct1on $funct1on)
     {
-        return view('admin.sectors.edit',[
+        return view('admin.functions.edit',[
             'funct1on'=>$funct1on
             ]);
     }
@@ -45,7 +45,7 @@ class FunctionController extends Controller
     {
         try{
             $funct1on->update($request->validated());
-            return redirect()->route('sectors.index');
+            return redirect()->route('functions.index');
         }catch(Exception $e){
             return back()->withErrors($e->getMessage());
         }
@@ -55,7 +55,7 @@ class FunctionController extends Controller
     {
         try{
             $funct1on->delete();
-            return redirect()->route('sectors.index');
+            return redirect()->route('functions.index');
         }catch(Exception $e){
             return back()->withErrors($e->getMessage());
         }

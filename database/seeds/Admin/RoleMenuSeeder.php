@@ -372,10 +372,10 @@ class RoleMenuSeeder extends Seeder
             'role_id' => '1',
         ]);
 
-        DB::table('role_menus')->insert([
+        /* DB::table('role_menus')->insert([
             'menu_id' => '74',
             'role_id' => '1',
-        ]);
+        ]); */
     }
 
     

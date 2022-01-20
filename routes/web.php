@@ -91,10 +91,6 @@ Route::get('/organization/destroy/{organization}','Admin\OrganizationController@
 Route::resource('sectors','Admin\SectorController');
 Route::get('/sector/destroy/{sector}','Admin\SectorController@destroy')->name('sectors.destroy');
 
-
-
-
-
 /* Routes Departments */
 Route::resource('departments','Project\DepartmentController');
 Route::get('/departments/destroy/{country}','Project\DepartmentController@destroy')->name('departments.destroy');
@@ -109,6 +105,11 @@ Route::resource('zones','Project\ZoneController');
 Route::get('/zones/destroy/{zone}','Project\ZoneController@destroy')->name('zones.destroy');
 Route::post('/zones/add','Project\ZoneController@add')->name('zones.add');
 
+/* Routes Functions */
+Route::resource('functions','FunctionController');
+Route::get('/functions/destroy/{function}','FunctionController@destroy')->name('functions.destroy');
+Route::post('/functions/add','FunctionController@add')->name('functions.add'); 
+
 /* Routes Positions */
 Route::resource('positions','Project\PositionController');
 Route::get('/position/destroy/{position}','Project\PositionController@destroy')->name('positions.destroy');
@@ -116,11 +117,6 @@ Route::get('/position/destroy/{position}','Project\PositionController@destroy')-
 /* Routes Locations */
 Route::resource('locations','Settings\LocationController');
 Route::get('/location/destroy/{location}','Settings\LocationController@destroy')->name('locations.destroy');
-
-
-
-
-
 
 /* Routes Turns */
 Route::resource('turns','TurnController');
