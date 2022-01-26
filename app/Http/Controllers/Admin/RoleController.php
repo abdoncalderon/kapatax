@@ -4,8 +4,11 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Models\Role;
+use App\Models\Permit;
+use App\Models\RolePermits;
 use App\Http\Requests\Admin\StoreRoleRequest;
 use App\Http\Requests\Admin\UpdateRoleRequest;
+use App\Models\RolePermit;
 use Exception;
 
 class RoleController extends Controller
@@ -23,7 +26,12 @@ class RoleController extends Controller
 
     public function store(StoreRoleRequest $request )
     {
-        Role::create($request ->validated());
+        // Role::create($request ->validated());
+        $request ->validated();
+        $role = Role::created([
+            'name' => $request['name'],
+        ]);
+        assignPermitsToRole($role);
         return redirect()->route('roles.index');
     }
 
@@ -63,5 +71,16 @@ class RoleController extends Controller
         }catch(Exception $e){
             return back()->withErrors($e->getMessage());
         }
-    }  
+    } 
+
+    private function assignPermitsToRole(Role $role){
+        $permits = Permit::all();
+        foreach ($permits as $permit){
+            $rolePermit = RolePermit::created([
+                'role_id' => $role->id,
+                'permit_id' => $permit->id,
+            ]);
+        }
+
+    }
 }

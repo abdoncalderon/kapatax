@@ -44,7 +44,7 @@
                             <div class="col-sm-8" >
                                 <select id="location" name="location" class="form-control" required style="width: 100%;" >
                                     <option value="">{{__('messages.select')}} {{__('content.location')}}</option>
-                                    @foreach (auth()->user()->locations as $locationUser)
+                                    @foreach (user_managed_locations(current_user()) as $locationUser)
                                         <option value="{{ $locationUser->location_id }}"
                                             @if($locationUser->location_id==$location_id):
                                                 selected="selected"

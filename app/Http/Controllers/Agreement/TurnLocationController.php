@@ -23,7 +23,7 @@ class TurnLocationController extends Controller
         }else{
             $turns = Turn::all();
         }
-        return view('turnslocations.create')
+        return view('agreement.urnslocations.create')
         ->with('location',$location)
         ->with('turns',$turns);
     }

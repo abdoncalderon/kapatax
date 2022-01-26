@@ -16,17 +16,6 @@ class CreateContractorsTable extends Migration
         Schema::create('contractors', function (Blueprint $table) {
             $table->id();
             $table->string('name')->unique();
-            $table->string('code')->unique();
-            $table->string('taxId')->unique()->nullable();
-            $table->foreignId('city_id');
-            $table->foreign('city_id')->references('id')->on('cities')->onUpdate('cascade')->onDelete('restrict');
-            $table->string('address')->nullable();
-            $table->string('zipCode')->nullable();
-            $table->string('phoneNumber')->nullable();
-            $table->foreignId('subsidiary_id');
-            $table->foreign('subsidiary_id')->references('id')->on('subsidiaries')->onUpdate('cascade')->onDelete('restrict');
-            $table->boolean('isActive')->default(true);
-            $table->boolean('isLocked')->default(false);
             $table->timestamps();
         });
     }

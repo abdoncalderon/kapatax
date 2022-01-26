@@ -12,12 +12,12 @@ class SectorController extends Controller
     public function index()
     {
         $sectors = Sector::get();
-        return view('sectors.index', compact('sectors'));
+        return view('agreement.sectors.index', compact('sectors'));
     }
 
     public function create()
     {
-        return view('sectors.create');
+        return view('agreement.sectors.create');
     }
 
     public function store(StoreSectorRequest $request )
@@ -28,14 +28,14 @@ class SectorController extends Controller
 
     public function show(Sector $sector)
     {
-        return view('sectors.show',[
+        return view('agreement.sectors.show',[
             'sector'=>$sector
             ]);
     }
 
     public function edit(Sector $sector)
     {
-        return view('sectors.edit',[
+        return view('agreement.sectors.edit',[
             'sector'=>$sector
             ]);
     }

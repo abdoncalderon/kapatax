@@ -47,7 +47,12 @@ class User extends Authenticatable
 
     public function projects()
     {
-        return $this->hasMany(UserProject::class);
+        return $this->hasMany(ProjectUser::class);
+    }
+
+    public function locations()
+    {
+        return $this->hasMany(Models\LocationUser::class);
     }
     
 }

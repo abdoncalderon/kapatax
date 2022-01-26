@@ -1,7 +1,8 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Agreement;
 
+use App\Http\Controllers\Controller;
 use App\Models\Location;
 use App\Models\Project;
 use App\Http\Requests\StoreLocationRequest;
@@ -13,13 +14,13 @@ class LocationController extends Controller
     public function index()
     {
         $locations = Location::get();
-        return view('locations.index', compact('locations'));
+        return view('agreement.locations.index', compact('locations'));
     }
 
     public function create()
     {
         $projects = Project::get();
-        return view('locations.create')
+        return view('agreement.locations.create')
         ->with('projects',$projects);
     }
 
@@ -31,14 +32,14 @@ class LocationController extends Controller
 
     public function show(Location $location)
     {
-        return view('locations.show',[
+        return view('agreement.locations.show',[
             'location'=>$location
             ]);
     }
 
     public function edit(Location $location)
     {
-        return view('locations.edit',[
+        return view('agreement.locations.edit',[
             'location'=>$location
             ]);
     }
@@ -57,7 +58,5 @@ class LocationController extends Controller
         }catch(Exception $e){
             return back()->withErrors($e->getMessage());
         }
-
-        
     }
 }

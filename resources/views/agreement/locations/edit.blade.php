@@ -36,7 +36,7 @@
                
                 {{-- Start Form  --}}
 
-                <form class="form-horizontal" method="POST" action="{{ route('locations.update', $location) }}">
+                <form class="form-horizontal" method="POST" action="{{ route('workbook_settings_locations_update', $location) }}">
                     @csrf
                     @method('PATCH')
 
@@ -53,15 +53,6 @@
                             {{-- Project ID  --}}
 
                             <input type="text" hidden name="project_id" value="{{ $location->project_id }}">
-
-                            {{-- Project  --}}
-
-                            <div class="form-group">
-                                <label class="col-sm-2 control-label">{{ __('content.project') }}</label>
-                                <div class="col-sm-10">
-                                    <input disabled class="form-control" value="{{ $location->project->name }}">
-                                </div>
-                            </div>
 
                             {{-- Name  --}}
 
@@ -87,6 +78,53 @@
                                 <label class="col-sm-2 control-label">{{ __('content.sequence') }}</label>
                                 <div class="col-sm-10">
                                     <input type="number" class="form-control" name="sequence" value="{{ $location->sequence }}">
+                                </div>
+                            </div>
+
+                            {{-- latitude  --}}
+
+                            <div class="form-group">
+                                <label class="col-sm-2 control-label">{{ __('content.latitude') }}</label>
+                                <div class="input-group input-group-sm col-xs-12 col-sm-10">
+                                    <input type="number" class="form-control" name="latitude" value="{{ $location->latitude }}" required>
+                                </div>
+                            </div>
+
+                            {{-- longitude  --}}
+
+                            <div class="form-group">
+                                <label class="col-sm-2 control-label">{{ __('content.longitude') }}</label>
+                                <div class="input-group input-group-sm col-xs-12 col-sm-10">
+                                    <input type="number" class="form-control" name="longitude" value="{{ $location->longitude }}" required>
+                                </div>
+                            </div>
+
+                            {{-- start date --}}
+
+                            <div class="form-group">
+                                <label class="col-sm-2 control-label">{{ __('content.startDate') }}</label>
+                                <div class="input-group input-group-sm col-xs-12 col-sm-10">
+                                    <input id="startDate" class="form-control pull-right" type="date"  name="startDate" value="{{ $location->startDate }}">
+                                    @error('startDate')
+                                        <span class="invalid-feedback" role="alert" style="color:red">
+                                            <strong>{{ $message }}</strong>
+                                        </span>
+                                    @enderror
+                                </div>
+                            </div>
+
+                            {{-- finish date --}}
+                            
+                            <div class="form-group">
+
+                                <label class="col-sm-2 control-label">{{ __('content.finishDate') }}</label>
+                                <div class="input-group input-group-sm col-xs-12 col-sm-10">
+                                    <input id="finishDate" class="form-control pull-right" type="date"  name="finishDate" value="{{ $location->finishDate }}">
+                                    @error('finishDate')
+                                        <span class="invalid-feedback" role="alert" style="color:red">
+                                            <strong>{{ $message }}</strong>
+                                        </span>
+                                    @enderror
                                 </div>
                             </div>
                             

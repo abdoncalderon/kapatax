@@ -12,12 +12,12 @@ class TurnController extends Controller
     public function index()
     {
         $turns = Turn::get();
-        return view('turns.index', compact('turns'));
+        return view('agreement.turns.index', compact('turns'));
     }
 
     public function create()
     {
-        return view('turns.create');
+        return view('agreement.turns.create');
     }
 
     public function store(StoreTurnRequest $request )
@@ -35,14 +35,14 @@ class TurnController extends Controller
 
     public function show(Turn $turn)
     {
-        return view('turns.show',[
+        return view('agreement.turns.show',[
             'turn'=>$turn
             ]);
     }
 
     public function edit(Turn $turn)
     {
-        return view('turns.edit',[
+        return view('agreement.turns.edit',[
             'turn'=>$turn
             ]);
     }

@@ -51,6 +51,7 @@ return [
     'printNote'=>'Imprimir Anotación',
     'printFolio'=>'Imprimir Folio',
     'receiveEmail'=>'Recibir Correo',
+    'receiveEmailNotification'=>'Recibir Notificación por Correo Electrónico', 
     'signReport'=>'Firmar Reporte',
     'editSequence'=>'Editar Secuencia',
     'assignLocationTo'=>'Asignar Ubicación a',

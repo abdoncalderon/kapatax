@@ -8,5 +8,11 @@ class Equipment extends Model
 {
     protected $table = 'equipments';
 
-    protected $fillable = ['name',];
+    protected $fillable = ['name','project_id',];
+
+    public function project()
+    {
+        return $this->belongsTo(Project::class);
+    }
+    
 }

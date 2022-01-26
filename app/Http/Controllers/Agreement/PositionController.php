@@ -12,12 +12,12 @@ class PositionController extends Controller
     public function index()
     {
         $positions = Position::get();
-        return view('positions.index', compact('positions'));
+        return view('agreement.positions.index', compact('positions'));
     }
 
     public function create()
     {
-        return view('positions.create');
+        return view('agreement.positions.create');
     }
 
     public function store(StorePositionRequest $request )
@@ -28,14 +28,14 @@ class PositionController extends Controller
 
     public function show(Position $position)
     {
-        return view('positions.show',[
+        return view('agreement.positions.show',[
             'position'=>$position
             ]);
     }
 
     public function edit(Position $position)
     {
-        return view('positions.edit',[
+        return view('agreement.positions.edit',[
             'position'=>$position
             ]);
     }

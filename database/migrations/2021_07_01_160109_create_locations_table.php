@@ -16,7 +16,7 @@ class CreateLocationsTable extends Migration
         Schema::create('locations', function (Blueprint $table) {
             $table->id();
             $table->string('name')->unique();
-            $table->string('code')->unique();
+            $table->string('code')->unique()->nullable();
             $table->foreignId('zone_id');
             $table->foreign('zone_id')->references('id')->on('zones')->onUpdate('cascade')->onDelete('restrict');
             $table->string('latitude')->nullable();

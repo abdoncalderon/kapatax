@@ -1,7 +1,8 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Agreement;
 
+use App\Http\Controllers\Controller;
 use App\User;
 use App\Models\Location;
 use App\Models\LocationUser;
@@ -13,7 +14,7 @@ class LocationUserController extends Controller
 {
     public function index(User $user)
     {
-        return view('locationsUsers.index', compact('user'));
+        return view('agreement.locationsUsers.index', compact('user'));
     }
 
     public function create(User $user)
@@ -23,7 +24,7 @@ class LocationUserController extends Controller
         }else{
             $locations = Location::all();
         }
-        return view('locationsUsers.create')
+        return view('agreement.locationsUsers.create')
         ->with('user',$user)
         ->with('locations',$locations);
     }
@@ -49,7 +50,7 @@ class LocationUserController extends Controller
     public function edit(LocationUser $locationUser)
     {
         $user = $locationUser->user;
-        return view('locationsUsers.edit')
+        return view('agreement.locationsUsers.edit')
         ->with('locationUser',$locationUser)
         ->with('user',$user);
     }

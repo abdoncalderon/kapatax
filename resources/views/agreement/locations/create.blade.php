@@ -4,12 +4,12 @@
 
 @section('section', __('content.locations'))
 
-@section('level', __('content.configuration'))
+@section('level', __('content.production'))
 
 @section('breadcrumb')
     <ol class="breadcrumb">
         <li><a href="/"><i class="fa fa-home"></i>Home</a></li>
-        <li><a href="{{ route('locations.index')}}"> {{ __('content.locations') }} </a></li>
+        <li><a href="{{ route('workbook_settings_locations')}}"> {{ __('content.locations') }} </a></li>
         <li class="active">{{ __('content.add') }}</li>
     </ol>
 @endsection
@@ -43,11 +43,15 @@
 
                     <div class="box-body">
 
-                        <div class="col-sm-4 col-md-6 col-lg-10">
+                        <div class="col-sm-11 col-md-11 col-lg-11">
 
                             {{-- Project  --}}
 
-                            <div class="form-group">
+                            <input id="project_id" type="hidden" class="form-control" name="project_id" value="{{ $project->id }}" type="text">
+
+                            {{-- Project  --}}
+
+                            {{-- <div class="form-group">
                                 <label class="col-sm-2 control-label">{{ __('content.project') }}</label>
                                 <div class="col-sm-10">
                                     <select id="project_id" name="project_id" class="form-control" required style="width: 100%;" >
@@ -57,7 +61,7 @@
                                         @endforeach
                                     </select>
                                 </div>
-                            </div>
+                            </div> --}}
 
                             {{-- Name  --}}
 
@@ -68,12 +72,85 @@
                                 </div>
                             </div>
 
+                            {{-- Zone --}}
+
+                            <div class="form-group">
+                                <label class="col-sm-2 control-label">{{ __('content.zone') }}</label>
+                                <div class="input-group input-group-sm col-xs-12 col-sm-10">
+                                    <select id="zone_id" name="zone_id" class="form-control" required style="width: 100%;" >
+                                        <option value="">{{__('messages.select')}} {{__('content.zone')}}</option>
+                                        @foreach ($zones as $zone)
+                                            <option value="{{ $zone->id }}">{{ $zone->name }}</option>
+                                        @endforeach
+                                    </select>
+                                    <span class="input-group-btn">
+                                        <button type="button" class="btn btn-info btn-flat" data-toggle="modal" data-target="#add"> + </button>
+                                    </span>
+                                </div>
+                            </div>
+
                             {{-- Code  --}}
 
                             <div class="form-group">
                                 <label class="col-sm-2 control-label">{{ __('content.code') }}</label>
                                 <div class="col-sm-10">
                                     <input type="text" class="form-control" name="code" maxlength="255" required>
+                                </div>
+                            </div>
+
+                            {{-- Sequence  --}}
+
+                            <div class="form-group">
+                                <label class="col-sm-2 control-label">{{ __('content.sequence') }}</label>
+                                <div class="input-group input-group-sm col-xs-12 col-sm-10">
+                                    <input type="number" class="form-control" name="sequence" required>
+                                </div>
+                            </div>
+
+                            {{-- latitude  --}}
+
+                            <div class="form-group">
+                                <label class="col-sm-2 control-label">{{ __('content.latitude') }}</label>
+                                <div class="input-group input-group-sm col-xs-12 col-sm-10">
+                                    <input type="number" class="form-control" name="latitude" required>
+                                </div>
+                            </div>
+
+                            {{-- longitude  --}}
+
+                            <div class="form-group">
+                                <label class="col-sm-2 control-label">{{ __('content.longitude') }}</label>
+                                <div class="input-group input-group-sm col-xs-12 col-sm-10">
+                                    <input type="number" class="form-control" name="longitude" required>
+                                </div>
+                            </div>
+
+                            {{-- start date --}}
+
+                            <div class="form-group">
+                                <label class="col-sm-2 control-label">{{ __('content.startDate') }}</label>
+                                <div class="input-group input-group-sm col-xs-12 col-sm-10">
+                                    <input id="startDate" class="form-control pull-right" type="date"  name="startDate" >
+                                    @error('startDate')
+                                        <span class="invalid-feedback" role="alert" style="color:red">
+                                            <strong>{{ $message }}</strong>
+                                        </span>
+                                    @enderror
+                                </div>
+                            </div>
+
+                            {{-- finish date --}}
+                            
+                            <div class="form-group">
+
+                                <label class="col-sm-2 control-label">{{ __('content.finishDate') }}</label>
+                                <div class="input-group input-group-sm col-xs-12 col-sm-10">
+                                    <input id="finishDate" class="form-control pull-right" type="date"  name="finishDate" >
+                                    @error('finishDate')
+                                        <span class="invalid-feedback" role="alert" style="color:red">
+                                            <strong>{{ $message }}</strong>
+                                        </span>
+                                    @enderror
                                 </div>
                             </div>
                             

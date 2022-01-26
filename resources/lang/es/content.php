@@ -66,6 +66,7 @@ return [
     'projects'=>'Proyectos',
     'locations'=>'Ubicaciones',
     'permits'=>'Permisos',
+    'permit'=>'Permiso',
     'periods'=>'Periodos',
     'attachments'=>'Adjuntos',
     'events'=>'Eventos',
@@ -267,6 +268,8 @@ return [
     'locked'=>'Bloqueado',
     'unlocked'=>'Desbloqueado',
     'to'=>'a',
+    'employee'=>'Empleado',
+    'employees'=>'Empleados',
     
     'currency'=>'US$',
     

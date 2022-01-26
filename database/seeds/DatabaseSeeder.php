@@ -1,5 +1,6 @@
 <?php
 
+use App\Models\RolePermit;
 use Illuminate\Database\Seeder;
 
 
@@ -17,7 +18,9 @@ class DatabaseSeeder extends Seeder
             UserSeeder::class,
             MenuSeeder::class,
             RoleMenuSeeder::class,
-            UserProjectSeeder::class,
+            ProjectUserSeeder::class,
+            PermitSeeder::class,
+            RolePermitSeeder::class,
         ]);
 
         

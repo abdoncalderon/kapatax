@@ -1,7 +1,8 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Agreement;
 
+use App\Http\Controllers\Controller;
 use Carbon\Carbon;
 use App\Models\Folio;
 use App\Models\Location;
@@ -33,7 +34,7 @@ class FolioController extends Controller
                             ->where('folios.location_id',$location_id)
                             ->get();
         }
-        return view('folios.index')
+        return view('agreement.folios.index')
         ->with(compact('folios'))
         ->with(compact('location_id'));
     }
@@ -47,7 +48,7 @@ class FolioController extends Controller
     public function create()
     {
         $locationsUser = LocationUser::where('user_id',auth()->user()->id)->get();
-        return view('folios.create', compact('locationsUser'));
+        return view('agreement.folios.create', compact('locationsUser'));
     }
 
     public function store(StoreFolioRequest $request)
@@ -72,7 +73,7 @@ class FolioController extends Controller
 
     public function edit(Folio $folio)
     {
-        return view('folios.edit', compact('folio'));
+        return view('agreement.folios.edit', compact('folio'));
     }
 
     public function update(UpdateFolioRequest $request, Folio $folio)
@@ -85,11 +86,8 @@ class FolioController extends Controller
 
     public function print(Folio $folio)
     {
-        // return view('folios.print1',compact('folio'));
-        
         $pdf = PDF::loadView('folios.print',compact('folio'));
         
-        // $pdf->page_text(72, 18, "Footer: {PAGE_NUM} of {PAGE_COUNT}", , 6, array(0,0,0));
         return $pdf->stream('folio.pdf');
 
     }

@@ -34,12 +34,12 @@
 
                         {{-- Project  --}}
 
-                        <div class="form-group">
+                        {{-- <div class="form-group">
                             <label class="col-sm-2 control-label">{{ __('content.project') }}</label>
                             <div class="col-sm-10">
                                 <input disabled class="form-control" value="{{ $location->project->name }}">
                             </div>
-                        </div>
+                        </div> --}}
 
                         {{-- Name  --}}
 
@@ -47,6 +47,15 @@
                             <label class="col-sm-2 control-label">{{ __('content.name') }}</label>
                             <div class="col-sm-10">
                                 <input disabled class="form-control" value="{{ $location->name }}">
+                            </div>
+                        </div>
+
+                        {{-- Name  --}}
+
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label">{{ __('content.zone') }}</label>
+                            <div class="col-sm-10">
+                                <input disabled class="form-control" value="{{ $location->zone->name }}">
                             </div>
                         </div>
 
@@ -65,6 +74,42 @@
                             <label class="col-sm-2 control-label">{{ __('content.sequence') }}</label>
                             <div class="col-sm-10">
                                 <input disabled class="form-control" value="{{ $location->sequence }}">
+                            </div>
+                        </div>
+
+                        {{-- Latitude  --}}
+
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label">{{ __('content.latitude') }}</label>
+                            <div class="input-group input-group-sm col-xs-12 col-sm-10">
+                                <input disabled class="form-control" value="{{ $location->latitude }}">
+                            </div>
+                        </div>
+
+                        {{-- Longitude  --}}
+
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label">{{ __('content.longitude') }}</label>
+                            <div class="input-group input-group-sm col-xs-12 col-sm-10">
+                                <input disabled class="form-control" value="{{ $location->longitude }}">
+                            </div>
+                        </div>
+
+                        {{-- Start Date  --}}
+
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label">{{ __('content.startDate') }}</label>
+                            <div class="input-group input-group-sm col-xs-12 col-sm-10">
+                                <input disabled class="form-control" value="{{ $location->startDate }}">
+                            </div>
+                        </div>
+
+                        {{-- Finish Date  --}}
+
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label">{{ __('content.finishDate') }}</label>
+                            <div class="input-group input-group-sm col-xs-12 col-sm-10">
+                                <input disabled class="form-control" value="{{ $location->finishDate }}">
                             </div>
                         </div>
 
@@ -104,14 +149,13 @@
                             </div>
                         </div>
 
-
                     </div>
 
                     {{-- Submit  --}}
 
                     <div class="box-footer">
-                        <a class="btn btn-success btn-sm" href=" {{ route('locations.edit', $location) }} ">{{ __('content.edit') }}</a>
-                        <a class="btn btn-info btn-sm" href=" {{ route('locations.index') }} ">{{ __('messages.returntolist') }}</a>
+                        <a class="btn btn-success btn-sm" href=" {{ route('workbook_settings_locations_edit', $location) }} ">{{ __('content.edit') }}</a>
+                        <a class="btn btn-info btn-sm" href=" {{ route('workbook_settings_locations') }} ">{{ __('messages.returnToList') }}</a>
                     </div>
 
                 </form>

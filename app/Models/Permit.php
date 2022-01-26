@@ -6,9 +6,10 @@ use Illuminate\Database\Eloquent\Model;
 
 class Permit extends Model
 {
-    protected $fillable = ['user_id','create_folio','create_dailyreport','create_note','create_comment','print_dailyreport','print_note','print_folio','edit_sequence',];
+    protected $fillable = ['name','menu_id',];
 
-    public function user(){
-        return $this->belongsTo(User::class);
+    public function menu(){
+        return $this->belongsTo(Menu::class);
     }
+    
 }

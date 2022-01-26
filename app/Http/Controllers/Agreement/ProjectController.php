@@ -12,12 +12,12 @@ class ProjectController extends Controller
     public function index()
     {
         $projects = Project::get();
-        return view('projects.index', compact('projects'));
+        return view('agreement.projects.index', compact('projects'));
     }
 
     public function create()
     {
-        return view('projects.create');
+        return view('agreement.projects.create');
     }
 
     public function store(StoreProjectRequest $request )
@@ -29,14 +29,14 @@ class ProjectController extends Controller
 
     public function show(Project $project)
     {
-        return view('projects.show',[
+        return view('agreement.projects.show',[
             'project'=>$project
             ]);
     }
 
     public function edit(Project $project)
     {
-        return view('projects.edit',[
+        return view('agreement.projects.edit',[
             'project'=>$project
             ]);
     }

@@ -55,9 +55,9 @@
                             <tr>
                                 <td>{{ $location->name }}</td>
                                 <td>
-                                    <a style="margin: 0.3em" class="btn btn-info btn-xs" href="{{ route('locations.show', $location)}}">{{ __('content.show') }}</a>
+                                    <a style="margin: 0.3em" class="btn btn-info btn-xs" href="{{ route('workbook_settings_locations_show', $location)}}">{{ __('content.show') }}</a>
                                     <a style="margin: 0.3em" class="btn btn-info btn-xs" href="{{ route('turnsLocations.index', $location)}}">{{ __('content.turns') }}</a>
-                                    <a style="margin: 0.3em" class="btn btn-danger btn-xs" href="{{ route('locations.destroy', $location)}}">{{ __('content.delete') }}</a>
+                                    <a style="margin: 0.3em" class="btn btn-danger btn-xs" href="{{ route('workbook_settings_locations_destroy', $location)}}">{{ __('content.delete') }}</a>
                                 </td>
                             </tr>
                         @endforeach

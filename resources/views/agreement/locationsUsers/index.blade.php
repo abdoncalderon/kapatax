@@ -4,12 +4,12 @@
 
 @section('section', __('content.users'))
 
-@section('level', __('content.configuration'))
+@section('level', __('content.production'))
 
 @section('breadcrumb')
     <ol class="breadcrumb">
         <li><a href="/"><i class="fa fa-home"></i>Home</a></li>
-        <li><a href="{{ route('users.index')}}"> {{ __('content.users') }} </a></li>
+        <li><a href="{{ route('workbook_settings_users')}}"> {{ __('content.users') }} </a></li>
         <li class="active">{{ __('content.locations') }}</li>
     </ol>
 @endsection
@@ -39,7 +39,7 @@
                             <th>{{ __('content.collaborate') }}</th>
                             <th>{{ __('content.checkout') }}</th>
                             <th>{{ __('content.approve') }}</th>
-                            <th>{{ __('messages.receiveEmail') }}</th>
+                            <th>{{ __('messages.receiveEmailNotification') }}</th>
                             <th>{{ __('content.actions') }}</th>
                         </tr>
                     </thead>

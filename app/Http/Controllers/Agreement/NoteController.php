@@ -1,7 +1,8 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Agreement;
 
+use App\Http\Controllers\Controller;
 use Carbon\Carbon;
 use App\Models\Note;
 use App\Models\Folio;
@@ -18,7 +19,6 @@ class NoteController extends Controller
 {
     public function index($location_id = null)
     {
-        // $notes = Note::where('user_id',auth()->user()->id)->get();
         if (empty($location_id)){
             $notes = Note::join('folios','notes.folio_id','=','folios.id')
                                 ->join('location_users','folios.location_id','=','location_users.location_id')
@@ -35,7 +35,7 @@ class NoteController extends Controller
                                 ->where('folios.location_id',$location_id)
                                 ->get();
         }
-        return view('notes.index')
+        return view('agreement.notes.index')
         ->with(compact('notes'))
         ->with(compact('location_id'));
     }
@@ -48,7 +48,7 @@ class NoteController extends Controller
 
     public function create(Folio $folio)
     {
-        return view('notes.create')
+        return view('agreement.notes.create')
         ->with('folio',$folio);
     }
 
@@ -74,13 +74,13 @@ class NoteController extends Controller
     }
 
     public function show(Note $note){
-        return view('notes.show')
+        return view('agreement.notes.show')
         ->with('note',$note);
     }
 
     public function edit(Note $note)
     {
-        return view('notes.edit')
+        return view('agreement.notes.edit')
         ->with('note',$note);
     }
 
@@ -95,7 +95,4 @@ class NoteController extends Controller
         }
         return redirect()->route('notes.index');
     }
-
-    
-
 }

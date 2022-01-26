@@ -30,7 +30,7 @@
             
             <div class="box-header with-border center-block">
                 <h3 class="box-title"><strong>{{ __('content.folio') }}</strong></h3> | 
-                @if(auth()->user()->permit->create_folio==1)
+                @if(user_have_permission('workbook_create_folio'))
                     <a class="btn btn-success btn-sm" href="{{ route('folios.create') }}">{{ __('content.insert') }}</a>
                 @endif
             </div>
@@ -47,7 +47,7 @@
                             <div class="col-sm-8" >
                                 <select id="location" name="location" class="form-control" required style="width: 100%;" >
                                     <option value="">{{__('messages.select')}} {{__('content.location')}}</option>
-                                    @foreach (auth()->user()->locations as $locationUser)
+                                    @foreach (user_managed_locations(current_user()) as $locationUser)
                                         <option value="{{ $locationUser->location_id }}"
                                             @if($locationUser->location_id==$location_id):
                                                 selected="selected"

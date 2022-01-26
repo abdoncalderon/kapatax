@@ -13,6 +13,11 @@ class Role extends Model
         return $this->hasMany(RoleMenu::class);
     }
 
+    public function permits()
+    {
+        return $this->hasMany(RolePermit::class);
+    }
+
     public function isActive(){
         if($this->isActive==1){
             return true;

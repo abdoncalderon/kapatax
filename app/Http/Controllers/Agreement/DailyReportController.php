@@ -1,7 +1,8 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Agreement;
 
+use App\Http\Controllers\Controller;
 use Carbon\Carbon;
 use App\Models\DailyReport;
 use App\Models\Folio;
@@ -35,7 +36,7 @@ class DailyReportController extends Controller
                                 ->where('folios.location_id',$location_id)
                                 ->get();
         }
-        return view('dailyreports.index')
+        return view('agreement.dailyreports.index')
         ->with(compact('dailyReports'))
         ->with(compact('location_id'));
     }
@@ -51,7 +52,7 @@ class DailyReportController extends Controller
         $equipments = Equipment::all();
         $positions = Position::all();
         $responsibles = LocationUser::where('location_id',$folio->location_id)->where('dailyreport_approver',1)->get();
-        return view('dailyreports.create')
+        return view('agreement.dailyreports.create')
         ->with('folio',$folio)
         ->with('equipments',$equipments)
         ->with('positions',$positions)
@@ -79,12 +80,12 @@ class DailyReportController extends Controller
     }
 
     public function review(DailyReport $dailyReport){
-        return view('dailyReports.review')
+        return view('agreement.dailyReports.review')
         ->with('dailyReport',$dailyReport);
     }
 
     public function show(DailyReport $dailyReport){
-        return view('dailyReports.show')
+        return view('agreement.dailyReports.show')
         ->with('dailyReport',$dailyReport);
     }
 
@@ -99,7 +100,7 @@ class DailyReportController extends Controller
                                             ->where('folios.location_id',$dailyReport->folio->location_id)
                                             ->orderBy('date','desc')
                                             ->get();
-        return view('dailyreports.edit')
+        return view('agreement.dailyreports.edit')
         ->with('dailyReport',$dailyReport)
         ->with('contractors',$contractors)
         ->with('equipments',$equipments)
@@ -127,5 +128,4 @@ class DailyReportController extends Controller
         }
         return redirect()->route('dailyReports.index');
     }
-
 }
