@@ -8,7 +8,7 @@
 
 @section('breadcrumb')
     <ol class="breadcrumb">
-        <li><a href="/"><i class="fa fa-home"></i>Home</a></li>
+        <li><a href="{{ route('home') }}"><i class="fa fa-home"></i>Home</a></li>
         <li><a href="{{ route('brands.index')}}"> {{ __('content.brands') }} </a></li>
         <li class="active">{{ __('content.add') }}</li>
     </ol>

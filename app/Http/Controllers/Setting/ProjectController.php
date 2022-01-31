@@ -4,17 +4,24 @@ namespace App\Http\Controllers\Setting;
 
 use App\Models\Project;
 use App\Models\Subsidiary;
-use App\Models\City;
+use App\Models\Region;
 use App\Http\Requests\Admin\UpdateProjectRequest;
 use App\Http\Controllers\Controller;
 use Exception;
 
 class ProjectController extends Controller
 {
-    public function show()
+
+    public function index()
     {
         $project_id = session('current_project_id');
-        $project = Project::where('id',$project_id)->first();
+        $projects = Project::where('id',$project_id)->get();
+        return view('setting.project.index', compact('projects'));
+    }
+
+
+    public function show(Project $project)
+    {
         return view('setting.project.show',[
             'project'=>$project
             ]);
@@ -23,12 +30,12 @@ class ProjectController extends Controller
     public function edit(Project $project)
     {
         $subsidiaries = Subsidiary::get();
-        $cities = City::get();
+        $regions = Region::get();
         return view('setting.project.edit',[
             'project'=>$project
             ])
         ->with(compact('subsidiaries'))
-        ->with(compact('cities'));
+        ->with(compact('regions'));
     }
     
     public function update(Project $project, UpdateProjectRequest $request)

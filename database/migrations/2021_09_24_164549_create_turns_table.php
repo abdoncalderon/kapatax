@@ -18,7 +18,7 @@ class CreateTurnsTable extends Migration
             $table->string('name')->unique();
             $table->time('start');
             $table->time('finish');
-            $table->boolean('nextday');
+            $table->boolean('nextday')->default(false);
             $table->timestamps();
         });
     }

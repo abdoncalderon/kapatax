@@ -8,7 +8,7 @@
 
 @section('breadcrumb')
     <ol class="breadcrumb">
-        <li><a href="/"><i class="fa fa-home"></i>Home</a></li>
+        <li><a href="{{ route('home') }}"><i class="fa fa-home"></i>Home</a></li>
         <li><a href="{{ route('notes.index')}}"> {{ __('content.notes') }} </a></li>
         <li class="active">{{ __('content.show') }}</li>
     </ol>
@@ -118,7 +118,7 @@
                             <div class="form-group">
                                 <label class="col-sm-2 control-label">{{ __('content.comments') }}</label>
                                 <div class="col-sm-10" >
-                                    @if(auth()->user()->permit->create_comment==1)
+                                    @if(user_have_permission('workbook_create_comment'))
                                         <button type="button" class="btn btn-default" data-toggle="modal" data-target="#modal-comments">
                                             {{ __('content.add') }}
                                         </button>

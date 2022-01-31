@@ -18,14 +18,8 @@ class UpdateProjectRequest extends FormRequest
         return [
             'name'=>'required',
             'code'=>'required',
-            'taxId'=>'required',
             'city_id'=>'required',
-            'address'=>'required',
-            'zipCode'=>'nullable',
-            'phoneNumber'=>'required',
             'subsidiary_id'=>'required',
-            'startDate'=>'required|date',
-            'finishDate'=>'required|date',
         ];
     }
 }

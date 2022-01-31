@@ -8,7 +8,7 @@
 
 @section('breadcrumb')
     <ol class="breadcrumb">
-        <li><a href="/"><i class="fa fa-home"></i>Home</a></li>
+        <li><a href="{{ route('home') }}"><i class="fa fa-home"></i>Home</a></li>
         <li class="active">{{ __('content.roles') }}</li>
     </ol>
 @endsection
@@ -69,6 +69,7 @@
                                 <td>
                                     <a class="btn btn-info btn-xs" href="{{ route('roles.edit', $role)}}">{{ __('content.edit') }}</a>
                                     <a class="btn btn-info btn-xs" href="{{ route('roleMenus.index', $role)}}">{{ __('content.menus') }}</a>
+                                    <a class="btn btn-info btn-xs" href="{{ route('rolePermits.index', $role)}}">{{ __('content.permits') }}</a>
                                     @if($role->id!=1)
                                         @if ($role->isActive())
                                             <a class="btn btn-danger btn-xs" href="{{ route('roles.activate', [$role, '0']) }}">{{ __('content.deactivate') }}</a>

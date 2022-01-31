@@ -8,7 +8,7 @@
 
 @section('breadcrumb')
     <ol class="breadcrumb">
-        <li><a href="/"><i class="fa fa-home"></i>Home</a></li>
+        <li><a href="{{ route('home') }}"><i class="fa fa-home"></i>Home</a></li>
         <li><a href="{{ route('users.index')}}"> {{ __('content.users') }} </a></li>
         <li><a href="{{ route('locationsUsers.index',$user)}}"> {{ __('content.locations') }} </a></li>
         <li class="active">{{ __('content.edit') }}</li>
@@ -90,7 +90,7 @@
                             <div class="form-group">
                                 <label class="col-sm-2 control-label">{{ __('content.receive') }} {{ __('content.notification') }}</label>
                                 <div class="col-sm-10" >
-                                    <input id="receive_notification" type="checkbox" name="receive_notification" {{ checked($locationUser->receive_notifcation) }}>
+                                    <input id="receive_notification" type="checkbox" name="receive_notification" {{ checked($locationUser->receive_notification) }}>
                                 </div>
                             </div>
 

@@ -8,7 +8,7 @@
 
 @section('breadcrumb')
     <ol class="breadcrumb">
-        <li><a href="/"><i class="fa fa-home"></i>Home</a></li>
+        <li><a href="{{ route('home') }}"><i class="fa fa-home"></i>Home</a></li>
         <li class="active">{{ __('content.dailyreports') }}</li>
     </ol>
 @endsection
@@ -46,7 +46,7 @@
                                     <option value="">{{__('messages.select')}} {{__('content.location')}}</option>
                                     @foreach (user_managed_locations(current_user()) as $locationUser)
                                         <option value="{{ $locationUser->location_id }}"
-                                            @if($locationUser->location_id==$location_id):
+                                            @if($locationUser->location_id==$location->id):
                                                 selected="selected"
                                             @endif
                                         >{{ $locationUser->location->name }}</option>
@@ -75,6 +75,7 @@
                             <th>{{ __('content.location') }}</th>
                             <th>{{ __('content.date') }}</th>
                             <th>{{ __('content.turn') }}</th>
+                            <th>{{ __('content.status') }}</th>
                             <th>{{ __('content.actions') }}</th>
 
                         </tr>
@@ -87,12 +88,17 @@
                             <tr>
                                 <td>{{ $dailyReport->location }}</td>
                                 <td>{{ date('Y-M-d',strtotime($dailyReport->date)) }}</td>
-                                <td>{{ $dailyReport->turn }} {{ $dailyReport->status() }}</td>
+                                <td>{{ $dailyReport->turn }}</td>
+                                <td>{{ $dailyReport->status() }}</td>
                                 <td>
                                     @if($dailyReport->status==0)
-                                        <a target="_blank" class="btn btn-warning btn-xs" href="{{ route('dailyReports.edit',$dailyReport) }}" >{{ __('content.edit') }}</a>
+                                        @if(user_have_profile_in_location('dailyreport_collaborator',$location))
+                                            <a target="_blank" class="btn btn-warning btn-xs" href="{{ route('dailyReports.edit',$dailyReport) }}" >{{ __('content.edit') }}</a>
+                                        @endif
                                     @elseif($dailyReport->status==1)
-                                        <a target="_blank" class="btn btn-success btn-xs" href="{{ route('dailyReports.review',$dailyReport) }}">{{ __('content.Approve') }}</a>
+                                        @if(user_have_profile_in_location('folio_approver',$location))
+                                            <a target="_blank" class="btn btn-success btn-xs" href="{{ route('dailyReports.review',$dailyReport) }}">{{ __('content.approve') }}</a>
+                                        @endif
                                     @else 
                                         <a target="_blank" class="btn btn-info btn-xs" href="{{ route('dailyReports.show',$dailyReport) }}">{{ __('content.show') }}</a>
                                     @endif

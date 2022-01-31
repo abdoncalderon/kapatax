@@ -1,10 +1,11 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Agreement;
 
+use App\Http\Controllers\Controller;
 use App\Models\PositionDailyReport;
 use App\Models\DailyReport;
-use App\Http\Requests\StorePositionDailyReportRequest;
+use App\Http\Requests\Agreement\StorePositionDailyReportRequest;
 use Illuminate\Http\Request;
 use Exception;
 

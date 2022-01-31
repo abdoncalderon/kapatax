@@ -34,12 +34,12 @@
                 {{-- Title --}}
 
                 <div class="box-header with-border">
-                    <h3 class="box-title"><strong>{{ __('content.edit') }}  {{ __('content.permits') }} {{ $permits->name }}</strong></h3>
+                    <h3 class="box-title"><strong>{{ __('content.edit') }}  {{ __('content.permits') }} {{ $permit->name }}</strong></h3>
                 </div>
 
                 {{-- Start Form  --}}
 
-                <form class="form-horizontal" method="POST" action="{{ route('permits.update', $permits) }}">
+                <form class="form-horizontal" method="POST" action="{{ route('permits.update', $permit) }}">
                     @csrf
                     @method('PATCH')
 
@@ -56,7 +56,7 @@
                             <div class="form-group">
                                 <label class="col-sm-2 control-label">{{ __('content.name') }}</label>
                                 <div class="input-group input-group-sm col-xs-12 col-sm-10" >
-                                    <input id="name" disabled type="text" class="form-control" name="name" value="{{ old('name', $permits->name) }}" placeholder="{{ __('content.name') }}">
+                                    <input id="name" disabled type="text" class="form-control" name="name" value="{{ old('name', $permit->name) }}" placeholder="{{ __('content.name') }}">
                                     @error('name')
                                         <span class="invalid-feedback" role="alert" style="color:red">
                                             <strong>{{ $message }}</strong>
@@ -73,10 +73,10 @@
                                     <select name="menu_id" class="form-control" style="width: 100%;">
                                         @foreach ($menus as $menu)
                                             <option value="{{ $menu->id }}"
-                                                @if($permits->menu_id==$menu->id):
+                                                @if($permit->menu_id==$menu->id):
                                                     selected="selected"
                                                 @endif
-                                            >{{ $menu->name }}</option>
+                                            >{{ $menu->code }}</option>
                                         @endforeach
                                     </select>
                                     @error('menu_id')

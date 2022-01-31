@@ -76,7 +76,11 @@ return [
     'showName'=>'Nombre a Mostrar',
     'startSession'=>'Iniciar Sesión',
     'selectProject'=>'Seleccione Proyecto',
-    'roleMenus'=>'Menus del Rol'
+    'roleMenus'=>'Menus del Rol',
+    'rolePermits'=>'Permisos del Rol',
+    'dateOutsideProjectExecution'=>'La Fecha esta fuera del tiempo de ejecución del proyecto',
+    'dateOutsideLocationExecution'=>'La Fecha esta fuera del tiempo de ejecución de la ubicación',
+    'assignmentLocationtoUser'=>'Asignación de Ubicaciones a Usuarios',
 
 
     

@@ -8,7 +8,7 @@
 
 @section('breadcrumb')
     <ol class="breadcrumb">
-        <li><a href="/"><i class="fa fa-home"></i>Home</a></li>
+        <li><a href="{{ route('home') }}"><i class="fa fa-home"></i>Home</a></li>
         <li><a href="{{ route('folios.index')}}"> {{ __('content.folios') }} </a></li>
         <li class="active">{{ __('content.insert') }}</li>
     </ol>
@@ -53,7 +53,7 @@
                             <div class="form-group">
                                 <label class="col-sm-2 control-label">{{ __('content.location') }}</label>
                                 <div class="col-sm-10" >
-                                    <select id="location_id" name="location_id" class="form-control" required style="width: 100%;" >
+                                    <select id="folio_location_id" name="location_id" class="form-control" required style="width: 100%;" >
                                         <option value="">{{__('messages.select')}} {{__('content.location')}}</option>
                                         @foreach ($locationsUser as $locationUser)
                                             <option value="{{ $locationUser->location_id }}">{{ $locationUser->location->name }}</option>

@@ -1,16 +1,16 @@
 @extends('layouts.main')
 
-@section('title', __('content.roles'))
+@section('title', __('content.users'))
 
-@section('section', __('content.roles'))
+@section('section', __('content.users'))
 
 @section('level', __('content.administration'))
 
 @section('breadcrumb')
     <ol class="breadcrumb">
-        <li><a href="/"><i class="fa fa-home"></i>Home</a></li>
-        <li><a href="{{ route('roles.index')}}"> {{ __('content.roles') }} </a></li>
-        <li><a href="{{ route('roleMenus.index',$role)}}"> {{ __('content.menus') }} </a></li>
+        <li><a href="{{ route('home') }}"><i class="fa fa-home"></i>Home</a></li>
+        <li><a href="{{ route('users.index')}}"> {{ __('content.users') }} </a></li>
+        <li><a href="{{ route('projectUsers.index',$user)}}"> {{ __('content.projects') }} </a></li>
         <li class="active">{{ __('content.add') }}</li>
     </ol>
 @endsection
@@ -35,57 +35,81 @@
                 {{-- Title --}}
 
                 <div class="box-header with-border">
-                    <h3 class="box-title"><strong>{{ __('content.add').' '.__('content.menu')  }}</strong></h3>
+                    <h3 class="box-title"><strong>{{ __('content.add').' '.__('content.project').' '.__('content.to').' '.$user->name }}</strong></h3>
                 </div>
 
                 {{-- Start Form  --}}
                
-                <form class="form-horizontal" method="POST" action="{{ route('roleMenus.store', $role) }}">
+                <form class="form-horizontal" method="POST" action="{{ route('projectUsers.store', $user) }}">
                     @csrf
 
                     {{-- Form Body --}}
 
                     <div class="box-body">
 
+                        {{-- Fields --}}
+
                         <div class="col-sm-11 col-md-11 col-lg-11">
 
-                            {{-- Role Id (hide) --}}
+                                {{-- User Id (hide) --}}
 
-                            <div class="form-group">
-                                <div class="input-group input-group-sm col-xs-12 col-sm-10">
-                                    <input id="role_id" type="hidden" class="form-control" name="role_id" value="{{ $role->id}}">
+                                <div class="form-group">
+                                    <div class="input-group input-group-sm col-xs-12 col-sm-10">
+                                        <input id="user_id" type="hidden" class="form-control" name="user_id" value="{{ $user->id}}">
+                                    </div>
                                 </div>
-                            </div>
-
-                            {{-- Role --}}
-
-                            <div class="form-group">
-                                <label class="col-sm-2 control-label">{{ __('content.role') }}</label>
-                                <div class="input-group input-group-sm col-xs-12 col-sm-10">
-                                    <input id="role" type="text" class="form-control" name="role" value="{{ $role->name }}">
+    
+                                {{-- user --}}
+    
+                                <div class="form-group">
+                                    <label class="col-sm-2 control-label">{{ __('content.user') }}</label>
+                                    <div class="input-group input-group-sm col-xs-12 col-sm-10">
+                                        <input id="user" disabled type="text" class="form-control" name="user" value="{{ $user->name }}">
+    
+                                    </div>
                                 </div>
-                            </div>
-
-                            {{-- Menu --}}
-
-                            <div class="form-group">
-                                <label class="col-sm-2 control-label">{{ __('content.menu') }}</label>
-                                <div class="input-group input-group-sm col-xs-12 col-sm-10" >
-                                    <select name="menu_id" class="form-control select2" multiple="multiple" style="width: 100%;">
-                                        @foreach ($availablesMenus as $menu)
-                                            <option value="{{ $menu->id }}">{{ $menu->code }}</option>
-                                        @endforeach
-                                    </select>
-                                    @error('menu_id')
-                                        <span class="invalid-feedback" role="alert" style="color:red">
-                                            <strong>{{ $message }}</strong>
-                                        </span>
-                                    @enderror
-
+    
+                                {{-- project --}}
+    
+                                <div class="form-group">
+                                    <label class="col-sm-2 control-label">{{ __('content.project') }}</label>
+                                    <div class="input-group input-group-sm col-xs-12 col-sm-10" >
+                                        <select name="project_id" class="form-control" style="width: 100%;">
+                                            @foreach ($availablesProjects as $project)
+                                                <option value="{{ $project->id }}">{{ $project->name }}</option>
+                                            @endforeach
+                                        </select>
+                                        @error('project_id')
+                                            <span class="invalid-feedback" role="alert" style="color:red">
+                                                <strong>{{ $message }}</strong>
+                                            </span>
+                                        @enderror
+    
+                                    </div>
                                 </div>
-                            </div>
+    
+                                {{-- role --}}
+    
+                                <div class="form-group">
+                                    <label class="col-sm-2 control-label">{{ __('content.role') }}</label>
+                                    <div class="input-group input-group-sm col-xs-12 col-sm-10" >
+                                        <select name="role_id" class="form-control" style="width: 100%;">
+                                            @foreach ($roles as $role)
+                                                <option value="{{ $role->id }}">{{ $role->name }}</option>
+                                            @endforeach
+                                        </select>
+                                        @error('role_id')
+                                            <span class="invalid-feedback" role="alert" style="color:red">
+                                                <strong>{{ $message }}</strong>
+                                            </span>
+                                        @enderror
+    
+                                    </div>
+                                </div>
 
                         </div>
+
+                        
 
                     </div>
 
@@ -93,7 +117,7 @@
 
                     <div class="box-footer">
                         <button type="submit" class="btn btn-success pull-left btn-sm" style="margin: 0px 5px;">{{ __('content.save') }}</button>
-                        <a class="btn btn-info btn-sm" href=" {{ route('roleMenus.index',$role) }} ">{{ __('content.cancel') }}</a>
+                        <a class="btn btn-info btn-sm" href=" {{ route('projectUsers.index',$user) }} ">{{ __('content.cancel') }}</a>
                     </div>
                     
                 </form>

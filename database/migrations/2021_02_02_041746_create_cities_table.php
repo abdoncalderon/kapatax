@@ -18,7 +18,7 @@ class CreateCitiesTable extends Migration
             $table->string('name');
             $table->foreignId('state_id');
             $table->foreign('state_id')->references('id')->on('states')->onUpdate('cascade')->onDelete('restrict');
-            $table->unique(['name','state_id']);
+            $table->unique(['name','state_id'],'city_state_unique');
             $table->timestamps();
         });
     }

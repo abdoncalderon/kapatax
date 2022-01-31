@@ -60,4 +60,6 @@ class DepartmentController extends Controller
             return back()->withErrors($e->getMessage());
         }
     } 
+
+    
 }

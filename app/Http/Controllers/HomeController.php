@@ -7,6 +7,7 @@ use App\Models\Project;
 use App\User;
 use Illuminate\Http\Request;
 use App\Models\RoleMenu;
+use Illuminate\Support\Facades\Auth;
 
 class HomeController extends Controller
 {
@@ -14,7 +15,14 @@ class HomeController extends Controller
     public function __construct()
     {
         $this->middleware('auth');
+
+        /* $this->middleware('auth');
+        $this->middleware(function ($request, $next) {
+        $this->user = Auth::user();
+        return $next($request); */
     }
+
+        
     
     public function index()
     {

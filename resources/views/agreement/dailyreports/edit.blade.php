@@ -8,7 +8,7 @@
 
 @section('breadcrumb')
     <ol class="breadcrumb">
-        <li><a href="/"><i class="fa fa-home"></i>Home</a></li>
+        <li><a href="{{ route('home') }}"><i class="fa fa-home"></i>Home</a></li>
         <li><a href="{{ route('folios.index')}}"> {{ __('content.folios') }} </a></li>
         <li class="active">{{ __('content.edit') }}</li>
     </ol>
@@ -80,7 +80,7 @@
                             <div class="form-group">
                                 <label class="col-sm-2 control-label">{{ __('content.responsible') }}</label>
                                 <div class="col-sm-10" >
-                                    <input id="turn" disabled type="text" class="form-control" name="turn" value="{{ $dailyReport->responsible() }}">
+                                    <input id="turn" disabled type="text" class="form-control" name="turn" value="{{ $dailyReport->responsible()->name }}">
                                 </div>
                             </div>
 
@@ -282,10 +282,10 @@
 
                     <div class="box-footer">
                         <button id="save" type="submit" class="btn btn-success btn-sm">{{ __('content.save') }}</button>
-                        @if(auth()->user()->isDailyReportApprover($dailyReport->folio->location))
+                        @if(user_have_profile_in_location('dailyreport_approver',$dailyReport->folio->location))
                             <button type="button" class="btn btn-success btn-sm" data-toggle="modal" data-target="#modal-save-dailyreport">{{ __('content.save') }} & {{ __('content.finalize') }}</button>
                         @endif
-                        <a class="btn btn-info btn-sm" href="{{ route('dailyReports.index') }}">{{ __('content.cancel') }}</a>
+                        <a class="btn btn-info btn-sm" href="{{ route('dailyReports.index',$dailyReport->folio->location->id) }}">{{ __('content.cancel') }}</a>
                     </div>
 
                 </form>

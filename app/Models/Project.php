@@ -24,6 +24,14 @@ class Project extends Model
         return $this->hasMany(ProjectUser::class);
     }
 
+    public function functions(){
+        return $this->hasMany(ProjectFunction::class);
+    }
+
+    public function sectors(){
+        return $this->hasMany(ProjectSector::class);
+    }
+
     public function isActive(){
         if($this->isActive==1){
             return true;

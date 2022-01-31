@@ -4,11 +4,11 @@
 
 @section('section', __('content.locations'))
 
-@section('level', __('content.configuration'))
+@section('level', __('content.production'))
 
 @section('breadcrumb')
     <ol class="breadcrumb">
-        <li><a href="/"><i class="fa fa-home"></i>Home</a></li>
+        <li><a href="{{ route('home') }}"><i class="fa fa-home"></i>Home</a></li>
         <li class="active">{{ __('content.locations') }}</li>
     </ol>
 @endsection
@@ -30,7 +30,7 @@
 
             <div class="box-header with-border center-block">
                 <h3 class="box-title"><strong>{{ __('content.locations') }}</strong></h3> | 
-                <a class="btn btn-success btn-sm" href="{{ route('locations.create') }}">{{ __('content.add') }}</a>
+                <a class="btn btn-success btn-sm" href="{{ route('workbook_settings_locations_create') }}">{{ __('content.add') }}</a>
             </div>
             
             <div class="box-body">
@@ -55,8 +55,8 @@
                             <tr>
                                 <td>{{ $location->name }}</td>
                                 <td>
-                                    <a style="margin: 0.3em" class="btn btn-info btn-xs" href="{{ route('workbook_settings_locations_show', $location)}}">{{ __('content.show') }}</a>
-                                    <a style="margin: 0.3em" class="btn btn-info btn-xs" href="{{ route('turnsLocations.index', $location)}}">{{ __('content.turns') }}</a>
+                                    <a style="margin: 0.3em" class="btn btn-info btn-xs" href="{{ route('workbook_settings_locations_edit', $location)}}">{{ __('content.edit') }}</a>
+                                    <a style="margin: 0.3em" class="btn btn-info btn-xs" href="{{ route('locationTurns.index', $location)}}">{{ __('content.turns') }}</a>
                                     <a style="margin: 0.3em" class="btn btn-danger btn-xs" href="{{ route('workbook_settings_locations_destroy', $location)}}">{{ __('content.delete') }}</a>
                                 </td>
                             </tr>

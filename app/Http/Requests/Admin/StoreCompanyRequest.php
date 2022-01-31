@@ -15,7 +15,7 @@ class StoreCompanyRequest extends FormRequest
     {
         return [
             'name'=>'required|unique:companies,name',
-            'code'=>'required|unique:companies,code',
+            'code'=>'unique:companies,code'
         ];
     }
 }

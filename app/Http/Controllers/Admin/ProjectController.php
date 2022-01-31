@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Models\Project;
 use App\Models\Subsidiary;
 use App\Models\City;
+use App\Models\Region;
 use App\Http\Requests\Admin\StoreProjectRequest;
 use App\Http\Requests\Admin\UpdateProjectRequest;
 use App\Http\Controllers\Controller;
@@ -22,10 +23,10 @@ class ProjectController extends Controller
     public function create()
     {
         $subsidiaries = Subsidiary::get();
-        $cities = City::get();
+        $regions = Region::get();
         return view('admin.projects.create')
         ->with(compact('subsidiaries'))
-        ->with(compact('cities'));
+        ->with(compact('regions'));
     }
 
     public function store(StoreProjectRequest $request )
@@ -48,12 +49,12 @@ class ProjectController extends Controller
     public function edit(Project $project)
     {
         $subsidiaries = Subsidiary::get();
-        $cities = City::get();
+        $regions = Region::get();
         return view('admin.projects.edit',[
             'project'=>$project
             ])
         ->with(compact('subsidiaries'))
-        ->with(compact('cities'));
+        ->with(compact('regions'));
     }
     
     public function update(Project $project, UpdateProjectRequest $request)

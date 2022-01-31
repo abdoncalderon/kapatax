@@ -4,8 +4,9 @@ namespace App\Http\Controllers\Setting;
 
 use App\Http\Controllers\Controller;
 use App\Models\Equipment;
-use App\Http\Requests\StoreEquipmentRequest;
-use App\Http\Requests\UpdateEquipmentRequest;
+use App\Models\Project;
+use App\Http\Requests\Setting\StoreEquipmentRequest;
+use App\Http\Requests\Setting\UpdateEquipmentRequest;
 use Exception;
 
 class EquipmentController extends Controller
@@ -18,7 +19,10 @@ class EquipmentController extends Controller
 
     public function create()
     {
-        return view('setting.equipments.create');
+        $project_id = session('current_project_id');
+        $project = Project::where('id',$project_id)->first();
+        return view('setting.equipments.create')
+        ->with(compact('project'));
     }
 
     public function store(StoreEquipmentRequest $request )

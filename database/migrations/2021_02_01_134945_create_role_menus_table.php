@@ -19,7 +19,8 @@ class CreateRoleMenusTable extends Migration
             $table->foreign('menu_id')->references('id')->on('menus')->onUpdate('cascade')->onDelete('restrict');
             $table->foreignId('role_id');
             $table->foreign('role_id')->references('id')->on('roles')->onUpdate('cascade')->onDelete('restrict');
-            $table->unique(['menu_id','role_id']);
+            $table->boolean('isActive')->default(false);
+            $table->unique(['menu_id','role_id'],'menu_role_unique');
             $table->timestamps();
         });
     }

@@ -1,10 +1,10 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\Auth;
+
 
 Auth::routes();
-
-// Route::get('/', 'HomeController@index')->name('home');
 
 /* Start */
 Route::get('/', 'HomeController@project')->name('project');
@@ -25,18 +25,6 @@ Route::get('/menus/destroy/{menu}','Admin\MenuController@destroy')->name('menus.
 Route::resource('roles','Admin\RoleController');
 Route::get('/roles/activate/{role}/{value}','Admin\RoleController@activate')->name('roles.activate');
 Route::get('/role/destroy/{role}','Admin\RoleController@destroy')->name('roles.destroy');
-
-/* Routes Roles Menus  */
-Route::get('/roleMenus/{role}','Admin\RoleMenuController@index')->name('roleMenus.index');
-Route::get('/create/menu/{role}','Admin\RoleMenuController@create')->name('roleMenus.create');
-Route::post('/roleMenus/{role}','Admin\RoleMenuController@store')->name('roleMenus.store');
-Route::get('/roleMenus/destroy/{roleMenu}','Admin\RoleMenuController@destroy')->name('roleMenus.destroy');
-
-/* Routes Users Projects  */
-Route::get('/userProjects/{user}','Admin\UserProjectController@index')->name('userProjects.index');
-Route::get('/create/project/{user}','Admin\UserProjectController@create')->name('userProjects.create');
-Route::post('/userProjects/{user}','Admin\UserProjectController@store')->name('userProjects.store');
-Route::get('/userProjects/destroy/{userProject}','Admin\UserProjectController@destroy')->name('userProjects.destroy');
 
 /* Routes Profiles */
 Route::resource('profiles','Admin\ProfileController');
@@ -60,15 +48,18 @@ Route::get('/subsidiary/destroy/{subsidiary}','Admin\SubsidiaryController@destro
 /* Routes Regions */
 Route::resource('regions','Admin\RegionController');
 Route::get('/region/destroy/{region}','Admin\RegionController@destroy')->name('regions.destroy');
-Route::post('/regons/add','Admin\RegionController@add')->name('regions.add');
+Route::post('/region/add','Admin\RegionController@add')->name('regions.add');
+Route::get('getCountries/{region}','Admin\RegionController@getCountries')->name('regions.getCountries');
 
 /* Routes Countries */
 Route::resource('countries','Admin\CountryController');
 Route::get('/countries/destroy/{country}','Admin\CountryController@destroy')->name('countries.destroy');
+Route::get('getStates/{country}','Admin\CountryController@getStates')->name('countries.getStates');
 
 /* Routes States */
 Route::resource('states','Admin\StateController');
 Route::get('/states/destroy/{state}','Admin\StateController@destroy')->name('states.destroy');
+Route::get('getCities/{state}','Admin\StateController@getCities')->name('states.getCities');
 
 /* Routes Cities */
 Route::resource('cities','Admin\CityController');
@@ -84,17 +75,14 @@ Route::get('/projects/destroy/{project}','Admin\ProjectController@destroy')->nam
 Route::resource('unities','Admin\UnityController');
 Route::get('/unity/destroy/{unity}','Admin\UnityController@destroy')->name('unities.destroy');
 
-/* Routes Organizations */
-Route::resource('organizations','Admin\OrganizationController');
-Route::get('/organization/destroy/{organization}','Admin\OrganizationController@destroy')->name('organizations.destroy');
-
-/* Routes Contractors */
-Route::resource('contractors','Admin\ContractorController');
-Route::get('/contractor/destroy/{contractor}','Admin\ContractorController@destroy')->name('contractors.destroy'); 
-
 /* Routes Sectors */
 Route::resource('sectors','Admin\SectorController');
 Route::get('/sector/destroy/{sector}','Admin\SectorController@destroy')->name('sectors.destroy');
+
+/* Routes Functions */
+Route::resource('functions','Admin\FunctionController');
+Route::get('/functions/destroy/{function}','Admin\FunctionController@destroy')->name('functions.destroy');
+Route::post('/functions/add','Admin\FunctionController@add')->name('functions.add'); 
 
 /* Routes Brands */
 Route::resource('brands','Admin\BrandController');
@@ -104,6 +92,26 @@ Route::post('/regons/add','Admin\BrandController@add')->name('brands.add');
 /* Routes Permits */
 Route::resource('permits','Admin\PermitController');
 Route::get('/permit/destroy/{permit}','Admin\PermitController@destroy')->name('permits.destroy');
+
+/* Routes Roles Permits  */
+Route::get('/rolePermits/{role}','Admin\RolePermitController@index')->name('rolePermits.index');
+Route::get('/create/permit/{role}','Admin\RolePermitController@create')->name('rolePermits.create');
+Route::post('/rolePermits/{role}','Admin\RolePermitController@store')->name('rolePermits.store');
+Route::get('/rolePermits/destroy/{rolePermit}','Admin\RolePermitController@destroy')->name('rolePermits.destroy');
+Route::get('/rolePermits/activate/{rolePermit}/{value}','Admin\RolePermitController@activate')->name('rolePermits.activate');
+
+/* Routes Roles Menus  */
+Route::get('/roleMenus/{role}','Admin\RoleMenuController@index')->name('roleMenus.index');
+Route::get('/create/menu/{role}','Admin\RoleMenuController@create')->name('roleMenus.create');
+Route::post('/roleMenus/{role}','Admin\RoleMenuController@store')->name('roleMenus.store');
+Route::get('/roleMenus/destroy/{roleMenu}','Admin\RoleMenuController@destroy')->name('roleMenus.destroy');
+Route::get('/roleMenus/activate/{roleMenu}/{value}','Admin\RoleMenuController@activate')->name('roleMenus.activate');
+
+/* Routes Project Users  */
+Route::get('/projectUsers/{user}','Admin\ProjectUserController@index')->name('projectUsers.index');
+Route::get('/create/project/{user}','Admin\ProjectUserController@create')->name('projectUsers.create');
+Route::post('/projectUsers/{user}','Admin\ProjectUserController@store')->name('projectUsers.store');
+Route::get('/projectUsers/destroy/{projectUser}','Admin\ProjectUserController@destroy')->name('projectUsers.destroy');
 
 
 
@@ -119,23 +127,36 @@ Route::resource('departments','Setting\DepartmentController');
 Route::get('/departments/destroy/{country}','Setting\DepartmentController@destroy')->name('departments.destroy');
 
 /* Routes Project */
+Route::get('/project','Setting\ProjectController@index')->name('project.index');
 Route::get('/project/show','Setting\ProjectController@show')->name('project.show');
 Route::get('/project/edit/{project}','Setting\ProjectController@edit')->name('project.edit');
 Route::patch('project/update/{project}','Setting\ProjectController@update')->name('project.update');
+
+/* Routes Project x Function */
+Route::get('/projectFunctions/{project}','Setting\ProjectFunctionController@index')->name('projectFunctions.index');
+Route::get('/projectFunctions/create/{project}','Setting\ProjectFunctionController@create')->name('projectFunctions.create');
+Route::post('/projectFunctions/{project}','Setting\ProjectFunctionController@store')->name('projectFunctions.store');
+Route::get('/projectFunctions/destroy/{projectFunction}','Setting\ProjectFunctionController@destroy')->name('projectFunctions.destroy');
+
+/* Routes Project x Sector */
+Route::get('/projectSectors/{project}','Setting\ProjectSectorController@index')->name('projectSectors.index');
+Route::get('/projectSectors/create/{project}','Setting\ProjectSectorController@create')->name('projectSectors.create');
+Route::post('/projectSectors/{project}','Setting\ProjectSectorController@store')->name('projectSectors.store');
+Route::get('/projectSectors/destroy/{projectSector}','Setting\ProjectSectorController@destroy')->name('projectSectors.destroy');
+
+/* Routes Contractors */
+Route::resource('contractors','Setting\ContractorController');
+Route::get('/contractors/destroy/{contractor}','Setting\ContractorController@destroy')->name('contractors.destroy'); 
 
 /* Routes Zones */
 Route::resource('zones','Setting\ZoneController');
 Route::get('/zones/destroy/{zone}','Setting\ZoneController@destroy')->name('zones.destroy');
 Route::post('/zones/add','Setting\ZoneController@add')->name('zones.add');
 
-/* Routes Functions */
-Route::resource('functions','FunctionController');
-Route::get('/functions/destroy/{function}','FunctionController@destroy')->name('functions.destroy');
-Route::post('/functions/add','FunctionController@add')->name('functions.add'); 
-
 /* Routes Positions */
 Route::resource('positions','Setting\PositionController');
 Route::get('/position/destroy/{position}','Setting\PositionController@destroy')->name('positions.destroy');
+Route::get('getDepartments/{projectSector}','Admin\PositionController@getDepartments')->name('positions.getDepartments');
 
 /* Routes Locations */
 Route::resource('locations','Setting\LocationController');
@@ -155,18 +176,15 @@ Route::get('/turns/destroy/{turn}','Setting\TurnController@destroy')->name('turn
 
 
 
-
 /* Routes Folios */
 Route::get('folios/{location_id?}','Agreement\FolioController@index')->name('folios.index');
 Route::get('create','Agreement\FolioController@create')->name('folios.create');
 Route::get('folios/edit/{folio}','Agreement\FolioController@edit')->name('folios.edit');
-Route::post('/folios','FolioController@store')->name('folios.store');
+Route::post('/folios','Agreement\FolioController@store')->name('folios.store');
 Route::get('filterFoliosXLocation','Agreement\FolioController@filterLocation')->name('folios.filterLocation');
 Route::get('getNumber/{location}','Agreement\FolioController@getNumber')->name('folios.getNumber');
 Route::get('folios/print/{folio}','Agreement\FolioController@print')->name('folios.print');
 Route::patch('folios/updateNumber/{folio}','Agreement\FolioController@update')->name('folios.update');
-
-
 
 /* Routes Locations x User */
 Route::get('/locationsUsers/{user}','Agreement\LocationUserController@index')->name('locationsUsers.index');
@@ -225,19 +243,21 @@ Route::get('/attachmentNotes/destroy/{attachmentNote}','Agreement\AttachmentNote
 Route::post('/commentNotes','Agreement\CommentNoteController@store')->name('commentNotes.store');
 Route::get('/commentNotes/destroy/{commentNote}','Agreement\CommentNoteController@destroy')->name('commentNotes.destroy');
 
-/* Routes Locations x User */
-Route::get('/turnsLocations/{location}','Agreement\TurnLocationController@index')->name('turnsLocations.index');
-Route::get('/turnsLocations/create/{location}','Agreement\TurnLocationController@create')->name('turnsLocations.create');
-Route::post('/turnsLocations/{location}','Agreement\TurnLocationController@store')->name('turnsLocations.store');
-Route::get('/turnsLocations/edit/{turnlocation}','Agreement\TurnLocationController@edit')->name('turnsLocations.edit');
-Route::patch('/turnsLocations/{turnlocation}','Agreement\TurnLocationController@update')->name('turnsLocations.update');
-Route::get('/turnsLocations/destroy/{turnlocation}','Agreement\TurnLocationController@destroy')->name('turnsLocations.destroy');
+/* Routes Turns x Location */
+Route::get('/locationTurns/{location}','Agreement\LocationTurnController@index')->name('locationTurns.index');
+Route::get('/locationTurns/create/{location}','Agreement\LocationTurnController@create')->name('locationTurns.create');
+Route::post('/locationTurns/{location}','Agreement\LocationTurnController@store')->name('locationTurns.store');
+Route::get('/locationTurns/edit/{turnlocation}','Agreement\LocationTurnController@edit')->name('locationTurns.edit');
+Route::patch('/locationTurns/{turnlocation}','Agreement\LocationTurnController@update')->name('locationTurns.update');
+Route::get('/locationTurns/destroy/{turnlocation}','Agreement\LocationTurnController@destroy')->name('locationTurns.destroy');
 
 /* Routes Workbook Users */
 Route::get('/workbookUsers','Agreement\UserController@index')->name('workbook_settings_users');
 
 /* Routes Workbook Users */
 Route::get('/workbookLocations','Agreement\LocationController@index')->name('workbook_settings_locations');
+Route::get('/workbookLocations/create','Agreement\LocationController@create')->name('workbook_settings_locations_create');
+Route::post('/workbookLocations','Agreement\LocationController@store')->name('workbook_settings_locations_store');
 Route::get('/workbookLocations/{location}','Agreement\LocationController@show')->name('workbook_settings_locations_show');
 Route::get('/workbookLocations/edit/{location}','Agreement\LocationController@edit')->name('workbook_settings_locations_edit');
 Route::patch('/workbookLocations/{location}','Agreement\LocationController@update')->name('workbook_settings_locations_update');

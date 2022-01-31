@@ -3,12 +3,12 @@
 namespace App\Http\Controllers\Agreement;
 
 use App\Http\Controllers\Controller;
-use Carbon\Carbon;
 use App\Models\DailyReport;
 use App\Models\Folio;
 use App\Models\Equipment;
 use App\Models\Position;
 use App\Models\LocationUser;
+use App\Models\Location;
 use App\Http\Requests\StoreDailyReportRequest;
 use App\Http\Requests\UpdateDailyReportRequest;
 use App\Mail\ReportCompleted;
@@ -22,12 +22,14 @@ class DailyReportController extends Controller
     public function index($location_id = null)
     {
         if (empty($location_id)){
+            $location = Location::find(1);
             $dailyReports = DailyReport::join('folios','daily_reports.folio_id','=','folios.id')
                                 ->join('location_users','folios.location_id','=','location_users.location_id')
                                 ->where('location_users.user_id',auth()->user()->id)
                                 ->where('folios.location_id',0)
                                 ->get();
         }else{
+            $location = Location::find($location_id);
             $dailyReports = DailyReport::select('daily_reports.id as id','locations.name as location','folios.date as date','turns.name as turn','daily_reports.status as status')->join('folios','daily_reports.folio_id','=','folios.id')
                                 ->join('location_users','folios.location_id','=','location_users.location_id')
                                 ->join('locations','folios.location_id','=','locations.id')
@@ -38,7 +40,7 @@ class DailyReportController extends Controller
         }
         return view('agreement.dailyreports.index')
         ->with(compact('dailyReports'))
-        ->with(compact('location_id'));
+        ->with(compact('location'));
     }
 
     public function filterLocation(Request $request)
@@ -65,15 +67,12 @@ class DailyReportController extends Controller
         try{
             $folio=Folio::find($request->folio_id);
             $date = strtotime($folio->date);
-            $today = strtotime(Carbon::today()->toDateString());
-            $differenceInHours = abs(round(($date - $today)/60/60,0));
-            if (($differenceInHours <= $folio->location->max_time_create_dailyreport)){
+            if (is_valid_date_for_create_dailyreport($date, $folio->location)){
                 $dailyReport = DailyReport::create($request ->validated());
                 return redirect()->route('dailyReports.edit',$dailyReport)->with('messages',__('messages.recordsuccessfullystored'));
             }else{
                 return back()->withErrors(__('messages.timeexpiredtocreate').' '.__('content.dailyreport'));
             }
-            
         }catch(Exception $e){
             return back()->withErrors($e->getMessage());
         }
@@ -126,6 +125,6 @@ class DailyReportController extends Controller
                     Mail::to($user->user->email)->queue(new ReportCompleted($dailyReport));
                 }
         }
-        return redirect()->route('dailyReports.index');
+        return redirect()->route('dailyReports.index',$dailyReport->folio->location->id);
     }
 }

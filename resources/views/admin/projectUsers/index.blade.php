@@ -1,16 +1,16 @@
 @extends('layouts.main')
 
-@section('title', __('content.roles'))
+@section('title', __('content.users'))
 
-@section('section', __('content.roles'))
+@section('section', __('content.users'))
 
 @section('level', __('content.administration'))
 
 @section('breadcrumb')
     <ol class="breadcrumb">
-        <li><a href="/"><i class="fa fa-home"></i>Home</a></li>
-        <li><a href="{{ route('roles.index')}}"> {{ __('content.roles') }} </a></li>
-        <li class="active">{{ __('content.menus') }}</li>
+        <li><a href="{{ route('home') }}"><i class="fa fa-home"></i>Home</a></li>
+        <li><a href="{{ route('users.index')}}"> {{ __('content.users') }} </a></li>
+        <li class="active">{{ __('content.projects') }}</li>
     </ol>
 @endsection
 
@@ -32,8 +32,8 @@
             {{-- Title --}}
 
             <div class="box-header with-border center-block">
-                <h3 class="box-title"><strong>{{ __('messages.roleMenus') }} {{ $role->name }}</strong></h3> | 
-                <a class="btn btn-success btn-sm" href="{{ route('roleMenus.create',$role) }}">{{ __('content.add') }}</a>
+                <h3 class="box-title"><strong>{{ __('content.projects') }} {{ $user->name }}</strong></h3> | 
+                <a class="btn btn-success btn-sm" href="{{ route('projectUsers.create',$user) }}">{{ __('content.add') }}</a>
             </div>
             
             <div class="box-body">
@@ -46,7 +46,7 @@
 
                     <thead>
                         <tr>
-                            <th>{{ __('content.menu') }}</th>
+                            <th>{{ __('content.project') }}</th>
                             <th>{{ __('content.actions') }}</th>
                         </tr>
                     </thead>
@@ -54,13 +54,12 @@
                     {{-- Rows  --}}
 
                     <tbody>
-                        @foreach($roleMenus as $roleMenu)
+                        @foreach($projectUsers as $projectUser)
                             <tr>
-                                <td>{{ $roleMenu->menu->code }}</td>
+                                <td>{{ $projectUser->project->name }}</td>
                                 <td>
-                                    <a class="btn btn-info btn-xs" href="{{ route('menus.show', $roleMenu->menu) }}">{{ __('content.show') }}</a>
-                                    @IF($role->name!='SUPERUSER')
-                                    <a class="btn btn-info btn-xs" href="{{ route('roleMenus.destroy', $roleMenu)}}">{{ __('content.delete') }}</a>
+                                    @IF($user->name!='SUPERUSER')
+                                        <a class="btn btn-info btn-xs" href="{{ route('projectUsers.destroy', $projectUser)}}">{{ __('content.delete') }}</a>
                                     @ENDIF
                                 </td>
 

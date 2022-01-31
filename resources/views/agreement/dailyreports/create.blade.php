@@ -8,7 +8,7 @@
 
 @section('breadcrumb')
     <ol class="breadcrumb">
-        <li><a href="/"><i class="fa fa-home"></i>Home</a></li>
+        <li><a href="{{ route('home') }}"><i class="fa fa-home"></i>Home</a></li>
         <li><a href="{{ route('dailyReports.index')}}"> {{ __('content.dailyreports') }} </a></li>
         <li class="active">{{ __('content.create') }}</li>
     </ol>
@@ -77,8 +77,10 @@
                                 <div class="col-sm-10" >
                                     <select id="turn_id" name="turn_id" class="form-control" required style="width: 100%;" >
                                         <option value="">{{__('messages.select')}} {{__('content.turn')}}</option>
-                                        @foreach ($folio->location->turns as $turnLocation)
-                                            <option value="{{ $turnLocation->turn_id }}">{{ $turnLocation->turn->name }}</option>
+                                        @foreach ($folio->location->turns as $locationTurn)
+                                            @if(is_valid_date_for_turn(strtotime($folio->date),$locationTurn))
+                                                <option value="{{ $locationTurn->turn_id }}">{{ $locationTurn->turn->name }}</option>
+                                            @endif
                                         @endforeach
                                     </select>
                                 </div>
@@ -91,7 +93,7 @@
                                 <label class="col-sm-2 control-label">{{ __('content.responsible') }}</label>
                                 <div class="col-sm-10" >
                                     <select id="responsible" name="responsible" class="form-control" required style="width: 100%;" >
-                                        <option value="">{{__('messages.select')}} {{__('content.responsible')}}</option>
+                                        <option value="">{{__('messages.select')}} {{__('content.responsible')}} </option>
                                         @foreach ($responsibles as $responsible)
                                             <option value="{{ $responsible->user->id }}">{{ $responsible->user->name }}</option>
                                         @endforeach

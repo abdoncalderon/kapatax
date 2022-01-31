@@ -8,7 +8,7 @@
 
 @section('breadcrumb')
     <ol class="breadcrumb">
-        <li><a href="/"><i class="fa fa-home"></i>Home</a></li>
+        <li><a href="{{ route('home') }}"><i class="fa fa-home"></i>Home</a></li>
         <li class="active">{{ __('content.folios') }}</li>
     </ol>
 @endsection
@@ -77,6 +77,7 @@
                             <th>{{ __('content.location') }}</th>
                             <th>{{ __('content.date') }}</th>
                             <th>{{ __('content.number') }}</th>
+                            <th>{{ __('content.status') }}</th>
                             <th>{{ __('content.actions') }}</th>
                         </tr>
                     </thead>
@@ -89,19 +90,20 @@
                                 <td>{{ $folio->name }}</td>
                                 <td>{{ date('Y-M-d',strtotime($folio->date)) }}</td>
                                 <td>{{ $folio->number }}</td>
+                                <td>{{ $folio->status() }}</td>
                                 <td>
-                                    @if($folio->status()==__('content.opened'))
-                                        @if(auth()->user()->permit->create_dailyreport==1)
+                                    @if(is_valid_date_for_open_folio(strtotime($folio->date),$folio->location))
+                                        @if(user_have_permission('workbook_create_dailyreport'))
                                             <a style="margin: 0.3em" class="btn btn-info btn-xs" href="{{ route('dailyReports.create',$folio) }}">{{ __('content.dailyreport') }}</a>
                                         @endif
-                                        @if(auth()->user()->permit->create_note==1)
+                                        @if(user_have_permission('workbook_create_note'))
                                             <a style="margin: 0.3em" class="btn btn-info btn-xs" href="{{ route('notes.create',$folio) }}">{{ __('content.note') }}</a>
                                         @endif
                                     @endif
-                                    @if(auth()->user()->permit->edit_sequence==1)
+                                    @if(user_have_permission('workbook_edit_sequence'))
                                         <a style="margin: 0.3em" class="btn btn-info btn-xs" href="{{ route('folios.edit',$folio) }}">{{ __('content.edit') }} {{ __('content.number') }}</a>
                                     @endif
-                                    @if((auth()->user()->permit->print_folio==1)&&(($folio->daily_reports->count()>0)||($folio->notes->count()>0)))
+                                    @if((user_have_permission('workbook_print_folio'))&&(($folio->daily_reports->count()>0)||($folio->notes->count()>0)))
                                         <a target="_blank" style="margin: 0.3em" class="btn btn-info btn-xs" href="{{ route('folios.print',$folio) }}">{{ __('content.print') }}</a>
                                     @endif
                                 </td>

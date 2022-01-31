@@ -64,4 +64,16 @@ class RoleMenuController extends Controller
             return back()->withErrors($e->getMessage());
         }
     }
+
+    public function activate(RoleMenu $roleMenu, $value){
+        try{
+            $roleMenu->update([
+                'isActive'=>$value,
+            ]);
+            $role = Role::where('id',$roleMenu->role_id)->first();
+            return redirect()->route('roleMenus.index',$role);
+        }catch(Exception $e){
+            return back()->withErrors($e->getMessage());
+        }
+    }
 }

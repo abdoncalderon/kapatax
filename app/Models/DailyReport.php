@@ -128,7 +128,7 @@ class DailyReport extends Model
         }elseif($status==1){
             return __('content.finalized');
         }elseif($status==2){
-            return __('content.reviewed');
+            return __('content.approved');
         }
     }
 }

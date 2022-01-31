@@ -50,21 +50,41 @@
 
                         <div class="col-sm-11 col-md-11 col-lg-11">
 
+                            {{--region --}}
+
+                            <div class="form-group">
+                                <label class="col-sm-2 control-label">{{ __('content.region') }}</label>
+                                <div class="input-group input-group-sm col-xs-12 col-sm-10" >
+                                    <select id="regionCity" name="region_id" class="form-control" style="width: 100%;">
+                                        <option value="">{{__('messages.select')}} {{__('content.region')}}</option>
+                                        @foreach ($regions as $region)
+                                            <option value="{{ $region->id }}">{{ $region->name }}</option>
+                                        @endforeach
+                                    </select>
+                                </div>
+                            </div>
+
+                            {{-- country --}}
+
+                            <div class="form-group">
+                                <label class="col-sm-2 control-label">{{ __('content.country') }}</label>
+                                <div class="input-group input-group-sm col-xs-12 col-sm-10" >
+                                    <select id="countryCity" name="country_id" class="form-control" style="width: 100%;">
+                                        <option value="">{{__('messages.select')}} {{__('content.country')}}</option>
+                                        
+                                    </select>
+                                </div>
+                            </div>
+
                             {{-- state --}}
 
                             <div class="form-group">
                                 <label class="col-sm-2 control-label">{{ __('content.state') }}</label>
                                 <div class="input-group input-group-sm col-xs-12 col-sm-10" >
-                                    <select name="state_id" class="form-control" style="width: 100%;">
-                                        @foreach ($states as $state)
-                                            <option value="{{ $state->id }}">{{ $state->name }}</option>
-                                        @endforeach
+                                    <select id="stateCity" name="state_id" class="form-control" style="width: 100%;">
+                                        <option value="">{{__('messages.select')}} {{__('content.state')}}</option>
                                     </select>
-                                    @error('state_id')
-                                        <span class="invalid-feedback" role="alert" style="color:red">
-                                            <strong>{{ $message }}</strong>
-                                        </span>
-                                    @enderror
+                                    
                                 </div>
                             </div>
 

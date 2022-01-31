@@ -58,16 +58,12 @@ class NoteController extends Controller
         try{
             $folio=Folio::find($request->folio_id);
             $date = strtotime($folio->date);
-            $today = strtotime(Carbon::today()->toDateString());
-            $differenceInHours = abs(round(($date - $today)/60/60,0));
-            if (($differenceInHours <= $folio->location->max_time_create_note)){
+            if (is_valid_date_for_create_note($date, $folio->location)){
                 $note = Note::create($request ->validated());
                 return redirect()->route('notes.edit',$note)->with('messages',__('messages.recordsuccessfullystored'));
             }else{
                 return back()->withErrors(__('messages.timeexpiredtocreate').' '.__('content.note'));
             }
-            
-            
         }catch(Exception $e){
             return back()->withErrors($e->getMessage());
         }

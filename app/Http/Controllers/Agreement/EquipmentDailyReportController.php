@@ -1,7 +1,8 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Agreement;
 
+use App\Http\Controllers\Controller;
 use App\Models\EquipmentDailyReport;
 use App\Models\DailyReport;
 use App\Http\Requests\StoreEquipmentDailyReportRequest;

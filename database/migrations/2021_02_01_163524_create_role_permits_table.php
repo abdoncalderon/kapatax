@@ -19,7 +19,8 @@ class CreateRolePermitsTable extends Migration
             $table->foreign('role_id')->references('id')->on('roles')->onUpdate('cascade')->onDelete('restrict');
             $table->foreignId('permit_id');
             $table->foreign('permit_id')->references('id')->on('permits')->onUpdate('cascade')->onDelete('restrict');
-            $table->boolean('value')->default(false);
+            $table->boolean('isActive')->default(false);
+            $table->unique(['role_id','permit_id'],'role_permit_unique');
             $table->timestamps();
         });
     }

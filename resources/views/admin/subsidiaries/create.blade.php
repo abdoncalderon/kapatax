@@ -8,7 +8,7 @@
 
 @section('breadcrumb')
     <ol class="breadcrumb">
-        <li><a href="/"><i class="fa fa-home"></i>Home</a></li>
+        <li><a href="{{ route('home') }}"><i class="fa fa-home"></i>Home</a></li>
         <li><a href="{{ route('subsidiaries.index')}}"> {{ __('content.subsidiaries') }} </a></li>
         <li class="active">{{ __('content.add') }}</li>
     </ol>
@@ -50,55 +50,55 @@
 
                         <div class="col-sm-11 col-md-11 col-lg-11">
 
-                                {{-- name --}}
+                            {{-- name --}}
 
-                                <div class="form-group">
-                                    <label class="col-sm-2 control-label">{{ __('content.name') }}</label>
-                                    <div class="input-group input-group-sm col-xs-12 col-sm-10" >
-                                        <input id="name" class="form-control" name="name" type="text" placeholder="{{ __('content.name') }}" maxlength="255" required>
-                                    </div>
+                            <div class="form-group">
+                                <label class="col-sm-2 control-label">{{ __('content.name') }}</label>
+                                <div class="input-group input-group-sm col-xs-12 col-sm-10" >
+                                    <input id="name" class="form-control" name="name" type="text" placeholder="{{ __('content.name') }}" maxlength="255" required>
                                 </div>
-    
-                                {{-- code --}}
-    
-                                <div class="form-group">
-                                    <label class="col-sm-2 control-label">{{ __('content.code') }}</label>
-                                    <div class="input-group input-group-sm col-xs-12 col-sm-10" >
-                                        <input id="code" class="form-control" name="code" type="text" placeholder="{{ __('content.code') }}" maxlength="255" required>
-                                    </div>
+                            </div>
+
+                            {{-- code --}}
+
+                            <div class="form-group">
+                                <label class="col-sm-2 control-label">{{ __('content.code') }}</label>
+                                <div class="input-group input-group-sm col-xs-12 col-sm-10" >
+                                    <input id="code" class="form-control" name="code" type="text" placeholder="{{ __('content.code') }}" maxlength="255" required>
                                 </div>
-    
-                                {{-- company --}}
-    
-                                <div class="form-group">
-                                    <label class="col-sm-2 control-label">{{ __('content.company') }}</label>
-                                    <div class="input-group input-group-sm col-xs-12 col-sm-10" >
-                                        <select name="company_id" class="form-control" data-placeholder="{{ __('content.company') }}" style="width: 100%;">
-                                            @foreach ($companies as $company)
-                                                <option value="{{ $company->id }}">{{ $company->name }}</option>
-                                            @endforeach
-                                        </select>
-                                        <span class="input-group-btn">
-                                            <button type="button" class="btn btn-info btn-flat" data-toggle="modal" data-target="#addCompany"> + </button>
-                                        </span>
-                                    </div>
+                            </div>
+
+                            {{-- company --}}
+
+                            <div class="form-group">
+                                <label class="col-sm-2 control-label">{{ __('content.company') }}</label>
+                                <div class="input-group input-group-sm col-xs-12 col-sm-10" >
+                                    <select name="company_id" class="form-control" data-placeholder="{{ __('content.company') }}" style="width: 100%;">
+                                        @foreach ($companies as $company)
+                                            <option value="{{ $company->id }}">{{ $company->name }}</option>
+                                        @endforeach
+                                    </select>
+                                    <span class="input-group-btn">
+                                        <button type="button" class="btn btn-info btn-flat" data-toggle="modal" data-target="#addCompany"> + </button>
+                                    </span>
                                 </div>
-    
-                                {{-- division --}}
-    
-                                <div class="form-group">
-                                    <label class="col-sm-2 control-label">{{ __('content.division') }}</label>
-                                    <div class="input-group input-group-sm col-xs-12 col-sm-10" >
-                                        <select name="division_id" class="form-control" data-placeholder="{{ __('content.division') }}" style="width: 100%;">
-                                            @foreach ($divisions as $division)
-                                                <option value="{{ $division->id }}">{{ $division->name }}</option>
-                                            @endforeach
-                                        </select>
-                                        <span class="input-group-btn">
-                                            <button type="button" class="btn btn-info btn-flat" data-toggle="modal" data-target="#addDivision"> + </button>
-                                        </span>
-                                    </div>
+                            </div>
+
+                            {{-- division --}}
+
+                            <div class="form-group">
+                                <label class="col-sm-2 control-label">{{ __('content.division') }}</label>
+                                <div class="input-group input-group-sm col-xs-12 col-sm-10" >
+                                    <select name="division_id" class="form-control" data-placeholder="{{ __('content.division') }}" style="width: 100%;">
+                                        @foreach ($divisions as $division)
+                                            <option value="{{ $division->id }}">{{ $division->name }}</option>
+                                        @endforeach
+                                    </select>
+                                    <span class="input-group-btn">
+                                        <button type="button" class="btn btn-info btn-flat" data-toggle="modal" data-target="#addDivision"> + </button>
+                                    </span>
                                 </div>
+                            </div>
 
                         </div>
 

@@ -9,6 +9,6 @@ class Zone extends Model
     protected $fillable = ['name', 'project_id',];
 
     public function project(){
-        return $this->belongsTo(State::class);
+        return $this->belongsTo(Project::class);
     }
 }

@@ -9,7 +9,7 @@ use Exception;
 
 class SectorController extends Controller
 {
-    public function index()
+    /* public function index()
     {
         $sectors = Sector::get();
         return view('agreement.sectors.index', compact('sectors'));
@@ -54,5 +54,5 @@ class SectorController extends Controller
         }catch(Exception $e){
             return back()->withErrors($e->getMessage());
         }
-    }
+    } */
 }

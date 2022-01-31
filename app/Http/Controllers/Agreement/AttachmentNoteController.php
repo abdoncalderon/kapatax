@@ -1,7 +1,8 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Agreement;
 
+use App\Http\Controllers\Controller;
 use App\Models\AttachmentNote;
 use App\Models\Note;
 use App\Http\Requests\StoreAttachmentNoteRequest;

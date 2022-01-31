@@ -8,7 +8,7 @@
 
 @section('breadcrumb')
     <ol class="breadcrumb">
-        <li><a href="/"><i class="fa fa-home"></i>Home</a></li>
+        <li><a href="{{ route('home') }}"><i class="fa fa-home"></i>Home</a></li>
         <li class="active">{{ __('content.locations') }}</li>
     </ol>
 @endsection
@@ -56,7 +56,6 @@
                                 <td>{{ $location->name }}</td>
                                 <td>
                                     <a style="margin: 0.3em" class="btn btn-info btn-xs" href="{{ route('locations.show', $location)}}">{{ __('content.show') }}</a>
-                                    {{-- <a style="margin: 0.3em" class="btn btn-info btn-xs" href="{{ route('turnsLocations.index', $location)}}">{{ __('content.turns') }}</a> --}}
                                     <a style="margin: 0.3em" class="btn btn-danger btn-xs" href="{{ route('locations.destroy', $location)}}">{{ __('content.delete') }}</a>
                                 </td>
                             </tr>

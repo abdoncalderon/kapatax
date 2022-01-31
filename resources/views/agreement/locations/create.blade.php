@@ -8,7 +8,7 @@
 
 @section('breadcrumb')
     <ol class="breadcrumb">
-        <li><a href="/"><i class="fa fa-home"></i>Home</a></li>
+        <li><a href="{{ route('home') }}"><i class="fa fa-home"></i>Home</a></li>
         <li><a href="{{ route('workbook_settings_locations')}}"> {{ __('content.locations') }} </a></li>
         <li class="active">{{ __('content.add') }}</li>
     </ol>
@@ -36,12 +36,14 @@
                
                 {{-- Start Form  --}}
 
-                <form class="form-horizontal" method="POST" action="{{ route('locations.store') }}">
+                <form class="form-horizontal" method="POST" action="{{ route('workbook_settings_locations_store') }}">
                     @csrf
 
                     {{-- Form Body --}}
 
                     <div class="box-body">
+
+                        {{-- Fields --}}
 
                         <div class="col-sm-11 col-md-11 col-lg-11">
 
@@ -49,25 +51,11 @@
 
                             <input id="project_id" type="hidden" class="form-control" name="project_id" value="{{ $project->id }}" type="text">
 
-                            {{-- Project  --}}
-
-                            {{-- <div class="form-group">
-                                <label class="col-sm-2 control-label">{{ __('content.project') }}</label>
-                                <div class="col-sm-10">
-                                    <select id="project_id" name="project_id" class="form-control" required style="width: 100%;" >
-                                        <option value="">{{__('messages.select')}} {{__('content.project')}}</option>
-                                        @foreach ($projects as $project)
-                                            <option value="{{ $project->id }}">{{ $project->name }}</option>
-                                        @endforeach
-                                    </select>
-                                </div>
-                            </div> --}}
-
                             {{-- Name  --}}
 
                             <div class="form-group">
                                 <label class="col-sm-2 control-label">{{ __('content.name') }}</label>
-                                <div class="col-sm-10">
+                                <div class="input-group input-group-sm col-xs-12 col-sm-10">
                                     <input type="text" class="form-control" name="name" maxlength="255" required>
                                 </div>
                             </div>
@@ -93,7 +81,7 @@
 
                             <div class="form-group">
                                 <label class="col-sm-2 control-label">{{ __('content.code') }}</label>
-                                <div class="col-sm-10">
+                                <div class="input-group input-group-sm col-xs-12 col-sm-10">
                                     <input type="text" class="form-control" name="code" maxlength="255" required>
                                 </div>
                             </div>
@@ -103,7 +91,7 @@
                             <div class="form-group">
                                 <label class="col-sm-2 control-label">{{ __('content.sequence') }}</label>
                                 <div class="input-group input-group-sm col-xs-12 col-sm-10">
-                                    <input type="number" class="form-control" name="sequence" required>
+                                    <input type="number" class="form-control" name="sequence">
                                 </div>
                             </div>
 
@@ -112,7 +100,7 @@
                             <div class="form-group">
                                 <label class="col-sm-2 control-label">{{ __('content.latitude') }}</label>
                                 <div class="input-group input-group-sm col-xs-12 col-sm-10">
-                                    <input type="number" class="form-control" name="latitude" required>
+                                    <input type="number" class="form-control" name="latitude">
                                 </div>
                             </div>
 
@@ -121,7 +109,7 @@
                             <div class="form-group">
                                 <label class="col-sm-2 control-label">{{ __('content.longitude') }}</label>
                                 <div class="input-group input-group-sm col-xs-12 col-sm-10">
-                                    <input type="number" class="form-control" name="longitude" required>
+                                    <input type="number" class="form-control" name="longitude">
                                 </div>
                             </div>
 
@@ -158,7 +146,7 @@
 
                             <div class="form-group">
                                 <label class="col-sm-2 control-label">{{ __('messages.maxtimeopenfolio') }}</label>
-                                <div class="col-sm-10">
+                                <div class="input-group input-group-sm col-xs-12 col-sm-10">
                                     <input type="number" class="form-control" name="max_time_open_folio">
                                 </div>
                             </div>
@@ -167,7 +155,7 @@
 
                             <div class="form-group">
                                 <label class="col-sm-2 control-label">{{ __('messages.maxtimecreatedailyreport') }}</label>
-                                <div class="col-sm-10">
+                                <div class="input-group input-group-sm col-xs-12 col-sm-10">
                                     <input type="number" class="form-control" name="max_time_create_dailyreport">
                                 </div>
                             </div>
@@ -176,7 +164,7 @@
 
                             <div class="form-group">
                                 <label class="col-sm-2 control-label">{{ __('messages.maxtimecreatenote') }}</label>
-                                <div class="col-sm-10">
+                                <div class="input-group input-group-sm col-xs-12 col-sm-10">
                                     <input type="number" class="form-control" name="max_time_create_note">
                                 </div>
                             </div>
@@ -185,7 +173,7 @@
 
                             <div class="form-group">
                                 <label class="col-sm-2 control-label">{{ __('messages.maxtimecreatecomment') }}</label>
-                                <div class="col-sm-10">
+                                <div class="input-group input-group-sm col-xs-12 col-sm-10">
                                     <input type="number" class="form-control" name="max_time_create_comment">
                                 </div>
                             </div>
@@ -198,7 +186,7 @@
 
                     <div class="box-footer">
                         <button type="submit" class="btn btn-success pull-left btn-sm" style="margin: 0px 5px;">{{ __('content.save') }}</button>
-                        <a class="btn btn-info btn-sm" href=" {{ route('locations.index') }} ">{{ __('content.cancel') }}</a>
+                        <a class="btn btn-info btn-sm" href=" {{ route('workbook_settings_locations') }} ">{{ __('content.cancel') }}</a>
                     </div>
 
                 </form>
@@ -210,5 +198,41 @@
         </div>
 
     </section>
+
+    {{-- Modal Window Add Zone --}}
+
+    <div class="modal fade" id="add" tabindex="-1" role="dialog" aria-labelledby="addModal" aria-hidden="true">
+
+        <div class="modal-dialog modal-dialog-centered" role="document">
+
+            <form method="POST" action="{{ route('zones.add') }}">
+                @csrf
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLongTitle">{{ __('content.add') }} {{ __('content.zone') }}</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <input id="project_id" type="hidden" class="form-control" name="project_id" value="{{ $project->id }}" type="text">
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label">{{ __('content.name') }}</label>
+                            <div class="input-group col-sm-10">
+                                <input type="text" class="form-control" name="name" maxlength="255" required>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <div class="col-md-6 offset-md-4">
+                            <button type="submit" class="btn btn-success pull-left btn-sm" style="margin: 0px 5px;">{{ __('content.save') }}</button>
+                            <button type="button" class="btn btn-secondary pull-left btn-sm" data-dismiss="modal">{{ __('content.cancel') }}</button>
+                        </div>
+                    </div>
+                </div>
+            </form>
+            
+        </div>
+    </div>
 
 @endsection

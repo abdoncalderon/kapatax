@@ -173,6 +173,7 @@ return [
     'no'=>'No',
     'attachment'=>'Adjunto',
     'approve'=>'Aprobar',
+    'approved'=>'Aprobado',
     'finalize'=>'Finalizar',
     'author'=>'Autor',
     'comment'=>'Comentario',
@@ -190,8 +191,6 @@ return [
     'receive'=>'Recibe',
     'collaborate'=>'Colabora',
     'checkout'=>'Revisa',
-    'approve'=>'Aprueba',
-    'Approve'=>'Aprobar',
     'assignment'=>'Asignación',
     'assign'=>'Asignar',
     'responsible'=>'Responsable',
@@ -270,6 +269,8 @@ return [
     'to'=>'a',
     'employee'=>'Empleado',
     'employees'=>'Empleados',
+    'function'=>'Cargo',
+    'functions'=>'Cargos',
     
     'currency'=>'US$',
     

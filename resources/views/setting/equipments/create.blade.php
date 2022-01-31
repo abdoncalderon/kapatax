@@ -8,7 +8,7 @@
 
 @section('breadcrumb')
     <ol class="breadcrumb">
-        <li><a href="/"><i class="fa fa-home"></i>Home</a></li>
+        <li><a href="{{ route('home') }}"><i class="fa fa-home"></i>Home</a></li>
         <li><a href="{{ route('equipments.index')}}"> {{ __('content.equipments') }} </a></li>
         <li class="active">{{ __('content.add') }}</li>
     </ol>
@@ -43,13 +43,23 @@
 
                     <div class="box-body">
 
-                        {{-- name --}}
+                        {{-- Fields --}}
 
-                        <div class="form-group">
-                            <label class="col-sm-2 control-label">{{ __('content.name') }}</label>
-                            <div class="col-sm-10" >
-                                <input id="name" class="form-control" name="name" type="text" placeholder="{{ __('content.name') }}" maxlength="255" required>
+                        <div class="col-sm-11 col-md-11 col-lg-11">
+
+                            {{-- project_id --}}
+
+                            <input id="project_id" type="hidden" class="form-control" name="project_id" value="{{ $project->id }}" type="text">
+
+                            {{-- name --}}
+
+                            <div class="form-group">
+                                <label class="col-sm-2 control-label">{{ __('content.name') }}</label>
+                                <div class="col-sm-10" >
+                                    <input id="name" class="form-control" name="name" type="text" placeholder="{{ __('content.name') }}" maxlength="255" required>
+                                </div>
                             </div>
+
                         </div>
 
                     </div>

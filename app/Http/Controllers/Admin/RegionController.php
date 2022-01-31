@@ -4,8 +4,10 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Models\Region;
+use App\Models\Country;
 use App\Http\Requests\Admin\StoreRegionRequest;
 use App\Http\Requests\Admin\UpdateRegionRequest;
+use Illuminate\Http\Request;
 use Exception;
 
 class RegionController extends Controller
@@ -69,6 +71,15 @@ class RegionController extends Controller
             return back();
         }catch(Exception $e){
             return back()->withErrors($e->getMessage());
+        }
+    }
+
+    public function getCountries(Request $request, $id)
+    {
+        if($request->ajax())
+        {
+            $countries = Country::where('region_id',$id)->get();
+            return response()->json($countries);
         }
     }
 }

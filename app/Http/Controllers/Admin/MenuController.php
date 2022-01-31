@@ -26,9 +26,6 @@ class MenuController extends Controller
 
     public function store(StoreMenuRequest $request )
     {
-        /* Menu::create($request ->validated());
-        return redirect()->route('menus.index'); */
-
         try{
             $request->validated();
             if($this->checkRoute($request->route)){
@@ -39,6 +36,7 @@ class MenuController extends Controller
                     'route'=>$request->route,
                     'icon'=>$request->icon,
                 ]);
+                
                 return redirect()->route('menus.index');
             }else{
                 return back()->withErrors(__('messages.routeNoExist'));

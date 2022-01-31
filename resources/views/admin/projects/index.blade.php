@@ -8,7 +8,7 @@
 
 @section('breadcrumb')
     <ol class="breadcrumb">
-        <li><a href="/"><i class="fa fa-home"></i>Home</a></li>
+        <li><a href="{{ route('home') }}"><i class="fa fa-home"></i>Home</a></li>
         <li class="active">{{ __('content.projects') }}</li>
     </ol>
 @endsection
@@ -59,7 +59,7 @@
                                 <td>{{ $project->name }}</td>
                                 <td>{{ $project->subsidiary->name }}</td>
                                 <td>
-                                    <a class="btn btn-info btn-xs" href="{{ route('projects.show', $project)}}">{{ __('content.show') }}</a>
+                                    <a class="btn btn-info btn-xs" href="{{ route('projects.edit', $project)}}">{{ __('content.edit') }}</a>
                                     @if($project->id!=1)
                                         @if ($project->isActive())
                                             <a class="btn btn-danger btn-xs" href="{{ route('projects.activate', [$project, '0']) }}">{{ __('content.deactivate') }}</a>

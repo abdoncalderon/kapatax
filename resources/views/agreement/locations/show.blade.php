@@ -8,8 +8,8 @@
 
 @section('breadcrumb')
     <ol class="breadcrumb">
-        <li><a href="/"><i class="fa fa-home"></i>Home</a></li>
-        <li><a href="{{ route('locations.index')}}"> {{ __('content.locations') }} </a></li>
+        <li><a href="{{ route('home') }}"><i class="fa fa-home"></i>Home</a></li>
+        <li><a href="{{ route('locations.index') }}"> {{ __('content.locations') }} </a></li>
         <li class="active">{{ __('content.details') }}</li>
     </ol>
 @endsection
@@ -155,7 +155,7 @@
 
                     <div class="box-footer">
                         <a class="btn btn-success btn-sm" href=" {{ route('workbook_settings_locations_edit', $location) }} ">{{ __('content.edit') }}</a>
-                        <a class="btn btn-info btn-sm" href=" {{ route('workbook_settings_locations') }} ">{{ __('messages.returnToList') }}</a>
+                        <a class="btn btn-info btn-sm" href=" {{ route('workbook_settings_locations') }} ">{{ __('content.cancel') }}</a>
                     </div>
 
                 </form>

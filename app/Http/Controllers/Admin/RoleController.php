@@ -4,11 +4,8 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Models\Role;
-use App\Models\Permit;
-use App\Models\RolePermits;
 use App\Http\Requests\Admin\StoreRoleRequest;
 use App\Http\Requests\Admin\UpdateRoleRequest;
-use App\Models\RolePermit;
 use Exception;
 
 class RoleController extends Controller
@@ -24,15 +21,21 @@ class RoleController extends Controller
         return view('admin.roles.create');
     }
 
+    
+
     public function store(StoreRoleRequest $request )
     {
-        // Role::create($request ->validated());
-        $request ->validated();
-        $role = Role::created([
-            'name' => $request['name'],
-        ]);
-        assignPermitsToRole($role);
-        return redirect()->route('roles.index');
+        try{
+            $request ->validated();
+            $role = Role::create([
+                'name' => $request['name'],
+            ]);
+            assign_permits_to_role($role);
+            assign_menus_to_role($role);
+            return redirect()->route('roles.index');
+        }catch(Exception $e){
+            return back()->withErrors($e->getMessage());
+        }
     }
 
     public function show(Role $role)
@@ -56,11 +59,14 @@ class RoleController extends Controller
     }
 
     public function activate(Role $role, $value){
-        $role->update([
-            'isActive'=>$value,
-        ]);
-        return redirect()->route('roles.index');
-
+        try{
+            $role->update([
+                'isActive'=>$value,
+            ]);
+            return redirect()->route('roles.index');
+        }catch(Exception $e){
+            return back()->withErrors($e->getMessage());
+        }
     }
 
     public function destroy(Role $role)
@@ -73,14 +79,6 @@ class RoleController extends Controller
         }
     } 
 
-    private function assignPermitsToRole(Role $role){
-        $permits = Permit::all();
-        foreach ($permits as $permit){
-            $rolePermit = RolePermit::created([
-                'role_id' => $role->id,
-                'permit_id' => $permit->id,
-            ]);
-        }
-
-    }
+    
+    
 }

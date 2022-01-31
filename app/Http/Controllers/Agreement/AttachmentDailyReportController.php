@@ -1,12 +1,12 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Agreement;
 
+use App\Http\Controllers\Controller;
 use App\Models\AttachmentDailyReport;
 use App\Models\DailyReport;
-use App\Http\Requests\StoreAttachmentDailyReportRequest;
+use App\Http\Requests\Agreement\StoreAttachmentDailyReportRequest;
 use Exception;
-
 
 class AttachmentDailyReportController extends Controller
 {

@@ -8,7 +8,7 @@
 
 @section('breadcrumb')
     <ol class="breadcrumb">
-        <li><a href="/"><i class="fa fa-home"></i>Home</a></li>
+        <li><a href="{{ route('home') }}"><i class="fa fa-home"></i>Home</a></li>
         <li><a href="{{ route('roles.index')}}"> {{ __('content.roles') }} </a></li>
         <li class="active">{{ __('content.add') }}</li>
     </ol>
@@ -63,15 +63,7 @@
                                     @enderror
                                 </div>
                             </div>
-
-                            {{-- status (hide) --}}
-
-                            <div class="form-group">
-                                <div class="input-group input-group-sm col-xs-12 col-sm-10">
-                                    <input id="isActive" type="hidden" class="form-control" name="status" value=1>
-                                </div>
-                            </div>
-
+                            
                         </div>
 
                         

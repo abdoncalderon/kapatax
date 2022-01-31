@@ -8,7 +8,7 @@
 
 @section('breadcrumb')
     <ol class="breadcrumb">
-        <li><a href="/"><i class="fa fa-home"></i>Home</a></li>
+        <li><a href="{{ route('home') }}"><i class="fa fa-home"></i>Home</a></li>
         <li><a href="{{ route('locations.index')}}"> {{ __('content.locations') }} </a></li>
         <li class="active">{{ __('content.add') }}</li>
     </ol>
@@ -76,44 +76,6 @@
                                     </span>
                                 </div>
                             </div>
-
-                            
-                            
-                            {{-- Max Time for Open folio  --}}
-
-                            {{-- <div class="form-group">
-                                <label class="col-sm-2 control-label">{{ __('messages.maxtimeopenfolio') }}</label>
-                                <div class="input-group input-group-sm col-xs-12 col-sm-10">
-                                    <input type="number" class="form-control" name="max_time_open_folio">
-                                </div>
-                            </div> --}}
-
-                            {{-- Max Time for create daily report  --}}
-
-                            {{-- <div class="form-group">
-                                <label class="col-sm-2 control-label">{{ __('messages.maxtimecreatedailyreport') }}</label>
-                                <div class="input-group input-group-sm col-xs-12 col-sm-10">
-                                    <input type="number" class="form-control" name="max_time_create_dailyreport">
-                                </div>
-                            </div> --}}
-
-                            {{-- Max Time for Create Note  --}}
-
-                            {{-- <div class="form-group">
-                                <label class="col-sm-2 control-label">{{ __('messages.maxtimecreatenote') }}</label>
-                                <div class="input-group input-group-sm col-xs-12 col-sm-10">
-                                    <input type="number" class="form-control" name="max_time_create_note">
-                                </div>
-                            </div> --}}
-
-                            {{-- Max Time for create Comment --}}
-
-                            {{-- <div class="form-group">
-                                <label class="col-sm-2 control-label">{{ __('messages.maxtimecreatecomment') }}</label>
-                                <div class="input-group input-group-sm col-xs-12 col-sm-10">
-                                    <input type="number" class="form-control" name="max_time_create_comment">
-                                </div>
-                            </div> --}}
                        
                         </div>
 
@@ -146,7 +108,7 @@
                 @csrf
                 <div class="modal-content">
                     <div class="modal-header">
-                        <h5 class="modal-title" id="exampleModalLongTitle">{{ __('content.add') }} {{ __('content.location') }}</h5>
+                        <h5 class="modal-title" id="exampleModalLongTitle">{{ __('content.add') }} {{ __('content.zone') }}</h5>
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                             <span aria-hidden="true">&times;</span>
                         </button>

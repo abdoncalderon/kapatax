@@ -47,6 +47,7 @@
                         <tr>
                             <th>{{ __('content.name') }}</th>
                             <th>{{ __('content.state') }}</th>
+                            <th>{{ __('content.country') }}</th>
                             <th>{{ __('content.actions') }}</th>
                         </tr>
                     </thead>
@@ -58,6 +59,7 @@
                             <tr>
                                 <td>{{ $city->name }}</td>
                                 <td>{{ $city->state->name }}</td>
+                                <td>{{ $city->state->country->name }}</td>
                                 <td>
                                     {{-- <a class="btn btn-info btn-xs" href="{{ route('cities.show', $city)}}">{{ __('content.show') }}</a> --}}
                                     <a class="btn btn-info btn-xs" href="{{ route('cities.edit', $city)}}">{{ __('content.edit') }}</a>

@@ -14,17 +14,10 @@ class StoreProjectRequest extends FormRequest
     public function rules()
     {
         return [
-            'name'=>'required',
-            'code'=>'required',
-            'taxId'=>'required',
+            'name'=>'required|unique:projects,name',
+            'code'=>'required|unique:projects,code',
             'city_id'=>'required',
-            'address'=>'required',
-            'zipCode'=>'nullable',
-            'phoneNumber'=>'required',
             'subsidiary_id'=>'required',
-            'startDate'=>'required|date',
-            'finishDate'=>'required|date',
-
         ];
     }
 }

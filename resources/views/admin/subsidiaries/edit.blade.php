@@ -1,15 +1,15 @@
 @extends('layouts.main')
 
-@section('title', __('content.countries'))
+@section('title', __('content.subsidiaries'))
 
-@section('section',__('content.countries'))
+@section('section',__('content.subsidiaries'))
 
 @section('level',__('content.administration'))
 
 @section('breadcrumb')
     <ol class="breadcrumb">
-        <li><a href="/"><i class="fa fa-home"></i>Home</a></li>
-        <li><a href="{{ route('countries.index')}}"> {{ __('content.countries') }} </a></li>
+        <li><a href="{{ route('home') }}"><i class="fa fa-home"></i>Home</a></li>
+        <li><a href="{{ route('subsidiaries.index')}}"> {{ __('content.subsidiaries') }} </a></li>
         <li class="active">{{ __('content.edit') }}</li>
     </ol>
 @endsection
@@ -34,12 +34,12 @@
                 {{-- Title --}}
 
                 <div class="box-header with-border">
-                    <h3 class="box-title"><strong>{{ __('content.edit') }} {{ $country->name }}</strong></h3>
+                    <h3 class="box-title"><strong>{{ __('content.edit') }} {{ $subsidiary->name }}</strong></h3>
                 </div>
 
                 {{-- Start Form  --}}
 
-                <form class="form-horizontal" method="POST" action="{{ route('countries.update', $country) }}">
+                <form class="form-horizontal" method="POST" action="{{ route('countries.update', $subsidiary) }}">
                     @csrf
                     @method('PATCH')
 
@@ -51,62 +51,62 @@
 
                         <div class="col-sm-11 col-md-11 col-lg-11">
 
-                             {{-- name --}}
+                            {{-- name --}}
 
                             <div class="form-group">
                                 <label class="col-sm-2 control-label">{{ __('content.name') }}</label>
                                 <div class="input-group input-group-sm col-xs-12 col-sm-10" >
-                                    <input id="name" disabled type="text" class="form-control" name="name" value="{{ old('name', $country->name) }}" placeholder="Nombre">
-                                    @error('name')
-                                        <span class="invalid-feedback" role="alert">
-                                            <strong>{{ $message }}</strong>
-                                        </span>
-                                    @enderror
+                                    <input id="name" disabled type="text" class="form-control" name="name" value="{{ old('name', $subsidiary->name) }}" required>
                                 </div>
                             </div>
 
-                            {{-- region --}}
-
-                            <div class="form-group">
-                                <label class="col-sm-2 control-label">{{ __('content.region') }}</label>
-                                <div class="input-group input-group-sm col-xs-12 col-sm-10" >
-                                    <select name="region_id" class="form-control" data-placeholder="Tipo" style="width: 100%;">
-                                        @foreach ($regions as $region)
-                                            <option value="{{ $region->id }}"
-                                                @if($country->region_id==$region->id):
-                                                    selected="selected"
-                                                @endif
-                                            >{{ $region->name }}</option>
-                                        @endforeach
-                                    </select>
-                                </div>
-                            </div>
 
                             {{-- code --}}
 
                             <div class="form-group">
-                                <label class="col-sm-2 control-label">{{ __('content.name') }}</label>
+                                <label class="col-sm-2 control-label">{{ __('content.code') }}</label>
                                 <div class="input-group input-group-sm col-xs-12 col-sm-10" >
-                                    <input id="code" type="text" class="form-control" name="code" value="{{ old('code', $country->code) }}" placeholder="{{ __('content.code') }}">
-                                    @error('code')
-                                        <span class="invalid-feedback" role="alert">
-                                            <strong>{{ $message }}</strong>
-                                        </span>
-                                    @enderror
+                                    <input id="code" type="text" class="form-control" name="code" value="{{ old('code', $subsidiary->code) }}" required>
                                 </div>
                             </div>
 
-                            {{-- ccc --}}
+                            {{-- company --}}
 
                             <div class="form-group">
-                                <label class="col-sm-2 control-label">{{ __('content.prefix') }}</label>
+                                <label class="col-sm-2 control-label">{{ __('content.company') }}</label>
                                 <div class="input-group input-group-sm col-xs-12 col-sm-10" >
-                                    <input id="ccc" type="text" class="form-control" name="ccc" value="{{ old('ccc', $country->ccc) }}" placeholder="{{ __('content.prefix') }}">
-                                    @error('ccc')
-                                        <span class="invalid-feedback" role="alert">
-                                            <strong>{{ $message }}</strong>
-                                        </span>
-                                    @enderror
+                                    <select name="company_id" class="form-control" data-placeholder="{{ __('content.company') }}" style="width: 100%;">
+                                        @foreach ($companies as $company)
+                                            <option value="{{ $company->id }}"
+                                                @if($subsidiary->company_id==$company->id):
+                                                    selected="selected"
+                                                @endif
+                                            >{{ $company->name }}</option>
+                                        @endforeach
+                                    </select>
+                                    <span class="input-group-btn">
+                                        <button type="button" class="btn btn-info btn-flat" data-toggle="modal" data-target="#addCompany"> + </button>
+                                    </span>
+                                </div>
+                            </div>
+
+                            {{-- division --}}
+
+                            <div class="form-group">
+                                <label class="col-sm-2 control-label">{{ __('content.division') }}</label>
+                                <div class="input-group input-group-sm col-xs-12 col-sm-10" >
+                                    <select name="division_id" class="form-control" data-placeholder="{{ __('content.division') }}" style="width: 100%;">
+                                        @foreach ($divisions as $division)
+                                            <option value="{{ $division->id }}"
+                                                @if($subsidiary->division_id==$division->id):
+                                                    selected="selected"
+                                                @endif
+                                            >{{ $division->name }}</option>
+                                        @endforeach
+                                    </select>
+                                    <span class="input-group-btn">
+                                        <button type="button" class="btn btn-info btn-flat" data-toggle="modal" data-target="#addDivision"> + </button>
+                                    </span>
                                 </div>
                             </div>
 
@@ -118,7 +118,7 @@
                     
                     <div class="box-footer">
                         <button type="submit" class="btn btn-success pull-left btn-sm" style="margin: 0px 5px;">{{ __('content.save') }}</button>
-                        <a class="btn btn-info btn-sm" href=" {{ route('countries.index') }} ">{{ __('content.cancel') }}</a>
+                        <a class="btn btn-info btn-sm" href=" {{ route('subsidiaries.index') }} ">{{ __('content.cancel') }}</a>
                     </div>
 
                 </form>
@@ -130,5 +130,94 @@
         </div>
 
     </section>
+
+    {{-- Modal Window Add Company --}}
+
+    <div class="modal fade" id="addCompany" tabindex="-1" role="dialog" aria-labelledby="addModal" aria-hidden="true">
+
+        <div class="modal-dialog modal-dialog-centered" role="document">
+
+            <form method="POST" action="{{ route('companies.add') }}">
+                @csrf
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLongTitle">{{ __('content.add') }} {{ __('content.company') }}</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+
+                        {{-- name --}}
+
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label">{{ __('content.name') }}</label>
+                            <div class="input-group col-sm-10">
+                                <input id="name" type="text" class="form-control" name="name" placeholder="{{ __('content.name') }}"required>
+                            </div>
+                        </div>
+
+                        {{-- code --}}
+
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label">{{ __('content.code') }}</label>
+                            <div class="input-group col-sm-10" >
+                                <input id="code" type="text" class="form-control" name="code" placeholder="{{ __('content.code') }}" required>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <div class="col-md-6 offset-md-4">
+                            <button type="submit" class="btn btn-success pull-left btn-sm" style="margin: 0px 5px;">{{ __('content.save') }}</button>
+                            <button type="button" class="btn btn-secondary pull-left btn-sm" data-dismiss="modal">{{ __('content.cancel') }}</button>
+                        </div>
+                    </div>
+                </div>
+            </form>
+            
+        </div>
+
+    </div>
+
+    {{-- Modal Window Add Division --}}
+
+    <div class="modal fade" id="addDivision" tabindex="-1" role="dialog" aria-labelledby="addModal" aria-hidden="true">
+
+        <div class="modal-dialog modal-dialog-centered" role="document">
+
+            <form method="POST" action="{{ route('divisions.add') }}">
+                @csrf
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLongTitle">{{ __('content.add') }} {{ __('content.division') }}</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+
+                        {{-- name --}}
+
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label">{{ __('content.name') }}</label>
+                            <div class="input-group col-sm-10">
+                                <input type="text" class="form-control" name="name" maxlength="255" required>
+                            </div>
+                        </div>
+
+
+                    </div>
+                    <div class="modal-footer">
+                        <div class="col-md-6 offset-md-4">
+                            <button type="submit" class="btn btn-success pull-left btn-sm" style="margin: 0px 5px;">{{ __('content.save') }}</button>
+                            <button type="button" class="btn btn-secondary pull-left btn-sm" data-dismiss="modal">{{ __('content.cancel') }}</button>
+                        </div>
+                    </div>
+                </div>
+            </form>
+            
+        </div>
+
+    </div>
 
 @endsection

@@ -8,8 +8,8 @@
 
 @section('breadcrumb')
     <ol class="breadcrumb">
-        <li><a href="/"><i class="fa fa-home"></i>Home</a></li>
-        <li><a href="{{ route('projects.index')}}"> {{ __('content.projects') }} </a></li>
+        <li><a href="{{ route('home') }}"><i class="fa fa-home"></i>Home</a></li>
+        <li><a href="{{ route('projects.index') }}"> {{ __('content.projects') }} </a></li>
         <li class="active">{{ __('content.edit') }}</li>
     </ol>
 @endsection
@@ -93,21 +93,55 @@
                                 </div>
                             </div>
 
+                            {{--region --}}
+
+                            <div class="form-group">
+                                <label class="col-sm-2 control-label">{{ __('content.region') }}</label>
+                                <div class="input-group input-group-sm col-xs-12 col-sm-10" >
+                                    <select id="regionCity" name="region_id" class="form-control" style="width: 100%;">
+                                        <option value="">{{__('messages.select')}} {{__('content.region')}}</option>
+                                        @foreach ($regions as $region)
+                                            <option value="{{ $region->id }}"
+                                                @if($project->city->state->country->region->id==$region->id):
+                                                    selected="selected"
+                                                @endif
+                                            >{{ $region->name }}</option>
+                                        @endforeach
+                                    </select>
+                                </div>
+                            </div>
+
+                            {{-- country --}}
+
+                            <div class="form-group">
+                                <label class="col-sm-2 control-label">{{ __('content.country') }}</label>
+                                <div class="input-group input-group-sm col-xs-12 col-sm-10" >
+                                    <select id="countryCity" name="country_id" class="form-control" style="width: 100%;">
+                                        <option value="{{ $project->city->state->country->id }}">{{ $project->city->state->country->name }}</option>
+                                    </select>
+                                </div>
+                            </div>
+
+                            {{-- state --}}
+
+                            <div class="form-group">
+                                <label class="col-sm-2 control-label">{{ __('content.state') }}</label>
+                                <div class="input-group input-group-sm col-xs-12 col-sm-10" >
+                                    <select id="stateCity" name="state_id" class="form-control" style="width: 100%;">
+                                        <option value="{{ $project->city->state->id }}">{{ $project->city->state->name }}</option>
+                                    </select>
+                                    
+                                </div>
+                            </div>
+
                             {{-- city --}}
 
                             <div class="form-group">
                                 <label class="col-sm-2 control-label">{{ __('content.city') }}</label>
                                 <div class="input-group input-group-sm col-xs-12 col-sm-10" >
-                                    <select name="city_id" class="form-control" style="width: 100%;" >
-                                        @foreach ($cities as $city)
-                                            <option value="{{ $city->id }}">{{ $city->name }}</option>
-                                        @endforeach
+                                    <select id="city" name="city_id" class="form-control" style="width: 100%;" >
+                                        <option value="{{ $project->city->id }}">{{ $project->city->name }}</option>
                                     </select>
-                                    @error('city_id')
-                                        <span class="invalid-feedback" role="alert" style="color:red">
-                                            <strong>{{ $message }}</strong>
-                                        </span>
-                                    @enderror
                                 </div>
                             </div>
 
@@ -160,7 +194,11 @@
                                 <div class="input-group input-group-sm col-xs-12 col-sm-10" >
                                     <select name="subsidiary_id" class="form-control" style="width: 100%;">
                                         @foreach ($subsidiaries as $subsidiary)
-                                            <option value="{{ $subsidiary->id }}">{{ $subsidiary->name }}</option>
+                                            <option value="{{ $subsidiary->id }}"
+                                                @if($project->subsidiary_id==$subsidiary->id):
+                                                    selected="selected"
+                                                @endif
+                                            >{{ $subsidiary->name }}</option>
                                         @endforeach
                                     </select>
                                     @error('subsidiary_id')
@@ -207,7 +245,7 @@
 
                     <div class="box-footer">
                         <button type="submit" class="btn btn-success pull-left btn-sm" style="margin: 0px 5px;">{{ __('content.save') }}</button>
-                        <a class="btn btn-info btn-sm" href=" {{ route('home') }} ">{{ __('content.cancel') }}</a>
+                        <a class="btn btn-info btn-sm" href=" {{ route('projects.index') }} ">{{ __('content.cancel') }}</a>
                     </div>
 
                 </form>

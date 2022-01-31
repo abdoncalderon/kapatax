@@ -6,5 +6,13 @@ use Illuminate\Database\Eloquent\Model;
 
 class Department extends Model
 {
-    protected $fillable = ['name', 'sector_id',];
+    protected $fillable = ['name', 'project_sector_id',];
+
+    public function project_sector(){
+        return $this->belongsTo(ProjectSector::class);
+    }
+
+    public function positions(){
+        return $this->hasMany(Position::class);
+    }
 }

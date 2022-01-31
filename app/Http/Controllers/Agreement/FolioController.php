@@ -9,9 +9,10 @@ use App\Models\Location;
 use App\Models\LocationUser;
 use App\Http\Requests\StoreFolioRequest;
 use App\Http\Requests\UpdateFolioRequest;
+use Barryvdh\DomPDF\Facade as PDF;
 use Illuminate\Http\Request;
 use Exception;
-use Barryvdh\DomPDF\Facade as PDF;
+
 use Font;
 // use Faker\Provider\ar_JO\Company;
 
@@ -56,7 +57,29 @@ class FolioController extends Controller
         try{
             $location=Location::find($request->location_id);
             $date = strtotime($request->date);
-            $today = strtotime(Carbon::today()->toDateString());
+            if (is_valid_date_for_project($date, $location->zone->project)){
+                if (is_valid_date_for_location($date, $location)){
+                    if (is_valid_date_for_open_folio($date, $location)){
+                        Folio::create($request ->validated());
+                        $location->uploadSequence();
+                        return redirect()->route('folios.index')->with('messages',__('messages.recordsuccessfullystored'));
+                    }else{
+                        return back()->withErrors(__('messages.timeexpiredtoOpen').' '.__('content.folio'));
+                    }
+                }else{
+                    return back()->withErrors(__('messages.dateOutsideLocationExecution'));
+                }
+            }else{
+                return back()->withErrors(__('messages.dateOutsideProjectExecution'));
+            }
+                
+
+
+
+
+
+
+            /* $today = strtotime(Carbon::today()->toDateString());
             $differenceInHours = abs(round(($date - $today)/60/60,0));
             if (($differenceInHours <= $location->max_time_open_folio)){
                 Folio::create($request ->validated());
@@ -64,7 +87,7 @@ class FolioController extends Controller
                 return redirect()->route('folios.index')->with('messages',__('messages.recordsuccessfullystored'));
             }else{
                 return back()->withErrors(__('messages.timeexpiredtoOpen').' '.__('content.folio'));
-            }
+            } */
         }catch(Exception $e){
             return back()->withErrors($e->getMessage());
         }
@@ -100,4 +123,6 @@ class FolioController extends Controller
             return response()->json($location);
         }
     }
+
+
 }

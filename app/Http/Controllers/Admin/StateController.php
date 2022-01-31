@@ -4,9 +4,13 @@ namespace App\Http\Controllers\Admin;
 
 use App\Models\Country;
 use App\Models\State;
+use App\Models\Region;
+use App\Models\City;
 use App\Http\Requests\Admin\StoreStateRequest;
 use App\Http\Requests\Admin\UpdateStateRequest;
+use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+
 use Exception;
 
 class StateController extends Controller
@@ -19,9 +23,9 @@ class StateController extends Controller
 
     public function create()
     {
-        $countries = Country::get();
+        $regions = Region::get();
         return view('admin.states.create')
-        ->with(compact('countries'));
+        ->with(compact('regions'));
     }
 
     public function store(StoreStateRequest $request )
@@ -71,5 +75,13 @@ class StateController extends Controller
         }
     }
 
+    public function getCities(Request $request, $id)
+    {
+        if($request->ajax())
+        {
+            $cities = City::where('state_id',$id)->get();
+            return response()->json($cities);
+        }
+    }
 
 }

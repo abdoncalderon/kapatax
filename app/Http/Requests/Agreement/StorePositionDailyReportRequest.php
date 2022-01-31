@@ -1,10 +1,9 @@
 <?php
 
-namespace App\Http\Requests;
-
-use App\Models\PositionDailyReport;
+namespace App\Http\Requests\Agreement;
 
 use Illuminate\Foundation\Http\FormRequest;
+use App\Models\PositionDailyReport;
 
 class StorePositionDailyReportRequest extends FormRequest
 {

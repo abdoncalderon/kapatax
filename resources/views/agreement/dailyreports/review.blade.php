@@ -8,7 +8,7 @@
 
 @section('breadcrumb')
     <ol class="breadcrumb">
-        <li><a href="/"><i class="fa fa-home"></i>Home</a></li>
+        <li><a href="{{ route('home') }}"><i class="fa fa-home"></i>Home</a></li>
         <li><a href="{{ route('dailyReports.index')}}"> {{ __('content.dailyreports') }} </a></li>
         <li class="active">{{ __('content.review') }}</li>
     </ol>
@@ -87,7 +87,7 @@
                             <div class="form-group">
                                 <label class="col-sm-2 control-label"></label>
                                 <div class="col-sm-10" >
-                                    @if(auth()->user()->permit->create_comment==1)
+                                    @if(user_have_permission('workbook_create_comment'))
                                         <button type="button" class="btn btn-info" onclick="$('#section').val('report');" data-toggle="modal" data-target="#modal-dailyReport-comments">
                                             {{ __('content.add') }} {{ __('content.comment') }}
                                         </button>
@@ -157,7 +157,7 @@
                             <div class="form-group">
                                 <label class="col-sm-2 control-label"></label>
                                 <div class="col-sm-10" >
-                                    @if(auth()->user()->permit->create_comment==1)
+                                    @if(user_have_permission('workbook_create_comment'))
                                         <button type="button" class="btn btn-info" onclick="$('#section').val('equipments');" data-toggle="modal" data-target="#modal-dailyReport-comments">
                                             {{ __('content.add') }} {{ __('content.comment') }}
                                         </button>
@@ -227,7 +227,7 @@
                             <div class="form-group">
                                 <label class="col-sm-2 control-label"></label>
                                 <div class="col-sm-10" >
-                                    @if(auth()->user()->permit->create_comment==1)
+                                    @if(user_have_permission('workbook_create_comment'))
                                         <button type="button" class="btn btn-info" onclick="$('#section').val('positions');"  data-toggle="modal" data-target="#modal-dailyReport-comments">
                                             {{ __('content.add') }} {{ __('content.comment') }}
                                         </button>
@@ -303,7 +303,7 @@
                             <div class="form-group">
                                 <label class="col-sm-2 control-label"></label>
                                 <div class="col-sm-10" >
-                                    @if(auth()->user()->permit->create_comment==1)
+                                    @if(user_have_permission('workbook_create_comment'))
                                         <button type="button" class="btn btn-info" onclick="$('#section').val('events');" data-toggle="modal" data-target="#modal-dailyReport-comments">
                                             {{ __('content.add') }} {{ __('content.comment') }}
                                         </button>
@@ -373,7 +373,7 @@
                             <div class="form-group">
                                 <label class="col-sm-2 control-label"></label>
                                 <div class="col-sm-10" >
-                                    @if(auth()->user()->permit->create_comment==1)
+                                    @if(user_have_permission('workbook_create_comment'))
                                         <button type="button" class="btn btn-info" onclick="$('#section').val('attachments');" data-toggle="modal" data-target="#modal-dailyReport-comments">
                                             {{ __('content.add') }} {{ __('content.comment') }}
                                         </button>
@@ -419,7 +419,7 @@
                     {{-- Form Footer --}}
 
                     <div class="box-footer">
-                        @if(auth()->user()->isFolioApprover($dailyReport->folio->location))
+                        @if(user_have_profile_in_location('folio_approver',$dailyReport->folio->location))
                             <button type="button" class="btn btn-success btn-sm" data-toggle="modal" data-target="#modal-review-dailyreport">{{ __('content.Approve').' & '.__('content.close').' '.__('content.dailyreport') }}</button>
                         @endif
                         <a class="btn btn-info btn-sm" href="{{ route('dailyReports.index') }}">{{ __('content.cancel') }}</a>

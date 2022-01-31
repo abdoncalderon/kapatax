@@ -48,6 +48,24 @@
 
                         <div class="col-sm-11 col-md-11 col-lg-11">
 
+                            {{-- subsidiary --}}
+
+                            <div class="form-group">
+                                <label class="col-sm-2 control-label">{{ __('content.subsidiary') }}</label>
+                                <div class="input-group input-group-sm col-xs-12 col-sm-10" >
+                                    <select name="subsidiary_id" class="form-control" data-placeholder="Tipo" style="width: 100%;">
+                                        @foreach ($subsidiaries as $subsidiary)
+                                            <option value="{{ $subsidiary->id }}">{{ $subsidiary->name }}</option>
+                                        @endforeach
+                                    </select>
+                                    @error('subsidiary_id')
+                                        <span class="invalid-feedback" role="alert" style="color:red">
+                                            <strong>{{ $message }}</strong>
+                                        </span>
+                                    @enderror
+                                </div>
+                            </div>
+
                             {{-- name --}}
 
                             <div class="form-group">
@@ -90,21 +108,54 @@
                                 </div>
                             </div>
 
+                            {{--region --}}
+
+                            <div class="form-group">
+                                <label class="col-sm-2 control-label">{{ __('content.region') }}</label>
+                                <div class="input-group input-group-sm col-xs-12 col-sm-10" >
+                                    <select id="regionCity" name="region_id" class="form-control" style="width: 100%;">
+                                        <option value="">{{__('messages.select')}} {{__('content.region')}}</option>
+                                        @foreach ($regions as $region)
+                                            <option value="{{ $region->id }}">{{ $region->name }}</option>
+                                        @endforeach
+                                    </select>
+                                </div>
+                            </div>
+
+                            {{-- country --}}
+
+                            <div class="form-group">
+                                <label class="col-sm-2 control-label">{{ __('content.country') }}</label>
+                                <div class="input-group input-group-sm col-xs-12 col-sm-10" >
+                                    <select id="countryCity" name="country_id" class="form-control" style="width: 100%;">
+                                        <option value="">{{__('messages.select')}} {{__('content.country')}}</option>
+                                    </select>
+                                </div>
+                            </div>
+
+                            {{-- state --}}
+
+                            <div class="form-group">
+                                <label class="col-sm-2 control-label">{{ __('content.state') }}</label>
+                                <div class="input-group input-group-sm col-xs-12 col-sm-10" >
+                                    <select id="stateCity" name="state_id" class="form-control" style="width: 100%;">
+                                        <option value="">{{__('messages.select')}} {{__('content.state')}}</option>
+                                    </select>
+                                    
+                                </div>
+                            </div>
+
                             {{-- city --}}
 
                             <div class="form-group">
                                 <label class="col-sm-2 control-label">{{ __('content.city') }}</label>
                                 <div class="input-group input-group-sm col-xs-12 col-sm-10" >
-                                    <select name="city_id" class="form-control" data-placeholder="Tipo" style="width: 100%;">
-                                        @foreach ($cities as $city)
+                                    <select id="city" name="city_id" class="form-control" data-placeholder="Tipo" style="width: 100%;">
+                                        <option value="">{{__('messages.select')}} {{__('content.city')}}</option>
+                                        {{-- @foreach ($cities as $city)
                                             <option value="{{ $city->id }}">{{ $city->name }}</option>
-                                        @endforeach
+                                        @endforeach --}}
                                     </select>
-                                    @error('city')
-                                        <span class="invalid-feedback" role="alert" style="color:red">
-                                            <strong>{{ $message }}</strong>
-                                        </span>
-                                    @enderror
                                 </div>
                             </div>
 
@@ -150,23 +201,7 @@
                                 </div>
                             </div>
 
-                            {{-- subsidiary --}}
-
-                            <div class="form-group">
-                                <label class="col-sm-2 control-label">{{ __('content.subsidiary') }}</label>
-                                <div class="input-group input-group-sm col-xs-12 col-sm-10" >
-                                    <select name="subsidiary_id" class="form-control" data-placeholder="Tipo" style="width: 100%;">
-                                        @foreach ($subsidiaries as $subsidiary)
-                                            <option value="{{ $subsidiary->id }}">{{ $subsidiary->name }}</option>
-                                        @endforeach
-                                    </select>
-                                    @error('subsidiary_id')
-                                        <span class="invalid-feedback" role="alert" style="color:red">
-                                            <strong>{{ $message }}</strong>
-                                        </span>
-                                    @enderror
-                                </div>
-                            </div>
+                            
 
                             <!-- start date -->
                             <div class="form-group">

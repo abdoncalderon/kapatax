@@ -8,7 +8,7 @@
 
 @section('breadcrumb')
     <ol class="breadcrumb">
-        <li><a href="/"><i class="fa fa-home"></i>Home</a></li>
+        <li><a href="{{ route('home') }}"><i class="fa fa-home"></i>Home</a></li>
         <li><a href="{{ route('states.index')}}"> {{ __('content.states') }} </a></li>
         <li class="active">{{ __('content.add') }}</li>
     </ol>
@@ -50,15 +50,29 @@
 
                         <div class="col-sm-11 col-md-11 col-lg-11">
 
+                             {{--region --}}
+
+                             <div class="form-group">
+                                <label class="col-sm-2 control-label">{{ __('content.region') }}</label>
+                                <div class="input-group input-group-sm col-xs-12 col-sm-10" >
+                                    <select id="regionCity" name="region_id" class="form-control" style="width: 100%;">
+                                        <option value="">{{__('messages.select')}} {{__('content.region')}}</option>
+                                        @foreach ($regions as $region)
+                                            <option value="{{ $region->id }}">{{ $region->name }}</option>
+                                        @endforeach
+                                    </select>
+                                </div>
+                            </div>
+
                             {{-- country --}}
 
                             <div class="form-group">
                                 <label class="col-sm-2 control-label">{{ __('content.country') }}</label>
                                 <div class="input-group input-group-sm col-xs-12 col-sm-10" >
-                                    <select name="country_id" class="form-control" data-placeholder="Tipo" style="width: 100%;">
-                                        @foreach ($countries as $country)
+                                    <select id="countryCity" name="country_id" class="form-control" data-placeholder="Tipo" style="width: 100%;">
+                                       {{--  @foreach ($countries as $country)
                                             <option value="{{ $country->id }}">{{ $country->name }}</option>
-                                        @endforeach
+                                        @endforeach --}}
                                     </select>
                                 </div>
                             </div>

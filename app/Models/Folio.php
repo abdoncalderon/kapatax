@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Model;
 
 class Folio extends Model
@@ -26,7 +27,14 @@ class Folio extends Model
 
     public function status(){
         $date = strtotime($this->date);
-        $today = strtotime(Carbon::today()->toDateString());
+
+        if(is_valid_date_for_open_folio($date,$this->location)){
+            return __('content.opened');
+        }else{
+            return __('content.closed');
+        }
+
+        /* $today = strtotime(Carbon::today()->toDateString());
         $differenceInHours = abs(round(($date - $today)/60/60,0));
         
         // $locationMaxTimeOpenFolio = $this->location->max_time_open_folio;
@@ -36,7 +44,7 @@ class Folio extends Model
             return __('content.closed');
         }else{
             return __('content.opened');
-        }
+        } */
         
     }
 }

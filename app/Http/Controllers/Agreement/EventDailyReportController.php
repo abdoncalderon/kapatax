@@ -1,10 +1,11 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Agreement;
 
+use App\Http\Controllers\Controller;
 use App\Models\EventDailyReport;
 use App\Models\DailyReport;
-use App\Http\Requests\StoreEventDailyReportRequest;
+use App\Http\Requests\Agreement\StoreEventDailyReportRequest;
 use Exception;
 
 class EventDailyReportController extends Controller

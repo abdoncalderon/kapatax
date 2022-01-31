@@ -8,7 +8,7 @@
 
 @section('breadcrumb')
     <ol class="breadcrumb">
-        <li><a href="/"><i class="fa fa-home"></i>Home</a></li>
+        <li><a href="{{ route('home') }}"><i class="fa fa-home"></i>Home</a></li>
         <li><a href="{{ route('workbook_settings_users')}}"> {{ __('content.users') }} </a></li>
         <li class="active">{{ __('content.locations') }}</li>
     </ol>

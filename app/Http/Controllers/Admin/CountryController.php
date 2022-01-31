@@ -4,9 +4,11 @@ namespace App\Http\Controllers\Admin;
 
 use App\Models\Region;
 use App\Models\Country;
+use App\Models\State;
 use App\Http\Requests\Admin\StoreCountryRequest;
 use App\Http\Requests\Admin\UpdateCountryRequest;
 use App\Http\Controllers\Controller;
+use Illuminate\Http\Request;
 use Exception;
 
 class CountryController extends Controller
@@ -69,6 +71,16 @@ class CountryController extends Controller
         }catch(Exception $e){
             return back()->withErrors($e->getMessage());
         }
-    }                         
+    }         
+    
+    public function getStates(Request $request, $id)
+    {
+        if($request->ajax())
+        {
+            $states = State::where('country_id',$id)->get();
+            return response()->json($states);
+        }
+    }
+    
    
 }

@@ -6,12 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Location extends Model
 {
-    protected $fillable = ['name','code','project_id','sequence','startDate','finishDate','zone_id','latitude','longitude','max_time_open_folio','max_time_create_dailyreport','max_time_create_note','max_time_create_comment',];
-
-    public function project()
-    {
-        return $this->belongsTo(Project::class);
-    }
+    protected $fillable = ['name','code','zone_id','sequence','startDate','finishDate','latitude','longitude','max_time_open_folio','max_time_create_dailyreport','max_time_create_note','max_time_create_comment',];
 
     public function zone()
     {
@@ -20,7 +15,7 @@ class Location extends Model
 
     public function turns()
     {
-        return $this->hasMany(TurnLocation::class);
+        return $this->hasMany(LocationTurn::class);
     }
 
     public function folios()

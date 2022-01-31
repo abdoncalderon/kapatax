@@ -1,7 +1,8 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Agreement;
 
+use App\Http\Controllers\Controller;
 use Carbon\Carbon;
 use App\Models\CommentNote;
 use App\Models\Note;

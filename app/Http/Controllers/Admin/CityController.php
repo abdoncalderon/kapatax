@@ -5,8 +5,10 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Models\City;
 use App\Models\State;
+use App\Models\Region;
 use App\Http\Requests\Admin\StoreCityRequest;
 use App\Http\Requests\Admin\UpdateCityRequest;
+
 use Exception;
 
 class CityController extends Controller
@@ -19,20 +21,19 @@ class CityController extends Controller
 
     public function create()
     {
-        $states = State::get();
+        $regions = Region::get();
         return view('admin.cities.create')
-        ->with(compact('states'));
+        ->with(compact('regions'));
     }
 
     public function store(StoreCityRequest $request )
     {
         try{
-
+            City::create($request ->validated());
+            return redirect()->route('cities.index');
         }catch(Exception $e){
             return back()->withErrors($e->getMessage());
         }
-        City::create($request ->validated());
-        return redirect()->route('cities.index');
     }
 
     public function show(City $city)
@@ -70,4 +71,6 @@ class CityController extends Controller
             return back()->withErrors($e->getMessage());
         }
     }   
+
+    
 }

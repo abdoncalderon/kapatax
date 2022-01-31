@@ -49,10 +49,12 @@ class SubsidiaryController extends Controller
     public function edit(Subsidiary $subsidiary)
     {
         $companies = Company::get();
+        $divisions = Division::get();
         return view('admin.subsidiaries.edit',[
             'subsidiary'=>$subsidiary
             ])
-        ->with(compact('companies'));
+        ->with(compact('companies'))
+        ->with(compact('divisions'));
     }
     
     public function update(Subsidiary $subsidiary, UpdateSubsidiaryRequest $request)

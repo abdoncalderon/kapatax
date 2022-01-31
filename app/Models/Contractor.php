@@ -6,5 +6,10 @@ use Illuminate\Database\Eloquent\Model;
 
 class Contractor extends Model
 {
-    protected $fillable = ['name',];
+    protected $fillable = ['name','project_id','code','taxId','address','zipCode','phoneNumber',];
+
+    public function project(){
+        return $this->belongsTo(State::class);
+    }
 }
+

@@ -15,42 +15,42 @@ class PermitSeeder extends Seeder
     {
         DB::table('permits')->insert([
             'name' => 'workbook_create_folio',
-            'menu_id' => 30,
+            'menu_id' => 32,
         ]);
 
         DB::table('permits')->insert([
             'name' => 'workbook_create_dailyreport',
-            'menu_id' => 30,
+            'menu_id' => 32,
         ]);
 
         DB::table('permits')->insert([
             'name' => 'workbook_create_note',
-            'menu_id' => 30,
+            'menu_id' => 32,
         ]);
 
         DB::table('permits')->insert([
             'name' => 'workbook_create_comment',
-            'menu_id' => 30,
+            'menu_id' => 32,
         ]);
 
         DB::table('permits')->insert([
             'name' => 'workbook_print_dailyreport',
-            'menu_id' => 30,
+            'menu_id' => 32,
         ]);
 
         DB::table('permits')->insert([
             'name' => 'workbook_print_note',
-            'menu_id' => 30,
+            'menu_id' => 32,
         ]);
 
         DB::table('permits')->insert([
             'name' => 'workbook_print_folio',
-            'menu_id' => 30,
+            'menu_id' => 32,
         ]);
 
         DB::table('permits')->insert([
             'name' => 'workbook_edit_sequence',
-            'menu_id' => 30,
+            'menu_id' => 32,
         ]);
 
     }

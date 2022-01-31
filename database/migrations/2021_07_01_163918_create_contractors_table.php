@@ -15,7 +15,15 @@ class CreateContractorsTable extends Migration
     {
         Schema::create('contractors', function (Blueprint $table) {
             $table->id();
-            $table->string('name')->unique();
+            $table->string('name');
+            $table->foreignId('project_id');
+            $table->foreign('project_id')->references('id')->on('projects')->onUpdate('cascade')->onDelete('restrict');
+            $table->string('code')->unique();
+            $table->string('taxId')->unique()->nullable();
+            $table->string('address')->nullable();
+            $table->string('zipCode')->nullable();
+            $table->string('phoneNumber')->nullable();
+            $table->unique(['name','project_id'],'contractor_project_unique');
             $table->timestamps();
         });
     }

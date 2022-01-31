@@ -17,4 +17,12 @@ class RoleMenu extends Model
     {
         return $this->belongsTo(Role::class);
     }
+
+    public function isActive(){
+        if($this->isActive==1){
+            return true;
+        }else{
+            return false;
+        }
+    }
 }

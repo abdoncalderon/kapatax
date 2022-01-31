@@ -18,6 +18,7 @@ class CreateStatesTable extends Migration
             $table->string('name');
             $table->foreignId('country_id');
             $table->foreign('country_id')->references('id')->on('countries')->onUpdate('cascade')->onDelete('restrict');
+            $table->unique(['name','country_id'],'state_country_unique');
             $table->timestamps();
         });
     }

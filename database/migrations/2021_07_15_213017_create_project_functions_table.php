@@ -17,8 +17,8 @@ class CreateProjectFunctionsTable extends Migration
             $table->id();
             $table->foreignId('project_id');
             $table->foreign('project_id')->references('id')->on('projects')->onUpdate('cascade')->onDelete('restrict');
-            $table->foreignId('function_id');
-            $table->foreign('function_id')->references('id')->on('funct1ons')->onUpdate('cascade')->onDelete('restrict');
+            $table->foreignId('funct1on_id');
+            $table->foreign('funct1on_id')->references('id')->on('funct1ons')->onUpdate('cascade')->onDelete('restrict');
             $table->timestamps();
         });
     }
