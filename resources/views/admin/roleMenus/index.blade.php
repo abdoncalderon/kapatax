@@ -63,12 +63,7 @@
                                     @else
                                         <a class="btn btn-info btn-xs" href="{{ route('roleMenus.activate', [$roleMenu, '1']) }}">{{ __('content.activate') }}</a>
                                     @endif
-                                    {{-- <a class="btn btn-info btn-xs" href="{{ route('menus.show', $roleMenu->menu) }}">{{ __('content.show') }}</a>
-                                    @if($role->name!='SUPERUSER')
-                                        <a class="btn btn-info btn-xs" href="{{ route('roleMenus.destroy', $roleMenu)}}">{{ __('content.delete') }}</a>
-                                    @endif --}}
                                 </td>
-
                             </tr>
                         @endforeach
                     </tbody>

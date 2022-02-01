@@ -27,12 +27,17 @@ class PermitController extends Controller
     public function store(StorePermitRequest $request )
     {
         try{
-
+            $request ->validated();
+            $permit = Permit::create([
+                'name'=>$request->name,
+                'menu_id'=>$request->menu_id,
+            ]);
+            assign_roles_to_permit($permit);
+            return redirect()->route('permits.index');
         }catch(Exception $e){
             return back()->withErrors($e->getMessage());
         }
-        Permit::create($request ->validated());
-        return redirect()->route('permits.index');
+        
     }
 
     public function show(Permit $permit)

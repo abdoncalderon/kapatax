@@ -29,14 +29,14 @@ class MenuController extends Controller
         try{
             $request->validated();
             if($this->checkRoute($request->route)){
-                Menu::create([
+                $menu = Menu::create([
                     'code'=>$request->code,
                     'showName'=>$request->showName,
                     'menu_id'=>$request->menu_id,
                     'route'=>$request->route,
                     'icon'=>$request->icon,
                 ]);
-                
+                assign_roles_to_menu($menu);
                 return redirect()->route('menus.index');
             }else{
                 return back()->withErrors(__('messages.routeNoExist'));

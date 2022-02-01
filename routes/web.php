@@ -99,6 +99,7 @@ Route::get('/create/permit/{role}','Admin\RolePermitController@create')->name('r
 Route::post('/rolePermits/{role}','Admin\RolePermitController@store')->name('rolePermits.store');
 Route::get('/rolePermits/destroy/{rolePermit}','Admin\RolePermitController@destroy')->name('rolePermits.destroy');
 Route::get('/rolePermits/activate/{rolePermit}/{value}','Admin\RolePermitController@activate')->name('rolePermits.activate');
+Route::post('/cloneRolePermits','Admin\RolePermitController@clone')->name('rolePermits.clone');
 
 /* Routes Roles Menus  */
 Route::get('/roleMenus/{role}','Admin\RoleMenuController@index')->name('roleMenus.index');
@@ -112,6 +113,7 @@ Route::get('/projectUsers/{user}','Admin\ProjectUserController@index')->name('pr
 Route::get('/create/project/{user}','Admin\ProjectUserController@create')->name('projectUsers.create');
 Route::post('/projectUsers/{user}','Admin\ProjectUserController@store')->name('projectUsers.store');
 Route::get('/projectUsers/destroy/{projectUser}','Admin\ProjectUserController@destroy')->name('projectUsers.destroy');
+
 
 
 
@@ -169,6 +171,10 @@ Route::get('/equipment/destroy/{equipment}','Setting\EquipmentController@destroy
 /* Routes Turns */
 Route::resource('turns','Setting\TurnController');
 Route::get('/turns/destroy/{turn}','Setting\TurnController@destroy')->name('turns.destroy');
+
+
+
+
 
 
 

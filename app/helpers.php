@@ -92,11 +92,45 @@ if (! function_exists('assign_menus_to_role')) {
     function assign_menus_to_role(Role $role)
     {
         try{
-            $menus = RoleMenu::where();
+            $menus = Menu::all();
             foreach ($menus as $menu){
                 $roleMenu = RoleMenu::create([
                     'role_id' => $role->id,
                     'menu_id' => $menu->id,
+                ]);
+            }
+        }catch(Exception $e){
+            return back()->withErrors($e->getMessage());
+        }
+    }
+}
+
+if (! function_exists('assign_roles_to_menu')) {
+    function assign_roles_to_menu(Menu $menu)
+    {
+        try{
+            $roles = Role::all();
+            foreach ($roles as $role){
+                $roleMenu = RoleMenu::create([
+                    'role_id' => $role->id,
+                    'menu_id' => $menu->id,
+                ]);
+            }
+        }catch(Exception $e){
+            return back()->withErrors($e->getMessage());
+        }
+    }
+}
+
+if (! function_exists('assign_roles_to_permit')) {
+    function assign_roles_to_permit(Permit $permit)
+    {
+        try{
+            $roles = Role::all();
+            foreach ($roles as $role){
+                $rolePermit = RolePermit::create([
+                    'role_id' => $role->id,
+                    'permit_id' => $permit->id,
                 ]);
             }
         }catch(Exception $e){
