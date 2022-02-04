@@ -6,8 +6,8 @@ use App\Http\Controllers\Controller;
 use App\User;
 use App\Models\Location;
 use App\Models\LocationUser;
-use App\Http\Requests\StoreLocationUserRequest;
-use App\Http\Requests\UpdateLocationUserRequest;
+use App\Http\Requests\Agreement\StoreLocationUserRequest;
+use App\Http\Requests\Agreement\UpdateLocationUserRequest;
 use Exception;
 
 class LocationUserController extends Controller

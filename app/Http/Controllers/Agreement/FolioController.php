@@ -7,14 +7,12 @@ use Carbon\Carbon;
 use App\Models\Folio;
 use App\Models\Location;
 use App\Models\LocationUser;
-use App\Http\Requests\StoreFolioRequest;
-use App\Http\Requests\UpdateFolioRequest;
+use App\Http\Requests\Agreement\StoreFolioRequest;
+use App\Http\Requests\Agreement\UpdateFolioRequest;
 use Barryvdh\DomPDF\Facade as PDF;
 use Illuminate\Http\Request;
 use Exception;
-
 use Font;
-// use Faker\Provider\ar_JO\Company;
 
 class FolioController extends Controller
 {
@@ -72,22 +70,7 @@ class FolioController extends Controller
             }else{
                 return back()->withErrors(__('messages.dateOutsideProjectExecution'));
             }
-                
-
-
-
-
-
-
-            /* $today = strtotime(Carbon::today()->toDateString());
-            $differenceInHours = abs(round(($date - $today)/60/60,0));
-            if (($differenceInHours <= $location->max_time_open_folio)){
-                Folio::create($request ->validated());
-                $location->uploadSequence();
-                return redirect()->route('folios.index')->with('messages',__('messages.recordsuccessfullystored'));
-            }else{
-                return back()->withErrors(__('messages.timeexpiredtoOpen').' '.__('content.folio'));
-            } */
+            
         }catch(Exception $e){
             return back()->withErrors($e->getMessage());
         }
@@ -109,7 +92,7 @@ class FolioController extends Controller
 
     public function print(Folio $folio)
     {
-        $pdf = PDF::loadView('folios.print',compact('folio'));
+        $pdf = PDF::loadView('agreement.folios.print',compact('folio'));
         
         return $pdf->stream('folio.pdf');
 

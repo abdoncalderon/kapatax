@@ -113,7 +113,7 @@
                                         <tbody>
                                             @foreach($note->attachments as $attachmentNote)
                                                 <tr>
-                                                    <td><img src="{{ asset('images/attachments/notes/'.$attachmentNote->filename) }}" alt="" style="max-width: 50%; min-width: 100%"></td>
+                                                    <td><img src="{{ asset('images/agreement/notes/attachments/'.$attachmentNote->filename) }}" alt="" style="max-width: 50%; min-width: 100%"></td>
                                                     <td>{{ $attachmentNote->description }}</td>
                                                     <td>
                                                         <a class="btn btn-info btn-xs" href="{{ route('attachmentNotes.destroy',$attachmentNote) }}">{{ __('content.delete') }}</a>
@@ -138,7 +138,7 @@
                     <div class="box-footer">
                         <button type="submit" id="save" class="btn btn-success btn-sm">{{ __('content.save') }}</button>
                         <button type="button" class="btn btn-success btn-sm" data-toggle="modal" data-target="#modal-save-note">{{ __('content.save') }} & {{ __('content.close') }}</button>
-                        <a class="btn btn-info btn-sm" href=" {{ route('folios.index') }} ">{{ __('content.cancel') }}</a>
+                        <a class="btn btn-danger btn-sm" href=" {{ route('folios.index') }} ">{{ __('content.cancel') }}</a>
                     </div>
 
                 </form>

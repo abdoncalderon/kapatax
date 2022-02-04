@@ -102,7 +102,7 @@
                                         <tbody>
                                             @foreach($note->attachments as $attachmentNote)
                                                 <tr>
-                                                    <td><img src="{{ asset('images/attachments/notes/'.$attachmentNote->filename) }}" alt="" style="max-width: 100%; min-width:50%"></td>
+                                                    <td><img src="{{ asset('images/agreement/notes/attachments/'.$attachmentNote->filename) }}" alt="" style="max-width: 100%; min-width:50%"></td>
                                                     <td>{{ $attachmentNote->description }}</td>
                                                 </tr>
                                             @endforeach

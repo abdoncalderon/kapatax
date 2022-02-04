@@ -29,7 +29,7 @@ class HomeController extends Controller
         $project_id = session('current_project_id');
         $role = ProjectUser::where('user_id',auth()->user()->id)->where('project_id',$project_id)->first();
         $project = Project::where('id',$project_id)->first();
-        $roleMenus = RoleMenu::where('role_id',$role->role_id)->get();
+        $roleMenus = RoleMenu::where('role_id',$role->role_id)->where('isActive','1')->get();
         session(['roleMenus' => $roleMenus]);
         return view('layouts.main')
         ->with(compact('project'));

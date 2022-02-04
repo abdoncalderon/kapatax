@@ -1,9 +1,9 @@
 <?php
 
-namespace App\Http\Requests;
+namespace App\Http\Requests\Agreement;
 
-use App\Models\Folio;
 use Illuminate\Foundation\Http\FormRequest;
+use App\Models\Folio;
 
 class StoreFolioRequest extends FormRequest
 {

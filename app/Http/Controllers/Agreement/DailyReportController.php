@@ -9,10 +9,10 @@ use App\Models\Equipment;
 use App\Models\Position;
 use App\Models\LocationUser;
 use App\Models\Location;
-use App\Http\Requests\StoreDailyReportRequest;
-use App\Http\Requests\UpdateDailyReportRequest;
+use App\Http\Requests\Agreement\StoreDailyReportRequest;
+use App\Http\Requests\Agreement\UpdateDailyReportRequest;
 use App\Mail\ReportCompleted;
-use App\Models\Contractor;
+use App\Models\Stakeholder;
 use Illuminate\Http\Request;
 use Exception;
 use Illuminate\Support\Facades\Mail;
@@ -90,7 +90,7 @@ class DailyReportController extends Controller
 
     public function edit(DailyReport $dailyReport)
     {
-        $contractors = Contractor::all();
+        $stakeholders = Stakeholder::where('stakeholder_types_id',4)->get();
         $equipments = Equipment::all();
         $positions = Position::all();
         $oldDailyReports = DailyReport::select('daily_reports.id as old_daily_report_id', 'folios.date as date', 'turns.name as turn')
@@ -101,7 +101,7 @@ class DailyReportController extends Controller
                                             ->get();
         return view('agreement.dailyreports.edit')
         ->with('dailyReport',$dailyReport)
-        ->with('contractors',$contractors)
+        ->with('stakeholders',$stakeholders)
         ->with('equipments',$equipments)
         ->with('positions',$positions)
         ->with('oldDailyReports',$oldDailyReports);

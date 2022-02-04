@@ -15,9 +15,9 @@ class StorePositionDailyReportRequest extends FormRequest
     public function rules()
     {
         $dailyReport_id = $this->get('daily_report_id');
-        $contractor_id = $this->get('contractor_id');
+        $stakeholder_id = $this->get('stakeholder_id');
         $position_id = $this->get('position_id');
-        $positionDailyReports = PositionDailyReport::where('daily_report_id',$dailyReport_id)->where('contractor_id',$contractor_id)->where('position_id',$position_id)->get();
+        $positionDailyReports = PositionDailyReport::where('daily_report_id',$dailyReport_id)->where('stakeholder_id',$stakeholder_id)->where('position_id',$position_id)->get();
         if (count($positionDailyReports)>0){
             return [
                 'daily_report_id'=>'max:0',
@@ -25,7 +25,7 @@ class StorePositionDailyReportRequest extends FormRequest
         }else{
             return [
                 'daily_report_id'=>'required',
-                'contractor_id'=>'required',
+                'stakeholder_id'=>'required',
                 'position_id'=>'required',
                 'quantity'=>'required',
             ];

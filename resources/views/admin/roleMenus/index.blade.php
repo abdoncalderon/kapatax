@@ -33,14 +33,15 @@
 
             <div class="box-header with-border center-block">
                 <h3 class="box-title"><strong>{{ __('messages.roleMenus') }} {{ $role->name }}</strong></h3> | 
-                <a class="btn btn-success btn-sm" href="{{ route('roleMenus.create',$role) }}">{{ __('content.add') }}</a>
+                {{-- <a class="btn btn-success btn-sm" href="{{ route('roleMenus.create',$role) }}">{{ __('content.add') }}</a> --}}
+                <button type="button" class="btn btn-default btn-sm" data-toggle="modal" data-target="#cloneMenus">{{ __('content.clone') }} {{ __('content.from') }}... </button>
             </div>
             
             <div class="box-body">
                 
                  {{-- Start Table  --}}
 
-                <table id="datatable" class="table table-bordered table-striped">
+                <table id="example1" class="table table-bordered table-striped">
 
                     {{-- Header  --}}
 
@@ -77,5 +78,48 @@
         </div>
 
     </section>
+
+    {{-- Modal Clone Menus --}}
+
+    <div class="modal fade" id="cloneMenus" tabindex="-1" role="dialog" aria-labelledby="cloneMenus" aria-hidden="true">
+
+        <div class="modal-dialog modal-dialog-centered" role="document">
+
+            <form method="POST" action="{{ route('roleMenus.clone') }}">
+                @csrf
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h4 class="modal-title" id="exampleModalLongTitle">{{ __('content.clone') }} {{ __('content.menus') }} {{ __('content.from') }} ...</h4>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+
+
+                        <input type="hidden" class="form-control" name="role_target_id" value="{{ $role->id }}">
+
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label">{{ __('content.role') }}</label>
+                            <select name="role_source_id" class="form-control" required>
+                                <option value="">{{ __('messages.select') }} {{ __('content.role') }}</option>
+                                @foreach ($otherRoles as $role)
+                                    <option value="{{ $role->id }}">{{ $role->name }}</option>
+                                @endforeach
+                            </select>
+                        </div>
+
+                    </div>
+                    <div class="modal-footer">
+                        <div class="col-md-6 offset-md-4">
+                            <button type="submit" class="btn btn-success pull-left btn-sm" style="margin: 0px 5px;">{{ __('content.clone') }}</button>
+                            <button type="button" class="btn btn-danger pull-left btn-sm" data-dismiss="modal">{{ __('content.cancel') }}</button>
+                        </div>
+                    </div>
+                </div>
+            </form>
+            
+        </div>
+    </div>
 
 @endsection

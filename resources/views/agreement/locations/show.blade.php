@@ -155,7 +155,7 @@
 
                     <div class="box-footer">
                         <a class="btn btn-success btn-sm" href=" {{ route('workbook_settings_locations_edit', $location) }} ">{{ __('content.edit') }}</a>
-                        <a class="btn btn-info btn-sm" href=" {{ route('workbook_settings_locations') }} ">{{ __('content.cancel') }}</a>
+                        <a class="btn btn-danger btn-sm" href=" {{ route('workbook_settings_locations') }} ">{{ __('content.cancel') }}</a>
                     </div>
 
                 </form>

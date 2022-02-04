@@ -7,8 +7,9 @@ use Carbon\Carbon;
 use App\Models\Note;
 use App\Models\Folio;
 use App\Models\LocationUser;
-use App\Http\Requests\StoreNoteRequest;
-use App\Http\Requests\UpdateNoteRequest;
+use App\Models\Location;
+use App\Http\Requests\Agreement\StoreNoteRequest;
+use App\Http\Requests\Agreement\UpdateNoteRequest;
 use App\Mail\NoteCreated;
 use App\Mail\ReportCompleted;
 use Illuminate\Http\Request;
@@ -20,12 +21,14 @@ class NoteController extends Controller
     public function index($location_id = null)
     {
         if (empty($location_id)){
+            $location = Location::find(1);
             $notes = Note::join('folios','notes.folio_id','=','folios.id')
                                 ->join('location_users','folios.location_id','=','location_users.location_id')
                                 ->where('location_users.user_id',auth()->user()->id)
                                 ->where('folios.location_id',0)
                                 ->get();
         }else{
+            $location = Location::find($location_id);
             $notes = Note::select('notes.id as id','locations.name as location','folios.date as date','turns.name as turn','notes.status as status','users.name as user','users.id as user_id')->join('folios','notes.folio_id','=','folios.id')
                                 ->join('location_users','folios.location_id','=','location_users.location_id')
                                 ->join('locations','folios.location_id','=','locations.id')
@@ -37,7 +40,7 @@ class NoteController extends Controller
         }
         return view('agreement.notes.index')
         ->with(compact('notes'))
-        ->with(compact('location_id'));
+        ->with(compact('location'));
     }
 
     public function filterLocation(Request $request)
@@ -89,6 +92,6 @@ class NoteController extends Controller
                     Mail::to($user->user->email)->queue(new NoteCreated($note));
                 }
         }
-        return redirect()->route('notes.index');
+        return redirect()->route('notes.index',$note->folio->location->id);
     }
 }

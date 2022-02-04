@@ -6,7 +6,7 @@ use App\Http\Controllers\Controller;
 use Carbon\Carbon;
 use App\Models\CommentNote;
 use App\Models\Note;
-use App\Http\Requests\StoreCommentNoteRequest;
+use App\Http\Requests\Agreement\StoreCommentNoteRequest;
 use App\Mail\CommentNoteCreated;
 use App\Models\LocationUser;
 use Exception;

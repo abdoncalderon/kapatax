@@ -10,6 +10,7 @@ use App\Models\LocationUser;
 use App\Models\Location;
 use App\Models\Project;
 use App\Models\LocationTurn;
+use App\Models\Stakeholder;
 use Carbon\Carbon;
 
 function yesNo($value){
@@ -249,5 +250,39 @@ if (! function_exists('is_valid_date_for_create_comment')) {
     }
 }
 
+if (! function_exists('is_role_menu_active')) {
+    function is_role_menu_active(Role $role, Menu $menu)
+    {
+        try{
+            $roleMenu=RoleMenu::where('role_id',$role->id)->where('menu_id',$menu->id)->first();
+            if (!empty($roleMenu)){
+                return $roleMenu->isActive;
+            }else{
+                return false;
+            }
+            
+        }catch(Exception $e){
+            return back()->withErrors($e->getMessage());
+        }
+    }
+}
 
-
+if (! function_exists('stakeholder_logofile')) {
+    function stakeholder_logofile(Project $project, $position)
+    {
+        switch($position){
+            case 1: $stakeholder=Stakeholder::where('id',$project->stakeholderLogo1_id)->first();
+            case 2: $stakeholder=Stakeholder::where('id',$project->stakeholderLogo2_id)->first();
+            case 3: $stakeholder=Stakeholder::where('id',$project->stakeholderLogo3_id)->first();
+            case 4: $stakeholder=Stakeholder::where('id',$project->stakeholderLogo4_id)->first();
+            break;
+        }
+        
+        if (!empty($stakeholder)){
+            return $stakeholder->logofile;
+        }else{
+            return 'logo.png';
+        }
+            
+    }
+}

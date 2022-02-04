@@ -19,4 +19,5 @@ class StoreAttachmentDailyReportRequest extends FormRequest
             'user_id'=>'required',
         ];
     }
+    
 }

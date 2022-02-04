@@ -56,7 +56,7 @@
 
                     <div class="box-footer">
                         <a class="btn btn-success btn-sm" href=" {{ route('positions.edit', $position) }} ">{{ __('content.edit') }}</a>
-                        <a class="btn btn-info btn-sm" href=" {{ route('positions.index') }} ">{{ __('messages.returntolist') }}</a>
+                        <a class="btn btn-danger btn-sm" href=" {{ route('positions.index') }} ">{{ __('content.cancel') }}</a>
                     </div>
 
                 </form>

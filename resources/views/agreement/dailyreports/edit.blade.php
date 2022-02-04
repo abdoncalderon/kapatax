@@ -9,7 +9,7 @@
 @section('breadcrumb')
     <ol class="breadcrumb">
         <li><a href="{{ route('home') }}"><i class="fa fa-home"></i>Home</a></li>
-        <li><a href="{{ route('folios.index')}}"> {{ __('content.folios') }} </a></li>
+        <li><a href="{{ route('dailyReports.index',$dailyReport->folio->location->id)}}"> {{ __('content.dailyreports') }} </a></li>
         <li class="active">{{ __('content.edit') }}</li>
     </ol>
 @endsection
@@ -118,7 +118,7 @@
                                     <table id="equipments" class="table table-bordered table-striped">
                                         <thead>
                                             <tr>
-                                                <th>{{ __('content.contractor') }}</th>
+                                                <th>{{ __('content.stakeholder') }}</th>
                                                 <th>{{ __('content.equipment') }}</th>
                                                 <th>{{ __('content.quantity') }}</th>
                                                 <th>{{ __('content.actions') }}</th>
@@ -127,7 +127,7 @@
                                         <tbody>
                                             @foreach($dailyReport->equipments as $equipmentDailyReport)
                                                 <tr>
-                                                    <td>{{ $equipmentDailyReport->contractor->name }}</td>
+                                                    <td>{{ $equipmentDailyReport->stakeholder->name }}</td>
                                                     <td>{{ $equipmentDailyReport->equipment->name }}</td>
                                                     <td>{{ $equipmentDailyReport->quantity }}</td>
                                                     <td>
@@ -159,7 +159,7 @@
                                     <table id="positions" class="table table-bordered table-striped">
                                         <thead>
                                             <tr>
-                                                <th>{{ __('content.contractor') }}</th>
+                                                <th>{{ __('content.stakeholder') }}</th>
                                                 <th>{{ __('content.position') }}</th>
                                                 <th>{{ __('content.quantity') }}</th>
                                                 <th>{{ __('content.actions') }}</th>
@@ -168,7 +168,7 @@
                                         <tbody>
                                             @foreach($dailyReport->positions as $positionDailyReport)
                                                 <tr>
-                                                    <td>{{ $positionDailyReport->contractor->name }}</td>
+                                                    <td>{{ $positionDailyReport->stakeholder->name }}</td>
                                                     <td>{{ $positionDailyReport->position->name }}</td>
                                                     <td>{{ $positionDailyReport->quantity }}</td>
                                                     <td>
@@ -246,7 +246,7 @@
                                         <tbody>
                                             @foreach($dailyReport->attachments as $attachmentDailyReport)
                                                 <tr>
-                                                    <td style="width:50%"><img src="{{ asset('images/attachments/daily_reports/'.$attachmentDailyReport->filename) }}" alt="" style="width:100%"></td>
+                                                    <td style="width:50%"><img src="{{ asset('images/agreement/daily_reports/attachments/'.$attachmentDailyReport->filename) }}" alt="" style="width:100%"></td>
                                                     <td style="width:40%">{{ $attachmentDailyReport->description }}</td>
                                                     <td>
                                                         <a class="btn btn-info btn-xs" href="{{ route('attachmentDailyReports.destroy',$attachmentDailyReport) }}">{{ __('content.delete') }}</a>
@@ -285,7 +285,7 @@
                         @if(user_have_profile_in_location('dailyreport_approver',$dailyReport->folio->location))
                             <button type="button" class="btn btn-success btn-sm" data-toggle="modal" data-target="#modal-save-dailyreport">{{ __('content.save') }} & {{ __('content.finalize') }}</button>
                         @endif
-                        <a class="btn btn-info btn-sm" href="{{ route('dailyReports.index',$dailyReport->folio->location->id) }}">{{ __('content.cancel') }}</a>
+                        <a class="btn btn-danger btn-sm" href="{{ route('dailyReports.index',$dailyReport->folio->location->id) }}">{{ __('content.cancel') }}</a>
                     </div>
 
                 </form>
@@ -318,14 +318,14 @@
     
                             <input id="daily_report_id" hidden type="text" name="daily_report_id" value="{{ $dailyReport->id }}">
     
-                            {{-- Contractor --}}
+                            {{-- Stakeholder --}}
     
                             <div class="form-group">
-                                <label for="contractor_id">{{__('content.contractor')}}</label>
-                                <select id="contractor_id" name="contractor_id" class="form-control" required>
-                                    <option value="">{{__('messages.select')}} {{__('content.contractor')}}</option>
-                                    @foreach ($contractors as $contractor)
-                                        <option value="{{ $contractor->id }}">{{ $contractor->name }}</option>
+                                <label for="stakeholder_id">{{__('content.stakeholder')}}</label>
+                                <select id="stakeholder_id" name="stakeholder_id" class="form-control" required>
+                                    <option value="">{{__('messages.select')}} {{__('content.stakeholder')}}</option>
+                                    @foreach ($stakeholders as $stakeholder)
+                                        <option value="{{ $stakeholder->id }}">{{ $stakeholder->name }}</option>
                                     @endforeach
                                 </select>
                             </div>
@@ -381,14 +381,14 @@
 
                             <input id="daily_report_id" hidden type="text" name="daily_report_id" value="{{ $dailyReport->id }}">
 
-                            {{-- Contractor --}}
+                            {{-- Stakeholder --}}
 
                             <div class="form-group">
-                                <label for="contractor">{{__('content.contractor')}}</label>
-                                <select id="contractor_id" name="contractor_id" class="form-control" required>
-                                    <option value="">{{__('messages.select')}} {{__('content.contractor')}}</option>
-                                    @foreach ($contractors as $contractor)
-                                        <option value="{{ $contractor->id }}">{{ $contractor->name }}</option>
+                                <label for="stakeholder">{{__('content.stakeholder')}}</label>
+                                <select id="stakeholder_id" name="stakeholder_id" class="form-control" required>
+                                    <option value="">{{__('messages.select')}} {{__('content.stakeholder')}}</option>
+                                    @foreach ($stakeholders as $stakeholder)
+                                        <option value="{{ $stakeholder->id }}">{{ $stakeholder->name }}</option>
                                     @endforeach
                                 </select>
                             </div>

@@ -50,20 +50,25 @@ Route::resource('regions','Admin\RegionController');
 Route::get('/region/destroy/{region}','Admin\RegionController@destroy')->name('regions.destroy');
 Route::post('/region/add','Admin\RegionController@add')->name('regions.add');
 Route::get('getCountries/{region}','Admin\RegionController@getCountries')->name('regions.getCountries');
+Route::post('/regionsImport','Admin\RegionController@import')->name('regions.import');
 
 /* Routes Countries */
 Route::resource('countries','Admin\CountryController');
 Route::get('/countries/destroy/{country}','Admin\CountryController@destroy')->name('countries.destroy');
+Route::post('/countries/add','Admin\CountryController@add')->name('countries.add');
 Route::get('getStates/{country}','Admin\CountryController@getStates')->name('countries.getStates');
+Route::post('/countriesImport','Admin\CountryController@import')->name('countries.import');
 
 /* Routes States */
 Route::resource('states','Admin\StateController');
 Route::get('/states/destroy/{state}','Admin\StateController@destroy')->name('states.destroy');
+Route::post('/states/add','Admin\StateController@add')->name('states.add');
 Route::get('getCities/{state}','Admin\StateController@getCities')->name('states.getCities');
 
 /* Routes Cities */
 Route::resource('cities','Admin\CityController');
 Route::get('/cities/destroy/{city}','Admin\CityController@destroy')->name('cities.destroy');
+Route::post('/cities/add','Admin\CityController@add')->name('cities.add');
 
 /* Routes Projects */
 Route::resource('projects','Admin\ProjectController');
@@ -107,6 +112,7 @@ Route::get('/create/menu/{role}','Admin\RoleMenuController@create')->name('roleM
 Route::post('/roleMenus/{role}','Admin\RoleMenuController@store')->name('roleMenus.store');
 Route::get('/roleMenus/destroy/{roleMenu}','Admin\RoleMenuController@destroy')->name('roleMenus.destroy');
 Route::get('/roleMenus/activate/{roleMenu}/{value}','Admin\RoleMenuController@activate')->name('roleMenus.activate');
+Route::post('/cloneRoleMenus','Admin\RoleMenuController@clone')->name('roleMenus.clone');
 
 /* Routes Project Users  */
 Route::get('/projectUsers/{user}','Admin\ProjectUserController@index')->name('projectUsers.index');
@@ -146,9 +152,9 @@ Route::get('/projectSectors/create/{project}','Setting\ProjectSectorController@c
 Route::post('/projectSectors/{project}','Setting\ProjectSectorController@store')->name('projectSectors.store');
 Route::get('/projectSectors/destroy/{projectSector}','Setting\ProjectSectorController@destroy')->name('projectSectors.destroy');
 
-/* Routes Contractors */
-Route::resource('contractors','Setting\ContractorController');
-Route::get('/contractors/destroy/{contractor}','Setting\ContractorController@destroy')->name('contractors.destroy'); 
+/* Routes Stakeholders */
+Route::resource('stakeholders','Setting\StakeholderController');
+Route::get('/stakeholders/destroy/{stakeholder}','Setting\StakeholderController@destroy')->name('stakeholders.destroy'); 
 
 /* Routes Zones */
 Route::resource('zones','Setting\ZoneController');

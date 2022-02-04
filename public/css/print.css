@@ -1,0 +1,361 @@
+@page {
+    margin: 0cm 0cm;
+    font-size: 1em;
+}
+
+@font-face {
+    font-family: impact;
+    src: url('fonts/impact.ttf');
+}
+
+body {
+    margin: 7.3cm 0.5cm 0.5cm;
+}
+
+header {
+    position: fixed;
+    top: 0cm;
+    left: 0cm;
+    right: 0cm;
+    height: 7.2cm;
+    background-color: white;
+    margin: 0px;
+}   
+
+    .logos {
+        display: block;
+        background-color: white;
+        margin-top: 20px;
+        margin-left: 0px;
+        margin-right: 0px;
+        margin-bottom: 0px;
+    }
+        
+        .logo {
+            display: inline-block;
+            width: 21%;
+            height: 80px;
+            background-color: white;
+            padding-right: 3%;
+            
+        }
+
+        .logo-img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            margin-top: 10px;
+        }
+
+    .projectTitle {
+        display: block;
+        font-family: Arial, Helvetica, sans-serif;
+        font-style: italic;
+        font-size: 14px;
+        font-weight: bold;
+        text-transform: uppercase;
+        text-align: right;
+        margin-top: 0px;
+        margin-left: 35px;
+        margin-right: 35px;
+        margin-bottom: 10px;
+    }
+
+    .line {
+        border: 0.1em solid black;
+        margin-top: 0px;
+        margin-left: 35px;
+        margin-right: 35px;
+        margin-bottom: 0px;
+    }
+
+    .headerTitle {
+        display: block;
+        font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+        font-size: 22px;
+        font-stretch: narrower;
+        text-transform: uppercase;
+        text-align: center;
+        margin-top: 0px;
+        margin-left: 35px;
+        margin-right: 35px;
+        margin-bottom: 0cm;
+    }
+
+    .details {
+        display: block;
+        margin-top: 10px;
+        margin-left: 35px;
+        margin-right: 35px;
+        margin-bottom: 0cm;
+        width: 100%;
+    }
+
+        .fields {
+            display: inline-block;
+            width: 15%;
+            font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+            font-size: 14px ;
+            font-weight: bold;
+            font-stretch: narrower;
+        }
+
+        .contents {
+            display: inline-block;
+            width: 30%;
+            font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+            font-size: 14px ;
+            font-weight: bold;
+            font-stretch: narrower;
+        }
+
+.section {
+    margin-top: 0px;
+    margin-left: 0px;
+    margin-right: 0px;
+    margin-bottom: 10px;
+}
+
+.report {
+    display: block;
+    text-align: justify;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-stretch: narrower;
+    font-size: 12px;
+    margin: 0.5em;
+}
+
+.sectionTitle {
+    display: block;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-stretch: narrower;
+    font-size: 14px;
+    font-weight: 700;
+    text-transform: uppercase;
+    text-align: left;
+    background-color: lightgray;
+    color: black;
+    padding-top: 0.25em;
+    padding-bottom: 0.25em;
+}
+
+table {
+    width: 100%;
+    border-spacing: 0;
+}
+
+.comments {
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-stretch: narrower;
+    font-size: 14px;
+    text-transform: uppercase;
+    text-align: left;
+    color: black;
+    padding-top: 0.25em;
+    padding-bottom: 0.25em;
+}
+
+.td-header {
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-size: 12px;
+    font-stretch: narrower;
+    border: 1px solid lightgray;
+    border-spacing: 0;
+    text-transform: uppercase;
+    text-align: center;
+}
+
+.td-date {
+    width: 20%;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-stretch: narrower;
+    font-size: 12px;
+    border: 1px solid lightgray;
+    border-spacing: 0;
+}
+
+.td-comment {
+    width: 60%;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-stretch: narrower;
+    font-size: 12px;
+    border: 1px solid lightgray;
+    border-spacing: 0;
+}
+
+.td-author {
+    width: 20%;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-stretch: narrower;
+    font-size: 12px;
+    border: 1px solid lightgray;
+    border-spacing: 0;
+}
+
+
+.td-stakeholder {
+    width: 40%;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-size: 12px;
+    font-stretch: narrower;
+    border: 1px solid lightgray;
+    border-spacing: 0;
+    text-transform: uppercase;
+}
+
+.td-equipment {
+    width: 40%;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-size: 12px;
+    font-stretch: narrower;
+    border: 1px solid lightgray;
+    border-spacing: 0;
+    text-transform: uppercase;
+}
+
+.td-position {
+    width: 40%;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-size: 12px;
+    font-stretch: narrower;
+    border: 1px solid lightgray;
+    border-spacing: 0;
+    text-transform: uppercase;
+}
+
+.td-quantity {
+    width: 18%;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-size: 12px;
+    font-stretch: narrower;
+    border: 1px solid lightgray;
+    text-align: right;
+    border-spacing: 0;
+    text-transform: uppercase;
+}
+
+.td-origin {
+    width: 10%;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-size: 12px;
+    font-stretch: narrower;
+    border: 1px solid lightgray;
+    text-align: center;
+    vertical-align: top;
+    border-spacing: 0;
+}
+
+.td-start {
+    width: 10%;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-size: 12px;
+    font-stretch: narrower;
+    border: 1px solid lightgray;
+    text-align: center;
+    vertical-align: top;
+    border-spacing: 0;
+}
+
+.td-finish {
+    width: 10%;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-size: 12px;
+    font-stretch: narrower;
+    border: 1px solid lightgray;
+    text-align: center;
+    vertical-align: top;
+    border-spacing: 0;
+}
+
+.td-description {
+    width: 60%;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-size: 12px;
+    font-stretch: narrower;
+    border: 1px solid lightgray;
+    text-align: justify;
+    vertical-align: top;
+    border-spacing: 0;
+}
+
+.td-impact {
+    width: 8%;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-size: 12px;
+    font-stretch: narrower;
+    border: 1px solid lightgray;
+    text-align: center;
+    vertical-align: top;
+    border-spacing: 0;
+}
+
+.td-attachment {
+    width: 40%;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-size: 12px;
+    font-stretch: narrower;
+    border: 1px solid lightgray;
+    text-align: center;
+    vertical-align: top;
+    border-spacing: 0;
+}
+
+    .td-attachment img {
+        width: 100%;
+        padding: 1em;
+    }
+
+.td-description {
+    width: 58%;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-size: 12px;
+    font-stretch: narrower;
+    border: 1px solid lightgray;
+    text-align: justify;
+    vertical-align: top;
+    border-spacing: 0;
+}
+
+.td-note {
+    width: 58%;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-size: 12px;
+    font-stretch: narrower;
+    border: 1px solid lightgray;
+    text-align: justify;
+    vertical-align: top;
+    border-spacing: 0;
+} 
+
+.signatures {
+    margin-top: 40px;
+    display: block;
+    width: 100%;
+    height: 200px;
+}
+
+.signature {
+    display: inline-block;
+    width: 49%;
+    height: 200px;
+    border: 1px solid gray;
+}
+
+.signature-img {
+    width: 99%;
+    height: 99%;
+    object-fit: cover;
+}
+
+footer {
+    position: fixed;
+    bottom: 0cm;
+    left: 0cm;
+    right: 0cm;
+    height: 1cm;
+    text-align: center;
+}
+
+footer .page:after {
+    content: counter(page);
+}

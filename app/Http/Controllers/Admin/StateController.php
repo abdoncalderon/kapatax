@@ -75,6 +75,16 @@ class StateController extends Controller
         }
     }
 
+    public function add(StoreStateRequest $request )
+    {
+        try{
+            State::create($request ->validated());
+            return back();
+        }catch(Exception $e){
+            return back()->withErrors($e->getMessage());
+        }
+    }
+
     public function getCities(Request $request, $id)
     {
         if($request->ajax())

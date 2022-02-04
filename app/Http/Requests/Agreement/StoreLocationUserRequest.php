@@ -1,9 +1,9 @@
 <?php
 
-namespace App\Http\Requests;
+namespace App\Http\Requests\Agreement;
 
-use App\Models\LocationUser;
 use Illuminate\Foundation\Http\FormRequest;
+use App\Models\LocationUser;
 
 class StoreLocationUserRequest extends FormRequest
 {

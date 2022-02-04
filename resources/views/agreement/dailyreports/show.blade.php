@@ -121,7 +121,7 @@
                                     <table id="equipments" class="table table-bordered table-striped">
                                         <thead>
                                             <tr>
-                                                <th>{{ __('content.contractor') }}</th>
+                                                <th>{{ __('content.stakeholder') }}</th>
                                                 <th>{{ __('content.equipment') }}</th>
                                                 <th>{{ __('content.quantity') }}</th>
                                             </tr>
@@ -129,7 +129,7 @@
                                         <tbody>
                                             @foreach($dailyReport->equipments as $equipmentDailyReport)
                                                 <tr>
-                                                    <td>{{ $equipmentDailyReport->contractor->name }}</td>
+                                                    <td>{{ $equipmentDailyReport->stakeholder->name }}</td>
                                                     <td>{{ $equipmentDailyReport->equipment->name }}</td>
                                                     <td>{{ $equipmentDailyReport->quantity }}</td>
                                                 </tr>
@@ -178,7 +178,7 @@
                                     <table id="positions" class="table table-bordered table-striped">
                                         <thead>
                                             <tr>
-                                                <th>{{ __('content.contractor') }}</th>
+                                                <th>{{ __('content.stakeholder') }}</th>
                                                 <th>{{ __('content.position') }}</th>
                                                 <th>{{ __('content.quantity') }}</th>
                                             </tr>
@@ -186,7 +186,7 @@
                                         <tbody>
                                             @foreach($dailyReport->positions as $positionDailyReport)
                                                 <tr>
-                                                    <td>{{ $positionDailyReport->contractor->name }}</td>
+                                                    <td>{{ $positionDailyReport->stakeholder->name }}</td>
                                                     <td>{{ $positionDailyReport->position->name }}</td>
                                                     <td>{{ $positionDailyReport->quantity }}</td>
                                                 </tr>
@@ -306,7 +306,7 @@
                                         <tbody>
                                             @foreach($dailyReport->attachments as $attachmentDailyReport)
                                                 <tr>
-                                                    <td style="width:50%"><img src="{{ asset('images/attachments/daily_reports/'.$attachmentDailyReport->filename) }}" alt="" style="width:100%"></td>
+                                                    <td style="width:50%"><img src="{{ asset('images/agreement/daily_reports/attachments/'.$attachmentDailyReport->filename) }}" alt="" style="width:100%"></td>
                                                     <td style="width:40%">{{ $attachmentDailyReport->description }}</td>
                                                     <td style="width:10%">{{ $attachmentDailyReport->user->name }}</td>
                                                 </tr>

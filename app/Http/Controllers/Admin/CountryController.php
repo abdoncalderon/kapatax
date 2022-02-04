@@ -9,6 +9,8 @@ use App\Http\Requests\Admin\StoreCountryRequest;
 use App\Http\Requests\Admin\UpdateCountryRequest;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use Maatwebsite\Excel\Facades\Excel;
+use App\Imports\CountriesImport;
 use Exception;
 
 class CountryController extends Controller
@@ -72,6 +74,16 @@ class CountryController extends Controller
             return back()->withErrors($e->getMessage());
         }
     }         
+
+    public function add(StoreCountryRequest $request )
+    {
+        try{
+            Country::create($request ->validated());
+            return back();
+        }catch(Exception $e){
+            return back()->withErrors($e->getMessage());
+        }
+    }
     
     public function getStates(Request $request, $id)
     {
@@ -80,6 +92,20 @@ class CountryController extends Controller
             $states = State::where('country_id',$id)->get();
             return response()->json($states);
         }
+    }
+
+    public function import(Request $request){
+        try{
+            
+            if($request->hasFile('file')){
+                $file = $request->file('file');
+                Excel::import(new CountriesImport,$file);
+                return back();
+            }
+        }catch(Exception $e){
+            return back()->withErrors($e->getMessage());
+        }
+        
     }
     
    

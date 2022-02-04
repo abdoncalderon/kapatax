@@ -271,7 +271,17 @@ return [
     'employees'=>'Empleados',
     'function'=>'Cargo',
     'functions'=>'Cargos',
-    
+    'import'=>'Importar',
     'currency'=>'US$',
+    'file'=>'Archivo',
+    'stakeholder'=>'Involucrado',
+    'stakeholders'=>'Involucrados',
+    'supplier'=>'Proveedor',
+    'inspector'=>'Fiscalizador',
+    'client'=>'Cliente',
+    'partner'=>'Socio',
+    'other'=>'Otro',
+    'activities'=>'Actividades',
+
     
 ];

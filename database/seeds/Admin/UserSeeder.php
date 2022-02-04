@@ -9,8 +9,8 @@ class UserSeeder extends Seeder
     public function run()
     {
         DB::table('users')->insert([
-            'name' => 'SUPERUSER',
-            'user' => 'superuser',
+            'name' => 'SuperUser',
+            'user' => 'su',
             'email' => 'example@email.com',
             'password' => Hash::make('IdonSoft'),
         ]);

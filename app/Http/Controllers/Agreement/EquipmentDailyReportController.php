@@ -5,7 +5,7 @@ namespace App\Http\Controllers\Agreement;
 use App\Http\Controllers\Controller;
 use App\Models\EquipmentDailyReport;
 use App\Models\DailyReport;
-use App\Http\Requests\StoreEquipmentDailyReportRequest;
+use App\Http\Requests\Agreement\StoreEquipmentDailyReportRequest;
 use Illuminate\Http\Request;
 use Exception;
 
@@ -33,7 +33,7 @@ class EquipmentDailyReportController extends Controller
         foreach($oldDailyReport->equipments as $equipmentDailyReport){
             EquipmentDailyReport::create([
                 'daily_report_id'=>$request->daily_report_id,
-                'contractor_id'=>$equipmentDailyReport->contractor_id,
+                'stakeholder_id'=>$equipmentDailyReport->stakeholder_id,
                 'equipment_id'=>$equipmentDailyReport->equipment_id,
                 'quantity'=>$equipmentDailyReport->quantity,
             ]);

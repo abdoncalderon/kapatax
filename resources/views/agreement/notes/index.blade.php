@@ -46,7 +46,7 @@
                                     <option value="">{{__('messages.select')}} {{__('content.location')}}</option>
                                     @foreach (user_managed_locations(current_user()) as $locationUser)
                                         <option value="{{ $locationUser->location_id }}"
-                                            @if($locationUser->location_id==$location_id):
+                                            @if($locationUser->location_id==$location->id):
                                                 selected="selected"
                                             @endif
                                         >{{ $locationUser->location->name }}</option>
@@ -66,7 +66,7 @@
                 
                  {{-- Start Table  --}}
 
-                <table id="datatable" class="table table-bordered table-striped">
+                <table id="example1" class="table table-bordered table-striped">
 
                     {{-- Header  --}}
 

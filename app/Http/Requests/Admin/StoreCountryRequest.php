@@ -16,7 +16,7 @@ class StoreCountryRequest extends FormRequest
         return [
             'name'=>'required|unique:countries,name', 
             'code'=> 'required|unique:countries,code',
-            'ccc'=> 'required|unique:countries,ccc',
+            'ccc'=> 'required',
             'region_id'=> 'required',
         ];
     }

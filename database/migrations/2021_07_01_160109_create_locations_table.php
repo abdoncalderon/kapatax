@@ -24,10 +24,10 @@ class CreateLocationsTable extends Migration
             $table->integer('sequence')->default('1');
             $table->date('startDate')->nullable();
             $table->date('finishDate')->nullable();
-            $table->integer('max_time_open_folio')->default('24');
-            $table->integer('max_time_create_dailyreport')->default('24');
-            $table->integer('max_time_create_note')->default('24');
-            $table->integer('max_time_create_comment')->default('24');
+            $table->integer('max_time_open_folio')->default('48');
+            $table->integer('max_time_create_dailyreport')->default('48');
+            $table->integer('max_time_create_note')->default('48');
+            $table->integer('max_time_create_comment')->default('48');
             $table->timestamps();
         });
     }

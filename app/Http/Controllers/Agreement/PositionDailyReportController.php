@@ -33,7 +33,7 @@ class PositionDailyReportController extends Controller
         foreach($oldDailyReport->positions as $positionDailyReport){
             PositionDailyReport::create([
                 'daily_report_id'=>$request->daily_report_id,
-                'contractor_id'=>$positionDailyReport->contractor_id,
+                'stakeholder_id'=>$positionDailyReport->stakeholder_id,
                 'position_id'=>$positionDailyReport->position_id,
                 'quantity'=>$positionDailyReport->quantity,
             ]);

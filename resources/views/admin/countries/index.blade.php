@@ -33,13 +33,14 @@
             <div class="box-header with-border center-block">
                 <h3 class="box-title"><strong>{{ __('content.countries') }}</strong></h3> | 
                 <a class="btn btn-success btn-sm" href="{{ route('countries.create') }}">{{ __('content.add') }}</a>
+                <button type="button" class="btn btn-info btn-sm" data-toggle="modal" data-target="#importCountries">{{ __('content.import') }} {{ __('content.from') }} Excel </button>
             </div>
             
             <div class="box-body">
                 
                  {{-- Start Table  --}}
 
-                <table id="datatable" class="table table-bordered table-striped">
+                <table id="example1" class="table table-bordered table-striped">
 
                     {{-- Header  --}}
 
@@ -76,5 +77,39 @@
         </div>
 
     </section>
+
+    {{-- Import Countries from Excel File --}}
+
+    <div class="modal fade" id="importCountries">
+        <div class="modal-dialog">
+            <form method="POST" action="{{ route('countries.import') }}" enctype="multipart/form-data">
+                @csrf
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                        <h4 class="modal-title">{{ __('content.import').' '.__('content.countries') }}</h4>
+                    </div>
+                    <div class="modal-body">
+                        <div>
+                            
+                            {{-- Filename --}}
+
+                            <div class="form-group">
+                                <label for="file">{{ __('content.file') }} Excel</label>
+                                <input id="file" type="file" class="form-control" name="file" accept="application/xls" required>
+                            </div>
+                            
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default" data-dismiss="modal">{{__('content.close')}}</button>
+                        <button type="submit" class="btn btn-primary">{{__('content.import')}}</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
 
 @endsection

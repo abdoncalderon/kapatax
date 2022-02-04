@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Setting;
 use App\Models\Project;
 use App\Models\Subsidiary;
 use App\Models\Region;
+use App\Models\Stakeholder;
 use App\Http\Requests\Admin\UpdateProjectRequest;
 use App\Http\Controllers\Controller;
 use Exception;
@@ -19,7 +20,6 @@ class ProjectController extends Controller
         return view('setting.project.index', compact('projects'));
     }
 
-
     public function show(Project $project)
     {
         return view('setting.project.show',[
@@ -29,20 +29,22 @@ class ProjectController extends Controller
 
     public function edit(Project $project)
     {
+        $stakeholders = Stakeholder::all();
         $subsidiaries = Subsidiary::get();
         $regions = Region::get();
         return view('setting.project.edit',[
             'project'=>$project
             ])
         ->with(compact('subsidiaries'))
-        ->with(compact('regions'));
+        ->with(compact('regions'))
+        ->with(compact('stakeholders'));
     }
     
     public function update(Project $project, UpdateProjectRequest $request)
     {
         try{
             $project->update($request->validated());
-            return redirect()->route('project.show');
+            return redirect()->route('project.index');
         }catch(Exception $e){
             return back()->withErrors($e->getMessage());
         }

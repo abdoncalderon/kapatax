@@ -100,7 +100,7 @@
 
                     <div class="box-footer">
                         <a class="btn btn-success btn-sm" href=" {{ route('menus.edit', $menu) }} ">{{ __('content.edit') }}</a>
-                        <a class="btn btn-info btn-sm" href=" {{ route('menus.index') }} ">{{ __('messages.returnToList') }}</a>
+                        <a class="btn btn-danger btn-sm" href=" {{ route('menus.index') }} ">{{ __('content.cancel') }}</a>
                     </div>
 
                 </form>

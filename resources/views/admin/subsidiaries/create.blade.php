@@ -110,7 +110,7 @@
 
                     <div class="box-footer">
                         <button type="submit" class="btn btn-success pull-left btn-sm" style="margin: 0px 5px;">{{ __('content.save') }}</button>
-                        <a class="btn btn-info btn-sm" href=" {{ route('subsidiaries.index') }} ">{{ __('content.cancel') }}</a>
+                        <a class="btn btn-danger btn-sm" href=" {{ route('subsidiaries.index') }} ">{{ __('content.cancel') }}</a>
                     </div>
                     
                 </form>
@@ -133,7 +133,7 @@
                 @csrf
                 <div class="modal-content">
                     <div class="modal-header">
-                        <h5 class="modal-title" id="exampleModalLongTitle">{{ __('content.add') }} {{ __('content.company') }}</h5>
+                        <h4 class="modal-title" id="exampleModalLongTitle">{{ __('content.add') }} {{ __('content.company') }}</h4>
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                             <span aria-hidden="true">&times;</span>
                         </button>
@@ -161,7 +161,7 @@
                     <div class="modal-footer">
                         <div class="col-md-6 offset-md-4">
                             <button type="submit" class="btn btn-success pull-left btn-sm" style="margin: 0px 5px;">{{ __('content.save') }}</button>
-                            <button type="button" class="btn btn-secondary pull-left btn-sm" data-dismiss="modal">{{ __('content.cancel') }}</button>
+                            <button type="button" class="btn btn-danger pull-left btn-sm" data-dismiss="modal">{{ __('content.cancel') }}</button>
                         </div>
                     </div>
                 </div>
@@ -181,7 +181,7 @@
                 @csrf
                 <div class="modal-content">
                     <div class="modal-header">
-                        <h5 class="modal-title" id="exampleModalLongTitle">{{ __('content.add') }} {{ __('content.division') }}</h5>
+                        <h4 class="modal-title" id="exampleModalLongTitle">{{ __('content.add') }} {{ __('content.division') }}</h4>
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                             <span aria-hidden="true">&times;</span>
                         </button>
@@ -202,7 +202,7 @@
                     <div class="modal-footer">
                         <div class="col-md-6 offset-md-4">
                             <button type="submit" class="btn btn-success pull-left btn-sm" style="margin: 0px 5px;">{{ __('content.save') }}</button>
-                            <button type="button" class="btn btn-secondary pull-left btn-sm" data-dismiss="modal">{{ __('content.cancel') }}</button>
+                            <button type="button" class="btn btn-danger pull-left btn-sm" data-dismiss="modal">{{ __('content.cancel') }}</button>
                         </div>
                     </div>
                 </div>

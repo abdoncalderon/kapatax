@@ -120,7 +120,7 @@
 
                     <div class="box-footer">
                         <a class="btn btn-success btn-sm" href="{{ route('profiles.edit', $user) }}">{{ __('content.edit') }}</a>
-                        <a class="btn btn-info btn-sm" href="{{ route('home') }}">{{ __('content.home') }}</a>
+                        <a class="btn btn-danger btn-sm" href="{{ route('home') }}">{{ __('content.home') }}</a>
                     </div>
                     
                 </form>

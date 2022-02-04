@@ -102,7 +102,7 @@
 
                     <div class="box-footer">
                         <button type="submit" class="btn btn-success pull-left btn-sm" style="margin: 0px 5px;">{{ __('content.save') }}</button>
-                        <a class="btn btn-info btn-sm" href=" {{ route('locationsUsers.index',$user) }} ">{{ __('content.cancel') }}</a>
+                        <a class="btn btn-danger btn-sm" href=" {{ route('locationsUsers.index',$user) }} ">{{ __('content.cancel') }}</a>
                     </div>
 
                 </form>

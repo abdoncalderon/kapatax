@@ -70,7 +70,7 @@
                         @IF($role->name!='SUPERUSER')
                         <a class="btn btn-success btn-sm" href=" {{ route('roles.edit', $role) }} ">{{ __('content.edit') }}</a>
                         @ENDIF
-                        <a class="btn btn-info btn-sm" href=" {{ route('roles.index') }} ">{{ __('messages.returnToList') }}</a>
+                        <a class="btn btn-danger btn-sm" href=" {{ route('roles.index') }} ">{{ __('content.cancel') }}</a>
                     </div>
 
                 </form>

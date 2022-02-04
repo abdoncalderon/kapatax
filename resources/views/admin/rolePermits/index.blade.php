@@ -33,7 +33,6 @@
 
             <div class="box-header with-border center-block">
                 <h3 class="box-title"><strong>{{ __('messages.rolePermits') }} {{ $role->name }}</strong></h3> | 
-                <a class="btn btn-success btn-sm" href="{{ route('rolePermits.create',$role) }}">{{ __('content.add') }}</a>
                 <button type="button" class="btn btn-default btn-sm" data-toggle="modal" data-target="#clonePermits">{{ __('content.clone') }} {{ __('content.from') }}... </button>
             </div>
             
@@ -43,7 +42,7 @@
                 
                  {{-- Start Table  --}}
 
-                <table id="datatable" class="table table-bordered table-striped">
+                <table id="example1" class="table table-bordered table-striped">
 
                     {{-- Header  --}}
 
@@ -82,7 +81,7 @@
 
     </section>
 
-    {{-- Modal Window Add Region --}}
+    {{-- Modal Clone Permits --}}
 
     <div class="modal fade" id="clonePermits" tabindex="-1" role="dialog" aria-labelledby="clonePermits" aria-hidden="true">
 
@@ -92,7 +91,7 @@
                 @csrf
                 <div class="modal-content">
                     <div class="modal-header">
-                        <h5 class="modal-title" id="exampleModalLongTitle">{{ __('content.clone') }} {{ __('content.permits') }} {{ __('content.from') }} ...</h5>
+                        <h4 class="modal-title" id="exampleModalLongTitle">{{ __('content.clone') }} {{ __('content.permits') }} {{ __('content.from') }} ...</h4>
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                             <span aria-hidden="true">&times;</span>
                         </button>
@@ -116,7 +115,7 @@
                     <div class="modal-footer">
                         <div class="col-md-6 offset-md-4">
                             <button type="submit" class="btn btn-success pull-left btn-sm" style="margin: 0px 5px;">{{ __('content.clone') }}</button>
-                            <button type="button" class="btn btn-secondary pull-left btn-sm" data-dismiss="modal">{{ __('content.cancel') }}</button>
+                            <button type="button" class="btn btn-danger pull-left btn-sm" data-dismiss="modal">{{ __('content.cancel') }}</button>
                         </div>
                     </div>
                 </div>

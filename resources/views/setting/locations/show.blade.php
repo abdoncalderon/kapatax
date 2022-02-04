@@ -123,7 +123,7 @@
 
                     <div class="box-footer">
                         <a class="btn btn-success btn-sm" href=" {{ route('locations.edit', $location) }} ">{{ __('content.edit') }}</a>
-                        <a class="btn btn-info btn-sm" href=" {{ route('locations.index') }} ">{{ __('messages.returnToList') }}</a>
+                        <a class="btn btn-danger btn-sm" href=" {{ route('locations.index') }} ">{{ __('content.cancel') }}</a>
                     </div>
 
                 </form>

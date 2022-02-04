@@ -17,8 +17,8 @@ class CreateEquipmentDailyReportsTable extends Migration
             $table->id();
             $table->foreignId('daily_report_id');
             $table->foreign('daily_report_id')->references('id')->on('daily_reports')->onUpdate('cascade')->onDelete('restrict');
-            $table->foreignId('contractor_id');
-            $table->foreign('contractor_id')->references('id')->on('contractors')->onUpdate('cascade')->onDelete('restrict');
+            $table->foreignId('stakeholder_id');
+            $table->foreign('stakeholder_id')->references('id')->on('stakeholders')->onUpdate('cascade')->onDelete('restrict');
             $table->foreignId('equipment_id');
             $table->foreign('equipment_id')->references('id')->on('equipments')->onUpdate('cascade')->onDelete('restrict');
             $table->integer('quantity');

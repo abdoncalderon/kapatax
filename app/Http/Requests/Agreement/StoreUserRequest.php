@@ -18,7 +18,7 @@ class StoreUserRequest extends FormRequest
             'user'=>'required|string|unique:users|max:30', 
             'email'=> 'required|string|email|unique:users|max:255',
             // 'role_id'=>'required',
-            'contractor_id'=>'required',
+            'stakeholder_id'=>'required',
             'password'=>'required|string|confirmed|min:8',
         ];
     }

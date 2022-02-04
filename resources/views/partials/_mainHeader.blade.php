@@ -15,20 +15,15 @@
     <a href="#" class="sidebar-toggle" data-toggle="push-menu" role="button">
         <span class="sr-only">Toggle navigation</span>
     </a>
-    {{-- <div class="col-lg-4 col-sm-10 p-2">
-        <ul class="nav navbar-nav ">
-            <li class="nav-item">
-                <input>
+    
+    <!-- Project Name -->
+    <ul class="nav navbar-nav ">
+        <li style="margin-top:0.35em" class="nav-item">
+            <h4 style="color:white">{{ current_user()->project->name }}</h4>
+        </li>
+    </ul>
 
-                <select name="project" class="form-control form-select" style="margin-top: 6px" id="project">
-                    <option value="proyecto">projecto consorcio linea 1 metro de quito </option>
-                </select>
-            </li>
-        </ul>
-    </div> --}}
     <div class="navbar-custom-menu">
-
-        
 
         <ul class="nav navbar-nav">
 

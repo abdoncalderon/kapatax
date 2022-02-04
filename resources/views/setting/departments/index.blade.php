@@ -39,13 +39,14 @@
                 
                  {{-- Start Table  --}}
 
-                <table id="datatable" class="table table-bordered table-striped">
+                <table id="example1" class="table table-bordered table-striped">
 
                     {{-- Header  --}}
 
                     <thead>
                         <tr>
                             <th>{{ __('content.name') }}</th>
+                            <th>{{ __('content.sector') }}</th>
                             <th>{{ __('content.actions') }}</th>
                         </tr>
                     </thead>
@@ -56,6 +57,7 @@
                         @foreach($departments as $department)
                             <tr>
                                 <td>{{ $department->name }}</td>
+                                <td>{{ $department->project_sector->sector->name }}</td>
                                 <td>
                                     <a class="btn btn-info btn-xs" href="{{ route('departments.edit', $department)}}">{{ __('content.edit') }}</a>
                                     <a class="btn btn-danger btn-xs" href="{{ route('departments.destroy', $department)}}">{{ __('content.delete') }}</a>

@@ -17,12 +17,10 @@ class CreateEmployeesTable extends Migration
             $table->id();
             $table->foreignId('person_id');
             $table->foreign('person_id')->references('id')->on('persons')->onUpdate('cascade')->onDelete('restrict');
-            $table->foreignId('location_id');
-            $table->foreign('location_id')->references('id')->on('locations')->onUpdate('cascade')->onDelete('restrict');
-            $table->foreignId('position_id');
+            $table->foreignId('position_id')->nullable();
             $table->foreign('position_id')->references('id')->on('positions')->onUpdate('cascade')->onDelete('restrict');
-            $table->foreignId('project_contractors_id');
-            $table->foreign('project_contractors_id')->references('id')->on('project_contractors')->onUpdate('cascade')->onDelete('restrict');
+            $table->foreignId('stakeholder_id');
+            $table->foreign('stakeholder_id')->references('id')->on('stakeholders')->onUpdate('cascade')->onDelete('restrict');
             $table->unsignedBigInteger('leader')->nullable();
             $table->string('businessEmail')->unique();
             $table->date('contractFrom');

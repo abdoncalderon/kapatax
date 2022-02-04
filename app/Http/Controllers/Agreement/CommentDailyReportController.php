@@ -7,7 +7,7 @@ use Carbon\Carbon;
 use App\Models\CommentDailyReport;
 use App\Models\DailyReport;
 use App\Models\LocationUser;
-use App\Http\Requests\StoreCommentDailyReportRequest;
+use App\Http\Requests\Agreement\StoreCommentDailyReportRequest;
 use App\Mail\CommentReportCreated;
 use Exception;
 use Illuminate\Support\Facades\Mail;

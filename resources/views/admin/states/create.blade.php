@@ -55,7 +55,7 @@
                              <div class="form-group">
                                 <label class="col-sm-2 control-label">{{ __('content.region') }}</label>
                                 <div class="input-group input-group-sm col-xs-12 col-sm-10" >
-                                    <select id="regionCity" name="region_id" class="form-control" style="width: 100%;">
+                                    <select id="region" name="region_id" class="form-control" style="width: 100%;">
                                         <option value="">{{__('messages.select')}} {{__('content.region')}}</option>
                                         @foreach ($regions as $region)
                                             <option value="{{ $region->id }}">{{ $region->name }}</option>
@@ -69,10 +69,8 @@
                             <div class="form-group">
                                 <label class="col-sm-2 control-label">{{ __('content.country') }}</label>
                                 <div class="input-group input-group-sm col-xs-12 col-sm-10" >
-                                    <select id="countryCity" name="country_id" class="form-control" data-placeholder="Tipo" style="width: 100%;">
-                                       {{--  @foreach ($countries as $country)
-                                            <option value="{{ $country->id }}">{{ $country->name }}</option>
-                                        @endforeach --}}
+                                    <select id="country" name="country_id" class="form-control" data-placeholder="Tipo" style="width: 100%;">
+                                        <option value="">{{__('messages.select')}} {{__('content.country')}}</option>
                                     </select>
                                 </div>
                             </div>
@@ -99,7 +97,7 @@
 
                     <div class="box-footer">
                         <button type="submit" class="btn btn-success pull-left btn-sm" style="margin: 0px 5px;">{{ __('content.save') }}</button>
-                        <a class="btn btn-info btn-sm" href=" {{ route('states.index') }} ">{{ __('content.cancel') }}</a>
+                        <a class="btn btn-danger btn-sm" href=" {{ route('states.index') }} ">{{ __('content.cancel') }}</a>
                     </div>
                     
                 </form>

@@ -94,7 +94,7 @@
                             <div class="form-group">
                                 <label class="col-sm-2 control-label">{{ __('content.contractor') }}</label>
                                 <div class="col-sm-10" >
-                                    <select name="contractor_id" class="form-control" style="width: 100%;">
+                                    <select name="stakeholder_id" class="form-control" style="width: 100%;">
                                         @foreach ($contractors as $contractor)
                                             <option value="{{ $contractor->id }}">{{ $contractor->name }}</option>
                                         @endforeach
@@ -154,7 +154,7 @@
 
                     <div class="box-footer">
                         <button type="submit" class="btn btn-success pull-left btn-sm" style="margin: 0px 5px;">{{ __('content.save') }}</button>
-                        <a class="btn btn-info btn-sm" href=" {{ route('users.index') }} ">{{ __('content.cancel') }}</a>
+                        <a class="btn btn-danger btn-sm" href=" {{ route('users.index') }} ">{{ __('content.cancel') }}</a>
                     </div>
 
                 </form>

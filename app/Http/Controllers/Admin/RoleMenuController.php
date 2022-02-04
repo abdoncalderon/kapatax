@@ -7,15 +7,18 @@ use App\Models\Menu;
 use App\Models\RoleMenu;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Admin\StoreRoleMenuRequest;
+use Illuminate\Http\Request;
 use Exception;
 
 class RoleMenuController extends Controller
 {
     public function index(Role $role)
     {
+        $otherRoles = Role::where('id','!=',$role->id)->get();
         $roleMenus = RoleMenu::where('role_id',$role->id)->get();
         return view('admin.roleMenus.index', compact('role'))
-        ->with(compact('roleMenus'));
+        ->with(compact('roleMenus'))
+        ->with(compact('otherRoles'));
     }
 
     public function create(Role $role)
@@ -76,4 +79,29 @@ class RoleMenuController extends Controller
             return back()->withErrors($e->getMessage());
         }
     }
+
+    public function clone(Request $request){
+        try{
+            $roleSourceMenus=RoleMenu::where('role_id',$request->role_source_id)->get();
+            $roleTargetMenus=RoleMenu::where('role_id',$request->role_target_id)->get();    
+            $role = Role::find($request->role_target_id);
+            foreach($roleTargetMenus as $roleTargetMenu){
+                foreach($roleSourceMenus as $roleSourceMenu){
+                    if($roleTargetMenu->permit_id==$roleSourceMenu->permit_id){
+                        $roleTargetMenu->update([
+                            'isActive' => $roleSourceMenu->isActive,
+                        ]);
+                        break;
+                    }
+                }
+            }
+            return redirect()->route('roleMenus.index',$role);
+        }catch(Exception $e){
+            return back()->withErrors($e->getMessage());
+        }
+    }
+
+    
+
+
 }

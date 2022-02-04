@@ -29,6 +29,10 @@ class CreateProjectsTable extends Migration
             $table->date('finishDate')->nullable();
             $table->boolean('isActive')->default(true);
             $table->boolean('isLocked')->default(false);
+            $table->unsignedBigInteger('stakeholderLogo1_id')->nullable();
+            $table->unsignedBigInteger('stakeholderLogo2_id')->nullable();
+            $table->unsignedBigInteger('stakeholderLogo3_id')->nullable();
+            $table->unsignedBigInteger('stakeholderLogo4_id')->nullable();
             $table->timestamps();
         });
     }

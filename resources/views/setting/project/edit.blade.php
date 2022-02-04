@@ -98,7 +98,7 @@
                             <div class="form-group">
                                 <label class="col-sm-2 control-label">{{ __('content.region') }}</label>
                                 <div class="input-group input-group-sm col-xs-12 col-sm-10" >
-                                    <select id="regionCity" name="region_id" class="form-control" style="width: 100%;">
+                                    <select id="region" name="region_id" class="form-control" style="width: 100%;">
                                         <option value="">{{__('messages.select')}} {{__('content.region')}}</option>
                                         @foreach ($regions as $region)
                                             <option value="{{ $region->id }}"
@@ -116,7 +116,7 @@
                             <div class="form-group">
                                 <label class="col-sm-2 control-label">{{ __('content.country') }}</label>
                                 <div class="input-group input-group-sm col-xs-12 col-sm-10" >
-                                    <select id="countryCity" name="country_id" class="form-control" style="width: 100%;">
+                                    <select id="country" name="country_id" class="form-control" style="width: 100%;">
                                         <option value="{{ $project->city->state->country->id }}">{{ $project->city->state->country->name }}</option>
                                     </select>
                                 </div>
@@ -127,7 +127,7 @@
                             <div class="form-group">
                                 <label class="col-sm-2 control-label">{{ __('content.state') }}</label>
                                 <div class="input-group input-group-sm col-xs-12 col-sm-10" >
-                                    <select id="stateCity" name="state_id" class="form-control" style="width: 100%;">
+                                    <select id="state" name="state_id" class="form-control" style="width: 100%;">
                                         <option value="{{ $project->city->state->id }}">{{ $project->city->state->name }}</option>
                                     </select>
                                     
@@ -144,25 +144,6 @@
                                     </select>
                                 </div>
                             </div>
-
-                            {{-- city --}}
-
-                            {{-- <div class="form-group">
-                                <label class="col-sm-2 control-label">{{ __('content.city') }}</label>
-                                <div class="input-group input-group-sm col-xs-12 col-sm-10" >
-                                    <select name="city_id" class="form-control" style="width: 100%;" >
-                                        @foreach ($cities as $city)
-                                            <option value="{{ $city->id }}">{{ $city->name }}</option>
-                                        @endforeach
-                                    </select>
-                                    @error('city_id')
-                                        <span class="invalid-feedback" role="alert" style="color:red">
-                                            <strong>{{ $message }}</strong>
-                                        </span>
-                                    @enderror
-                                </div>
-                            </div>--}}
-
 
                             {{-- address --}}
 
@@ -212,6 +193,7 @@
                                 <label class="col-sm-2 control-label">{{ __('content.subsidiary') }}</label>
                                 <div class="input-group input-group-sm col-xs-12 col-sm-10" >
                                     <select name="subsidiary_id" class="form-control" style="width: 100%;">
+                                        <option value="">{{__('messages.select')}} {{__('content.subsidiary')}}</option>
                                         @foreach ($subsidiaries as $subsidiary)
                                             <option value="{{ $subsidiary->id }}"
                                                 @if($project->subsidiary_id==$subsidiary->id):
@@ -220,11 +202,6 @@
                                             >{{ $subsidiary->name }}</option>
                                         @endforeach
                                     </select>
-                                    @error('subsidiary_id')
-                                        <span class="invalid-feedback" role="alert" style="color:red">
-                                            <strong>{{ $message }}</strong>
-                                        </span>
-                                    @enderror
                                 </div>
                             </div>
 
@@ -256,6 +233,78 @@
                                 </div>
                             </div>
 
+                            {{-- Logo Stakeholder 1 --}}
+
+                            <div class="form-group">
+                                <label class="col-sm-2 control-label">{{ __('content.logo') }} {{__('content.stakeholder')}}  1</label>
+                                <div class="input-group input-group-sm col-xs-12 col-sm-10" >
+                                    <select name="stakeholderLogo1_id" class="form-control" style="width: 100%;">
+                                        <option value="">{{__('messages.select')}} {{__('content.stakeholder')}} {{__('content.logo')}} 1</option>
+                                        @foreach ($stakeholders as $stakeholder)
+                                            <option value="{{ $stakeholder->id }}"
+                                                @if($project->stakeholderLogo1_id==$stakeholder->id):
+                                                    selected="selected"
+                                                @endif
+                                            >{{ $stakeholder->name }}</option>
+                                        @endforeach
+                                    </select>
+                                </div>
+                            </div>
+
+                            {{-- Logo Stakeholder 2 --}}
+
+                            <div class="form-group">
+                                <label class="col-sm-2 control-label">{{ __('content.logo') }} {{__('content.stakeholder')}} 2</label>
+                                <div class="input-group input-group-sm col-xs-12 col-sm-10" >
+                                    <select name="stakeholderLogo2_id" class="form-control" style="width: 100%;">
+                                        <option value="">{{__('messages.select')}} {{__('content.stakeholder')}} {{__('content.logo')}} 2</option>
+                                        @foreach ($stakeholders as $stakeholder)
+                                            <option value="{{ $stakeholder->id }}"
+                                                @if($project->stakeholderLogo2_id==$stakeholder->id):
+                                                    selected="selected"
+                                                @endif
+                                            >{{ $stakeholder->name }}</option>
+                                        @endforeach
+                                    </select>
+                                </div>
+                            </div>
+
+                            {{-- Logo Stakeholder 3 --}}
+
+                            <div class="form-group">
+                                <label class="col-sm-2 control-label">{{ __('content.logo') }} {{__('content.stakeholder')}}  3</label>
+                                <div class="input-group input-group-sm col-xs-12 col-sm-10" >
+                                    <select name="stakeholderLogo3_id" class="form-control" style="width: 100%;">
+                                        <option value="">{{__('messages.select')}} {{__('content.stakeholder')}} {{__('content.logo')}} 3</option>
+                                        @foreach ($stakeholders as $stakeholder)
+                                            <option value="{{ $stakeholder->id }}"
+                                                @if($project->stakeholderLogo3_id==$stakeholder->id):
+                                                    selected="selected"
+                                                @endif
+                                            >{{ $stakeholder->name }}</option>
+                                        @endforeach
+                                    </select>
+                                </div>
+                            </div>
+
+                            {{-- Logo Stakeholder 4 --}}
+
+                            <div class="form-group">
+                                <label class="col-sm-2 control-label">{{ __('content.logo') }} {{__('content.stakeholder')}} 4</label>
+                                <div class="input-group input-group-sm col-xs-12 col-sm-10" >
+                                    <select name="stakeholderLogo4_id" class="form-control" style="width: 100%;">
+                                        <option value="">{{__('messages.select')}} {{__('content.stakeholder')}} {{__('content.logo')}} 4</option>
+                                        @foreach ($stakeholders as $stakeholder)
+                                            <option value="{{ $stakeholder->id }}"
+                                                @if($project->stakeholderLogo4_id==$stakeholder->id):
+                                                    selected="selected"
+                                                @endif
+                                            >{{ $stakeholder->name }}</option>
+                                        @endforeach
+                                    </select>
+                                </div>
+                            </div>
+
                         </div>
 
                     </div>
@@ -264,7 +313,7 @@
 
                     <div class="box-footer">
                         <button type="submit" class="btn btn-success pull-left btn-sm" style="margin: 0px 5px;">{{ __('content.save') }}</button>
-                        <a class="btn btn-info btn-sm" href=" {{ route('project.index') }} ">{{ __('content.cancel') }}</a>
+                        <a class="btn btn-danger btn-sm" href=" {{ route('project.index') }} ">{{ __('content.cancel') }}</a>
                     </div>
 
                 </form>

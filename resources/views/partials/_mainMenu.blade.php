@@ -51,94 +51,120 @@
 
         @if (empty($roleMenu->menu->menu_id))
 
-        <li class="treeview">
+            <li class="treeview">
 
-            @if (is_null($roleMenu->menu->route))
-            <a href="#">
-            @else
-            <a href="{{ route($roleMenu->menu->route) }}">
-            @endif
-
-                <i class="{{ $roleMenu->menu->icon }}"></i>
-                <span> {{ __($roleMenu->menu->showName) }} </span>
-                <span class="pull-right-container">
-                    <i class="fa fa-angle-left pull-right"></i>
-                </span>
-            </a>
-
-            @if (!$roleMenu->menu->menus->isEmpty())
-            <ul class="treeview-menu">
-                @foreach ($roleMenu->menu->menus as $submenu1)
-
-                @if(!$submenu1->menus->isEmpty())
-                <li class="treeview">
+                @if (is_null($roleMenu->menu->route))
+                    <a href="#">
                 @else
-                <li>
+                    <a href="{{ route($roleMenu->menu->route) }}">
                 @endif
 
-                    @if (is_null($submenu1->route))
-                    <a href="#"><i class="{{ $submenu1->icon }}"></i> {{ __($submenu1->showName) }} 
-                    @else
-                    <a href="{{ route($submenu1->route) }}"><i class="{{ $submenu1->icon }}"></i> {{ __($submenu1->showName) }} 
-                    @endif
+                        <i class="{{ $roleMenu->menu->icon }}"></i>
+                        <span> {{ __($roleMenu->menu->showName) }} </span>
+                        <span class="pull-right-container">
+                            <i class="fa fa-angle-left pull-right"></i>
+                        </span>
 
-                        @if (!$submenu1->menus->isEmpty())
-                            <span class="pull-right-container">
-                            <i class="fa fa-angle-left pull-right"></i> 
-                            </span>
-                        @endif
                     </a>
 
-                    @if (!$submenu1->menus->isEmpty())
+                @if (!$roleMenu->menu->menus->isEmpty())
+
                     <ul class="treeview-menu">
-                        @foreach ($submenu1->menus as $submenu2 )
 
-                        @if(!$submenu2->menus->isEmpty())
-                        <li class="treeview">
-                        @else
-                        <li>
-                        @endif
+                        @foreach ($roleMenu->menu->menus as $submenu1)
 
-                            @if (is_null($submenu2->route))
-                            <a href="#"><i class="{{ $submenu2->icon }}"></i> {{ __($submenu2->showName) }} 
-                            @else
-                            <a href="{{ route($submenu2->route) }}"><i class="{{ $submenu2->icon }}"></i> {{ __($submenu2->showName) }} 
-                            @endif  
-                                @if (!$submenu2->menus->isEmpty())
-                                    <span class="pull-right-container">
-                                    <i class="fa fa-angle-left pull-right"></i> 
-                                    </span>
+                            @if (is_role_menu_active(current_user()->role,$submenu1)==1)
+
+                                @if(!$submenu1->menus->isEmpty())
+                                    <li class="treeview">
+                                @else
+                                    <li>
                                 @endif
-                            </a>
 
-                            @if (!$submenu2->menus->isEmpty())
-                                <ul class="treeview-menu">
-                                @foreach ($submenu2->menus as $submenu3 )
-                                    @if (is_null($submenu3->route))
-                                    <li><a href="#"><i class="{{ $submenu3->icon }}"></i> {{ __($submenu3->showName) }} </a></li>
+                                    @if (is_null($submenu1->route))
+                                        <a href="#"><i class="{{ $submenu1->icon }}"></i> {{ __($submenu1->showName) }} 
                                     @else
-                                    <li><a href="{{ route($submenu3->route) }}"><i class="{{ $submenu3->icon }}"></i> {{ __($submenu3->showName) }} </a></li>
+                                        <a href="{{ route($submenu1->route) }}"><i class="{{ $submenu1->icon }}"></i> {{ __($submenu1->showName) }} 
                                     @endif
-                                @endforeach
-                                </ul>
+
+                                        @if (!$submenu1->menus->isEmpty())
+                                            <span class="pull-right-container">
+                                                <i class="fa fa-angle-left pull-right"></i> 
+                                            </span>
+                                        @endif
+                                        </a>
+                                    @if (!$submenu1->menus->isEmpty())
+
+                                        <ul class="treeview-menu">
+
+                                            @foreach ($submenu1->menus as $submenu2 )
+
+                                                @if (is_role_menu_active(current_user()->role,$submenu2)==1)
+                                                    
+                                                    @if(!$submenu2->menus->isEmpty())
+                                                        <li class="treeview">
+                                                    @else
+                                                        <li>
+                                                    @endif
+
+                                                        @if (is_null($submenu2->route))
+                                                            <a href="#"><i class="{{ $submenu2->icon }}"></i> {{ __($submenu2->showName) }} 
+                                                        @else
+                                                            <a href="{{ route($submenu2->route) }}"><i class="{{ $submenu2->icon }}"></i> {{ __($submenu2->showName) }} 
+                                                        @endif  
+                                                            @if (!$submenu2->menus->isEmpty())
+                                                                <span class="pull-right-container">
+                                                                    <i class="fa fa-angle-left pull-right"></i> 
+                                                                </span>
+                                                            @endif
+                                                            </a>
+
+                                                        @if (!$submenu2->menus->isEmpty())
+
+                                                            <ul class="treeview-menu">
+
+                                                                @foreach ($submenu2->menus as $submenu3 )
+
+                                                                    @if (is_role_menu_active(current_user()->role,$submenu3)==1)
+
+                                                                        @if (is_null($submenu3->route))
+                                                                            <li><a href="#"><i class="{{ $submenu3->icon }}"></i> {{ __($submenu3->showName) }} </a></li>
+                                                                        @else
+                                                                            <li><a href="{{ route($submenu3->route) }}"><i class="{{ $submenu3->icon }}"></i> {{ __($submenu3->showName) }} </a></li>
+                                                                        @endif
+
+                                                                    @endif
+
+                                                                @endforeach
+                                                                
+                                                            </ul>
+
+                                                        @endif
+
+                                                        </li>
+
+                                                   @endif
+
+                                            @endforeach
+
+                                        </ul>   
+
+                                    @endif
+
+                                    </li>
+
                             @endif
 
-                        </li>
                         @endforeach
 
-                    </ul>   
-                    @endif
+                    </ul>
 
-                </li>
-                @endforeach
+                @endif
 
-            </ul>
-            @endif
-
-        </li>
+            </li>
 
         @endif
-        
+           
     @endforeach
     
 </section>

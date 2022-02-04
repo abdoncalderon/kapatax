@@ -40,13 +40,14 @@
                 
                  {{-- Start Table  --}}
 
-                <table id="datatable" class="table table-bordered table-striped">
+                <table id="example1" class="table table-bordered table-striped">
 
                     {{-- Header  --}}
 
                     <thead>
                         <tr>
                             <th>{{ __('content.project') }}</th>
+                            <th>{{ __('content.role') }}</th>
                             <th>{{ __('content.actions') }}</th>
                         </tr>
                     </thead>
@@ -57,6 +58,7 @@
                         @foreach($projectUsers as $projectUser)
                             <tr>
                                 <td>{{ $projectUser->project->name }}</td>
+                                <td>{{ $projectUser->role->name }}</td>
                                 <td>
                                     @IF($user->name!='SUPERUSER')
                                         <a class="btn btn-info btn-xs" href="{{ route('projectUsers.destroy', $projectUser)}}">{{ __('content.delete') }}</a>

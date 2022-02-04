@@ -2,6 +2,7 @@
 
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Hash;
 use Carbon\Carbon;
 
 class DefaultSeeder extends Seeder
@@ -10,95 +11,95 @@ class DefaultSeeder extends Seeder
     public function run()
     {
         DB::table('roles')->insert([
-            'name' => 'SUPERUSER',
+            'name' => 'SuperUser',
         ]);
 
         DB::table('regions')->insert([
-            'name' => 'LATIN AMERICA',
+            'name' => 'América del Sur',
         ]);
 
         DB::table('regions')->insert([
-            'name' => 'EUROPA',
+            'name' => 'Europa occidental',
         ]);
 
         DB::table('countries')->insert([
-            'name' => 'ECUADOR',
+            'name' => 'Ecuador',
             'region_id' => '1',
             'code' => 'EC',
             'ccc' => '593',
         ]);
 
         DB::table('countries')->insert([
-            'name' => 'ESPAÑA',
+            'name' => 'España',
             'region_id' => '2',
             'code' => 'ES',
             'ccc' => '34',
         ]);
 
         DB::table('states')->insert([
-            'name' => 'PICHINCHA',
+            'name' => 'Pichincha    ',
             'country_id' => '1',
         ]);
 
         DB::table('states')->insert([
-            'name' => 'CATALUÑA',
+            'name' => 'Cataluña',
             'country_id' => '2',
         ]);
 
         DB::table('cities')->insert([
-            'name' => 'QUITO',
+            'name' => 'Quito',
             'state_id' => '1',
         ]);
 
         DB::table('cities')->insert([
-            'name' => 'BARCELONA',
+            'name' => 'Barcelona',
             'state_id' => '2',
         ]);
 
         DB::table('companies')->insert([
-            'name' => 'MY ENTERPRISE',
+            'name' => 'Enterprise',
         ]);
 
         DB::table('divisions')->insert([
-            'name' => 'INFRASTRUCTURE',
+            'name' => 'Infrastructure',
         ]);
 
         DB::table('subsidiaries')->insert([
-            'name' => 'SUBSIDIARY EXAMPLE',
+            'name' => 'Subsidiary Example',
             'code' => 'SE',
             'company_id' => '1',
             'division_id' => '1',
         ]);
 
         DB::table('projects')->insert([
-            'name' => 'PROJECT EXAMPLE',
-            'code' => 'EXAMPLE',
+            'name' => 'Project Example',
+            'code' => 'PROEXA',
             'city_id' => '1',
             'subsidiary_id' => '1',
             'startDate' => Carbon::create('1970', '01', '01'),
-            'finishDate' => Carbon::create('2050', '12', '31')
+            'finishDate' => Carbon::create('2050', '12', '31'),
         ]);
 
         DB::table('sectors')->insert([
-            'name' => 'ADMINISTRACION',
+            'name' => 'Administration',
         ]);
 
         DB::table('funct1ons')->insert([
-            'name' => 'TECHNICIAN',
+            'name' => 'Technician',
         ]);
 
         DB::table('equipments')->insert([
-            'name' => 'TRUCK',
+            'name' => 'Truck',
             'project_id' => '1',
         ]);
 
         DB::table('zones')->insert([
-            'name' => 'ZONE EXAMPLE',
+            'name' => 'Zone Example',
             'project_id' => '1',
         ]);
 
         DB::table('locations')->insert([
-            'name' => 'LOCATION EXAMPLE',
+            'name' => 'Location Example',
             'code' => 'LEX',
             'zone_id' => '1',
             'startDate' => Carbon::create('1970', '01', '01'),
@@ -106,15 +107,41 @@ class DefaultSeeder extends Seeder
         ]);
 
         DB::table('turns')->insert([
-            'name' => 'DIURNO',
+            'name' => 'Diurnal',
             'start' => '07:00',
             'finish' => '16:00',
         ]);
 
-        DB::table('contractors')->insert([
-            'name' => 'CONTRACTOR EXAMPLE',
+        DB::table('stakeholders')->insert([
+            'name' => 'Contractor Example',
             'project_id' => '1',
-            'code' => 'CEX',
+            'city_id' => '1',
+            'code' => 'CONEX',
+            'stakeholder_types_id' => 1,
+        ]);
+
+        DB::table('stakeholders')->insert([
+            'name' => 'Client Example',
+            'project_id' => '1',
+            'city_id' => '1',
+            'code' => 'CLIEX',
+            'stakeholder_types_id' => 2,
+        ]);
+
+        DB::table('stakeholders')->insert([
+            'name' => 'Inspector Example',
+            'project_id' => '1',
+            'city_id' => '1',
+            'code' => 'INSEX',
+            'stakeholder_types_id' => 3,
+        ]);
+
+        DB::table('stakeholders')->insert([
+            'name' => 'Supplier Example',
+            'project_id' => '1',
+            'city_id' => '1',
+            'code' => 'SUPEX',
+            'stakeholder_types_id' => 4,
         ]);
 
         DB::table('project_functions')->insert([
@@ -128,12 +155,12 @@ class DefaultSeeder extends Seeder
         ]);
 
         DB::table('departments')->insert([
-            'name' => 'INFORMATION TECHNOLOGY',
+            'name' => 'Information Technology',
             'project_sector_id' => '1',
         ]);
 
         DB::table('positions')->insert([
-            'name' => 'CAPATAZ',
+            'name' => 'Foreman',
             'project_function_id' => '1',
             'department_id' => '1',
         ]);
@@ -143,6 +170,22 @@ class DefaultSeeder extends Seeder
             'turn_id' => '1',
             'dateFrom' => Carbon::create('1970', '01', '01'),
             'dateTo' => Carbon::create('2050', '12', '31')
+        ]);
+
+        DB::table('users')->insert([
+            'name' => 'SuperUser',
+            'user' => 'su',
+            'email' => 'example@email.com',
+            'password' => Hash::make('IdonSoft'),
+        ]);
+
+        DB::table('location_users')->insert([
+            'location_id' => '1',
+            'user_id' => '1',
+            'dailyreport_collaborator' => '1',
+            'dailyreport_approver' => '1',
+            'folio_approver' => '1',
+            'receive_notification' => '1',
         ]);
 
 

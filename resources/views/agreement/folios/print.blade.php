@@ -7,12 +7,12 @@
     @section('header')
 
         <div class="logos">
-            <div class="logo"><img src="{{ asset('images/logos/'.$dailyReport->folio->location->project->logofilename1) }}" class="logo-img"></div>
-            <div class="logo"><img src="{{ asset('images/logos/'.$dailyReport->folio->location->project->logofilename2) }}" class="logo-img"></div>
-            <div class="logo"><img src="{{ asset('images/logos/'.$dailyReport->folio->location->project->logofilename3) }}" class="logo-img"></div>
-            <div class="logo"><img src="{{ asset('images/logos/'.$dailyReport->folio->location->project->logofilename4) }}" class="logo-img"></div>
+            <div class="logo"><img src="{{ asset('images/setting/stakeholders/logos/'.stakeholder_logofile($dailyReport->folio->location->zone->project,1)) }}" class="logo-img"></div>
+            <div class="logo"><img src="{{ asset('images/setting/stakeholders/logos/'.stakeholder_logofile($dailyReport->folio->location->zone->project,2)) }}" class="logo-img"></div>
+            <div class="logo"><img src="{{ asset('images/setting/stakeholders/logos/'.stakeholder_logofile($dailyReport->folio->location->zone->project,3)) }}" class="logo-img"></div>
+            <div class="logo"><img src="{{ asset('images/setting/stakeholders/logos/'.stakeholder_logofile($dailyReport->folio->location->zone->project,4)) }}" class="logo-img"></div>
         </div>
-        <p class="projectTitle">{{ $dailyReport->folio->location->project->name }}</p>
+        <p class="projectTitle">{{ $dailyReport->folio->location->zone->project->name }}</p>
         <hr class="line">
         <p class="headerTitle">{{ __('messages.workbookdailyreport') }}</p>
         <hr class="line">
@@ -87,7 +87,7 @@
                 <table>
                     <thead>
                         <tr>
-                            <th class="td-contractor">{{ __('content.contractor') }}</th>
+                            <th class="td-stakeholder">{{ __('content.stakeholder') }}</th>
                             <th class="td-position">{{ __('content.position') }}</th>
                             <th class="td-quantity">{{ __('content.quantity') }}</th>
                         </tr>
@@ -95,7 +95,7 @@
                     <tbody>
                         @foreach($dailyReport->positions as $positionDailyReport)
                             <tr>
-                                <td class="td-contractor">{{ $positionDailyReport->contractor->name }}</td>
+                                <td class="td-stakeholder">{{ $positionDailyReport->stakeholder->name }}</td>
                                 <td class="td-position">{{ $positionDailyReport->position->name }}</td>
                                 <td class="td-quantity">{{ $positionDailyReport->quantity }}</td>
                             </tr>
@@ -142,7 +142,7 @@
                 <table>
                     <thead>
                         <tr>
-                            <th class="td-contractor">{{ __('content.contractor') }}</th>
+                            <th class="td-stakeholder">{{ __('content.stakeholder') }}</th>
                             <th class="td-equipment">{{ __('content.equipment') }}</th>
                             <th class="td-quantity">{{ __('content.quantity') }}</th>
                         </tr>
@@ -150,7 +150,7 @@
                     <tbody>
                         @foreach($dailyReport->equipments as $equipmentDailyReport)
                             <tr>
-                                <td class="td-contractor">{{ $equipmentDailyReport->contractor->name }}</td>
+                                <td class="td-stakeholder">{{ $equipmentDailyReport->stakeholder->name }}</td>
                                 <td class="td-equipment">{{ $equipmentDailyReport->equipment->name }}</td>
                                 <td class="td-quantity">{{ $equipmentDailyReport->quantity }}</td>
                             </tr>
@@ -262,7 +262,7 @@
                     <tbody>
                         @foreach($dailyReport->attachments as $attachmentDailyReport)
                             <tr>
-                                <td class="td-attachment"><img src="{{ asset('images/attachments/daily_reports/'.$attachmentDailyReport->filename) }}" alt=""></td>
+                                <td class="td-attachment"><img src="{{ asset('images/agreement/daily_reports/attachments/'.$attachmentDailyReport->filename) }}" alt=""></td>
                                 <td class="td-description">{{ $attachmentDailyReport->description }}</td>
                             </tr>
                         @endforeach
@@ -368,16 +368,16 @@
                 </thead>
                 <tbody>
                     <tr>
-                        <td class="td-signature"><img src="{{ asset('images/signatures/'.$folio->signature_approver) }}" alt=""></td>
-                        <td class="td-signature"><img src="{{ asset('images/signatures/'.$folio->signature_reviewer) }}" alt=""></td>
+                        <td class="td-signature"><img src="{{ asset('images/admin/signatures/'.$folio->signature_approver) }}" alt=""></td>
+                        <td class="td-signature"><img src="{{ asset('images/admin/signatures/'.$folio->signature_reviewer) }}" alt=""></td>
                     </tr>
                     <tr>
                         <td class="td-name">{{ $dailyReport->approver()->name ?? '' }}</td>
                         <td class="td-name">{{ $dailyReport->reviewer()->name ?? '' }}</td>
                     </tr>
                     <tr>
-                        <td class="td-name">{{ $dailyReport->approver()->contractor->name ?? '' }}</td>
-                        <td class="td-name">{{ $dailyReport->reviewer()->contractor->name ?? '' }}</td>
+                        <td class="td-name">{{ $dailyReport->approver()->stakeholder->name ?? '' }}</td>
+                        <td class="td-name">{{ $dailyReport->reviewer()->stakeholder->name ?? '' }}</td>
                     </tr>             
                 </tbody>
             </table>

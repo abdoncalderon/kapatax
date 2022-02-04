@@ -45,11 +45,11 @@ class CityController extends Controller
 
     public function edit(City $city)
     {
-        $states = State::get();
+        $regions = Region::get();
         return view('admin.cities.edit',[
             'city'=>$city
             ])
-        ->with(compact('states'));
+        ->with(compact('regions'));
     }
     
     public function update(City $city, UpdateCityRequest $request)
@@ -71,6 +71,16 @@ class CityController extends Controller
             return back()->withErrors($e->getMessage());
         }
     }   
+
+    public function add(StoreCityRequest $request )
+    {
+        try{
+            City::create($request ->validated());
+            return back();
+        }catch(Exception $e){
+            return back()->withErrors($e->getMessage());
+        }
+    }
 
     
 }

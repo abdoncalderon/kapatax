@@ -55,7 +55,22 @@
 
         $('.select2').select2()
 
-        $('#example1').DataTable()
+        $('#example1').DataTable({
+        "language": {
+                    "lengthMenu": "Mostrar _MENU_ registros por página",
+                    "zeroRecords": "No hay resultados",
+                    "info": "Mostrando página _PAGE_ de _PAGES_",
+                    "infoEmpty": "No hay registros",
+                    "search":    "Buscar:",
+                    "infoFiltered": "(filtrado de _MAX_ registros totales)",
+                    "paginate": {
+                                    "first":      "Primero",
+                                    "last":       "Ultimo",
+                                    "next":       "Siguiente",
+                                    "previous":   "Anterior"
+                                },
+                    }
+        })
         $('#datatable').DataTable({
             'paging'      : true,
             'lengthChange': false,
@@ -123,34 +138,59 @@
             radioClass   : 'iradio_flat-green'
         })
 
-        $("#regionCity").change(
+        $("#region").change(
             function(event){
+
+                $("#regionModal1Text").val($('#regionCity option:selected').text())
+                $("#regionModal1Id").val($('#regionCity option:selected').val())
+
+                $("#regionModal2Text").val($('#regionCity option:selected').text())
+                $("#regionModal2Id").val($('#regionCity option:selected').val())
+
+                $("#regionModal3Text").val($('#regionCity option:selected').text())
+                $("#regionModal3Id").val($('#regionCity option:selected').val())
+
+                /* $("#regionModal1 option[value="+event.target.value+"]").attr("selected",true)
+                $("#regionModal1").trigger('change')
+                $("#regionModal2 option[value="+event.target.value+"]").attr("selected",true) */
+
                 $.get("/getCountries/"+event.target.value+"", 
                     function(response,state){
                         console.log(response);
-                        $("#countryCity").empty();
-                        $("#countryCity").append("<option value=''>Seleccione Pais</option>");
+                        $("#country").empty();
+                        $("#country").append("<option value=''>Seleccione Pais</option>");
                         for(i=0;i<response.length;i++){
-                            $("#countryCity").append("<option value='"+response[i].id+"'> "+response[i].name+"</option>");
+                            $("#country").append("<option value='"+response[i].id+"'> "+response[i].name+"</option>");
                         } 
                     });
         })
 
-        $("#countryCity").change(
+        $("#country").change(
             function(event){
+
+                $("#countryModal1Text").val($('#countryCity option:selected').text())
+                $("#countryModal1Id").val($('#countryCity option:selected').val())
+
+                $("#countryModal2Text").val($('#countryCity option:selected').text())
+                $("#countryModal2Id").val($('#countryCity option:selected').val())
+
                 $.get("/getStates/"+event.target.value+"", 
                     function(response,state){
                         console.log(response);
-                        $("#stateCity").empty();
-                        $("#stateCity").append("<option value=''>Seleccione Estado/Provincia</option>");
+                        $("#state").empty();
+                        $("#state").append("<option value=''>Seleccione Estado/Provincia</option>");
                         for(i=0;i<response.length;i++){
-                            $("#stateCity").append("<option value='"+response[i].id+"'> "+response[i].name+"</option>");
+                            $("#state").append("<option value='"+response[i].id+"'> "+response[i].name+"</option>");
                         } 
                     });
         })
 
-        $("#stateCity").change(
+        $("#state").change(
             function(event){
+                
+                $("#stateModal1Text").val($('#stateCity option:selected').text())
+                $("#stateModal1Id").val($('#stateCity option:selected').val())
+
                 $.get("/getCities/"+event.target.value+"", 
                     function(response,state){
                         console.log(response);
@@ -180,6 +220,17 @@
                 $.get("/getNumber/"+event.target.value+"", 
                     function(response,state){
                         $("#number").val(response[0].sequence);
+                    }
+                );
+            }
+        );
+
+        $("#roleMenuIsActive").change(
+            function(event){
+                $alert("Hola");
+                $.get("/changeStatus/"+event.target.value+"", 
+                    function(response,state){
+                        $("#menuIsActive").val(response[0].isActive);
                     }
                 );
             }

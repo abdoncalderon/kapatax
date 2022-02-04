@@ -216,10 +216,10 @@ class MenuSeeder extends Seeder
                         // 21
 
                         DB::table('menus')->insert([
-                            'code' => 'administration.contractors',
-                            'showName' => 'content.contractors',
+                            'code' => 'administration.stakeholders',
+                            'showName' => 'content.stakeholders',
                             'menu_id' => '19',
-                            'route' => 'contractors.index',
+                            'route' => 'stakeholders.index',
                             'icon' => 'fa fa-circle-o',
                         ]);
 
@@ -667,7 +667,7 @@ class MenuSeeder extends Seeder
                         DB::table('menus')->insert([
                             'code' => 'shw.health',
                             'showName' => 'content.health',
-                            'menu_id' => '61',
+                            'menu_id' => '62',
                             'route' => null,
                             'icon' => 'fa fa-heart',
                         ]);

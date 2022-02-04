@@ -163,9 +163,8 @@
 
                     <div class="box-footer">
                         <button type="submit" class="btn btn-success pull-left btn-sm" style="margin: 0px 5px;">{{ __('content.save') }}</button>
-                        <a class="btn btn-info btn-sm" href=" {{ route('home') }} ">{{ __('content.cancel') }}</a>
-                       {{--  <a class="btn btn-success btn-sm" href=" {{ route('projects.edit', $project) }} ">{{ __('content.edit') }}</a>
-                        <a class="btn btn-info btn-sm" href=" {{ route('projects.index') }} ">{{ __('messages.returntolist') }}</a> --}}
+                        <a class="btn btn-danger btn-sm" href=" {{ route('home') }} ">{{ __('content.cancel') }}</a>
+                       
                     </div>
 
                 </form>

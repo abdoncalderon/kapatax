@@ -6,11 +6,11 @@ use Illuminate\Database\Eloquent\Model;
 
 class EquipmentDailyReport extends Model
 {
-    protected $fillable = ['daily_report_id','contractor_id','equipment_id','quantity',];
+    protected $fillable = ['daily_report_id','stakeholder_id','equipment_id','quantity',];
 
-    public function contractor()
+    public function stakeholder()
     {
-        return $this->belongsTo(Contractor::class);
+        return $this->belongsTo(Stakeholder::class);
     }
 
     public function equipment()
