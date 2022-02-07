@@ -101,6 +101,27 @@ class RoleMenuController extends Controller
         }
     }
 
+    public function setOpen(Request $request, $id)
+    {
+        if($request->ajax())
+        {
+            $roleMenus = RoleMenu::where('role_id',current_user()->role->id)->get();
+            foreach ($roleMenus as $roleMenu){
+            
+                if($roleMenu->menu->code==$id){
+                    $value = 1;
+                }else{
+                    $value = 0;
+                }
+                $roleMenu->update([
+                    'isOpen' => $value,
+                ]);
+
+            }
+            return response()->json($id);
+        }
+    }
+
     
 
 

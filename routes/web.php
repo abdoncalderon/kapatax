@@ -113,6 +113,8 @@ Route::post('/roleMenus/{role}','Admin\RoleMenuController@store')->name('roleMen
 Route::get('/roleMenus/destroy/{roleMenu}','Admin\RoleMenuController@destroy')->name('roleMenus.destroy');
 Route::get('/roleMenus/activate/{roleMenu}/{value}','Admin\RoleMenuController@activate')->name('roleMenus.activate');
 Route::post('/cloneRoleMenus','Admin\RoleMenuController@clone')->name('roleMenus.clone');
+Route::get('setOpen/{roleMenu}','Admin\RoleMenuController@setOpen')->name('roleMenus.setOpen');
+
 
 /* Routes Project Users  */
 Route::get('/projectUsers/{user}','Admin\ProjectUserController@index')->name('projectUsers.index');

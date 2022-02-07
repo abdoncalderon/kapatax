@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class RoleMenu extends Model
 {
-    protected $fillable = ['role_id','menu_id','isActive',];
+    protected $fillable = ['role_id','menu_id','isActive','isOpen',];
 
     public function role()
     {
@@ -20,6 +20,14 @@ class RoleMenu extends Model
 
     public function isActive(){
         if($this->isActive==1){
+            return true;
+        }else{
+            return false;
+        }
+    }
+
+    public function isOpen(){
+        if($this->isOpen==1){
             return true;
         }else{
             return false;

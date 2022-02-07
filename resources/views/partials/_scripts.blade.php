@@ -227,7 +227,6 @@
 
         $("#roleMenuIsActive").change(
             function(event){
-                $alert("Hola");
                 $.get("/changeStatus/"+event.target.value+"", 
                     function(response,state){
                         $("#menuIsActive").val(response[0].isActive);
@@ -236,6 +235,20 @@
             }
         );
 
+        var menues = $(".treeview"); 
+
+        menues.click(
+            function(event){
+                var roleId = $(this).attr('id');
+                $.get("/setOpen/"+roleId+"", 
+                    function(response,state){
+                        alert(response);
+                    }
+                );
+            }
+        );
+
+        
     });
 
 

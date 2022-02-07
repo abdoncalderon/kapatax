@@ -15,6 +15,7 @@
         <!-- Home Menu -->
 
         <li class="treeview">
+
             <a href="#">
                 <i class="fa fa-home"></i>
                 <span> {{ __('content.home') }} </span>
@@ -22,6 +23,7 @@
                     <i class="fa fa-angle-left pull-right"></i>
                 </span>
             </a>
+
             <ul class="treeview-menu">
                 <li>
                     <a href="{{ route('profiles.show', auth()->user()->id) }}"><i class="fa fa-user"></i> {{ __('content.profile') }} </a>
@@ -45,13 +47,14 @@
                     </a>
                 </li>
             </ul>
+
         </li>
 
     @foreach ($roleMenus as $roleMenu)
 
         @if (empty($roleMenu->menu->menu_id))
 
-            <li class="treeview">
+            <li id="{{ $roleMenu->id }}" class="treeview @if($roleMenu->isOpen()) active @endif">
 
                 @if (is_null($roleMenu->menu->route))
                     <a href="#">
