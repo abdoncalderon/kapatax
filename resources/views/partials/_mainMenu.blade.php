@@ -54,7 +54,7 @@
 
         @if (empty($roleMenu->menu->menu_id))
 
-            <li id="{{ $roleMenu->id }}" class="treeview @if($roleMenu->isOpen()) active @endif">
+            <li class="treeview">
 
                 @if (is_null($roleMenu->menu->route))
                     <a href="#">

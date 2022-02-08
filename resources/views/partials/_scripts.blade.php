@@ -141,14 +141,14 @@
         $("#region").change(
             function(event){
 
-                $("#regionModal1Text").val($('#regionCity option:selected').text())
-                $("#regionModal1Id").val($('#regionCity option:selected').val())
+                $("#regionModal1Text").val($('#region option:selected').text())
+                $("#regionModal1Id").val($('#region option:selected').val())
 
-                $("#regionModal2Text").val($('#regionCity option:selected').text())
-                $("#regionModal2Id").val($('#regionCity option:selected').val())
+                $("#regionModal2Text").val($('#region option:selected').text())
+                $("#regionModal2Id").val($('#region option:selected').val())
 
-                $("#regionModal3Text").val($('#regionCity option:selected').text())
-                $("#regionModal3Id").val($('#regionCity option:selected').val())
+                $("#regionModal3Text").val($('#region option:selected').text())
+                $("#regionModal3Id").val($('#region option:selected').val())
 
                 /* $("#regionModal1 option[value="+event.target.value+"]").attr("selected",true)
                 $("#regionModal1").trigger('change')
@@ -168,11 +168,11 @@
         $("#country").change(
             function(event){
 
-                $("#countryModal1Text").val($('#countryCity option:selected').text())
-                $("#countryModal1Id").val($('#countryCity option:selected').val())
+                $("#countryModal1Text").val($('#country option:selected').text())
+                $("#countryModal1Id").val($('#country option:selected').val())
 
-                $("#countryModal2Text").val($('#countryCity option:selected').text())
-                $("#countryModal2Id").val($('#countryCity option:selected').val())
+                $("#countryModal2Text").val($('#country option:selected').text())
+                $("#countryModal2Id").val($('#country option:selected').val())
 
                 $.get("/getStates/"+event.target.value+"", 
                     function(response,state){
@@ -188,8 +188,8 @@
         $("#state").change(
             function(event){
                 
-                $("#stateModal1Text").val($('#stateCity option:selected').text())
-                $("#stateModal1Id").val($('#stateCity option:selected').val())
+                $("#stateModal1Text").val($('#state option:selected').text())
+                $("#stateModal1Id").val($('#state option:selected').val())
 
                 $.get("/getCities/"+event.target.value+"", 
                     function(response,state){
@@ -202,15 +202,19 @@
                     });
         })
 
-        $("#sectorPosition").change(
+        $("#sector").change(
             function(event){
+
+                $("#sectorModalText").val($('#sector option:selected').text())
+                $("#sectorModalId").val($('#sector option:selected').val())
+
                 $.get("/getDepartments/"+event.target.value+"", 
                     function(response,state){
                         console.log(response);
-                        $("#departmentPosition").empty();
-                        $("#departmentPosition").append("<option value=''>Seleccione Departamento</option>");
+                        $("#department").empty();
+                        $("#department").append("<option value=''>Seleccione Departamento</option>");
                         for(i=0;i<response.length;i++){
-                            $("#departmentPosition").append("<option value='"+response[i].id+"'> "+response[i].name+"</option>");
+                            $("#department").append("<option value='"+response[i].id+"'> "+response[i].name+"</option>");
                         } 
                     });
         })
@@ -237,7 +241,7 @@
 
         var menues = $(".treeview"); 
 
-        menues.click(
+        /* menues.click(
             function(event){
                 var roleId = $(this).attr('id');
                 $.get("/setOpen/"+roleId+"", 
@@ -246,7 +250,7 @@
                     }
                 );
             }
-        );
+        ); */
 
         
     });

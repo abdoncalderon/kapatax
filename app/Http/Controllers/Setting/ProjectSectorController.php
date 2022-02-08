@@ -6,7 +6,9 @@ use App\Http\Controllers\Controller;
 use App\Models\Sector;
 use App\Models\Project;
 use App\Models\ProjectSector;
+use App\Models\Department;
 use App\Http\Requests\Setting\StoreProjectSectorRequest;
+use Illuminate\Http\Request;
 use Exception;
 
 
@@ -46,6 +48,24 @@ class ProjectSectorController extends Controller
         }
     }
     
+    public function add(StoreProjectSectorRequest $request )
+    {
+        try{
+            ProjectSector::create($request ->validated());
+            return back();
+        }catch(Exception $e){
+            return back()->withErrors($e->getMessage());
+        }
+    }
+
+    public function getDepartments(Request $request, $id)
+    {
+        if($request->ajax())
+        {
+            $departments = Department::where('project_sector_id',$id)->get();
+            return response()->json($departments);
+        }
+    }
 
     
 }

@@ -12,13 +12,13 @@ class TurnController extends Controller
 {
     public function index()
     {
-        $turns = Turn::get();
-        return view('agreement.turns.index', compact('turns'));
+        $turns = Turn::where('project_id',session('current_project_id'))->get();
+        return view('setting.turns.index', compact('turns'));
     }
 
     public function create()
     {
-        return view('agreement.turns.create');
+        return view('setting.turns.create');
     }
 
     public function store(StoreTurnRequest $request )
@@ -36,14 +36,14 @@ class TurnController extends Controller
 
     public function show(Turn $turn)
     {
-        return view('agreement.turns.show',[
+        return view('setting.turns.show',[
             'turn'=>$turn
             ]);
     }
 
     public function edit(Turn $turn)
     {
-        return view('agreement.turns.edit',[
+        return view('setting.turns.edit',[
             'turn'=>$turn
             ]);
     }

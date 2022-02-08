@@ -12,7 +12,7 @@ class Menu extends Model
         return $this->belongsTo(Menu::class);
     }
 
-    public function roles()
+    public function roleMenus()
     {
         return $this->hasMany(RoleMenu::class);
     }

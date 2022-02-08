@@ -15,7 +15,7 @@ class StakeholderController extends Controller
 {
     public function index()
     {
-        $stakeholders = Stakeholder::get();
+        $stakeholders = Stakeholder::where('project_id',session('current_project_id'))->get();
         return view('setting.stakeholders.index', compact('stakeholders'));
     }
 

@@ -44,4 +44,14 @@ class ProjectFunctionController extends Controller
             return back()->withErrors($e->getMessage());
         }
     }
+
+    public function add(StoreProjectFunctionRequest $request )
+    {
+        try{
+            ProjectFunction::create($request ->validated());
+            return back();
+        }catch(Exception $e){
+            return back()->withErrors($e->getMessage());
+        }
+    }
 }

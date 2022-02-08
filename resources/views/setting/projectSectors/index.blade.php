@@ -10,7 +10,7 @@
     <ol class="breadcrumb">
         <li><a href="{{ route('home') }}"><i class="fa fa-home"></i>Home</a></li>
         <li><a href="{{ route('project.index')}}"> {{ __('content.project') }} </a></li>
-        <li class="active">{{ __('content.positions') }}</li>
+        <li class="active">{{ __('content.sectors') }}</li>
     </ol>
 @endsection
 
@@ -29,7 +29,7 @@
             @endif
 
             <div class="box-header with-border center-block">
-                <h3 class="box-title"><strong>{{ __('content.sectors').' '.__('content.project') }} {{ $project->name }} </strong></h3> | 
+                <h3 class="box-title"><strong>{{ __('content.sectors') }} - {{ $project->name }} </strong></h3> | 
                 <a class="btn btn-success btn-sm" href="{{ route('projectSectors.create', $project) }}">{{ __('content.add') }}</a>
             </div>
             

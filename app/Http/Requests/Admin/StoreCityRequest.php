@@ -14,26 +14,6 @@ class StoreCityRequest extends FormRequest
 
     public function rules()
     {
-        /* $name = $this->get('name');
-        
-        $state_id = $this->get('state_id');
-        
-        $cities=DB::table('cities')->where([
-            ['name','=',$name],
-            ['state_id','=',$state_id],
-            ])->get();
-
-        if (count($cities)<1){
-            return [
-                'name'=>'required',
-                'state_id'=>'required',
-            ];
-        }else{
-            return [
-                'name'=>'max:0',
-                'state_id'=>'size:0',
-            ];
-        } */
         return [
             'name'=>'required',
             'state_id'=>'required',

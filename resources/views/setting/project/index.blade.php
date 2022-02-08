@@ -9,7 +9,7 @@
 @section('breadcrumb')
     <ol class="breadcrumb">
         <li><a href="{{ route('home') }}"><i class="fa fa-home"></i>Home</a></li>
-        <li class="active">{{ __('content.projects') }}</li>
+        <li class="active">{{ __('content.project') }}</li>
     </ol>
 @endsection
 

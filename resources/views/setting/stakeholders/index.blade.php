@@ -20,7 +20,7 @@
         <div class="box box-info">
 
             <div class="box-header with-border center-block">
-                <h3 class="box-title"><strong>{{ __('content.stakeholders') }}</strong></h3> | 
+                <h3 class="box-title"><strong>{{ __('content.stakeholders') }} - {{ current_user()->project->name }} </strong></h3> | 
                 <a class="btn btn-success btn-sm" href="{{ route('stakeholders.create') }}">{{ __('content.add') }}</a>
             </div>
             

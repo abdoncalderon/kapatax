@@ -29,7 +29,7 @@
             @endif
 
             <div class="box-header with-border center-block">
-                <h3 class="box-title"><strong>{{ __('content.functions').' '.__('content.project') }} {{ $project->name }} </strong></h3> | 
+                <h3 class="box-title"><strong>{{ __('content.functions') }} - {{ $project->name }} </strong></h3> | 
                 <a class="btn btn-success btn-sm" href="{{ route('projectFunctions.create', $project) }}">{{ __('content.add') }}</a>
             </div>
             

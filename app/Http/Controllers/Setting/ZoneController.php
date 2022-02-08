@@ -13,7 +13,7 @@ class ZoneController extends Controller
 {
     public function index()
     {
-        $zones = Zone::get();
+        $zones = Zone::where('project_id',session('current_project_id'))->get();
         return view('setting.zones.index', compact('zones'));
     }
 

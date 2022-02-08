@@ -13,7 +13,7 @@ class EquipmentController extends Controller
 {
     public function index()
     {
-        $equipments = Equipment::get();
+        $equipments = Equipment::where('project_id',session('current_project_id'))->get();
         return view('setting.equipments.index', compact('equipments'));
     }
 

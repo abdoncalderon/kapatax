@@ -57,7 +57,6 @@
                             <tr>
                                 <td>{{ $function->name }}</td>
                                 <td>
-                                    {{-- <a class="btn btn-info btn-xs" href="{{ route('functions.show', $function)}}">{{ __('content.show') }}</a> --}}
                                     <a class="btn btn-info btn-xs" href="{{ route('functions.edit', $function)}}">{{ __('content.edit') }}</a>
                                     <a class="btn btn-danger btn-xs" href="{{ route('functions.destroy', $function)}}">{{ __('content.delete') }}</a>
                                 </td>

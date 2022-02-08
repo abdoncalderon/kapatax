@@ -135,6 +135,7 @@ Route::get('/projectUsers/destroy/{projectUser}','Admin\ProjectUserController@de
 /* Routes Departments */
 Route::resource('departments','Setting\DepartmentController');
 Route::get('/departments/destroy/{country}','Setting\DepartmentController@destroy')->name('departments.destroy');
+Route::post('/department/add','Setting\DepartmentController@add')->name('departments.add');
 
 /* Routes Project */
 Route::get('/project','Setting\ProjectController@index')->name('project.index');
@@ -147,12 +148,15 @@ Route::get('/projectFunctions/{project}','Setting\ProjectFunctionController@inde
 Route::get('/projectFunctions/create/{project}','Setting\ProjectFunctionController@create')->name('projectFunctions.create');
 Route::post('/projectFunctions/{project}','Setting\ProjectFunctionController@store')->name('projectFunctions.store');
 Route::get('/projectFunctions/destroy/{projectFunction}','Setting\ProjectFunctionController@destroy')->name('projectFunctions.destroy');
+Route::post('/ProjectFunction/add','Setting\ProjectFunctionController@add')->name('projectFunctions.add');
 
 /* Routes Project x Sector */
 Route::get('/projectSectors/{project}','Setting\ProjectSectorController@index')->name('projectSectors.index');
 Route::get('/projectSectors/create/{project}','Setting\ProjectSectorController@create')->name('projectSectors.create');
 Route::post('/projectSectors/{project}','Setting\ProjectSectorController@store')->name('projectSectors.store');
 Route::get('/projectSectors/destroy/{projectSector}','Setting\ProjectSectorController@destroy')->name('projectSectors.destroy');
+Route::post('/ProjectSector/add','Setting\ProjectSectorController@add')->name('projectSectors.add');
+Route::get('getDepartments/{projectSector}','Setting\ProjectSectorController@getDepartments')->name('projectSectors.getDepartments');
 
 /* Routes Stakeholders */
 Route::resource('stakeholders','Setting\StakeholderController');
@@ -166,7 +170,7 @@ Route::post('/zones/add','Setting\ZoneController@add')->name('zones.add');
 /* Routes Positions */
 Route::resource('positions','Setting\PositionController');
 Route::get('/position/destroy/{position}','Setting\PositionController@destroy')->name('positions.destroy');
-Route::get('getDepartments/{projectSector}','Admin\PositionController@getDepartments')->name('positions.getDepartments');
+
 
 /* Routes Locations */
 Route::resource('locations','Setting\LocationController');

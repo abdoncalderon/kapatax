@@ -14,7 +14,7 @@ class LocationController extends Controller
 {
     public function index()
     {
-        $locations = Location::get();
+        $locations = Location::join('zones','locations.zone_id','=','zones.id')->where('zones.project_id',session('current_project_id'))->get();
         return view('setting.locations.index', compact('locations'));
     }
 

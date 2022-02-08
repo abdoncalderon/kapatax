@@ -108,7 +108,7 @@ class RoleMenuController extends Controller
             $roleMenus = RoleMenu::where('role_id',current_user()->role->id)->get();
             foreach ($roleMenus as $roleMenu){
             
-                if($roleMenu->menu->code==$id){
+                if($roleMenu->menu_id==$id){
                     $value = 1;
                 }else{
                     $value = 0;

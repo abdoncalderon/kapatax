@@ -71,7 +71,7 @@
                                     <td>{{ __('content.inactive') }}</td>
                                 @endif
                                 <td>
-                                    <a class="btn btn-info btn-xs" href="{{ route('menus.show', $menu)}}">{{ __('content.show') }}</a>
+                                    <a class="btn btn-info btn-xs" href="{{ route('menus.edit', $menu)}}">{{ __('content.edit') }}</a>
                                     @if ($menu->isActive())
                                         <a class="btn btn-danger btn-xs" href="{{ route('menus.activate', [$menu, '0']) }}">{{ __('content.deactivate') }}</a>
                                     @else

@@ -63,11 +63,7 @@
                                     <span class="input-group-btn">
                                         <button type="button" class="btn btn-info btn-flat" data-toggle="modal" data-target="#add"> + </button>
                                     </span>
-                                    @error('region_id')
-                                        <span class="invalid-feedback" role="alert" style="color:red">
-                                            <strong>{{ $message }}</strong>
-                                        </span>
-                                    @enderror
+                                    
                                 </div>
                             </div>
 

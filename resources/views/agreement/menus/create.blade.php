@@ -48,7 +48,7 @@
                         <div class="form-group">
                             <label class="col-sm-2 control-label">{{ __('content.name') }}</label>
                             <div class="col-sm-10" >
-                                <input id="name" type="text" class="form-control" name="name" value="{{ old('name') }}" placeholder="Nombre">
+                                <input id="name" type="text" class="form-control" name="name" value="{{ old('name') }}" placeholder="{{ __('content.name') }}">
                                 @error('name')
                                     <span class="invalid-feedback" menu="alert" style="color:red">
                                         <strong>{{ $message }}</strong>

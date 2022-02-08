@@ -46,7 +46,7 @@
                             <tr>
                                 <td>{{ $turn->name }}</td>
                                 <td>
-                                    <a style="margin: 0.3em" class="btn btn-info btn-xs" href="{{ route('turns.show', $turn)}}">{{ __('content.show') }}</a>
+                                    <a style="margin: 0.3em" class="btn btn-info btn-xs" href="{{ route('turns.edit', $turn)}}">{{ __('content.edit') }}</a>
                                     <a style="margin: 0.3em" class="btn btn-info btn-xs" href="{{ route('turns.destroy', $turn)}}">{{ __('content.delete') }}</a>
                                 </td>
                             </tr>

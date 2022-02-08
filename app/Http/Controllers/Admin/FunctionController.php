@@ -27,17 +27,17 @@ class FunctionController extends Controller
         return redirect()->route('functions.index');
     }
 
-    public function show(Funct1on $funct1on)
+    public function show(Funct1on $function)
     {
         return view('admin.functions.show',[
-            'funct1on'=>$funct1on
+            'function'=>$function
             ]);
     }
 
-    public function edit(Funct1on $funct1on)
+    public function edit(Funct1on $function)
     {
         return view('admin.functions.edit',[
-            'funct1on'=>$funct1on
+            'function'=>$function
             ]);
     }
     
