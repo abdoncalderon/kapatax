@@ -101,28 +101,7 @@ class MenuSeeder extends Seeder
                             'icon' => 'fa fa-circle-o',
                         ]);
 
-                        
                         // 10
-
-                        DB::table('menus')->insert([
-                            'code' => 'administration.functions',
-                            'showName' => 'content.functions',
-                            'menu_id' => '1',
-                            'route' => 'functions.index',
-                            'icon' => 'fa fa-circle-o',
-                        ]);
-
-                        // 11
-
-                        DB::table('menus')->insert([
-                            'code' => 'administration.sectors',
-                            'showName' => 'content.sectors',
-                            'menu_id' => '1',
-                            'route' => 'sectors.index',
-                            'icon' => 'fa fa-circle-o',
-                        ]);
-
-                        // 12
 
                         DB::table('menus')->insert([
                             'code' => 'administration.roles',
@@ -132,7 +111,7 @@ class MenuSeeder extends Seeder
                             'icon' => 'fa fa-circle-o',
                         ]);
 
-                        // 13
+                        // 11
 
                         DB::table('menus')->insert([
                             'code' => 'administration.menus',
@@ -142,7 +121,7 @@ class MenuSeeder extends Seeder
                             'icon' => 'fa fa-circle-o',
                         ]);
 
-                        // 14
+                        // 12
 
                         DB::table('menus')->insert([
                             'code' => 'administration.permits',
@@ -152,7 +131,7 @@ class MenuSeeder extends Seeder
                             'icon' => 'fa fa-circle-o',
                         ]);
 
-                        // 15
+                        // 13
 
                         DB::table('menus')->insert([
                             'code' => 'administration.users',
@@ -162,7 +141,7 @@ class MenuSeeder extends Seeder
                             'icon' => 'fa fa-circle-o',
                         ]);
 
-                        // 16
+                        // 14
 
                         DB::table('menus')->insert([
                             'code' => 'administration.brands',
@@ -172,7 +151,7 @@ class MenuSeeder extends Seeder
                             'icon' => 'fa fa-circle-o',
                         ]);
 
-                        // 17
+                        // 15
 
                         DB::table('menus')->insert([
                             'code' => 'administration.models',
@@ -182,7 +161,7 @@ class MenuSeeder extends Seeder
                             'icon' => 'fa fa-circle-o',
                         ]);
 
-                        // 18
+                        // 16
                         
                         DB::table('menus')->insert([
                             'code' => 'administration.unities',
@@ -194,7 +173,7 @@ class MenuSeeder extends Seeder
 
         // Settings Menu
 
-        // 19
+        // 17
 
         DB::table('menus')->insert([
             'code' => 'settings',
@@ -203,72 +182,94 @@ class MenuSeeder extends Seeder
             'icon' => 'fa fa-sliders',
         ]);
 
-                        // 20
+                        // 18
 
                         DB::table('menus')->insert([
                             'code' => 'settings.project',
                             'showName' => 'content.project',
-                            'menu_id' => '19',
+                            'menu_id' => '17',
                             'route' => 'project.index',
+                            'icon' => 'fa fa-circle-o',
+                        ]);
+
+                        // 19
+
+                        DB::table('menus')->insert([
+                            'code' => 'settings.stakeholders',
+                            'showName' => 'content.stakeholders',
+                            'menu_id' => '17',
+                            'route' => 'stakeholders.index',
+                            'icon' => 'fa fa-circle-o',
+                        ]);
+
+                        // 20
+
+                        DB::table('menus')->insert([
+                            'code' => 'settings.functions',
+                            'showName' => 'content.functions',
+                            'menu_id' => '17',
+                            'route' => 'functions.index',
                             'icon' => 'fa fa-circle-o',
                         ]);
 
                         // 21
 
                         DB::table('menus')->insert([
-                            'code' => 'administration.stakeholders',
-                            'showName' => 'content.stakeholders',
-                            'menu_id' => '19',
-                            'route' => 'stakeholders.index',
+                            'code' => 'settings.positions',
+                            'showName' => 'content.positions',
+                            'menu_id' => '17',
+                            'route' => 'positions.index',
                             'icon' => 'fa fa-circle-o',
                         ]);
 
                         // 22
 
                         DB::table('menus')->insert([
-                            'code' => 'administration.departments',
-                            'showName' => 'content.departments',
-                            'menu_id' => '19',
-                            'route' => 'departments.index',
+                            'code' => 'settings.sectors',
+                            'showName' => 'content.sectors',
+                            'menu_id' => '17',
+                            'route' => 'sectors.index',
                             'icon' => 'fa fa-circle-o',
                         ]);
 
                         // 23
 
                         DB::table('menus')->insert([
-                            'code' => 'settings.zones',
-                            'showName' => 'content.zones',
-                            'menu_id' => '19',
-                            'route' => 'zones.index',
+                            'code' => 'settings.departments',
+                            'showName' => 'content.departments',
+                            'menu_id' => '17',
+                            'route' => 'departments.index',
                             'icon' => 'fa fa-circle-o',
                         ]);
 
                         // 24
 
                         DB::table('menus')->insert([
-                            'code' => 'settings.locations',
-                            'showName' => 'content.locations',
-                            'menu_id' => '19',
-                            'route' => 'locations.index',
+                            'code' => 'settings.zones',
+                            'showName' => 'content.zones',
+                            'menu_id' => '17',
+                            'route' => 'zones.index',
                             'icon' => 'fa fa-circle-o',
                         ]);
 
                         // 25
 
                         DB::table('menus')->insert([
-                            'code' => 'settings.positions',
-                            'showName' => 'content.positions',
-                            'menu_id' => '19',
-                            'route' => 'positions.index',
+                            'code' => 'settings.locations',
+                            'showName' => 'content.locations',
+                            'menu_id' => '17',
+                            'route' => 'locations.index',
                             'icon' => 'fa fa-circle-o',
                         ]);
+
+                        
 
                         // 26
 
                         DB::table('menus')->insert([
                             'code' => 'settings.employees',
                             'showName' => 'content.employees',
-                            'menu_id' => '19',
+                            'menu_id' => '17',
                             'route' => null,
                             'icon' => 'fa fa-circle-o',
                         ]);
@@ -278,7 +279,7 @@ class MenuSeeder extends Seeder
                         DB::table('menus')->insert([
                             'code' => 'settings.categories',
                             'showName' => 'content.categories',
-                            'menu_id' => '19',
+                            'menu_id' => '17',
                             'route' => null,
                             'icon' => 'fa fa-circle-o',
                         ]);
@@ -288,7 +289,7 @@ class MenuSeeder extends Seeder
                         DB::table('menus')->insert([
                             'code' => 'settings.types',
                             'showName' => 'content.types',
-                            'menu_id' => '19',
+                            'menu_id' => '17',
                             'route' => null,
                             'icon' => 'fa fa-circle-o',
                         ]);
@@ -298,7 +299,7 @@ class MenuSeeder extends Seeder
                         DB::table('menus')->insert([
                             'code' => 'settings.periods',
                             'showName' => 'content.periods',
-                            'menu_id' => '19',
+                            'menu_id' => '17',
                             'route' => null,
                             'icon' => 'fa fa-circle-o',
                         ]);
@@ -308,7 +309,7 @@ class MenuSeeder extends Seeder
                         DB::table('menus')->insert([
                             'code' => 'settings.shifts',
                             'showName' => 'content.shifts',
-                            'menu_id' => '19',
+                            'menu_id' => '17',
                             'route' => 'turns.index',
                             'icon' => 'fa fa-circle-o',
                         ]);
@@ -318,7 +319,7 @@ class MenuSeeder extends Seeder
                         DB::table('menus')->insert([
                             'code' => 'settings.equipments',
                             'showName' => 'content.equipments',
-                            'menu_id' => '19',
+                            'menu_id' => '17',
                             'route' => 'equipments.index',
                             'icon' => 'fa fa-circle-o',
                         ]);
@@ -593,24 +594,35 @@ class MenuSeeder extends Seeder
         // 59
 
         DB::table('menus')->insert([
-            'code' => 'persons',
-            'showName' => 'content.persons',
+            'code' => 'people',
+            'showName' => 'content.people',
             'route' => null,
             'icon' => 'fa fa-user',
         ]);
-
                         // 60
 
                         DB::table('menus')->insert([
-                            'code' => 'persons.payroll',
+                            'code' => 'people.record',
+                            'showName' => 'content.record',
+                            'menu_id' => '59',
+                            'route' => 'people.index',
+                            'icon' => 'fa fa-list',
+                        ]);
+
+                        // 61
+
+                        DB::table('menus')->insert([
+                            'code' => 'people.payroll',
                             'showName' => 'content.payroll',
                             'menu_id' => '59',
                             'route' => null,
                             'icon' => 'fa fa-list',
                         ]);
 
+                        // 62
+
                         DB::table('menus')->insert([
-                            'code' => 'persons.timesheet',
+                            'code' => 'people.timesheet',
                             'showName' => 'content.timesheet',
                             'menu_id' => '59',
                             'route' => null,
@@ -619,7 +631,7 @@ class MenuSeeder extends Seeder
         
         // Safety & Health Menu 
 
-        // 62
+        // 63
 
         DB::table('menus')->insert([
             'code' => 'shw',
@@ -628,12 +640,12 @@ class MenuSeeder extends Seeder
             'icon' => 'fa fa-stethoscope',
         ]);
 
-                        // 63
+                        // 64
 
                         DB::table('menus')->insert([
                             'code' => 'shw.ppes',
                             'showName' => 'content.ppes',
-                            'menu_id' => '62',
+                            'menu_id' => '63',
                             'route' => null,
                             'icon' => 'fa fa-medkit',
                         ]);
@@ -641,7 +653,7 @@ class MenuSeeder extends Seeder
                                         DB::table('menus')->insert([
                                             'code' => 'shw.ppes.assigments',
                                             'showName' => 'content.assignments',
-                                            'menu_id' => '63',
+                                            'menu_id' => '64',
                                             'route' => null,
                                             'icon' => 'fa fa-check-square',
                                         ]);
@@ -649,7 +661,7 @@ class MenuSeeder extends Seeder
                                         DB::table('menus')->insert([
                                             'code' => 'shw.ppes.rules',
                                             'showName' => 'content.rules',
-                                            'menu_id' => '63',
+                                            'menu_id' => '64',
                                             'route' => null,
                                             'icon' => 'fa fa-list',
                                         ]);
@@ -657,17 +669,17 @@ class MenuSeeder extends Seeder
                                         DB::table('menus')->insert([
                                             'code' => 'shw.ppes.reports',
                                             'showName' => 'content.reports',
-                                            'menu_id' => '63',
+                                            'menu_id' => '64',
                                             'route' => null,
                                             'icon' => 'fa fa-print',
                                         ]);
 
-                        // 67
+                        // 68
 
                         DB::table('menus')->insert([
                             'code' => 'shw.health',
                             'showName' => 'content.health',
-                            'menu_id' => '62',
+                            'menu_id' => '63',
                             'route' => null,
                             'icon' => 'fa fa-heart',
                         ]);
@@ -675,7 +687,7 @@ class MenuSeeder extends Seeder
                                         DB::table('menus')->insert([
                                             'code' => 'shw.health.history',
                                             'showName' => 'content.history',
-                                            'menu_id' => '67',
+                                            'menu_id' => '68',
                                             'route' => null,
                                             'icon' => 'fa fa-folder-open',
                                         ]);
@@ -683,7 +695,7 @@ class MenuSeeder extends Seeder
                                         DB::table('menus')->insert([
                                             'code' => 'shw.health.record',
                                             'showName' => 'content.record',
-                                            'menu_id' => '67',
+                                            'menu_id' => '68',
                                             'route' => null,
                                             'icon' => 'fa fa-list',
                                         ]);
@@ -691,17 +703,17 @@ class MenuSeeder extends Seeder
                                         DB::table('menus')->insert([
                                             'code' => 'shw.health.reports',
                                             'showName' => 'content.reports',
-                                            'menu_id' => '676',
+                                            'menu_id' => '68',
                                             'route' => null,
                                             'icon' => 'fa fa-print',
                                         ]);
 
-                        // 71
+                        // 72
 
                         DB::table('menus')->insert([
                             'code' => 'shw.access',
                             'showName' => 'content.access',
-                            'menu_id' => '62',
+                            'menu_id' => '63',
                             'route' => null,
                             'icon' => 'fa fa-sign-in',
                         ]);
@@ -709,7 +721,7 @@ class MenuSeeder extends Seeder
                                         DB::table('menus')->insert([
                                             'code' => 'shw.access.requirements',
                                             'showName' => 'content.requirements',
-                                            'menu_id' => '71',
+                                            'menu_id' => '72',
                                             'route' => null,
                                             'icon' => 'fa fa-list',
                                         ]);
@@ -717,7 +729,7 @@ class MenuSeeder extends Seeder
                                         DB::table('menus')->insert([
                                             'code' => 'shw.access.profiles',
                                             'showName' => 'content.profiles',
-                                            'menu_id' => '71',
+                                            'menu_id' => '72',
                                             'route' => null,
                                             'icon' => 'fa fa-user',
                                         ]);
@@ -726,7 +738,7 @@ class MenuSeeder extends Seeder
                                         DB::table('menus')->insert([
                                             'code' => 'shw.access.organizations',
                                             'showName' => 'content.organizations',
-                                            'menu_id' => '71',
+                                            'menu_id' => '72',
                                             'route' => null,
                                             'icon' => 'fa fa-institution',
                                         ]);
@@ -734,7 +746,7 @@ class MenuSeeder extends Seeder
                                         DB::table('menus')->insert([
                                             'code' => 'shw.access.checkings',
                                             'showName' => 'content.checkings',
-                                            'menu_id' => '71',
+                                            'menu_id' => '72',
                                             'route' => null,
                                             'icon' => 'fa fa-search',
                                         ]);
@@ -742,7 +754,7 @@ class MenuSeeder extends Seeder
                                         DB::table('menus')->insert([
                                             'code' => 'shw.access.reports',
                                             'showName' => 'content.reports',
-                                            'menu_id' => '71',
+                                            'menu_id' => '72',
                                             'route' => null,
                                             'icon' => 'fa fa-print',
                                         ]);

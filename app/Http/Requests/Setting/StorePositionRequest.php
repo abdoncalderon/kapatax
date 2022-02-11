@@ -16,8 +16,7 @@ class StorePositionRequest extends FormRequest
     {
         return [
             'name'=>'required|unique:positions',
-            'project_function_id'=>'required',
-            'department_id'=>'required',
+            'function_id'=>'required',
         ];
     }
 }

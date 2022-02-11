@@ -46,7 +46,7 @@
                     <tbody>
                         @foreach($users as $user)
                         <tr>
-                            <td>{{ $user->name }}</td>
+                            <td>{{ $user->user->name }}</td>
                             <td>{{ $user->role->name }}</td>
                             @if($user->user->isActive())
                                 <td>{{ __('content.active') }}</td>

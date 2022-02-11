@@ -100,7 +100,7 @@
 
                         <div class="col-sm-2 col-md-2 col-lg-2">
                             <div>
-                                <img src="../../images/admin/avatars/{{ old('avatar', $user->avatar) }}" class="img-circle" width="150" height="150" style="display: block; margin: auto;">
+                                <img src="{{ asset('images/admin/users/avatars/'.old('avatar', $user->avatar)) }}" class="img-circle" width="150" height="150" style="display: block; margin: auto;">
                             </div>
                         </div>
                         

@@ -18,7 +18,7 @@ class CreateZonesTable extends Migration
             $table->string('name')->unique();
             $table->foreignId('project_id');
             $table->foreign('project_id')->references('id')->on('projects')->onUpdate('cascade')->onDelete('restrict');
-            $table->unique(['name','project_id'],'zone_project_unique');
+            $table->unique(['name','project_id'],'project_zone_unique');
             $table->timestamps();
         });
     }

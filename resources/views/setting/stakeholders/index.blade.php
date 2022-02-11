@@ -35,6 +35,7 @@
                     <thead>
                         <tr>
                             <th>{{ __('content.name') }}</th>
+                            <th>{{ __('content.type') }}</th>
                             <th>{{ __('content.actions') }}</th>
                         </tr>
                     </thead>
@@ -45,6 +46,7 @@
                         @foreach($stakeholders as $stakeholder)
                             <tr>
                                 <td>{{ $stakeholder->name }}</td>
+                                <td>{{ $stakeholder->stakeholderType->name }}</td>
                                 <td>
                                     <a style="margin: 0.3em" class="btn btn-info btn-xs" href="{{ route('stakeholders.edit', $stakeholder)}}">{{ __('content.edit') }}</a>
                                     <a style="margin: 0.3em" class="btn btn-danger btn-xs" href="{{ route('stakeholders.destroy', $stakeholder)}}">{{ __('content.delete') }}</a>

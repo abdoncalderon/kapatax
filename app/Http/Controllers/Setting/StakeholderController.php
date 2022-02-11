@@ -34,6 +34,7 @@ class StakeholderController extends Controller
     public function store(StoreStakeholderRequest $request )
     {
         try{
+            
             Stakeholder::create($request ->validated());
             return redirect()->route('stakeholders.index');
         }catch(Exception $e){

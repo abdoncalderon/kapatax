@@ -11,6 +11,8 @@ use App\Models\Location;
 use App\Models\Project;
 use App\Models\LocationTurn;
 use App\Models\Stakeholder;
+use App\Models\Person;
+use App\Models\StakeholderPerson;
 use Carbon\Carbon;
 
 function yesNo($value){
@@ -62,10 +64,12 @@ if (! function_exists('menu_access_users')) {
     {
         $projectId = session('current_project_id');
         $menu = Menu::where('code',$code)->first();
-        $projectUsers = ProjectUser::join('roles','project_users.role_id','=','roles.id')
+        $projectUsers = ProjectUser::select('project_users.*')
+                                    ->join('roles','project_users.role_id','=','roles.id')
                                     ->join('role_menus','roles.id','=','role_menus.role_id')
                                     ->join('menus','role_menus.menu_id','=','menus.id')
                                     ->where('menus.id',$menu->id)
+                                    ->where('project_users.project_id',current_user()->project_id)
                                     ->get();
         
         return $projectUsers;
@@ -284,5 +288,39 @@ if (! function_exists('stakeholder_logofile')) {
             return 'logo.png';
         }
             
+    }
+}
+
+if (! function_exists('is_valid_date_for_admission')) {
+    function is_valid_date_for_admission($date, $person_id)
+    {
+        $flag = true;
+        $person = Person::find($person_id);
+        foreach($person->stakeholderPeople as $stakeholderPerson){
+            $admissionDate = strtotime($stakeholderPerson->admissionDate);
+            $departureDate = strtotime($stakeholderPerson->departureDate);
+            if((strtotime($date)>=$admissionDate)&&(strtotime($date)<=$departureDate)){
+                $flag = false;
+                break;
+            }
+        }
+        return $flag;
+    }
+}
+
+if (! function_exists('is_valid_date_for_departure')) {
+    function is_valid_date_for_departure($date, $person_id)
+    {
+        $flag = true;
+        $person = Person::find($person_id);
+        foreach($person->stakeholderPeople as $stakeholderPerson){
+            $admissionDate = strtotime($stakeholderPerson->admissionDate);
+            $departureDate = strtotime($stakeholderPerson->departureDate);
+            if((strtotime($date)>=$admissionDate)&&(strtotime($date)<=$departureDate)){
+                $flag = false;
+                break;
+            }
+        }
+        return $flag;
     }
 }

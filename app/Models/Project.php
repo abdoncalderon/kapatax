@@ -25,14 +25,16 @@ class Project extends Model
     }
 
     public function functions(){
-        return $this->hasMany(ProjectFunction::class);
+        return $this->hasMany(Funct1on::class);
     }
 
     public function sectors(){
-        return $this->hasMany(ProjectSector::class);
+        return $this->hasMany(Sector::class);
     }
 
-    
+    public function stakeholders(){
+        return $this->hasMany(Stakeholder::class);
+    }
 
 
     public function isActive(){

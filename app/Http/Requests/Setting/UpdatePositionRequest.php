@@ -15,9 +15,8 @@ class UpdatePositionRequest extends FormRequest
     public function rules()
     {
         return [
-            'name'=>'required|unique:positions',
-            'project_function_id'=>'required',
-            'department_id'=>'required',
+            'name'=>'required',
+            'function_id'=>'required',
         ];
     }
 }

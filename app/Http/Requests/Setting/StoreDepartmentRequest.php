@@ -16,7 +16,7 @@ class StoreDepartmentRequest extends FormRequest
     {
         return [
             'name'=>'required|unique:departments,name',
-            'project_sector_id'=>'required',
+            'sector_id'=>'required',
         ];
     }
 }

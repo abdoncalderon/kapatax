@@ -90,7 +90,7 @@ class DailyReportController extends Controller
 
     public function edit(DailyReport $dailyReport)
     {
-        $stakeholders = Stakeholder::where('stakeholder_types_id',4)->get();
+        $stakeholders = Stakeholder::where('stakeholder_type_id',4)->get();
         $equipments = Equipment::all();
         $positions = Position::all();
         $oldDailyReports = DailyReport::select('daily_reports.id as old_daily_report_id', 'folios.date as date', 'turns.name as turn')

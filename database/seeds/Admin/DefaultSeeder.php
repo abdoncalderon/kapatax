@@ -82,10 +82,12 @@ class DefaultSeeder extends Seeder
 
         DB::table('sectors')->insert([
             'name' => 'Administration',
+            'project_id' => '1',
         ]);
 
         DB::table('funct1ons')->insert([
             'name' => 'Technician',
+            'project_id' => '1',
         ]);
 
         DB::table('equipments')->insert([
@@ -117,7 +119,7 @@ class DefaultSeeder extends Seeder
             'project_id' => '1',
             'city_id' => '1',
             'code' => 'CONEX',
-            'stakeholder_types_id' => 1,
+            'stakeholder_type_id' => 1,
         ]);
 
         DB::table('stakeholders')->insert([
@@ -125,7 +127,7 @@ class DefaultSeeder extends Seeder
             'project_id' => '1',
             'city_id' => '1',
             'code' => 'CLIEX',
-            'stakeholder_types_id' => 2,
+            'stakeholder_type_id' => 2,
         ]);
 
         DB::table('stakeholders')->insert([
@@ -133,7 +135,7 @@ class DefaultSeeder extends Seeder
             'project_id' => '1',
             'city_id' => '1',
             'code' => 'INSEX',
-            'stakeholder_types_id' => 3,
+            'stakeholder_type_id' => 3,
         ]);
 
         DB::table('stakeholders')->insert([
@@ -141,28 +143,17 @@ class DefaultSeeder extends Seeder
             'project_id' => '1',
             'city_id' => '1',
             'code' => 'SUPEX',
-            'stakeholder_types_id' => 4,
+            'stakeholder_type_id' => 4,
         ]);
-
-        DB::table('project_functions')->insert([
-            'project_id' => '1',
-            'funct1on_id' => '1',
-        ]);
-
-        DB::table('project_sectors')->insert([
-            'project_id' => '1',
-            'sector_id' => '1',
-        ]);
-
+                
         DB::table('departments')->insert([
             'name' => 'Information Technology',
-            'project_sector_id' => '1',
+            'sector_id' => '1',
         ]);
 
         DB::table('positions')->insert([
             'name' => 'Foreman',
-            'project_function_id' => '1',
-            'department_id' => '1',
+            'function_id' => '1',
         ]);
 
         DB::table('location_turns')->insert([

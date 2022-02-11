@@ -207,7 +207,7 @@ return [
     'assets'=>'Activos',
     'purchases'=>'Compras',
     'materials'=>'Materiales',
-    'persons'=>'Personas',
+    'people'=>'Personas',
     'contractual'=>'Contractual',
     'commercial'=>'Comercial',
     'notifications'=>'Notificaciones',
@@ -282,6 +282,19 @@ return [
     'partner'=>'Socio',
     'other'=>'Otro',
     'activities'=>'Actividades',
+    'male'=>'Masculino',
+    'female'=>'Femenino',
+    'gender'=>'Genero',
+    'firstNames'=>'Nombres',
+    'lastNames'=>'Apellidos',
+    'fullName'=>'Nombre Completo',
+    'jobTitle'=>'Titulo Profesional',
+    'homePhone'=>'Telefono Domicilio',
+    'mobilePhone'=>'Telefono Móvil',
+    'birthDate'=>'Fecha de Nacimiento',
+    'cardId'=>'Tarjeta de Identificación',
+    'photo'=>'Foto',
+    'disassociation'=>'Desvinculación',
 
     
 ];

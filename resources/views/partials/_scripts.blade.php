@@ -239,18 +239,34 @@
             }
         );
 
-        var menues = $(".treeview"); 
+        $("#photo").on('change', function() {
+                $("#photoPreview").removeAttr('src');
+                $('#photoPreview').attr('src', URL.createObjectURL(event.target.files[0]));
 
-        /* menues.click(
-            function(event){
-                var roleId = $(this).attr('id');
-                $.get("/setOpen/"+roleId+"", 
-                    function(response,state){
-                        alert(response);
-                    }
-                );
+                /* $("#photo").attr()({
+                    'src':$("#photoFile").text(),
+                })  */     
+                // var filename = $("#photoFile").val().replace(/.*(\/|\\)/, '');
+                // var filename = document.getElementById("photoFile").files[0].name;
+                // alert(filename);
+                // $("#photo").removeAttr('src').replaceWith(URL.createObjectURL(filename));
             }
-        ); */
+        )
+
+        $("#firstName").on('change', function() {
+            $("#fullName").attr('value',"");
+            $("#fullName").attr('value',$("#lastName").val()+" "+$("#firstName").val());
+
+            }
+        )
+
+        $("#lastName").on('change', function() {
+            $("#fullName").attr('value',"");
+            $("#fullName").attr('value',$("#lastName").val()+" "+$("#firstName").val());
+
+            }
+        )
+        
 
         
     });

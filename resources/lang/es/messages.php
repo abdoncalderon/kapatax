@@ -81,6 +81,15 @@ return [
     'dateOutsideProjectExecution'=>'La Fecha esta fuera del tiempo de ejecución del proyecto',
     'dateOutsideLocationExecution'=>'La Fecha esta fuera del tiempo de ejecución de la ubicación',
     'assignmentLocationtoUser'=>'Asignación de Ubicaciones a Usuarios',
+    'admissionDate'=>'Fecha de Admisión',
+    'departureDate'=>'Fecha de Salida',
+    'admissionHistory'=>'Historial de Admisiones',
+    'addAdmissionRecord'=>'Agregar Registro de Admisión',
+    'editAdmissionRecord'=>'Editar Registro de Admisión',
+    'saveAndContinue'=>'Grabar y Continuar',
+    'admissionDateNoValid'=>'Fecha de Admisión No Valida',
+
+
 
 
     

@@ -14,17 +14,16 @@ class LocationController extends Controller
 {
     public function index()
     {
-        $locations = Location::join('zones','locations.zone_id','=','zones.id')->where('zones.project_id',session('current_project_id'))->get();
+        $locations = Location::select('locations.*')->join('zones','locations.zone_id','=','zones.id')->where('zones.project_id',session('current_project_id'))->get();
         return view('setting.locations.index', compact('locations'));
     }
 
     public function create()
     {
-        $zones = Zone::all();
-        $project_id = session('current_project_id');
-        $project = Project::where('id',$project_id)->first();
+        $zones = Zone::where('project_id',session('current_project_id'))->get();
+        
         return view('setting.locations.create')
-        ->with('project',$project)
+        ->with('project',current_user()->project)
         ->with('zones',$zones);
     }
 

@@ -209,7 +209,7 @@
                             <div class="form-group">
                                 <label class="col-sm-2 control-label">{{ __('content.type') }}</label>
                                 <div class="input-group input-group-sm col-xs-12 col-sm-10" >
-                                    <select id="type" name="type" class="form-control" style="width: 100%;" required>
+                                    <select id="stakeholder_type_id" name="stakeholder_type_id" class="form-control" style="width: 100%;" required>
                                         <option value="">{{__('messages.select')}} {{__('content.type')}}</option>
                                         @foreach ($stakeholderTypes as $stakeholderType)
                                             <option value="{{ $stakeholderType->id }}">{{ $stakeholderType->name }}</option>

@@ -59,8 +59,6 @@
                                 <td>{{ $project->subsidiary->name }}</td>
                                 <td>
                                     <a class="btn btn-info btn-xs" href="{{ route('project.edit', $project)}}">{{ __('content.edit') }}</a>
-                                    <a class="btn btn-info btn-xs" href="{{ route('projectSectors.index', $project)}}">{{ __('content.sectors') }}</a>
-                                    <a class="btn btn-info btn-xs" href="{{ route('projectFunctions.index', $project)}}">{{ __('content.functions') }}</a>
                                 </td>
                             </tr>
                         @endforeach

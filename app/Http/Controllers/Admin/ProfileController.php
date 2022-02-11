@@ -27,26 +27,28 @@ class ProfileController extends Controller
 
     public function update($id, UpdateProfileRequest $request)
     {
-        $user = User::where('id',$id)->first();
-        $avatar = $user->avatar;
-        if($request->hasFile('avatar'))
-        {
-            $file = $request->file('avatar');
-            $avatar = time().$file->getClientOriginalName();
-            $file->move(public_path().'/images/admin/avatars/',$avatar);
+        try{
+            $user = User::where('id',$id)->first();
+            $avatar = $user->avatar;
+            if($request->hasFile('avatar'))
+            {
+                $file = $request->file('avatar');
+                $avatar = time().$file->getClientOriginalName();
+                $file->move(public_path().'/images/admin/avatars/',$avatar);
+            }
+            $signature = $user->signature;
+            if($request->hasFile('signature'))
+            {
+                $file = $request->file('signature');
+                $signature = time().$file->getClientOriginalName();
+                $file->move(public_path().'/images/admin/signatures/',$signature);
+            }
+            $user->avatar = $avatar;
+            $user->signature = $signature;
+            $user->update($request->validated());
+            return redirect()->route('home');
+        }catch(Exception $e){
+            return back()->withErrors($e->getMessage());
         }
-        $signature = $user->signature;
-        if($request->hasFile('signature'))
-        {
-            $file = $request->file('signature');
-            $signature = time().$file->getClientOriginalName();
-            $file->move(public_path().'/images/admin/signatures/',$signature);
-        }
-        $user->avatar = $avatar;
-        $user->signature = $signature;
-        $user->update($request->validated());
-        return redirect()->route('home');
-
-        
     }
 }

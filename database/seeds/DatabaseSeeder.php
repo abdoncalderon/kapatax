@@ -15,6 +15,7 @@ class DatabaseSeeder extends Seeder
     {
         $this->call([
             StakeholderTypesSeeder::class,
+            GenderSeeder::class,
             DefaultSeeder::class,
             MenuSeeder::class,
             RoleMenuSeeder::class,

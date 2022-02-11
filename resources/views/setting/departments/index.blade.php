@@ -57,7 +57,7 @@
                         @foreach($departments as $department)
                             <tr>
                                 <td>{{ $department->name }}</td>
-                                <td>{{ $department->project_sector->sector->name }}</td>
+                                <td>{{ $department->sector }}</td>
                                 <td>
                                     <a class="btn btn-info btn-xs" href="{{ route('departments.edit', $department)}}">{{ __('content.edit') }}</a>
                                     <a class="btn btn-danger btn-xs" href="{{ route('departments.destroy', $department)}}">{{ __('content.delete') }}</a>

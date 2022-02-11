@@ -52,24 +52,24 @@
 
                             {{-- Project Sector --}}
 
-                            <div class="form-group">
+                            {{-- <div class="form-group">
                                 <label class="col-sm-2 control-label">{{ __('content.sector') }}</label>
                                 <div class="input-group input-group-sm col-xs-12 col-sm-10">
                                     <select id="sector" name="project_sector_id" class="form-control" required style="width: 100%;" >
                                         <option value="">{{__('messages.select')}} {{__('content.sector')}}</option>
-                                        @foreach ($projectSectors as $projectSector)
-                                            <option value="{{ $projectSector->id }}">{{ $projectSector->sector->name }}</option>
+                                        @foreach ($sectors as $sector)
+                                            <option value="{{ $sector->id }}">{{ $sector->name }}</option>
                                         @endforeach
                                     </select>
                                     <span class="input-group-btn">
                                         <button type="button" class="btn btn-info btn-flat" data-toggle="modal" data-target="#addSector"> + </button>
                                     </span>
                                 </div>
-                            </div>
+                            </div> --}}
 
                             {{-- Deparment --}}
 
-                            <div class="form-group">
+                            {{-- <div class="form-group">
                                 <label class="col-sm-2 control-label">{{ __('content.department') }}</label>
                                 <div class="input-group input-group-sm col-xs-12 col-sm-10" >
                                     <select id="department" name="department_id" class="form-control" style="width: 100%;">
@@ -79,17 +79,17 @@
                                         <button type="button" class="btn btn-info btn-flat" data-toggle="modal" data-target="#addDepartment"> + </button>
                                     </span>
                                 </div>
-                            </div>
+                            </div> --}}
 
                             {{-- Project Function --}}
 
                             <div class="form-group">
                                 <label class="col-sm-2 control-label">{{ __('content.function') }}</label>
                                 <div class="input-group input-group-sm col-xs-12 col-sm-10">
-                                    <select name="project_function_id" class="form-control" required style="width: 100%;" >
+                                    <select name="function_id" class="form-control" required style="width: 100%;" >
                                         <option value="">{{__('messages.select')}} {{__('content.function')}}</option>
-                                        @foreach ($projectFunctions as $projectFunction)
-                                            <option value="{{ $projectFunction->id }}">{{ $projectFunction->funct1on->name }}</option>
+                                        @foreach ($functions as $function)
+                                            <option value="{{ $function->id }}">{{ $function->name }}</option>
                                         @endforeach
                                     </select>
                                     <span class="input-group-btn">
@@ -139,7 +139,7 @@
 
         <div class="modal-dialog modal-dialog-centered" role="document">
 
-            <form method="POST" action="{{ route('projectFunctions.add') }}">
+            <form method="POST" action="{{ route('functions.add') }}">
                 @csrf
                 <div class="modal-content">
                     <div class="modal-header">
@@ -154,17 +154,17 @@
     
                         <input id="project_id" hidden type="text" name="project_id" value="{{ current_user()->project->id }}">
 
-                        {{-- Function --}}
+                        {{-- Function name --}}
                                 
                         <div class="form-group">
                             <label class="col-sm-2 control-label">{{ __('content.function') }}</label>
-                            <div class="col-sm-10" >
-                                <select id="funct1on_id" name="funct1on_id" class="form-control" required style="width: 100%;" >
-                                    <option value="">{{__('messages.select')}} {{__('content.function')}}</option>
-                                    @foreach ($functions as $function)
-                                        <option value="{{ $function->id }}">{{ $function->name }}</option>
-                                    @endforeach
-                                </select>
+                            <div class="input-group input-group-sm col-xs-12 col-sm-10" >
+                                <input id="name" type="text" class="form-control" name="name" placeholder="{{ __('content.name') }}">
+                                @error('name')
+                                    <span class="invalid-feedback" role="alert" style="color:red">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
                             </div>
                         </div>
 
@@ -183,11 +183,11 @@
 
     {{-- Modal Window Add Sector --}}
 
-    <div class="modal fade" id="addSector" tabindex="-1" role="dialog" aria-labelledby="addModal" aria-hidden="true">
+    {{-- <div class="modal fade" id="addSector" tabindex="-1" role="dialog" aria-labelledby="addModal" aria-hidden="true">
 
         <div class="modal-dialog modal-dialog-centered" role="document">
 
-            <form method="POST" action="{{ route('projectSectors.add') }}">
+            <form method="POST" action="{{ route('sectors.store') }}">
                 @csrf
                 <div class="modal-content">
                     <div class="modal-header">
@@ -198,21 +198,19 @@
                     </div>
                     <div class="modal-body">
 
-                        {{-- project --}}
     
                         <input id="project_id" hidden type="text" name="project_id" value="{{ current_user()->project->id }}">
 
-                        {{-- Sector --}}
                                 
                         <div class="form-group">
-                            <label class="col-sm-2 control-label">{{ __('content.sector') }}</label>
+                            <label class="col-sm-2 control-label">{{ __('content.sectors') }}</label>
                             <div class="col-sm-10" >
-                                <select id="sector_id" name="sector_id" class="form-control" required style="width: 100%;" >
-                                    <option value="">{{__('messages.select')}} {{__('content.sector')}}</option>
-                                    @foreach ($sectors as $sector)
-                                        <option value="{{ $sector->id }}">{{ $sector->name }}</option>
-                                    @endforeach
-                                </select>
+                                <input id="name" type="text" class="form-control" name="name" placeholder="{{ __('content.name') }}">
+                                @error('name')
+                                    <span class="invalid-feedback" role="alert" style="color:red">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
                             </div>
                         </div>
 
@@ -227,11 +225,11 @@
             </form>
             
         </div>
-    </div>
+    </div> --}}
 
     {{-- Modal Window Add Department --}}
 
-    <div class="modal fade" id="addDepartment" tabindex="-1" role="dialog" aria-labelledby="addModal" aria-hidden="true">
+    {{-- <div class="modal fade" id="addDepartment" tabindex="-1" role="dialog" aria-labelledby="addModal" aria-hidden="true">
 
         <div class="modal-dialog modal-dialog-centered" role="document">
 
@@ -248,7 +246,6 @@
 
                        
 
-                        {{-- Project Sector --}}
 
                         <input id="sectorModalId" type="hidden" class="form-control" name="project_sector_id">
 
@@ -259,7 +256,6 @@
                             </div>
                         </div>
 
-                        {{-- name --}}
 
                         <div class="form-group">
                             <label class="col-sm-2 control-label">{{ __('content.name') }}</label>
@@ -284,6 +280,6 @@
             </form>
             
         </div>
-    </div>
+    </div> --}}
 
 @endsection

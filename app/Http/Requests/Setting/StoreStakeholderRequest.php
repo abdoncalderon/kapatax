@@ -22,8 +22,9 @@ class StoreStakeholderRequest extends FormRequest
             'city_id'=>'required',
             'address'=>'nullable',
             'zipCode'=>'nullable',
+            'email'=>'nullable',
             'phoneNumber'=>'nullable',
-            'type'=>'required',
+            'stakeholder_type_id'=>'required',
         ];
     }
 }

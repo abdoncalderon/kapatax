@@ -19,8 +19,7 @@ class ZoneController extends Controller
 
     public function create()
     {
-        $project_id = session('current_project_id');
-        $project = Project::where('id',$project_id)->first();
+        $project = Project::where('id',session('current_project_id'))->first();
         return view('setting.zones.create')
         ->with(compact('project'));
     }
@@ -44,8 +43,7 @@ class ZoneController extends Controller
 
     public function edit(Zone $zone)
     {
-        $project_id = session('current_project_id');
-        $project = Project::where('id',$project_id)->first();
+        $project = Project::where('id',session('current_project_id'))->first();
         return view('setting.zones.edit',[
             'zone'=>$zone
             ])

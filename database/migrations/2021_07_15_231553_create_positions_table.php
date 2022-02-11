@@ -16,10 +16,8 @@ class CreatePositionsTable extends Migration
         Schema::create('positions', function (Blueprint $table) {
             $table->id();
             $table->string('name')->unique();
-            $table->foreignId('project_function_id');
-            $table->foreign('project_function_id')->references('id')->on('project_functions')->onUpdate('cascade')->onDelete('restrict');
-            $table->foreignId('department_id');
-            $table->foreign('department_id')->references('id')->on('departments')->onUpdate('cascade')->onDelete('restrict');
+            $table->foreignId('function_id');
+            $table->foreign('function_id')->references('id')->on('funct1ons')->onUpdate('cascade')->onDelete('restrict');
             $table->timestamps();
         });
     }

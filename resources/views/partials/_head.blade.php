@@ -49,3 +49,7 @@
  <!-- DataTables -->
  
  <link rel="stylesheet" href="../../bower_components/datatables.net-bs/css/dataTables.bootstrap.min.css">
+
+ <!-- Custom Style -->
+ 
+ <link rel="stylesheet" href="/css/custom.css">

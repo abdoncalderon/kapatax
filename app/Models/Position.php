@@ -6,14 +6,10 @@ use Illuminate\Database\Eloquent\Model;
 
 class Position extends Model
 {
-    protected $fillable = ['name','project_function_id','department_id',];
+    protected $fillable = ['name','function_id',];
 
-    public function department(){
-        return $this->belongsTo(Department::class);
-    }
-
-    public function project_function(){
-        return $this->belongsTo(ProjectFunction::class);
+    public function function(){
+        return $this->belongsTo(Funct1on::class);
     }
 
     public function employees(){

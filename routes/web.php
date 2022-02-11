@@ -11,6 +11,8 @@ Route::get('/', 'HomeController@project')->name('project');
 Route::post('/','HomeController@menu')->name('menu');
 Route::get('/main', 'HomeController@index')->name('home');
 
+
+
 /* Routes Users */
 Route::resource('users','UserController');
 Route::get('/users/activate/{user}/{value}','UserController@activate')->name('users.activate');
@@ -80,15 +82,6 @@ Route::get('/projects/destroy/{project}','Admin\ProjectController@destroy')->nam
 Route::resource('unities','Admin\UnityController');
 Route::get('/unity/destroy/{unity}','Admin\UnityController@destroy')->name('unities.destroy');
 
-/* Routes Sectors */
-Route::resource('sectors','Admin\SectorController');
-Route::get('/sector/destroy/{sector}','Admin\SectorController@destroy')->name('sectors.destroy');
-
-/* Routes Functions */
-Route::resource('functions','Admin\FunctionController');
-Route::get('/functions/destroy/{function}','Admin\FunctionController@destroy')->name('functions.destroy');
-Route::post('/functions/add','Admin\FunctionController@add')->name('functions.add'); 
-
 /* Routes Brands */
 Route::resource('brands','Admin\BrandController');
 Route::get('/brand/destroy/{brand}','Admin\BrandController@destroy')->name('brands.destroy');
@@ -115,7 +108,6 @@ Route::get('/roleMenus/activate/{roleMenu}/{value}','Admin\RoleMenuController@ac
 Route::post('/cloneRoleMenus','Admin\RoleMenuController@clone')->name('roleMenus.clone');
 Route::get('setOpen/{roleMenu}','Admin\RoleMenuController@setOpen')->name('roleMenus.setOpen');
 
-
 /* Routes Project Users  */
 Route::get('/projectUsers/{user}','Admin\ProjectUserController@index')->name('projectUsers.index');
 Route::get('/create/project/{user}','Admin\ProjectUserController@create')->name('projectUsers.create');
@@ -130,33 +122,44 @@ Route::get('/projectUsers/destroy/{projectUser}','Admin\ProjectUserController@de
 
 
 
-
-
-/* Routes Departments */
-Route::resource('departments','Setting\DepartmentController');
-Route::get('/departments/destroy/{country}','Setting\DepartmentController@destroy')->name('departments.destroy');
-Route::post('/department/add','Setting\DepartmentController@add')->name('departments.add');
-
 /* Routes Project */
 Route::get('/project','Setting\ProjectController@index')->name('project.index');
 Route::get('/project/show','Setting\ProjectController@show')->name('project.show');
 Route::get('/project/edit/{project}','Setting\ProjectController@edit')->name('project.edit');
 Route::patch('project/update/{project}','Setting\ProjectController@update')->name('project.update');
 
+/* Routes Functions */
+Route::resource('functions','Setting\FunctionController');
+Route::get('/functions/destroy/{function}','Setting\FunctionController@destroy')->name('functions.destroy');
+Route::post('/function/add','Setting\FunctionController@add')->name('functions.add'); 
+Route::post('/functionsImport','Setting\FunctionController@import')->name('functions.import');
+
+/* Routes Sectors */
+Route::resource('sectors','Setting\SectorController');
+Route::get('/sector/destroy/{sector}','Setting\SectorController@destroy')->name('sectors.destroy');
+Route::post('/sector/add','Setting\SectorController@add')->name('sectors.add'); 
+Route::post('/sectorsImport','Setting\SectorController@import')->name('sectors.import');
+
+/* Routes Departments */
+Route::resource('departments','Setting\DepartmentController');
+Route::get('/departments/destroy/{country}','Setting\DepartmentController@destroy')->name('departments.destroy');
+Route::post('/department/add','Setting\DepartmentController@add')->name('departments.add');
+
 /* Routes Project x Function */
-Route::get('/projectFunctions/{project}','Setting\ProjectFunctionController@index')->name('projectFunctions.index');
+/* Route::get('/projectFunctions/{project}','Setting\ProjectFunctionController@index')->name('projectFunctions.index');
 Route::get('/projectFunctions/create/{project}','Setting\ProjectFunctionController@create')->name('projectFunctions.create');
 Route::post('/projectFunctions/{project}','Setting\ProjectFunctionController@store')->name('projectFunctions.store');
 Route::get('/projectFunctions/destroy/{projectFunction}','Setting\ProjectFunctionController@destroy')->name('projectFunctions.destroy');
 Route::post('/ProjectFunction/add','Setting\ProjectFunctionController@add')->name('projectFunctions.add');
-
+ */
 /* Routes Project x Sector */
-Route::get('/projectSectors/{project}','Setting\ProjectSectorController@index')->name('projectSectors.index');
+/* Route::get('/projectSectors/{project}','Setting\ProjectSectorController@index')->name('projectSectors.index');
 Route::get('/projectSectors/create/{project}','Setting\ProjectSectorController@create')->name('projectSectors.create');
 Route::post('/projectSectors/{project}','Setting\ProjectSectorController@store')->name('projectSectors.store');
 Route::get('/projectSectors/destroy/{projectSector}','Setting\ProjectSectorController@destroy')->name('projectSectors.destroy');
 Route::post('/ProjectSector/add','Setting\ProjectSectorController@add')->name('projectSectors.add');
 Route::get('getDepartments/{projectSector}','Setting\ProjectSectorController@getDepartments')->name('projectSectors.getDepartments');
+ */
 
 /* Routes Stakeholders */
 Route::resource('stakeholders','Setting\StakeholderController');
@@ -280,3 +283,25 @@ Route::get('/workbookLocations/{location}','Agreement\LocationController@show')-
 Route::get('/workbookLocations/edit/{location}','Agreement\LocationController@edit')->name('workbook_settings_locations_edit');
 Route::patch('/workbookLocations/{location}','Agreement\LocationController@update')->name('workbook_settings_locations_update');
 Route::get('/workbookLocations/destroy/{location}','Agreement\LocationController@destroy')->name('workbook_settings_locations_destroy');
+
+
+
+
+
+
+
+
+
+
+/* Routes Persons */
+Route::resource('people','People\PersonController');
+Route::get('/person/destroy/{person}','People\PersonController@destroy')->name('people.destroy');
+
+/* Routes Gender */
+Route::resource('genders','People\GenderController');
+
+/* Routes StakeholderPeople */
+Route::post('/stakeholderPeople','People\StakeholderPersonController@store')->name('stakeholderPeople.store');
+Route::get('/stakeholderPeople/edit/{stakeholderPerson}','People\StakeholderPersonController@edit')->name('stakeholderPeople.edit');
+Route::patch('/stakeholderPeople/{stakeholderPerson}','People\StakeholderPersonController@update')->name('stakeholderPeople.update');
+
