@@ -13,6 +13,10 @@ Route::get('/main', 'HomeController@index')->name('home');
 
 
 
+/********************************************* ADMIN ROUTES *************************************************************** */
+
+
+
 /* Routes Users */
 Route::resource('users','UserController');
 Route::get('/users/activate/{user}/{value}','UserController@activate')->name('users.activate');
@@ -85,7 +89,12 @@ Route::get('/unity/destroy/{unity}','Admin\UnityController@destroy')->name('unit
 /* Routes Brands */
 Route::resource('brands','Admin\BrandController');
 Route::get('/brand/destroy/{brand}','Admin\BrandController@destroy')->name('brands.destroy');
-Route::post('/regons/add','Admin\BrandController@add')->name('brands.add');
+Route::post('/brands/add','Admin\BrandController@add')->name('brands.add');
+
+/* Routes Models */
+Route::resource('models','Admin\ModelController');
+Route::get('/model/destroy/{model}','Admin\ModelController@destroy')->name('models.destroy');
+Route::post('/models/add','Admin\ModelController@add')->name('models.add');
 
 /* Routes Permits */
 Route::resource('permits','Admin\PermitController');
@@ -116,10 +125,7 @@ Route::get('/projectUsers/destroy/{projectUser}','Admin\ProjectUserController@de
 
 
 
-
-
-
-
+/********************************************* SETTING ROUTES *************************************************************** */
 
 
 /* Routes Project */
@@ -145,22 +151,6 @@ Route::resource('departments','Setting\DepartmentController');
 Route::get('/departments/destroy/{country}','Setting\DepartmentController@destroy')->name('departments.destroy');
 Route::post('/department/add','Setting\DepartmentController@add')->name('departments.add');
 
-/* Routes Project x Function */
-/* Route::get('/projectFunctions/{project}','Setting\ProjectFunctionController@index')->name('projectFunctions.index');
-Route::get('/projectFunctions/create/{project}','Setting\ProjectFunctionController@create')->name('projectFunctions.create');
-Route::post('/projectFunctions/{project}','Setting\ProjectFunctionController@store')->name('projectFunctions.store');
-Route::get('/projectFunctions/destroy/{projectFunction}','Setting\ProjectFunctionController@destroy')->name('projectFunctions.destroy');
-Route::post('/ProjectFunction/add','Setting\ProjectFunctionController@add')->name('projectFunctions.add');
- */
-/* Routes Project x Sector */
-/* Route::get('/projectSectors/{project}','Setting\ProjectSectorController@index')->name('projectSectors.index');
-Route::get('/projectSectors/create/{project}','Setting\ProjectSectorController@create')->name('projectSectors.create');
-Route::post('/projectSectors/{project}','Setting\ProjectSectorController@store')->name('projectSectors.store');
-Route::get('/projectSectors/destroy/{projectSector}','Setting\ProjectSectorController@destroy')->name('projectSectors.destroy');
-Route::post('/ProjectSector/add','Setting\ProjectSectorController@add')->name('projectSectors.add');
-Route::get('getDepartments/{projectSector}','Setting\ProjectSectorController@getDepartments')->name('projectSectors.getDepartments');
- */
-
 /* Routes Stakeholders */
 Route::resource('stakeholders','Setting\StakeholderController');
 Route::get('/stakeholders/destroy/{stakeholder}','Setting\StakeholderController@destroy')->name('stakeholders.destroy'); 
@@ -177,7 +167,7 @@ Route::get('/position/destroy/{position}','Setting\PositionController@destroy')-
 
 /* Routes Locations */
 Route::resource('locations','Setting\LocationController');
-Route::get('/location/destroy/{location}','Settings\LocationController@destroy')->name('locations.destroy');
+Route::get('/location/destroy/{location}','Setting\LocationController@destroy')->name('locations.destroy');
 
 /* Routes Equipments */
 Route::resource('equipments','Setting\EquipmentController');
@@ -188,13 +178,7 @@ Route::resource('turns','Setting\TurnController');
 Route::get('/turns/destroy/{turn}','Setting\TurnController@destroy')->name('turns.destroy');
 
 
-
-
-
-
-
-
-
+/*********************************** AGREEMENT ROUTES ************************************************************************* */
 
 
 /* Routes Folios */
@@ -285,12 +269,7 @@ Route::patch('/workbookLocations/{location}','Agreement\LocationController@updat
 Route::get('/workbookLocations/destroy/{location}','Agreement\LocationController@destroy')->name('workbook_settings_locations_destroy');
 
 
-
-
-
-
-
-
+/*********************************** PEOPLE ROUTES ************************************************************************* */
 
 
 /* Routes Persons */

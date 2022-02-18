@@ -163,11 +163,27 @@ class DefaultSeeder extends Seeder
             'dateTo' => Carbon::create('2050', '12', '31')
         ]);
 
+        DB::table('people')->insert([
+            'cardId' => '000000000000000000',
+            'firstName' => 'Super',
+            'LastName' => 'User',
+            'fullName' => 'Super User',
+            'gender_id' => '1',
+            'birthDate' => Carbon::create('1970', '01', '01'),
+            'city_id' => '1',
+        ]);
+
+        DB::table('stakeholder_people')->insert([
+            'stakeholder_id' => '1',
+            'person_id' => '1',
+            'admissionDate' => Carbon::create('1970', '01', '01'),
+        ]);
+
         DB::table('users')->insert([
-            'name' => 'SuperUser',
             'user' => 'su',
             'email' => 'example@email.com',
             'password' => Hash::make('IdonSoft'),
+            'person_id' => '1',
         ]);
 
         DB::table('location_users')->insert([

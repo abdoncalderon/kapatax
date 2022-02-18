@@ -17,7 +17,7 @@ class User extends Model
      * @var array
      */
     protected $fillable = [
-        'name', 'user', 'email', 'password', 'avatar', 'signature', 'isActive'
+        'user', 'email', 'password', 'isActive', 'person_id',
     ];
 
     /**
@@ -38,15 +38,19 @@ class User extends Model
         'email_verified_at' => 'datetime',
     ];
 
-    public function projects(){
-        return $this->hasMany(ProjectUser::class);
-    }
-
     public function isActive(){
         if($this->isActive==1){
             return true;
         }else{
             return false;
         }
+    }
+
+    public function projectUsers(){
+        return $this->hasMany(ProjectUser::class);
+    }
+        
+    public function person(){
+        return $this->belongsTo(Person::class);
     }
 }

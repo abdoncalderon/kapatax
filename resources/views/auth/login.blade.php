@@ -14,7 +14,7 @@
 
                 <div class="card-body">
                     <div class="p-5 text-center">
-                        <img src="{{ asset('images/admin/logos/kapatax.png') }}" class="img-fluid" />
+                        <img src="{{ asset('images/admin/logo/kapatax.png') }}" class="img-fluid" />
                     </div>
                     <form method="POST" action="{{ route('login') }}">
                         @csrf

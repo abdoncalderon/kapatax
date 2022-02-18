@@ -23,15 +23,14 @@ class CreatePeopleTable extends Migration
             $table->foreignId('gender_id');
             $table->foreign('gender_id')->references('id')->on('genders')->onUpdate('cascade')->onDelete('restrict');
             $table->date('birthDate');
-            $table->string('email')->unique();
             $table->string('jobTitle')->nullable();
             $table->foreignId('city_id');
             $table->foreign('city_id')->references('id')->on('cities')->onUpdate('cascade')->onDelete('restrict');
-            $table->unsignedBigInteger('project_user_id')->nullable();
             $table->string('address')->nullable();;
             $table->string('homePhone')->nullable();
             $table->string('mobilePhone')->nullable();
             $table->string('photo')->default('noPhoto.png');
+            $table->string('signature')->default('noSignature.png');
             $table->boolean('isActive')->default(true);
             $table->boolean('isLocked')->default(false);
             $table->timestamps();

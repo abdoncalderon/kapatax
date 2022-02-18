@@ -16,7 +16,7 @@
     margin: 1em auto ; 
     width: 200px;
     height: 250px;
-    border: 1px solid lightgray;
+    /* border: 1px solid lightgray; */
 }
 
 .signature {
@@ -37,7 +37,7 @@
     margin: 1em auto ; 
     width: 200px;
     height: 150px;
-    border: 1px solid lightgray;
+    /* border: 1px solid lightgray; */
 }
 
 

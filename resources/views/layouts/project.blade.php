@@ -29,7 +29,7 @@
         
                         <div class="card-body">
                             <div class="p-5 text-center">
-                                <img src="{{ asset('images/admin/logos/kapatax.png') }}" class="img-fluid" />
+                                <img src="{{ asset('images/admin/logo/kapatax.png') }}" class="img-fluid" />
                             </div>
                             <form method="POST" action="{{ route('menu') }}">
                                 @csrf
@@ -39,9 +39,11 @@
                                 <div class="form-group row">
                                     <label class="col-sm-2 col-form-label text-md-right">{{ __('content.name') }}</label>
                                     <div class="col-sm-10">
-                                        <input id="name" disabled class="form-control" name="name" value="{{ old('email',$user->name) }}">
+                                        <input id="name" disabled class="form-control" name="name" value="{{ old('email', $user->person->fullName) }}">
                                     </div>
                                 </div>
+
+
         
                                 {{-- project --}}
         
@@ -49,8 +51,8 @@
                                     <label class="col-sm-2 col-form-label text-md-right">{{ __('content.project') }}</label>
                                     <div class="col-sm-10" >
                                         <select name="project_id" class="form-control" style="width: 100%;" required>
-                                            @foreach ($projects as $project)
-                                                <option value="{{ $project->project_id }}">{{ $project->project->name }}</option>
+                                            @foreach ($projectUsers as $projectUser)
+                                                <option value="{{ $projectUser->project_id }}">{{ $projectUser->project->name }}</option>
                                             @endforeach
                                         </select>
                                     </div>
@@ -62,10 +64,11 @@
                                             {{ __('messages.startSession') }}
                                         </button>
                                         <a class="btn btn-danger" href="#"
-                                        @AUTH
+                                        @auth
                                             onclick="event.preventDefault();
                                             document.getElementById('logout-form').submit();" 
-                                        @ENDAUTH
+                                        @endauth
+                                            
                                         >{{ __('messages.closeSession') }}</a>
                                     </div>
                                 </div>

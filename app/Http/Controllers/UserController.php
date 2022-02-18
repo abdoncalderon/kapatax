@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Models\User;
+use App\Models\Gender;
+use App\Models\Region;
 use Illuminate\Support\Facades\Hash;
 use App\Http\Requests\Admin\StoreUserRequest;
 use App\Http\Requests\Admin\UpdateUserRequest;
@@ -20,17 +22,22 @@ class UserController extends Controller
     
     public function create()
     {
-        return view('admin.users.create');
+        $genders = Gender::all();
+        $regions = Region::all();
+        return view('admin.users.create')
+        ->with(compact('genders'))
+        ->with(compact('regions'));
     }
     
     public function store(StoreUserRequest $request)
     {
         $request ->validated();
         $user = User::create([
-            'name' => $request['name'],
+            // 'name' => $request['name'],
             'user'  => $request['user'],
             'email' => $request['email'],
             'password' => Hash::make($request['password']),
+            'person_id' => $request['person_id'],
         ]);
         return redirect()->route('users.index');
     }

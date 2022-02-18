@@ -55,6 +55,8 @@
                                 <td>{{ $person->fullName }}</td>
                                 <td>
                                     <a style="margin: 0.3em" class="btn btn-info btn-xs" href="{{ route('people.edit', $person)}}">{{ __('content.edit') }}</a>
+                                    <button type="button" class="btn btn-info btn-xs" data-toggle="modal" data-target="#addUser">{{ __('content.user') }}</button>
+
                                 </td>
                             </tr>
                         @endforeach

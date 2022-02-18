@@ -60,4 +60,14 @@ class BrandController extends Controller
             return back()->withErrors($e->getMessage());
         }
     } 
+
+    public function add(StoreBrandRequest $request )
+    {
+        try{
+            Brand::create($request ->validated());
+            return back();
+        }catch(Exception $e){
+            return back()->withErrors($e->getMessage());
+        }
+    }
 }

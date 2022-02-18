@@ -16,5 +16,13 @@ class StakeholderPerson extends Model
     public function stakeholder(){
         return $this->belongsTo(Stakeholder::class);
     }
+
+    public function isActive(){
+        if($this->isActive==1){
+            return true;
+        }else{
+            return false;
+        }
+    }
     
 }

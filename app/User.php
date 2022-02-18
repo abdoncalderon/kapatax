@@ -5,6 +5,8 @@ namespace App;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
+use App\Models\Person;
+use App\Models\ProjectUser;
 
 class User extends Authenticatable
 {
@@ -16,7 +18,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name', 'user', 'email', 'password', 'avatar', 'signature', 'isActive'
+        'user', 'email', 'password', 'isActive', 'person_id',
     ];
 
     /**
@@ -45,14 +47,14 @@ class User extends Authenticatable
         }
     }
 
-    public function projects()
+    public function projectUsers()
     {
         return $this->hasMany(ProjectUser::class);
     }
 
-    public function locations()
+    public function person()
     {
-        return $this->hasMany(Models\LocationUser::class);
+        return $this->belongsTo(Person::class);
     }
     
 }

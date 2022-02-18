@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\ProjectUser;
 use App\Models\Project;
-use App\User;
+use App\Models\User;
 use Illuminate\Http\Request;
 use App\Models\RoleMenu;
 use Illuminate\Support\Facades\Auth;
@@ -38,10 +38,10 @@ class HomeController extends Controller
     public function project()
     {
         $user = User::where('id',auth()->user()->id)->first();
-        $projects = ProjectUser::where('user_id',$user->id)->get();
+        $projectUsers = ProjectUser::where('user_id',$user->id)->get();
         return view('layouts.project')
         ->with(compact('user'))
-        ->with(compact('projects'));
+        ->with(compact('projectUsers'));
     }
 
     public function menu(Request $request)

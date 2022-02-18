@@ -35,14 +35,15 @@
 
                         {{-- Fields --}}
 
-                        <div class="col-sm-11 col-md-11 col-lg-11">
+                        <div class="col-sm-9 col-md-9 col-lg-9">
 
                             {{-- Name  --}}
 
                             <div class="form-group">
                                 <label class="col-sm-2 control-label">{{ __('content.name') }}</label>
                                 <div class="input-group input-group-sm col-xs-12 col-sm-10">
-                                    <input disabled class="form-control" value="{{ $user->name }}">
+                                  
+                                    <input disabled class="form-control" value="{{ $user->person->fullName }}">
                                 </div>
                             </div>
 
@@ -58,7 +59,7 @@
                             {{-- Email  --}}
 
                             <div class="form-group">
-                                <label class="col-sm-2 control-label">{{ __('content.email') }}</label>
+                                <label class="col-sm-2 col-md-2 col-lg-2 control-label">{{ __('content.email') }}</label>
                                 <div class="input-group input-group-sm col-xs-12 col-sm-10">
                                     <input disabled class="form-control" value="{{ $user->email }}">
                                 </div>
@@ -73,6 +74,24 @@
                                 </div>
                             </div>
 
+                            {{-- Company  --}}
+                            
+                            <div class="form-group">
+                                <label class="col-sm-2 control-label">{{ __('content.company') }}</label>
+                                <div class="input-group input-group-sm col-xs-12 col-sm-10">
+                                    <input disabled class="form-control" value="{{ current_user()->project->subsidiary->company->name }}">
+                                </div>
+                            </div>
+
+                            {{-- Subsidiary  --}}
+                            
+                            <div class="form-group">
+                                <label class="col-sm-2 control-label">{{ __('content.subsidiary') }}</label>
+                                <div class="input-group input-group-sm col-xs-12 col-sm-10">
+                                    <input disabled class="form-control" value="{{ current_user()->project->subsidiary->name }}">
+                                </div>
+                            </div>
+
                             {{-- Project --}}
                             
                             <div class="form-group">
@@ -82,37 +101,23 @@
                                 </div>
                             </div>
 
-                            {{-- Status  --}}
-                            
-                            <div class="form-group">
-                                <label class="col-sm-2 control-label">{{ __('content.status') }}</label>
-                                <div class="input-group input-group-sm col-xs-12 col-sm-10">
-                                    <input disabled class="form-control" value="{{ current_user()->project->subsidiary->name }}">
-                                </div>
+                        </div>
+
+                        <div class="col-sm-3 col-md-3 col-lg-3">
+
+                            <div class="photo">
+
+                                <img id="photoPreview" src="{{ asset('images/people/photos/'.$user->person->photo) }}" alt="{{ __('content.photo') }}">
+
+                            </div>
+
+                            <div class="signature">
+
+                                <img id="photoPreview" src="{{ asset('images/people/signatures/'.$user->person->signature) }}" alt="{{ __('content.signature') }}">
+
                             </div>
 
                         </div>
-
-                        <div class="form-group">
-
-                            {{-- Avatar --}}
-
-                            <div class="col-sm-5 col-md-5 col-lg-5">
-                                <div>
-                                    <img src="{{ asset('images/admin/users/avatars/'.old('avatar', $user->avatar))  }}" class="img-circle" width="150" height="150" style="display: block; margin: auto;">
-                                </div>
-                            </div>
-
-                            {{-- Signature --}}
-
-                            <div class="col-sm-5 col-md-5 col-lg-5">
-                                <div>
-                                    <img src="{{ asset('images/admin/users/signatures/'.old('signature', $user->signature)) }}" class="img-circle" width="150" height="150" style="display: block; margin: auto;">
-                                </div>
-                            </div>
-
-                        </div>
-
 
                     </div>
 
@@ -120,7 +125,7 @@
 
                     <div class="box-footer">
                         <a class="btn btn-success btn-sm" href="{{ route('profiles.edit', $user) }}">{{ __('content.edit') }}</a>
-                        <a class="btn btn-danger btn-sm" href="{{ route('home') }}">{{ __('content.home') }}</a>
+                        <a class="btn btn-danger btn-sm" href="{{ route('home') }}">{{ __('content.exit') }}</a>
                     </div>
                     
                 </form>

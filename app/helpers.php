@@ -12,7 +12,6 @@ use App\Models\Project;
 use App\Models\LocationTurn;
 use App\Models\Stakeholder;
 use App\Models\Person;
-use App\Models\StakeholderPerson;
 use Carbon\Carbon;
 
 function yesNo($value){

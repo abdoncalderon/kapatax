@@ -157,7 +157,7 @@ class MenuSeeder extends Seeder
                             'code' => 'administration.models',
                             'showName' => 'content.models',
                             'menu_id' => '1',
-                            'route' => null,
+                            'route' => 'models.index',
                             'icon' => 'fa fa-circle-o',
                         ]);
 
@@ -606,7 +606,7 @@ class MenuSeeder extends Seeder
                             'showName' => 'content.record',
                             'menu_id' => '59',
                             'route' => 'people.index',
-                            'icon' => 'fa fa-list',
+                            'icon' => 'fa fa-pencil',
                         ]);
 
                         // 61

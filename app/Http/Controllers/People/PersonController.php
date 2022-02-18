@@ -48,6 +48,15 @@ class PersonController extends Controller
             }else{
                 $photoFileName = 'noPhoto.png';
             }
+
+            if($request->hasFile('signature'))
+            {
+                $file = $request->file('signature');
+                $signatureFileName = time().'-'.$file->getClientOriginalName();
+                $file->move(public_path().'/images/people/signatures/',$signatureFileName);
+            }else{
+                $signatureFileName = 'noSignature.png';
+            }
             
             $person = Person::create([
                 'firstName'=>$request->firstName,
@@ -56,13 +65,13 @@ class PersonController extends Controller
                 'cardId'=>$request->cardId,
                 'gender_id'=>$request->gender_id,
                 'birthDate'=>$request->birthDate,
-                'email'=>$request->email,
                 'jobTitle'=>$request->jobTitle,
                 'city_id'=>$request->city_id,
                 'address'=>$request->address,
                 'homePhone'=>$request->homePhone,
                 'mobilePhone'=>$request->mobilePhone,
                 'photo'=>$photoFileName,
+                'signature'=>$signatureFileName,
             ]);
             return redirect()->route('people.edit',$person)->with('messages',__('messages.recordsuccessfullystored'));
             // return redirect()->route('people.index');
@@ -103,6 +112,16 @@ class PersonController extends Controller
             }else{
                 $photoFileName = 'noPhoto.png';
             }
+
+            if($request->hasFile('signature'))
+            {
+                $file = $request->file('signature');
+                $signatureFileName = time().'-'.$file->getClientOriginalName();
+                $file->move(public_path().'/images/people/signatures/',$signatureFileName);
+            }else{
+                $signatureFileName = 'noSignature.png';
+            }
+
             $request->validated();
             $person->update([
                 'firstName'=>$request->firstName,
@@ -111,13 +130,13 @@ class PersonController extends Controller
                 'cardId'=>$request->cardId,
                 'gender_id'=>$request->gender_id,
                 'birthDate'=>$request->birthDate,
-                'email'=>$request->email,
                 'jobTitle'=>$request->jobTitle,
                 'city_id'=>$request->city_id,
                 'address'=>$request->address,
                 'homePhone'=>$request->homePhone,
                 'mobilePhone'=>$request->mobilePhone,
                 'photo'=>$photoFileName,
+                'signature'=>$signatureFileName,
             ]);
             return redirect()->route('people.index');
         }catch(Exception $e){

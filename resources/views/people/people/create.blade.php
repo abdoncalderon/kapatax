@@ -48,19 +48,6 @@
 
                         <div class="col-sm-9 col-md-9 col-lg-9">
 
-                            {{-- Stakeholder --}}
-
-                            {{-- <div class="form-group">
-                                <label class="col-sm-2 control-label">{{ __('content.stakeholder') }}</label>
-                                <div class="input-group input-group-sm col-xs-12 col-sm-10" >
-                                    <select id="stakeholder" name="stakeholder_id" class="form-control" style="width: 100%;">
-                                        @foreach (current_user()->project->stakeholders as $stakeholder)
-                                            <option value="{{ $stakeholder->id }}">{{ $stakeholder->name }}</option>
-                                        @endforeach
-                                    </select>
-                                </div>
-                            </div> --}}
-
                             {{-- Card Id --}}
 
                             <div class="form-group">
@@ -276,34 +263,36 @@
                                 </div>
                             </div>
 
-                            {{-- User --}}
-
+                            {{-- photo --}}
+    
                             <div class="form-group">
-                                <label class="col-sm-2 control-label">{{ __('content.user') }}</label>
-                                <div class="input-group input-group-sm col-xs-12 col-sm-10" >
-                                    <select id="project_user_id" name="project_user_id" class="form-control" style="width: 100%;">
-                                        <option value="">{{__('messages.select')}} {{__('content.user')}}</option>
-                                        @foreach ($projectUsers as $projectUser)
-                                            <option value="{{ $projectUser->id }}">{{ $projectUser->user->name }}</option>
-                                        @endforeach
-                                    </select>
+                                <label class="col-sm-2 control-label">{{ __('content.photo') }}</label>
+                                <div class="input-group input-group-sm col-xs-12 col-sm-10">
+                                    <input id="photo" type="file" class="form-control" name="photo"}}>
+                                </div>
+                            </div>
+
+                            {{-- signature --}}
+    
+                            <div class="form-group">
+                                <label class="col-sm-2 control-label">{{ __('content.signature') }}</label>
+                                <div class="input-group input-group-sm col-xs-12 col-sm-10">
+                                    <input id="signature" type="file" class="form-control" name="signature"}}>
                                 </div>
                             </div>
 
                         </div>
 
-                        <div class="col-sm-3 col-md-3 col-lg-3">
+                        {{-- <div class="col-sm-3 col-md-3 col-lg-3">
 
                             
                             <div class="photo">
 
                                 <h5>{{ __('content.photo') }}</h5>
 
-                                {{-- Preview --}}
 
                                 <img id="photoPreview" src="{{asset('images/people/photos/noPhoto.png')}}" alt="{{ __('content.photo') }}">
 
-                                {{-- Filename --}}
 
                                 <div >
                                     <input id="photo" type="file" class="form-control" name="photo" accept="image/*">
@@ -311,6 +300,21 @@
 
                             </div>
                             
+                        </div> --}}
+
+                        <div class="col-sm-3 col-md-3 col-lg-3">
+
+                            <div class="photo">
+
+                                <img id="photoPreview" src="{{asset('images/people/photos/noPhoto.png')}}" alt="{{ __('content.photo') }}">
+
+                            </div>
+
+                            <div class="signature">
+
+                                <img id="photoPreview" src="{{asset('images/people/signatures/noSignature.png')}}" alt="{{ __('content.signature') }}">
+
+                            </div>
                         </div>
 
                     

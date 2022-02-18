@@ -3,7 +3,7 @@
 namespace App\Http\Controllers\Agreement;
 
 use App\Http\Controllers\Controller;
-use App\User;
+use App\Models\User;
 use App\Models\Location;
 use App\Models\LocationUser;
 use App\Http\Requests\Agreement\StoreLocationUserRequest;

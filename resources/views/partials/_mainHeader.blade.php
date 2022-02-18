@@ -34,11 +34,12 @@
             <li class="dropdown user user-menu">
 
                 <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                <img src="{{ asset('images/admin/avatars/'.auth()->user()->avatar) }}" class="user-image" alt="User Image">
-                <span class="hidden-xs"> 
-                        @AUTH
-                        {{ auth()->user()->name }}
-                        @ENDAUTH</span>
+                    <img src="{{ asset('images/people/photos/'.current_user()->user->person->photo) }}" class="user-image" alt="User Image">
+                    <span class="hidden-xs"> 
+                            @auth
+                                {{  current_user()->user->person->fullName }}
+                            @endauth
+                    </span>
                 </a>
 
                 <ul class="dropdown-menu">
@@ -46,33 +47,37 @@
                     <!-- User image -->
 
                     <li class="user-header">
-                    <img src="{{ asset('images/admin/avatars/'.auth()->user()->avatar) }}" class="img-circle" alt="User Image">
+                    <img src="{{ asset('images/people/photos/'.current_user()->user->person->photo) }}" class="img-circle" alt="User Image">
                         <p>
-                            @AUTH
-                            {{ auth()->user()->name }}
-                            @ENDAUTH</span>
+                            @auth
+                                {{  current_user()->user->person->fullName }}
+                            @endauth
+                            </span>
                             <small>{{ current_user()->role->name }}</small>
                         </p>
                     </li>
                     
                     <!-- Menu Footer-->
                     
+                    
+
                     <li class="user-footer">
                         <div class="pull-left">
-                            <a href="{{ route('profiles.show', auth()->user()->id) }}" class="btn btn-default btn-flat">{{ __('content.profile') }}</a>
+                            
+                            <a href="{{ route('profiles.show', current_user()->user->id) }}" class="btn btn-default btn-flat">{{ __('content.profile') }}</a>
                         </div>
                         <div class="pull-right">
-                            <a  href="#" @AUTH
-                                        onclick="event.preventDefault();
-                                        document.getElementById('logout-form').submit();" 
-                                        @ENDAUTH
+                            <a  href="#" @auth
+                                                onclick="event.preventDefault();
+                                                document.getElementById('logout-form').submit();" 
+                                        @endauth
                                 class="btn btn-default btn-flat">{{ __('content.exit') }}
                             </a>
-                            @AUTH
-                            <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
-                                @csrf
-                            </form>
-                            @ENDAUTH
+                            @auth
+                                <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                                    @csrf
+                                </form>
+                            @endauth
                         </div>
                     </li>
 

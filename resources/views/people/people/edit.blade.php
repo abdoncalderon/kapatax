@@ -272,6 +272,24 @@
                                 </div>
                             </div>
 
+                            {{-- photo --}}
+    
+                            <div class="form-group">
+                                <label class="col-sm-2 control-label">{{ __('content.photo') }}</label>
+                                <div class="input-group input-group-sm col-xs-12 col-sm-10">
+                                    <input id="photo" type="file" class="form-control" name="photo"}}>
+                                </div>
+                            </div>
+
+                            {{-- signature --}}
+    
+                            <div class="form-group">
+                                <label class="col-sm-2 control-label">{{ __('content.signature') }}</label>
+                                <div class="input-group input-group-sm col-xs-12 col-sm-10">
+                                    <input id="signature" type="file" class="form-control" name="signature"}}>
+                                </div>
+                            </div>
+
                             <hr>
 
                             {{-- Stakeholder People --}}
@@ -302,7 +320,45 @@
                                                     <td>{{ $stakeholderPerson->admissionDate }}</td>
                                                     <td>{{ $stakeholderPerson->departureDate }}</td>
                                                     <td>
-                                                        @if ($stakeholderPerson->isActive==1)
+                                                        @if ($stakeholderPerson->isActive())
+                                                            <a class="btn btn-info btn-xs" href="{{ route('stakeholderPeople.edit',$stakeholderPerson) }}">{{ __('content.edit') }}</a>
+                                                        @endif
+                                                    </td>
+                                                </tr>
+                                            @endforeach
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+
+                            {{-- User --}}
+
+                            <div class="form-group">
+                                <label class="col-sm-2 control-label">{{ __('content.user') }}</label>
+                                <div class="col-sm-10" >
+                                    <button type="button" class="btn btn-default" data-toggle="modal" data-target="#modal-add-user">
+                                        {{ __('content.add') }} {{ __('content.user') }}
+                                    </button>
+                                    
+                                    <div>
+                                        <br>
+                                    </div>
+                                    <table id="stakeholders" class="table table-bordered table-striped">
+                                        <thead>
+                                            <tr>
+                                                <th>{{ __('content.user') }}</th>
+                                                <th>{{ __('messages.email') }}</th>
+                                                <th>{{ __('content.actions') }}</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            @foreach($projectUsers as $projectUser)
+                                                <tr>
+                                                    <td>{{ $stakeholderPerson->stakeholder->name }}</td>
+                                                    <td>{{ $stakeholderPerson->admissionDate }}</td>
+                                                    <td>{{ $stakeholderPerson->departureDate }}</td>
+                                                    <td>
+                                                        @if ($stakeholderPerson->isActive())
                                                             <a class="btn btn-info btn-xs" href="{{ route('stakeholderPeople.edit',$stakeholderPerson) }}">{{ __('content.edit') }}</a>
                                                         @endif
                                                     </td>
@@ -321,11 +377,11 @@
 
                                 <img id="photoPreview" src="{{ asset('images/people/photos/'.$person->photo) }}" alt="{{ __('content.photo') }}">
 
-                                {{-- Filename --}}
+                            </div>
 
-                                <div >
-                                    <input id="photo" type="file" class="form-control" name="photo" accept="images/*" required>
-                                </div>
+                            <div class="signature">
+
+                                <img id="photoPreview" src="{{ asset('images/people/signatures/'.$person->signature) }}" alt="{{ __('content.signature') }}">
 
                             </div>
                         </div>

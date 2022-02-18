@@ -61,7 +61,7 @@
                                 class='warning'
                             @endif
                             >
-                                <td>{{ $user->name }}</td>
+                                <td>{{ $user->person->fullName }}</td>
                                 <td>{{ $user->email }}</td>
                                 @if($user->isActive())
                                     <td>{{ __('content.active') }}</td>
