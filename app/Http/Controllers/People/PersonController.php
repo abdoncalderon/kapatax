@@ -6,10 +6,12 @@ use App\Http\Controllers\Controller;
 use App\Models\Person;
 use App\Models\Gender;
 use App\Models\Region;
+use App\Models\ProjectUser;
 use App\Http\Requests\People\StorePersonRequest;
 use App\Http\Requests\People\UpdatePersonRequest;
-use App\Models\ProjectUser;
+use Illuminate\Http\Request;
 use Exception;
+
 
 class PersonController extends Controller
 {
@@ -27,7 +29,7 @@ class PersonController extends Controller
 
     public function create()
     {
-        $projectUsers = ProjectUser::where('project_id',session('current_project_id'))->get();
+        $projectUsers = ProjectUser::where('project_id',session('current_project_id'))->get();                                                                                                                                                                                                                                                                                                                                                           
         $genders = Gender::all();
         $regions = Region::all();
         return view('people.people.create')
@@ -89,14 +91,14 @@ class PersonController extends Controller
 
     public function edit(Person $person)
     {
-        $projectUsers = ProjectUser::where('project_id',session('current_project_id'))->get();
+        // $projectUsers = ProjectUser::where('project_id',session('current_project_id'))->get();
         $genders = Gender::all();
         $regions = Region::all();
 
         return view('people.people.edit',[
             'person'=>$person
             ])->with(compact('genders'))
-            ->with(compact('projectUsers'))
+            // ->with(compact('projectUsers'))
             ->with(compact('regions'));
     }
     
@@ -151,6 +153,15 @@ class PersonController extends Controller
             return redirect()->route('people.index');
         }catch(Exception $e){
             return back()->withErrors($e->getMessage());
+        }
+    }
+
+    public function search(Request $request){
+        try{
+            $person = Person::where($request->field,$request->value)->first();
+            return redirect()->route('people.edit',$person)->with('success',__('messages.recordFounded'));
+        }catch(Exception $e){
+            return back()->withErrors(__('messages.recordNotFound'));
         }
     }
 }

@@ -20,4 +20,8 @@ class Person extends Model
     public function stakeholderPeople(){
         return $this->hasMany(StakeholderPerson::class);
     }
+
+    public function users(){
+        return $this->hasMany(User::class);
+    }
 }

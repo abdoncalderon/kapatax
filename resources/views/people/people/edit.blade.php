@@ -14,7 +14,11 @@
     </ol>
 @endsection
 
+
+
 @section('mainContent')
+
+    
 
     <section class="content">
 
@@ -30,6 +34,8 @@
                         {{ $errors->first() }}
                     </div>
                 @endif
+
+                
 
                 {{-- Title --}}
 
@@ -141,7 +147,7 @@
 
                             {{-- email --}}
         
-                            <div class="form-group">
+                            {{-- <div class="form-group">
                                 <label class="col-sm-2 control-label">{{ __('content.email') }}</label>
                                 <div class="input-group input-group-sm col-xs-12 col-sm-10" >
                                     <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ $person->email }}" placeholder="{{ __('content.email') }}" autocomplete="off">
@@ -151,7 +157,7 @@
                                         </span>
                                     @enderror
                                 </div>
-                            </div>
+                            </div> --}}
 
                             {{-- jobTitle --}}
 
@@ -290,12 +296,51 @@
                                 </div>
                             </div>
 
+                           
+
+                            <hr>
+
+                            {{-- User --}}
+
+                            <div class="form-group">
+                                <label class="col-sm-2 control-label">{{ __('content.user') }}</label>
+                                <div class="col-sm-10" >
+                                    <button type="button" class="btn btn-default" data-toggle="modal" data-target="#addUser">
+                                        {{ __('content.add') }} {{ __('content.user') }}
+                                    </button>
+                                    
+                                    <div>
+                                        <br>
+                                    </div>
+                                    <table id="stakeholders" class="table table-bordered table-striped">
+                                        <thead>
+                                            <tr>
+                                                <th>{{ __('content.user') }}</th>
+                                                <th>{{ __('content.email') }}</th>
+                                                <th>{{ __('content.actions') }}</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            @foreach($person->users as $user)
+                                                <tr>
+                                                    <td>{{ $user->user }}</td>
+                                                    <td>{{ $user->email }}</td>
+                                                    <td>
+                                                        <a class="btn btn-info btn-xs" href="#">{{ __('content.edit') }}</a>
+                                                    </td>
+                                                </tr>
+                                            @endforeach
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+
                             <hr>
 
                             {{-- Stakeholder People --}}
-    
+
                             <div class="form-group">
-                                <label class="col-sm-2 control-label">{{ __('messages.admissionHistory') }}</label>
+                                <label class="col-sm-2 control-label">{{ __('content.admissions') }}</label>
                                 <div class="col-sm-10" >
                                     <button type="button" class="btn btn-default" data-toggle="modal" data-target="#modal-stakeholderPerson-add">
                                         {{ __('content.add') }} {{ __('content.record') }}
@@ -315,44 +360,6 @@
                                         </thead>
                                         <tbody>
                                             @foreach($person->stakeholderPeople as $stakeholderPerson)
-                                                <tr>
-                                                    <td>{{ $stakeholderPerson->stakeholder->name }}</td>
-                                                    <td>{{ $stakeholderPerson->admissionDate }}</td>
-                                                    <td>{{ $stakeholderPerson->departureDate }}</td>
-                                                    <td>
-                                                        @if ($stakeholderPerson->isActive())
-                                                            <a class="btn btn-info btn-xs" href="{{ route('stakeholderPeople.edit',$stakeholderPerson) }}">{{ __('content.edit') }}</a>
-                                                        @endif
-                                                    </td>
-                                                </tr>
-                                            @endforeach
-                                        </tbody>
-                                    </table>
-                                </div>
-                            </div>
-
-                            {{-- User --}}
-
-                            <div class="form-group">
-                                <label class="col-sm-2 control-label">{{ __('content.user') }}</label>
-                                <div class="col-sm-10" >
-                                    <button type="button" class="btn btn-default" data-toggle="modal" data-target="#modal-add-user">
-                                        {{ __('content.add') }} {{ __('content.user') }}
-                                    </button>
-                                    
-                                    <div>
-                                        <br>
-                                    </div>
-                                    <table id="stakeholders" class="table table-bordered table-striped">
-                                        <thead>
-                                            <tr>
-                                                <th>{{ __('content.user') }}</th>
-                                                <th>{{ __('messages.email') }}</th>
-                                                <th>{{ __('content.actions') }}</th>
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-                                            @foreach($projectUsers as $projectUser)
                                                 <tr>
                                                     <td>{{ $stakeholderPerson->stakeholder->name }}</td>
                                                     <td>{{ $stakeholderPerson->admissionDate }}</td>
@@ -747,6 +754,97 @@
                 </div>
             </form>
         </div>
+    </div>
+
+
+    {{-- Modal Window Add User --}}
+
+    <div class="modal fade" id="addUser" tabindex="-1" role="dialog" aria-labelledby="addModal" aria-hidden="true">
+
+        <div class="modal-dialog modal-dialog-centered" role="document">
+
+            <form method="POST" action="{{ route('users.store') }}">
+
+                @csrf
+
+                <div class="modal-content">
+
+                    <div class="modal-header">
+                        <h4 class="modal-title" id="exampleModalLongTitle">{{ __('content.add') }} {{ __('content.user') }}</h4>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+
+                    <div class="modal-body">
+
+                        {{-- username --}}
+
+                        <input type="hidden" name="person_id" value="{{ $person->id }}">
+
+                        {{-- username --}}
+    
+                        <div class="form-group">
+                            <label class="col-sm-2 col-md-4 col-lg-4 control-label">{{ __('content.user') }}</label>
+                            <div class="input-group input-group-sm col-xs-12 col-sm-10 col-md-8 col-lg-8">
+                                <input id="user" type="text" class="form-control @error('user') is-invalid @enderror" name="user" value="{{ old('user') }}" required autocomplete="user">
+                                @error('user')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
+                            </div>
+                        </div>
+
+                        {{-- email --}}
+
+                        <div class="form-group">
+                            <label class="col-sm-2 col-md-4 col-lg-4 control-label">{{ __('content.email') }}</label>
+                            <div class="input-group input-group-sm col-xs-12 col-sm-10 col-md-8 col-lg-8">
+                                <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email">
+                                @error('email')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
+                            </div>
+                        </div>
+
+                        {{-- password --}}
+
+                        <div class="form-group">
+                            <label class="col-sm-2 col-md-4 col-lg-4 control-label">{{ __('content.password') }}</label>
+                            <div class="input-group input-group-sm col-xs-12 col-sm-10  col-md-8 col-lg-8">
+                                <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="new-password">
+                                @error('password')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
+                            </div>
+                        </div>
+
+                        {{-- confirm password --}}
+
+                        <div class="form-group">
+                            <label class="col-sm-2 col-md-4 col-lg-4 control-label">{{ __('content.confirmpassword') }}</label>
+                            <div class="input-group input-group-sm col-xs-12 col-sm-10 col-md-8 col-lg-8">
+                                <input id="password-confirm" type="password" class="form-control" name="password_confirmation" required autocomplete="new-password">
+                            </div>
+                        </div>
+
+                    </div>
+                    <div class="modal-footer">
+                        <div class="col-md-6 offset-md-4">
+                            <button type="submit" class="btn btn-success pull-left btn-sm" style="margin: 0px 5px;">{{ __('content.save') }}</button>
+                            <button type="button" class="btn btn-danger pull-left btn-sm" data-dismiss="modal">{{ __('content.cancel') }}</button>
+                        </div>
+                    </div>
+                </div>
+            </form>
+            
+        </div>
+
     </div>
 
 @endsection

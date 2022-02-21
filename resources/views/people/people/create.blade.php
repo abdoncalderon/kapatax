@@ -22,14 +22,7 @@
 
             <div class="box box-info">
 
-                {{-- Error Messages --}}
-
-                @if($errors->any())
-                    <div class="alert alert-danger alert-dismissible">
-                        <button type="button" class="close" data-dismiss="alert">&times;</button>
-                        {{ $errors->first() }}
-                    </div>
-                @endif
+                
 
                 {{-- Title --}}
 
@@ -59,6 +52,10 @@
                                             <strong>{{ $message }}</strong>
                                         </span>
                                     @enderror
+                                    <span class="input-group-btn">
+                                        <button type="button" class="btn btn-info btn-flat" data-toggle="modal" data-target="#searchPerson">{{ __('content.search') }}</button>
+                                        
+                                    </span>
                                 </div>
                             </div>
 
@@ -136,7 +133,7 @@
 
                             {{-- email --}}
         
-                            <div class="form-group">
+                            {{-- <div class="form-group">
                                 <label class="col-sm-2 control-label">{{ __('content.email') }}</label>
                                 <div class="input-group input-group-sm col-xs-12 col-sm-10" >
                                     <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" placeholder="{{ __('content.email') }}">
@@ -146,7 +143,7 @@
                                         </span>
                                     @enderror
                                 </div>
-                            </div>
+                            </div> --}}
 
                             {{-- jobTitle --}}
 
@@ -282,25 +279,6 @@
                             </div>
 
                         </div>
-
-                        {{-- <div class="col-sm-3 col-md-3 col-lg-3">
-
-                            
-                            <div class="photo">
-
-                                <h5>{{ __('content.photo') }}</h5>
-
-
-                                <img id="photoPreview" src="{{asset('images/people/photos/noPhoto.png')}}" alt="{{ __('content.photo') }}">
-
-
-                                <div >
-                                    <input id="photo" type="file" class="form-control" name="photo" accept="image/*">
-                                </div>
-
-                            </div>
-                            
-                        </div> --}}
 
                         <div class="col-sm-3 col-md-3 col-lg-3">
 
@@ -612,6 +590,58 @@
                     <div class="modal-footer">
                         <div class="col-md-6 offset-md-4">
                             <button type="submit" class="btn btn-success pull-left btn-sm" style="margin: 0px 5px;">{{ __('content.save') }}</button>
+                            <button type="button" class="btn btn-danger pull-left btn-sm" data-dismiss="modal">{{ __('content.cancel') }}</button>
+                        </div>
+                    </div>
+                </div>
+            </form>
+            
+        </div>
+
+    </div>
+
+    {{-- Modal Window Search Person --}}
+
+    <div class="modal fade" id="searchPerson" tabindex="-1" role="dialog" aria-labelledby="addModal" aria-hidden="true">
+
+        <div class="modal-dialog modal-dialog-centered" role="document">
+
+            <form method="POST" action="{{ route('people.search') }}">
+                @csrf
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h4 class="modal-title" id="exampleModalLongTitle">{{ __('content.search') }} {{ __('content.person') }}</h4>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+
+                        {{-- Field --}}
+
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label">{{ __('content.field') }}</label>
+                            <div class="input-group input-group-sm col-xs-12 col-sm-10" >
+                                <select id="field" name="field" class="form-control" data-placeholder="Tipo" style="width: 100%;">
+                                    <option value="cardId">{{ __('content.cardId') }}</option>
+                                    <option value="fullName">{{ __('content.fullName') }}</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        {{-- Value --}}
+
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label">{{ __('content.value') }}</label>
+                            <div class="input-group col-sm-10">
+                                <input type="text" class="form-control" name="value" maxlength="255" required>
+                            </div>
+                        </div>
+
+                    </div>
+                    <div class="modal-footer">
+                        <div class="col-md-6 offset-md-4">
+                            <button type="submit" class="btn btn-success pull-left btn-sm" style="margin: 0px 5px;">{{ __('content.search') }}</button>
                             <button type="button" class="btn btn-danger pull-left btn-sm" data-dismiss="modal">{{ __('content.cancel') }}</button>
                         </div>
                     </div>

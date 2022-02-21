@@ -275,6 +275,7 @@ Route::get('/workbookLocations/destroy/{location}','Agreement\LocationController
 /* Routes Persons */
 Route::resource('people','People\PersonController');
 Route::get('/person/destroy/{person}','People\PersonController@destroy')->name('people.destroy');
+Route::post('/seachPerson','People\PersonController@search')->name('people.search');
 
 /* Routes Gender */
 Route::resource('genders','People\GenderController');

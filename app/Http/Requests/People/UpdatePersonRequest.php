@@ -21,7 +21,6 @@ class UpdatePersonRequest extends FormRequest
             'cardId'=>'required',
             'gender_id'=>'required',
             'birthDate'=>'required',
-            'email'=>'required',
             'jobTitle'=>'nullable',
             'city_id'=>'required',
             'address'=>'nullable',

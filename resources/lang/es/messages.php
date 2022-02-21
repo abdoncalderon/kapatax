@@ -88,6 +88,8 @@ return [
     'editAdmissionRecord'=>'Editar Registro de Admisión',
     'saveAndContinue'=>'Grabar y Continuar',
     'admissionDateNoValid'=>'Fecha de Admisión No Valida',
+    'recordFounded'=>'Registro Encontrado',
+    'recordNotFound'=>'Registro No Encontrado',
 
 
 

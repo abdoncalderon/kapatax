@@ -33,6 +33,7 @@
             {{-- Content --}}
 
             <div class="content-wrapper">
+                @include('partials._messages')
                 <section class="content-header">
                     <h1>
                         @yield('section')
