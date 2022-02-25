@@ -46,7 +46,7 @@ class ProjectController extends Controller
             $project->update($request->validated());
             return redirect()->route('project.index');
         }catch(Exception $e){
-            return back()->withErrors($e->getMessage());
+            return back()->withErrors(exception_code($e->errorInfo[0]));
         }
     }
 }

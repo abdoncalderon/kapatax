@@ -46,7 +46,7 @@ class CompanyController extends Controller
             $company->update($request->validated());
             return redirect()->route('companies.index');
         }catch(Exception $e){
-            return back()->withErrors($e->getMessage());
+            return back()->withErrors(exception_code($e->errorInfo[0]));
         }
     }
 
@@ -71,7 +71,7 @@ class CompanyController extends Controller
             $company->delete();
             return redirect()->route('companies.index');
         }catch(Exception $e){
-            return back()->withErrors($e->getMessage());
+            return back()->withErrors(exception_code($e->errorInfo[0]));
         }
     } 
     
@@ -81,7 +81,7 @@ class CompanyController extends Controller
             Company::create($request ->validated());
             return back();
         }catch(Exception $e){
-            return back()->withErrors($e->getMessage());
+            return back()->withErrors(exception_code($e->errorInfo[0]));
         }
     }
 }

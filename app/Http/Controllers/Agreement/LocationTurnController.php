@@ -40,7 +40,7 @@ class LocationTurnController extends Controller
                 return back()->withErrors(__('messages.dateOutsideLocationExecution'));
             }
         }catch(Exception $e){
-            return back()->withErrors($e->getMessage());
+            return back()->withErrors(exception_code($e->errorInfo[0]));
         }
     }
 
@@ -51,7 +51,7 @@ class LocationTurnController extends Controller
             $turnlocation->delete();
             return redirect()->route('locationTurns.index',$location);
         }catch(Exception $e){
-            return back()->withErrors($e->getMessage());
+            return back()->withErrors(exception_code($e->errorInfo[0]));
         }
     }
 }

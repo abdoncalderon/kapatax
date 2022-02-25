@@ -32,7 +32,7 @@ class CommentNoteController extends Controller
                 return back()->withErrors(__('messages.timeexpiredtocreate').' '.__('content.comment'));
             }
         }catch(Exception $e){
-            return back()->withErrors($e->getMessage());
+            return back()->withErrors(exception_code($e->errorInfo[0]));
         }
     }
 

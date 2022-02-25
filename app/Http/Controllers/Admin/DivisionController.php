@@ -48,7 +48,7 @@ class DivisionController extends Controller
             $division->update($request->validated());
             return redirect()->route('divisions.index');
         }catch(Exception $e){
-            return back()->withErrors($e->getMessage());
+            return back()->withErrors(exception_code($e->errorInfo[0]));
         }
     }
 
@@ -58,7 +58,7 @@ class DivisionController extends Controller
             $division->delete();
             return redirect()->route('divisions.index');
         }catch(Exception $e){
-            return back()->withErrors($e->getMessage());
+            return back()->withErrors(exception_code($e->errorInfo[0]));
         }
     }  
 
@@ -68,7 +68,7 @@ class DivisionController extends Controller
             Division::create($request ->validated());
             return back();
         }catch(Exception $e){
-            return back()->withErrors($e->getMessage());
+            return back()->withErrors(exception_code($e->errorInfo[0]));
         }
     }
 

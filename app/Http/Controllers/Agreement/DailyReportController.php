@@ -74,7 +74,7 @@ class DailyReportController extends Controller
                 return back()->withErrors(__('messages.timeexpiredtocreate').' '.__('content.dailyreport'));
             }
         }catch(Exception $e){
-            return back()->withErrors($e->getMessage());
+            return back()->withErrors(exception_code($e->errorInfo[0]));
         }
     }
 

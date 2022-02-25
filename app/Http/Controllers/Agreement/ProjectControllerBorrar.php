@@ -86,7 +86,7 @@ class ProjectController extends Controller
             ]);
             return redirect()->route('projects.index');
         }catch(Exception $e){
-            return back()->withErrors($e->getMessage());
+            return back()->withErrors(exception_code($e->errorInfo[0]));
         }
     }
 }

@@ -32,7 +32,7 @@ class CityController extends Controller
             City::create($request ->validated());
             return redirect()->route('cities.index');
         }catch(Exception $e){
-            return back()->withErrors($e->getMessage());
+            return back()->withErrors(exception_code($e->errorInfo[0]));
         }
     }
 
@@ -58,7 +58,7 @@ class CityController extends Controller
             $city->update($request->validated());
             return redirect()->route('cities.index');
         }catch(Exception $e){
-            return back()->withErrors($e->getMessage());
+            return back()->withErrors(exception_code($e->errorInfo[0]));
         }
     }
     
@@ -68,7 +68,7 @@ class CityController extends Controller
             $city->delete();
             return redirect()->route('cities.index');
         }catch(Exception $e){
-            return back()->withErrors($e->getMessage());
+            return back()->withErrors(exception_code($e->errorInfo[0]));
         }
     }   
 
@@ -76,9 +76,9 @@ class CityController extends Controller
     {
         try{
             City::create($request ->validated());
-            return back();
+            return back()->withInput();
         }catch(Exception $e){
-            return back()->withErrors($e->getMessage());
+            return back()->withErrors(exception_code($e->errorInfo[0]));
         }
     }
 

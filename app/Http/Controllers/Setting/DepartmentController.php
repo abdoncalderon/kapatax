@@ -43,7 +43,7 @@ class DepartmentController extends Controller
             Department::create($request ->validated());
             return redirect()->route('departments.index');
         }catch(Exception $e){
-            return back()->withErrors($e->getMessage());
+            return back()->withErrors(exception_code($e->errorInfo[0]));
         }
     }
 
@@ -68,7 +68,7 @@ class DepartmentController extends Controller
             $department->update($request->validated());
             return redirect()->route('departments.index');
         }catch(Exception $e){
-            return back()->withErrors($e->getMessage());
+            return back()->withErrors(exception_code($e->errorInfo[0]));
         }
     }
 
@@ -78,7 +78,7 @@ class DepartmentController extends Controller
             $department->delete();
             return redirect()->route('departments.index');
         }catch(Exception $e){
-            return back()->withErrors($e->getMessage());
+            return back()->withErrors(exception_code($e->errorInfo[0]));
         }
     } 
 
@@ -88,7 +88,7 @@ class DepartmentController extends Controller
             Department::create($request ->validated());
             return back();
         }catch(Exception $e){
-            return back()->withErrors($e->getMessage());
+            return back()->withErrors(exception_code($e->errorInfo[0]));
         }
     }
 

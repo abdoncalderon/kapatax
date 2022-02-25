@@ -68,7 +68,7 @@ class NoteController extends Controller
                 return back()->withErrors(__('messages.timeexpiredtocreate').' '.__('content.note'));
             }
         }catch(Exception $e){
-            return back()->withErrors($e->getMessage());
+            return back()->withErrors(exception_code($e->errorInfo[0]));
         }
     }
 

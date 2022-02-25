@@ -22,6 +22,7 @@
             <div class="box-header with-border center-block">
                 <h3 class="box-title"><strong>{{ __('content.equipments') }}</strong></h3> | 
                 <a class="btn btn-success btn-sm" href="{{ route('equipments.create') }}">{{ __('content.add') }}</a>
+                <button type="button" class="btn btn-info btn-sm" data-toggle="modal" data-target="#importEquipments">{{ __('content.import') }} {{ __('content.from') }} Excel </button>
             </div>
             
             <div class="box-body">
@@ -55,7 +56,7 @@
                                 <td>{{ $equipment->name }}</td>
                                 <td>
                                     <a style="margin: 0.3em" class="btn btn-info btn-xs" href="{{ route('equipments.show', $equipment)}}">{{ __('content.show') }}</a>
-                                    <a style="margin: 0.3em" class="btn btn-info btn-xs" href="{{ route('equipments.destroy', $equipment)}}">{{ __('content.delete') }}</a>
+                                    <a style="margin: 0.3em" class="btn btn-danger btn-xs" href="{{ route('equipments.destroy', $equipment)}}">{{ __('content.delete') }}</a>
                                 </td>
                             </tr>
                         @endforeach
@@ -65,10 +66,48 @@
 
                 {{-- End Table  --}}
 
+                <hr>
+
+                <a class="btn btn-danger btn-sm" href=" {{ route('home') }} "><<< {{ __('content.return') }}</a>
+
             </div>
 
         </div>
 
     </section>
+
+    {{-- Import from Excel File --}}
+
+    <div class="modal fade" id="importEquipments">
+        <div class="modal-dialog">
+            <form method="POST" action="{{ route('equipments.import') }}" enctype="multipart/form-data">
+                @csrf
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                        <h4 class="modal-title">{{ __('content.import').' '.__('content.equipments') }}</h4>
+                    </div>
+                    <div class="modal-body">
+                        <div>
+                            
+                            {{-- Filename --}}
+
+                            <div class="form-group">
+                                <label for="file">{{ __('content.file') }} Excel</label>
+                                <input id="file" type="file" class="form-control" name="file" accept="application/xls" required>
+                            </div>
+                            
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default" data-dismiss="modal">{{__('content.close')}}</button>
+                        <button type="submit" class="btn btn-primary">{{__('content.import')}}</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
 
 @endsection

@@ -35,7 +35,7 @@ class PermitController extends Controller
             assign_roles_to_permit($permit);
             return redirect()->route('permits.index');
         }catch(Exception $e){
-            return back()->withErrors($e->getMessage());
+            return back()->withErrors(exception_code($e->errorInfo[0]));
         }
         
     }
@@ -62,7 +62,7 @@ class PermitController extends Controller
             $permit->update($request->validated());
             return redirect()->route('permits.index');
         }catch(Exception $e){
-            return back()->withErrors($e->getMessage());
+            return back()->withErrors(exception_code($e->errorInfo[0]));
         }
     }
     
@@ -72,7 +72,7 @@ class PermitController extends Controller
             $permit->delete();
             return redirect()->route('permits.index');
         }catch(Exception $e){
-            return back()->withErrors($e->getMessage());
+            return back()->withErrors(exception_code($e->errorInfo[0]));
         }
     }   
 }

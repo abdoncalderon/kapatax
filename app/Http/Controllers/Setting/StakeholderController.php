@@ -38,7 +38,7 @@ class StakeholderController extends Controller
             Stakeholder::create($request ->validated());
             return redirect()->route('stakeholders.index');
         }catch(Exception $e){
-            return back()->withErrors($e->getMessage());
+            return back()->withErrors(exception_code($e->errorInfo[0]));
         }
     }
 
@@ -65,7 +65,7 @@ class StakeholderController extends Controller
             $stakeholder->update($request->validated());
             return redirect()->route('stakeholders.index');
         }catch(Exception $e){
-            return back()->withErrors($e->getMessage());
+            return back()->withErrors(exception_code($e->errorInfo[0]));
         }
     }
 
@@ -75,7 +75,7 @@ class StakeholderController extends Controller
             $stakeholder->delete();
             return redirect()->route('stakeholders.index');
         }catch(Exception $e){
-            return back()->withErrors($e->getMessage());
+            return back()->withErrors(exception_code($e->errorInfo[0]));
         }
     }
 }

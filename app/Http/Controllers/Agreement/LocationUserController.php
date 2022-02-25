@@ -78,7 +78,7 @@ class LocationUserController extends Controller
             $locationUser->delete();
             return redirect()->route('locationsUsers.index');
         }catch(Exception $e){
-            return back()->withErrors($e->getMessage());
+            return back()->withErrors(exception_code($e->errorInfo[0]));
         }
     }
 }

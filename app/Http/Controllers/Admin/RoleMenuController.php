@@ -52,7 +52,7 @@ class RoleMenuController extends Controller
             RoleMenu::create($request ->validated());
             return redirect()->route('roleMenus.index',$role);
         }catch(Exception $e){
-            return back()->withErrors($e->getMessage());
+            return back()->withErrors(exception_code($e->errorInfo[0]));
         }
     }
     
@@ -64,7 +64,7 @@ class RoleMenuController extends Controller
             $roleMenu->delete();
             return redirect()->route('roleMenus.index',$role);
         }catch(Exception $e){
-            return back()->withErrors($e->getMessage());
+            return back()->withErrors(exception_code($e->errorInfo[0]));
         }
     }
 
@@ -76,7 +76,7 @@ class RoleMenuController extends Controller
             $role = Role::where('id',$roleMenu->role_id)->first();
             return redirect()->route('roleMenus.index',$role);
         }catch(Exception $e){
-            return back()->withErrors($e->getMessage());
+            return back()->withErrors(exception_code($e->errorInfo[0]));
         }
     }
 
@@ -97,7 +97,7 @@ class RoleMenuController extends Controller
             }
             return redirect()->route('roleMenus.index',$role);
         }catch(Exception $e){
-            return back()->withErrors($e->getMessage());
+            return back()->withErrors(exception_code($e->errorInfo[0]));
         }
     }
 

@@ -3,7 +3,6 @@
 namespace App\Imports;
 
 use App\Models\Sector;
-use App\Models\Project;
 use Maatwebsite\Excel\Concerns\ToModel;
 
 class SectorsImport implements ToModel

@@ -51,7 +51,7 @@ class RegionController extends Controller
             $region->update($request->validated());
             return redirect()->route('regions.index');
         }catch(Exception $e){
-            return back()->withErrors($e->getMessage());
+            return back()->withErrors(exception_code($e->errorInfo[0]));
         }
         
     }
@@ -62,7 +62,7 @@ class RegionController extends Controller
             $region->delete();
             return redirect()->route('regions.index');
         }catch(Exception $e){
-            return back()->withErrors($e->getMessage());
+            return back()->withErrors(exception_code($e->errorInfo[0]));
         }
     } 
 
@@ -72,7 +72,7 @@ class RegionController extends Controller
             Region::create($request ->validated());
             return back();
         }catch(Exception $e){
-            return back()->withErrors($e->getMessage());
+            return back()->withErrors(exception_code($e->errorInfo[0]));
         }
     }
 
@@ -91,10 +91,10 @@ class RegionController extends Controller
             if($request->hasFile('file')){
                 $file = $request->file('file');
                 Excel::import(new RegionsImport,$file);
-                return back()->with('message',__('content.import').' '.__('content.successfull'));
+                return back()->with('success',__('content.import').' '.__('content.successfull'));
             }
         }catch(Exception $e){
-            return back()->withErrors($e->getMessage());
+            return back()->withErrors(exception_code($e->errorInfo[0]));
         }
         
     }

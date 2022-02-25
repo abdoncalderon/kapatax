@@ -33,7 +33,7 @@ class SectorController extends Controller
             Sector::create($request ->validated());
             return redirect()->route('sectors.index');
         }catch(Exception $e){
-            return back()->withErrors($e->getMessage());
+            return back()->withErrors(exception_code($e->errorInfo[0]));
         }
     }
 
@@ -58,7 +58,7 @@ class SectorController extends Controller
             $sector->update($request->validated());
             return redirect()->route('sectors.index');
         }catch(Exception $e){
-            return back()->withErrors($e->getMessage());
+            return back()->withErrors(exception_code($e->errorInfo[0]));
         }
     }
 
@@ -68,7 +68,7 @@ class SectorController extends Controller
             $sector->delete();
             return redirect()->route('sectors.index');
         }catch(Exception $e){
-            return back()->withErrors($e->getMessage());
+            return back()->withErrors(exception_code($e->errorInfo[0]));
         }
     } 
 
@@ -80,7 +80,7 @@ class SectorController extends Controller
                 return back();
             }
         }catch(Exception $e){
-            return back()->withErrors($e->getMessage());
+            return back()->withErrors(exception_code($e->errorInfo[0]));
         }
         
     }
@@ -91,7 +91,7 @@ class SectorController extends Controller
             Sector::create($request ->validated());
             return back();
         }catch(Exception $e){
-            return back()->withErrors($e->getMessage());
+            return back()->withErrors(exception_code($e->errorInfo[0]));
         }
     }
 }

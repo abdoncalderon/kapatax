@@ -63,7 +63,7 @@ class LocationController extends Controller
             $location->delete();
             return redirect()->route('workbook_settings_locations');
         }catch(Exception $e){
-            return back()->withErrors($e->getMessage());
+            return back()->withErrors(exception_code($e->errorInfo[0]));
         }
     }
 }

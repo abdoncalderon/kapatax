@@ -62,7 +62,7 @@ class LocationController extends Controller
             $location->delete();
             return redirect()->route('locations.index');
         }catch(Exception $e){
-            return back()->withErrors($e->getMessage());
+            return back()->withErrors(exception_code($e->errorInfo[0]));
         }
 
         

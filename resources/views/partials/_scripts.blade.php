@@ -253,6 +253,20 @@
             }
         )
 
+        $("#signature").on('change', function() {
+                $("#signaturePreview").removeAttr('src');
+                $('#signaturePreview').attr('src', URL.createObjectURL(event.target.files[0]));
+
+                /* $("#photo").attr()({
+                    'src':$("#photoFile").text(),
+                })  */     
+                // var filename = $("#photoFile").val().replace(/.*(\/|\\)/, '');
+                // var filename = document.getElementById("photoFile").files[0].name;
+                // alert(filename);
+                // $("#photo").removeAttr('src').replaceWith(URL.createObjectURL(filename));
+            }
+        )
+
         $("#firstName").on('change', function() {
             $("#fullName").attr('value',"");
             $("#fullName").attr('value',$("#lastName").val()+" "+$("#firstName").val());

@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Person extends Model
 {
-    protected $fillable = ['cardId', 'fullName', 'firstName', 'lastName', 'gender_id', 'birthDate', 'jobTitle', 'city_id', 'address', 'homePhone', 'mobilePhone', 'photo', 'signature', 'isActive', 'blocked', ];
+    protected $fillable = ['cardId', 'fullName', 'firstName', 'lastName', 'gender_id', 'birthDate', 'jobTitle', 'email', 'city_id', 'address', 'homePhone', 'mobilePhone', 'photo', 'signature', 'isActive', 'blocked', ];
 
        
     public function city(){
@@ -21,7 +21,15 @@ class Person extends Model
         return $this->hasMany(StakeholderPerson::class);
     }
 
-    public function users(){
-        return $this->hasMany(User::class);
+    public function user(){
+        return $this->hasOne(User::class);
+    }
+
+    public function isActive(){
+        if($this->isActive==1){
+            return true;
+        }else{
+            return false;
+        }
     }
 }

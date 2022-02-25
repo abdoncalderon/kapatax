@@ -64,7 +64,7 @@
                     <li class="user-footer">
                         <div class="pull-left">
                             
-                            <a href="{{ route('profiles.show', current_user()->user->id) }}" class="btn btn-default btn-flat">{{ __('content.profile') }}</a>
+                            <a href="{{ route('profiles.show', current_user()->user_id) }}" class="btn btn-default btn-flat">{{ __('content.profile') }}</a>
                         </div>
                         <div class="pull-right">
                             <a  href="#" @auth

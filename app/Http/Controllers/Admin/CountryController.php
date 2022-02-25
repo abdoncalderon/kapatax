@@ -34,7 +34,7 @@ class CountryController extends Controller
             Country::create($request ->validated());
             return redirect()->route('countries.index');
         }catch(Exception $e){
-            return back()->withErrors($e->getMessage());
+            return back()->withErrors(exception_code($e->errorInfo[0]));
         }
     }
 
@@ -61,7 +61,7 @@ class CountryController extends Controller
             $country->update($request->validated());
             return redirect()->route('countries.index');
         }catch(Exception $e){
-            return back()->withErrors($e->getMessage());
+            return back()->withErrors(exception_code($e->errorInfo[0]));
         }
     }
 
@@ -71,7 +71,7 @@ class CountryController extends Controller
             $country->delete();
             return redirect()->route('countries.index');
         }catch(Exception $e){
-            return back()->withErrors($e->getMessage());
+            return back()->withErrors(exception_code($e->errorInfo[0]));
         }
     }         
 
@@ -81,7 +81,7 @@ class CountryController extends Controller
             Country::create($request ->validated());
             return back();
         }catch(Exception $e){
-            return back()->withErrors($e->getMessage());
+            return back()->withErrors(exception_code($e->errorInfo[0]));
         }
     }
     
@@ -103,7 +103,7 @@ class CountryController extends Controller
                 return back();
             }
         }catch(Exception $e){
-            return back()->withErrors($e->getMessage());
+            return back()->withErrors(exception_code($e->errorInfo[0]));
         }
         
     }

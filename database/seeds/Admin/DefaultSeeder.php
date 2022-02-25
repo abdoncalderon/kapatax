@@ -112,6 +112,7 @@ class DefaultSeeder extends Seeder
             'name' => 'Diurnal',
             'start' => '07:00',
             'finish' => '16:00',
+            'project_id' => '1',
         ]);
 
         DB::table('stakeholders')->insert([
@@ -186,15 +187,20 @@ class DefaultSeeder extends Seeder
             'person_id' => '1',
         ]);
 
+        DB::table('project_users')->insert([
+            'user_id' => '1',
+            'role_id' => '1',
+            'project_id' => '1',
+        ]);
+
         DB::table('location_users')->insert([
             'location_id' => '1',
-            'user_id' => '1',
+            'project_user_id' => '1',
             'dailyreport_collaborator' => '1',
             'dailyreport_approver' => '1',
             'folio_approver' => '1',
             'receive_notification' => '1',
         ]);
-
 
         
     }

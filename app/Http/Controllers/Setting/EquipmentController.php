@@ -5,8 +5,11 @@ namespace App\Http\Controllers\Setting;
 use App\Http\Controllers\Controller;
 use App\Models\Equipment;
 use App\Models\Project;
+use App\Imports\EquipmentsImport;
 use App\Http\Requests\Setting\StoreEquipmentRequest;
 use App\Http\Requests\Setting\UpdateEquipmentRequest;
+use Illuminate\Http\Request;
+use Maatwebsite\Excel\Facades\Excel;
 use Exception;
 
 class EquipmentController extends Controller
@@ -57,7 +60,30 @@ class EquipmentController extends Controller
             $equipment->delete();
             return redirect()->route('equipments.index');
         }catch(Exception $e){
-            return back()->withErrors($e->getMessage());
+            return back()->withErrors(exception_code($e->errorInfo[0]));
+        }
+    }
+
+    public function import(Request $request){
+        try{
+            
+            if($request->hasFile('file')){
+                $file = $request->file('file');
+                Excel::import(new EquipmentsImport,$file);
+                return back();
+            }
+        }catch(Exception $e){
+            return back()->withErrors(exception_code($e->errorInfo[0]));
+        }
+    }
+
+    public function add(StoreEquipmentRequest $request )
+    {
+        try{
+            Equipment::create($request ->validated());
+            return back();
+        }catch(Exception $e){
+            return back()->withErrors(exception_code($e->errorInfo[0]));
         }
     }
 }

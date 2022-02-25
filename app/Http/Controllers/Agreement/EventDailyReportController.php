@@ -26,7 +26,7 @@ class EventDailyReportController extends Controller
             $dailyReport = DailyReport::find($request->daily_report_id);
             return redirect()->route('dailyReports.edit',$dailyReport);
         }catch(Exception $e){
-            return back()->withErrors($e->getMessage());
+            return back()->withErrors(exception_code($e->errorInfo[0]));
         }
     }
 

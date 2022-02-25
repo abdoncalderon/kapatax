@@ -24,6 +24,7 @@ class CreatePeopleTable extends Migration
             $table->foreign('gender_id')->references('id')->on('genders')->onUpdate('cascade')->onDelete('restrict');
             $table->date('birthDate');
             $table->string('jobTitle')->nullable();
+            $table->string('email')->unique();
             $table->foreignId('city_id');
             $table->foreign('city_id')->references('id')->on('cities')->onUpdate('cascade')->onDelete('restrict');
             $table->string('address')->nullable();;
@@ -31,7 +32,7 @@ class CreatePeopleTable extends Migration
             $table->string('mobilePhone')->nullable();
             $table->string('photo')->default('noPhoto.png');
             $table->string('signature')->default('noSignature.png');
-            $table->boolean('isActive')->default(true);
+            $table->boolean('isActive')->default(false);
             $table->boolean('isLocked')->default(false);
             $table->timestamps();
         });

@@ -15,10 +15,13 @@ class CreateTurnsTable extends Migration
     {
         Schema::create('turns', function (Blueprint $table) {
             $table->id();
-            $table->string('name')->unique();
+            $table->string('name');
             $table->time('start');
             $table->time('finish');
             $table->boolean('nextday')->default(false);
+            $table->foreignId('project_id');
+            $table->foreign('project_id')->references('id')->on('projects')->onUpdate('cascade')->onDelete('restrict');
+            $table->unique(['name','project_id'],'project_turns_unique');
             $table->timestamps();
         });
     }

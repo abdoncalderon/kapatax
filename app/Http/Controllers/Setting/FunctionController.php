@@ -16,8 +16,8 @@ class FunctionController extends Controller
 {
     public function index()
     {
-        $project = Project::where('id',session('current_project_id'))->first();
-        return view('setting.functions.index', compact('project'));
+        $functions = Funct1on::where('project_id',session('current_project_id'))->get();
+        return view('setting.functions.index', compact('functions'));
     }
 
     public function create()
@@ -33,7 +33,7 @@ class FunctionController extends Controller
             Funct1on::create($request ->validated());
             return redirect()->route('functions.index');
         }catch(Exception $e){
-            return back()->withErrors($e->getMessage());
+            return back()->withErrors(exception_code($e->errorInfo[0]));
         }
     }
 
@@ -58,17 +58,17 @@ class FunctionController extends Controller
             $function->update($request->validated());
             return redirect()->route('functions.index');
         }catch(Exception $e){
-            return back()->withErrors($e->getMessage());
+            return back()->withErrors(exception_code($e->errorInfo[0]));
         }
     }
 
-    public function destroy(Funct1on $funct1on)
+    public function destroy(Funct1on $function)
     {
         try{
-            $funct1on->delete();
+            $function->delete();
             return redirect()->route('functions.index');
         }catch(Exception $e){
-            return back()->withErrors($e->getMessage());
+            return back()->withErrors(exception_code($e->errorInfo[0]));
         }
     } 
 
@@ -81,7 +81,7 @@ class FunctionController extends Controller
                 return back();
             }
         }catch(Exception $e){
-            return back()->withErrors($e->getMessage());
+            return back()->withErrors(exception_code($e->errorInfo[0]));
         }
     }
 
@@ -91,7 +91,7 @@ class FunctionController extends Controller
             Funct1on::create($request ->validated());
             return back();
         }catch(Exception $e){
-            return back()->withErrors($e->getMessage());
+            return back()->withErrors(exception_code($e->errorInfo[0]));
         }
     }
 }

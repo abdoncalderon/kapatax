@@ -34,7 +34,7 @@ class RoleController extends Controller
             assign_menus_to_role($role);
             return redirect()->route('roles.index');
         }catch(Exception $e){
-            return back()->withErrors($e->getMessage());
+            return back()->withErrors(exception_code($e->errorInfo[0]));
         }
     }
 
@@ -65,7 +65,7 @@ class RoleController extends Controller
             ]);
             return redirect()->route('roles.index');
         }catch(Exception $e){
-            return back()->withErrors($e->getMessage());
+            return back()->withErrors(exception_code($e->errorInfo[0]));
         }
     }
 
@@ -75,7 +75,7 @@ class RoleController extends Controller
             $role->delete();
             return redirect()->route('roles.index');
         }catch(Exception $e){
-            return back()->withErrors($e->getMessage());
+            return back()->withErrors(exception_code($e->errorInfo[0]));
         }
     } 
 

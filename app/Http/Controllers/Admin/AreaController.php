@@ -47,7 +47,7 @@ class AreaController extends Controller
             $area->update($request->validated());
             return redirect()->route('areas.index');
         }catch(Exception $e){
-            return back()->withErrors($e->getMessage());
+            return back()->withErrors(exception_code($e->errorInfo[0]));
         }
     }
 
@@ -57,7 +57,7 @@ class AreaController extends Controller
             $area->delete();
             return redirect()->route('areas.index');
         }catch(Exception $e){
-            return back()->withErrors($e->getMessage());
+            return back()->withErrors(exception_code($e->errorInfo[0]));
         }
     } 
 }

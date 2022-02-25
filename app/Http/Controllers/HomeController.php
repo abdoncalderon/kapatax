@@ -15,33 +15,20 @@ class HomeController extends Controller
     public function __construct()
     {
         $this->middleware('auth');
-
-        /* $this->middleware('auth');
-        $this->middleware(function ($request, $next) {
-        $this->user = Auth::user();
-        return $next($request); */
     }
-
-        
     
     public function index()
     {
-        $project_id = session('current_project_id');
-        $role = ProjectUser::where('user_id',auth()->user()->id)->where('project_id',$project_id)->first();
-        $project = Project::where('id',$project_id)->first();
-        $roleMenus = RoleMenu::where('role_id',$role->role_id)->where('isActive','1')->get();
+        $roleMenus = RoleMenu::where('role_id',current_user()->role_id)->where('isActive','1')->get();
         session(['roleMenus' => $roleMenus]);
-        return view('layouts.main')
-        ->with(compact('project'));
+        return view('layouts.main');
     }
 
     public function project()
     {
-        $user = User::where('id',auth()->user()->id)->first();
-        $projectUsers = ProjectUser::where('user_id',$user->id)->get();
+        $userProjects = ProjectUser::where('user_id',auth()->user()->id)->get();
         return view('layouts.project')
-        ->with(compact('user'))
-        ->with(compact('projectUsers'));
+        ->with(compact('userProjects'));
     }
 
     public function menu(Request $request)

@@ -70,7 +70,7 @@ class PositionController extends Controller
             $position->delete();
             return redirect()->route('positions.index');
         }catch(Exception $e){
-            return back()->withErrors($e->getMessage());
+            return back()->withErrors(exception_code($e->errorInfo[0]));
         }
     }
 

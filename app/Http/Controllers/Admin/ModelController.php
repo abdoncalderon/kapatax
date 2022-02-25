@@ -34,7 +34,7 @@ class ModelController extends Controller
             Mode1::create($request ->validated());
             return redirect()->route('models.index');
         }catch(Exception $e){
-            return back()->withErrors($e->getMessage());
+            return back()->withErrors(exception_code($e->errorInfo[0]));
         }
     }
 
@@ -61,7 +61,7 @@ class ModelController extends Controller
             $model->update($request->validated());
             return redirect()->route('models.index');
         }catch(Exception $e){
-            return back()->withErrors($e->getMessage());
+            return back()->withErrors(exception_code($e->errorInfo[0]));
         }
     }
 
@@ -71,7 +71,7 @@ class ModelController extends Controller
             $model->delete();
             return redirect()->route('models.index');
         }catch(Exception $e){
-            return back()->withErrors($e->getMessage());
+            return back()->withErrors(exception_code($e->errorInfo[0]));
         }
     }         
 
@@ -95,7 +95,7 @@ class ModelController extends Controller
                 return back();
             }
         }catch(Exception $e){
-            return back()->withErrors($e->getMessage());
+            return back()->withErrors(exception_code($e->errorInfo[0]));
         }
         
     }

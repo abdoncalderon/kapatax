@@ -75,6 +75,10 @@
 
                 {{-- End Table  --}}
 
+                <hr>
+
+                <a class="btn btn-danger btn-sm" href=" {{ route('roles.index') }} "><<< {{ __('content.return') }}</a>
+
             </div>
 
         </div>

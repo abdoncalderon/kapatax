@@ -15,7 +15,13 @@ class CreateFamiliesTable extends Migration
     {
         Schema::create('families', function (Blueprint $table) {
             $table->id();
-            $table->string('name')->unique();
+            $table->string('name');
+            $table->string('code');
+            $table->string('description')->nullable();
+            $table->foreignId('project_id');
+            $table->foreign('project_id')->references('id')->on('projects')->onUpdate('cascade')->onDelete('restrict');
+            $table->unique(['name','project_id'],'project_family_name_unique');
+            $table->unique(['code','project_id'],'project_family_code_unique');
             $table->timestamps();
         });
     }

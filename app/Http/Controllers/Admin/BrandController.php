@@ -4,8 +4,11 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Models\Brand;
+use App\Imports\BrandsImport;
 use App\Http\Requests\Admin\StoreBrandRequest;
 use App\Http\Requests\Admin\UpdateBrandRequest;
+use Maatwebsite\Excel\Facades\Excel;
+use Illuminate\Http\Request;
 use Exception;
 
 class BrandController extends Controller
@@ -47,7 +50,7 @@ class BrandController extends Controller
             $brand->update($request->validated());
             return redirect()->route('brands.index');
         }catch(Exception $e){
-            return back()->withErrors($e->getMessage());
+            return back()->withErrors(exception_code($e->errorInfo[0]));
         }
     }
 
@@ -57,7 +60,7 @@ class BrandController extends Controller
             $brand->delete();
             return redirect()->route('brands.index');
         }catch(Exception $e){
-            return back()->withErrors($e->getMessage());
+            return back()->withErrors(exception_code($e->errorInfo[0]));
         }
     } 
 
@@ -67,7 +70,21 @@ class BrandController extends Controller
             Brand::create($request ->validated());
             return back();
         }catch(Exception $e){
-            return back()->withErrors($e->getMessage());
+            return back()->withErrors(exception_code($e->errorInfo[0]));
         }
+    }
+
+    public function import(Request $request){
+        try{
+            
+            if($request->hasFile('file')){
+                $file = $request->file('file');
+                Excel::import(new BrandsImport,$file);
+                return back()->with('success',__('messages.successfullImport'));
+            }
+        }catch(Exception $e){
+            return back()->withErrors(exception_code($e->errorInfo[0]));
+        }
+        
     }
 }

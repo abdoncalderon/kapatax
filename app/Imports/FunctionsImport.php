@@ -3,7 +3,6 @@
 namespace App\Imports;
 
 use App\Models\Funct1on;
-use App\Models\Project;
 use Maatwebsite\Excel\Concerns\ToModel;
 
 class FunctionsImport implements ToModel

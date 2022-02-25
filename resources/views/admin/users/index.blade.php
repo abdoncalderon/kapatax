@@ -32,7 +32,7 @@
 
             <div class="box-header with-border center-block">
                 <h3 class="box-title"><strong>{{ __('content.users') }}</strong></h3> | 
-                <a class="btn btn-success btn-sm" href="{{ route('users.create') }}">{{ __('content.add') }}</a>
+                {{-- <a class="btn btn-success btn-sm" href="{{ route('users.create') }}">{{ __('content.add') }}</a> --}}
             </div>
                         
             <div class="box-body">
@@ -45,7 +45,8 @@
 
                     <thead>
                         <tr>
-                            <th>{{ __('content.name') }}</th>
+                            {{-- <th>{{ __('content.name') }}</th> --}}
+                            <th>{{ __('content.person') }}</th>
                             <th>{{ __('content.email') }}</th>
                             <th>{{ __('content.status') }}</th>
                             <th>{{ __('content.actions') }}</th>
@@ -69,8 +70,8 @@
                                     <td>{{ __('content.inactive') }}</td>
                                 @endif
                                 <td>
-                                    <a class="btn btn-info btn-xs" href="{{ route('users.edit', $user) }}">{{ __('content.edit') }}</a>
-                                    <a class="btn btn-info btn-xs" href="{{ route('projectUsers.index', $user) }}">{{ __('content.projects') }}</a>
+                                    {{-- <a class="btn btn-info btn-xs" href="{{ route('users.edit', $user) }}">{{ __('content.edit') }}</a> --}}
+                                    <a class="btn btn-info btn-xs" href="{{ route('userProjects.index', $user) }}">{{ __('content.projects') }}</a>
                                     @if($user->id!=1)
                                         @if ($user->isActive())
                                             <a class="btn btn-danger btn-xs" href="{{ route('users.activate', [$user, '0']) }}">{{ __('content.deactivate') }}</a>
@@ -87,6 +88,10 @@
                 </table>
 
                 {{-- End Table  --}}
+
+                <hr>
+
+                <a class="btn btn-danger btn-sm" href=" {{ route('home') }} "><<< {{ __('content.return') }}</a>
 
             </div>
 

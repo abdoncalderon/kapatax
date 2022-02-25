@@ -35,7 +35,7 @@ class ProjectController extends Controller
             Project::create($request ->validated());
             return redirect()->route('projects.index');
         }catch(Exception $e){
-            return back()->withErrors($e->getMessage());
+            return back()->withErrors(exception_code($e->errorInfo[0]));
         }
     }
 
@@ -63,7 +63,7 @@ class ProjectController extends Controller
             $project->update($request->validated());
             return redirect()->route('projects.index');
         }catch(Exception $e){
-            return back()->withErrors($e->getMessage());
+            return back()->withErrors(exception_code($e->errorInfo[0]));
         }
     }
 
@@ -87,7 +87,7 @@ class ProjectController extends Controller
             $project->delete();
             return redirect()->route('projects.index');
         }catch(Exception $e){
-            return back()->withErrors($e->getMessage());
+            return back()->withErrors(exception_code($e->errorInfo[0]));
         }
     }  
 

@@ -52,7 +52,7 @@ class RolePermitController extends Controller
             RolePermit::create($request ->validated());
             return redirect()->route('rolePermits.index',$role);
         }catch(Exception $e){
-            return back()->withErrors($e->getMessage());
+            return back()->withErrors(exception_code($e->errorInfo[0]));
         }
     }
     
@@ -64,7 +64,7 @@ class RolePermitController extends Controller
             $rolePermit->delete();
             return redirect()->route('rolePermits.index',$role);
         }catch(Exception $e){
-            return back()->withErrors($e->getMessage());
+            return back()->withErrors(exception_code($e->errorInfo[0]));
         }
     }
 
@@ -76,7 +76,7 @@ class RolePermitController extends Controller
             $role = Role::where('id',$rolePermit->role_id)->first();
             return redirect()->route('rolePermits.index',$role);
         }catch(Exception $e){
-            return back()->withErrors($e->getMessage());
+            return back()->withErrors(exception_code($e->errorInfo[0]));
         }
     }
 
@@ -97,7 +97,7 @@ class RolePermitController extends Controller
             }
             return redirect()->route('rolePermits.index',$role);
         }catch(Exception $e){
-            return back()->withErrors($e->getMessage());
+            return back()->withErrors(exception_code($e->errorInfo[0]));
         }
     }
 

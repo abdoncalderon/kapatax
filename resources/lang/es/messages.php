@@ -90,6 +90,17 @@ return [
     'admissionDateNoValid'=>'Fecha de Admisión No Valida',
     'recordFounded'=>'Registro Encontrado',
     'recordNotFound'=>'Registro No Encontrado',
+    'dataEntryError'=>'Error en el Ingreso de Datos',
+    'transactionError'=>'Error en transacción',
+    'duplicateRecord'=>'Registro Duplicado',
+    'updatePersonData'=>'Actualizar Información de Persona',
+    'projectsAssignedTo'=>'Proyectos Asignados a',
+    'assignProjectToUser'=>'Asignar Proyecto a Usuario',
+    'userIsActive'=>'Usuario esta activo',
+    'admissionsNotAllowed'=>'Admisiones no permitidas',
+    'peopleInProject'=>'Personas en Projecto',
+    'successfullImport'=>'Importación Exitosa',
+
 
 
 

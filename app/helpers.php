@@ -11,8 +11,11 @@ use App\Models\Location;
 use App\Models\Project;
 use App\Models\LocationTurn;
 use App\Models\Stakeholder;
+use App\Models\StakeholderPerson;
 use App\Models\Person;
+use App\Models\User;
 use Carbon\Carbon;
+use Facade\FlareClient\Flare;
 
 function yesNo($value){
     if ($value==1){
@@ -33,8 +36,7 @@ function checked($value){
 if (! function_exists('current_user')) {
     function current_user()
     {
-        $projectId = session('current_project_id');
-        $projectUser = ProjectUser::where('user_id',auth()->user()->id)->where('project_id', $projectId)->first();
+        $projectUser = ProjectUser::where('user_id',auth()->user()->id)->where('project_id',session('current_project_id'))->first();
         return $projectUser;
     }
 }
@@ -87,7 +89,7 @@ if (! function_exists('assign_permits_to_role')) {
                 ]);
             }
         }catch(Exception $e){
-            return back()->withErrors($e->getMessage());
+            return back()->withErrors(exception_code($e->errorInfo[0]));
         }
     }
 }
@@ -104,7 +106,7 @@ if (! function_exists('assign_menus_to_role')) {
                 ]);
             }
         }catch(Exception $e){
-            return back()->withErrors($e->getMessage());
+            return back()->withErrors(exception_code($e->errorInfo[0]));
         }
     }
 }
@@ -121,7 +123,7 @@ if (! function_exists('assign_roles_to_menu')) {
                 ]);
             }
         }catch(Exception $e){
-            return back()->withErrors($e->getMessage());
+            return back()->withErrors(exception_code($e->errorInfo[0]));
         }
     }
 }
@@ -138,7 +140,7 @@ if (! function_exists('assign_roles_to_permit')) {
                 ]);
             }
         }catch(Exception $e){
-            return back()->withErrors($e->getMessage());
+            return back()->withErrors(exception_code($e->errorInfo[0]));
         }
     }
 }
@@ -265,7 +267,7 @@ if (! function_exists('is_role_menu_active')) {
             }
             
         }catch(Exception $e){
-            return back()->withErrors($e->getMessage());
+            return back()->withErrors(exception_code($e->errorInfo[0]));
         }
     }
 }
@@ -321,5 +323,32 @@ if (! function_exists('is_valid_date_for_departure')) {
             }
         }
         return $flag;
+    }
+}
+
+if (! function_exists('is_active_stakeholder_person')) {
+    function is_active_stakeholder_person(Person $person)
+    {
+        $flag = false;
+        foreach($person->stakeholderPeople as $stakeholderPerson){
+            if($stakeholderPerson->isActive()){
+                $flag = true;
+                break;
+            }
+        }
+        return $flag;
+    }
+}
+
+
+if (! function_exists('exception_code')) {
+    function exception_code($code)
+    {
+        switch ($code) {
+            case '23000':
+                return __('messages.transactionError').' - '.__('messages.duplicateRecord');
+            default:
+                return __('messages.transactionError');
+        }
     }
 }

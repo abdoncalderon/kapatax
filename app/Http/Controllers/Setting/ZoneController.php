@@ -5,8 +5,11 @@ namespace App\Http\Controllers\Setting;
 use App\Http\Controllers\Controller;
 use App\Models\Zone;
 use App\Models\Project;
+use App\Imports\ZonesImport;
 use App\Http\Requests\Setting\StoreZoneRequest;
 use App\Http\Requests\Setting\UpdateZoneRequest;
+use Maatwebsite\Excel\Facades\Excel;
+use Illuminate\Http\Request;
 use Exception;
 
 class ZoneController extends Controller
@@ -30,7 +33,7 @@ class ZoneController extends Controller
             Zone::create($request ->validated());
             return redirect()->route('zones.index');
         }catch(Exception $e){
-            return back()->withErrors($e->getMessage());
+            return back()->withErrors(exception_code($e->errorInfo[0]));
         }
     }
 
@@ -56,7 +59,7 @@ class ZoneController extends Controller
             $zone->update($request->validated());
             return redirect()->route('zones.index');
         }catch(Exception $e){
-            return back()->withErrors($e->getMessage());
+            return back()->withErrors(exception_code($e->errorInfo[0]));
         }
     }
     
@@ -66,7 +69,7 @@ class ZoneController extends Controller
             $zone->delete();
             return redirect()->route('zones.index');
         }catch(Exception $e){
-            return back()->withErrors($e->getMessage());
+            return back()->withErrors(exception_code($e->errorInfo[0]));
         }
     }   
 
@@ -76,7 +79,20 @@ class ZoneController extends Controller
             Zone::create($request ->validated());
             return back();
         }catch(Exception $e){
-            return back()->withErrors($e->getMessage());
+            return back()->withErrors(exception_code($e->errorInfo[0]));
+        }
+    }
+
+    public function import(Request $request){
+        try{
+            
+            if($request->hasFile('file')){
+                $file = $request->file('file');
+                Excel::import(new ZonesImport,$file);
+                return back();
+            }
+        }catch(Exception $e){
+            return back()->withErrors(exception_code($e->errorInfo[0]));
         }
     }
 }

@@ -51,7 +51,7 @@ class ProfileController extends Controller
             $person->update($request->validated());
             return redirect()->route('home');
         }catch(Exception $e){
-            return back()->withErrors($e->getMessage());
+            return back()->withErrors(exception_code($e->errorInfo[0]));
         }
     }
 }

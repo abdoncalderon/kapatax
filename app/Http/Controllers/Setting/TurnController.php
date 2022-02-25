@@ -23,15 +23,21 @@ class TurnController extends Controller
 
     public function store(StoreTurnRequest $request )
     {
-        $nextday = $request->has('nextday');
-        $request ->validated();
-        Turn::create([
-            'name'=>$request->name,
-            'start'=>$request->start,
-            'finish'=>$request->finish,
-            'nextday'=>$nextday,
-        ]);
-        return redirect()->route('turns.index');
+        try{
+            $nextday = $request->has('nextday');
+            $request ->validated();
+            Turn::create([
+                'name'=>$request->name,
+                'start'=>$request->start,
+                'finish'=>$request->finish,
+                'nextday'=>$nextday,
+                'project_id'=>session('current_project_id'),
+            ]);
+            return redirect()->route('turns.index');
+        }catch(Exception $e){
+            return back()->withErrors($e->getMessage());
+        }
+        
     }
 
     public function show(Turn $turn)
@@ -50,14 +56,19 @@ class TurnController extends Controller
     
     public function update(Turn $turn, UpdateTurnRequest $request)
     {
-        $nextday = $request->has('nextday');
-        $request->validated();
-        $turn->update([
-            'start'=>$request->start,
-            'finish'=>$request->finish,
-            'nextday'=>$nextday,
-        ]);
-        return redirect()->route('turns.index');
+        try{
+            $nextday = $request->has('nextday');
+            $request->validated();
+            $turn->update([
+                'start'=>$request->start,
+                'finish'=>$request->finish,
+                'nextday'=>$nextday,
+            ]);
+            return redirect()->route('turns.index');
+        }catch(Exception $e){
+            return back()->withErrors(exception_code($e->errorInfo[0]));
+        }
+        
     }
 
     public function destroy(Turn $turn)
@@ -66,7 +77,7 @@ class TurnController extends Controller
             $turn->delete();
             return redirect()->route('turns.index');
         }catch(Exception $e){
-            return back()->withErrors($e->getMessage());
+            return back()->withErrors(exception_code($e->errorInfo[0]));
         }
     }
 }

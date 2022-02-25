@@ -36,6 +36,10 @@ class Project extends Model
         return $this->hasMany(Stakeholder::class);
     }
 
+    public function families(){
+        return $this->hasMany(Family::class);
+    }
+
 
     public function isActive(){
         if($this->isActive==1){

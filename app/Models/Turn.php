@@ -6,5 +6,5 @@ use Illuminate\Database\Eloquent\Model;
 
 class Turn extends Model
 {
-    protected $fillable = ['name','start','finish','nextday',];
+    protected $fillable = ['name','start','finish','nextday','project_id'];
 }

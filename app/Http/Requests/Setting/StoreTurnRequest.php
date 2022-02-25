@@ -15,7 +15,7 @@ class StoreTurnRequest extends FormRequest
     public function rules()
     {
         return [
-            'name'=>'required|unique:turns',
+            'name'=>'required',
             'start'=>'required',
             'finish'=>'required',
         ];

@@ -69,9 +69,15 @@
 
                 {{-- End Table  --}}
 
+                <hr>
+
+                <a class="btn btn-danger btn-sm" href=" {{ route('home') }} "><<< {{ __('content.return') }}</a>
+
             </div>
 
         </div>
+
+        
 
     </section>
 
@@ -108,5 +114,7 @@
             </form>
         </div>
     </div>
+
+
 
 @endsection

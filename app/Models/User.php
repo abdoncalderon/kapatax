@@ -17,7 +17,7 @@ class User extends Model
      * @var array
      */
     protected $fillable = [
-        'user', 'email', 'password', 'isActive', 'person_id',
+        'user', 'email', 'password', 'isActive', 'person_id', 
     ];
 
     /**
@@ -46,11 +46,14 @@ class User extends Model
         }
     }
 
-    public function projectUsers(){
-        return $this->hasMany(ProjectUser::class);
-    }
-        
-    public function person(){
+    public function person()
+    {
         return $this->belongsTo(Person::class);
     }
+
+    public function projectUsers()
+    {
+        return $this->hasMany(ProjectUser::class);
+    }
+
 }

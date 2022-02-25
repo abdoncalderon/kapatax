@@ -11,16 +11,10 @@ Route::get('/', 'HomeController@project')->name('project');
 Route::post('/','HomeController@menu')->name('menu');
 Route::get('/main', 'HomeController@index')->name('home');
 
-
-
 /********************************************* ADMIN ROUTES *************************************************************** */
 
-
-
-/* Routes Users */
-Route::resource('users','UserController');
-Route::get('/users/activate/{user}/{value}','UserController@activate')->name('users.activate');
-Route::get('/user/destroy/{user}','UserController@destroy')->name('users.destroy');
+/* Routes Gender */
+Route::resource('genders','Admin\GenderController');
 
 /* Routes Menus */
 Route::resource('menus','Admin\MenuController');
@@ -90,6 +84,7 @@ Route::get('/unity/destroy/{unity}','Admin\UnityController@destroy')->name('unit
 Route::resource('brands','Admin\BrandController');
 Route::get('/brand/destroy/{brand}','Admin\BrandController@destroy')->name('brands.destroy');
 Route::post('/brands/add','Admin\BrandController@add')->name('brands.add');
+Route::post('/brandsImport','Admin\BrandController@import')->name('brands.import');
 
 /* Routes Models */
 Route::resource('models','Admin\ModelController');
@@ -117,16 +112,26 @@ Route::get('/roleMenus/activate/{roleMenu}/{value}','Admin\RoleMenuController@ac
 Route::post('/cloneRoleMenus','Admin\RoleMenuController@clone')->name('roleMenus.clone');
 Route::get('setOpen/{roleMenu}','Admin\RoleMenuController@setOpen')->name('roleMenus.setOpen');
 
-/* Routes Project Users  */
-Route::get('/projectUsers/{user}','Admin\ProjectUserController@index')->name('projectUsers.index');
-Route::get('/create/project/{user}','Admin\ProjectUserController@create')->name('projectUsers.create');
-Route::post('/projectUsers/{user}','Admin\ProjectUserController@store')->name('projectUsers.store');
-Route::get('/projectUsers/destroy/{projectUser}','Admin\ProjectUserController@destroy')->name('projectUsers.destroy');
+/* Routes People */
+Route::resource('people','Admin\PersonController');
+Route::get('/person/destroy/{person}','Admin\PersonController@destroy')->name('people.destroy');
 
 
+/* Routes Users */
+Route::resource('users','Admin\UserController');
+Route::get('/users/activate/{user}/{value}','Admin\UserController@activate')->name('users.activate');
+Route::get('/user/destroy/{user}','Admin\UserController@destroy')->name('users.destroy');
+Route::post('/users/add','Admin\UserController@add')->name('users.add');
+
+/* Routes User Projects  */
+Route::get('/userProjects/{user}','Admin\UserProjectController@index')->name('userProjects.index');
+Route::get('/create/project/{user}','Admin\UserProjectController@create')->name('userProjects.create');
+Route::post('/userProjects/{user}','Admin\UserProjectController@store')->name('userProjects.store');
+Route::get('/userProjects/edit/{projectUser}','Admin\UserProjectController@edit')->name('userProjects.edit');
+Route::patch('/userProject/{projectUser}','Admin\UserProjectController@update')->name('userProjects.update');
+Route::get('/userProjects/destroy/{projectUser}','Admin\UserProjectController@destroy')->name('userProjects.destroy');
 
 /********************************************* SETTING ROUTES *************************************************************** */
-
 
 /* Routes Project */
 Route::get('/project','Setting\ProjectController@index')->name('project.index');
@@ -159,11 +164,11 @@ Route::get('/stakeholders/destroy/{stakeholder}','Setting\StakeholderController@
 Route::resource('zones','Setting\ZoneController');
 Route::get('/zones/destroy/{zone}','Setting\ZoneController@destroy')->name('zones.destroy');
 Route::post('/zones/add','Setting\ZoneController@add')->name('zones.add');
+Route::post('/zonesImport','Setting\ZoneController@import')->name('zones.import');
 
 /* Routes Positions */
 Route::resource('positions','Setting\PositionController');
 Route::get('/position/destroy/{position}','Setting\PositionController@destroy')->name('positions.destroy');
-
 
 /* Routes Locations */
 Route::resource('locations','Setting\LocationController');
@@ -177,9 +182,28 @@ Route::get('/equipment/destroy/{equipment}','Setting\EquipmentController@destroy
 Route::resource('turns','Setting\TurnController');
 Route::get('/turns/destroy/{turn}','Setting\TurnController@destroy')->name('turns.destroy');
 
+/* Routes Families */
+Route::resource('families','Setting\FamilyController');
+Route::get('/families/destroy/{turn}','Setting\FamilyController@destroy')->name('families.destroy');
+Route::post('/families/add','Setting\FamilyController@add')->name('families.add');
+Route::post('/familiesImport','Setting\FamilyController@import')->name('families.import');
+
+/* Routes Project People */
+Route::resource('projectPeople','Setting\PersonController');
+Route::post('/searchProjectPerson','Setting\PersonController@search')->name('projectPeople.search');
+
+/* Routes StakeholderPeople */
+Route::post('/stakeholderPeople','Setting\StakeholderPersonController@store')->name('stakeholderPeople.store');
+Route::get('/stakeholderPeople/edit/{stakeholderPerson}','Setting\StakeholderPersonController@edit')->name('stakeholderPeople.edit');
+Route::patch('/stakeholderPeople/{stakeholderPerson}','Setting\StakeholderPersonController@update')->name('stakeholderPeople.update');
+
+/* Routes Project Users  */
+Route::get('/projectUsers','Setting\ProjectUserController@index')->name('projectUsers.index');
+Route::get('/create/project','Setting\ProjectUserController@create')->name('projectUsers.create');
+Route::post('/projectUsers','Setting\ProjectUserController@store')->name('projectUsers.store');
+Route::get('/projectUsers/destroy/{projectUser}','Setting\ProjectUserController@destroy')->name('projectUsers.destroy');
 
 /*********************************** AGREEMENT ROUTES ************************************************************************* */
-
 
 /* Routes Folios */
 Route::get('folios/{location_id?}','Agreement\FolioController@index')->name('folios.index');
@@ -268,20 +292,12 @@ Route::get('/workbookLocations/edit/{location}','Agreement\LocationController@ed
 Route::patch('/workbookLocations/{location}','Agreement\LocationController@update')->name('workbook_settings_locations_update');
 Route::get('/workbookLocations/destroy/{location}','Agreement\LocationController@destroy')->name('workbook_settings_locations_destroy');
 
-
 /*********************************** PEOPLE ROUTES ************************************************************************* */
 
 
-/* Routes Persons */
-Route::resource('people','People\PersonController');
-Route::get('/person/destroy/{person}','People\PersonController@destroy')->name('people.destroy');
-Route::post('/seachPerson','People\PersonController@search')->name('people.search');
 
-/* Routes Gender */
-Route::resource('genders','People\GenderController');
 
-/* Routes StakeholderPeople */
-Route::post('/stakeholderPeople','People\StakeholderPersonController@store')->name('stakeholderPeople.store');
-Route::get('/stakeholderPeople/edit/{stakeholderPerson}','People\StakeholderPersonController@edit')->name('stakeholderPeople.edit');
-Route::patch('/stakeholderPeople/{stakeholderPerson}','People\StakeholderPersonController@update')->name('stakeholderPeople.update');
+
+
+
 

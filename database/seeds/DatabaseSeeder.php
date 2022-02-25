@@ -19,7 +19,6 @@ class DatabaseSeeder extends Seeder
             DefaultSeeder::class,
             MenuSeeder::class,
             RoleMenuSeeder::class,
-            ProjectUserSeeder::class,
             PermitSeeder::class,
             RolePermitSeeder::class,
             

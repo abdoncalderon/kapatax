@@ -42,7 +42,7 @@ class MenuController extends Controller
                 return back()->withErrors(__('messages.routeNoExist'));
             }
         }catch(Exception $e){
-            return back()->withErrors($e->getMessage());
+            return back()->withErrors(exception_code($e->errorInfo[0]));
         }
         
 
@@ -69,7 +69,7 @@ class MenuController extends Controller
             $menu->update($request->validated());
             return redirect()->route('menus.index');
         }catch(Exception $e){
-            return back()->withErrors($e->getMessage());
+            return back()->withErrors(exception_code($e->errorInfo[0]));
         }
     }
 
@@ -91,7 +91,7 @@ class MenuController extends Controller
             $menu->delete();
             return redirect()->route('menus.index');
         }catch(Exception $e){
-            return back()->withErrors($e->getMessage());
+            return back()->withErrors(exception_code($e->errorInfo[0]));
         }
     }
 

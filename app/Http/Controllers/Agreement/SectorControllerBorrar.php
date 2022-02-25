@@ -52,7 +52,7 @@ class SectorController extends Controller
             $sector->delete();
             return redirect()->route('sectors.index');
         }catch(Exception $e){
-            return back()->withErrors($e->getMessage());
+            return back()->withErrors(exception_code($e->errorInfo[0]));
         }
     } */
 }

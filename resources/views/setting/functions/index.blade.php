@@ -51,7 +51,7 @@
                     {{-- Rows  --}}
 
                     <tbody>
-                        @foreach($project->functions as $function)
+                        @foreach($functions as $function)
                             <tr>
                                 <td>{{ $function->name }}</td>
                                 <td>

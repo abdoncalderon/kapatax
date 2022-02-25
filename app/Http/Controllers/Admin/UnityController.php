@@ -47,7 +47,7 @@ class UnityController extends Controller
             $unity->update($request->validated());
             return redirect()->route('unities.index');
         }catch(Exception $e){
-            return back()->withErrors($e->getMessage());
+            return back()->withErrors(exception_code($e->errorInfo[0]));
         }
     }
 
@@ -57,7 +57,7 @@ class UnityController extends Controller
             $unity->delete();
             return redirect()->route('unities.index');
         }catch(Exception $e){
-            return back()->withErrors($e->getMessage());
+            return back()->withErrors(exception_code($e->errorInfo[0]));
         }
     } 
 }

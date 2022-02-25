@@ -2,13 +2,12 @@
 
 namespace App\Http\Controllers\Admin;
 
-
+use App\Http\Controllers\Controller;
 use App\Models\Company;
 use App\Models\Subsidiary;
 use App\Models\Division;
 use App\Http\Requests\Admin\StoreSubsidiaryRequest;
 use App\Http\Requests\Admin\UpdateSubsidiaryRequest;
-use App\Http\Controllers\Controller;
 use Exception;
 
 
@@ -35,7 +34,7 @@ class SubsidiaryController extends Controller
             Subsidiary::create($request ->validated());
             return redirect()->route('subsidiaries.index');
         }catch(Exception $e){
-            return back()->withErrors($e->getMessage());
+            return back()->withErrors(exception_code($e->errorInfo[0]));
         }
     }
 
@@ -63,7 +62,7 @@ class SubsidiaryController extends Controller
             $subsidiary->update($request->validated());
             return redirect()->route('subsidiaries.index');
         }catch(Exception $e){
-            return back()->withErrors($e->getMessage());
+            return back()->withErrors(exception_code($e->errorInfo[0]));
         }
     }
 
@@ -73,7 +72,7 @@ class SubsidiaryController extends Controller
             $subsidiary->delete();
             return redirect()->route('subsidiaries.index');
         }catch(Exception $e){
-            return back()->withErrors($e->getMessage());
+            return back()->withErrors(exception_code($e->errorInfo[0]));
         }
     }   
 }

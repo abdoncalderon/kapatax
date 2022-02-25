@@ -39,7 +39,7 @@
                                 <div class="form-group row">
                                     <label class="col-sm-2 col-form-label text-md-right">{{ __('content.name') }}</label>
                                     <div class="col-sm-10">
-                                        <input id="name" disabled class="form-control" name="name" value="{{ old('email', $user->person->fullName) }}">
+                                        <input id="name" disabled class="form-control" name="name" value="{{ old('email', auth()->user()->person->fullName) }}">
                                     </div>
                                 </div>
 
@@ -51,8 +51,8 @@
                                     <label class="col-sm-2 col-form-label text-md-right">{{ __('content.project') }}</label>
                                     <div class="col-sm-10" >
                                         <select name="project_id" class="form-control" style="width: 100%;" required>
-                                            @foreach ($projectUsers as $projectUser)
-                                                <option value="{{ $projectUser->project_id }}">{{ $projectUser->project->name }}</option>
+                                            @foreach ($userProjects as $userProject)
+                                                <option value="{{ $userProject->project->id }}">{{ $userProject->project->name }}</option>
                                             @endforeach
                                         </select>
                                     </div>

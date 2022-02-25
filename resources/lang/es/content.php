@@ -86,7 +86,7 @@ return [
     'person'=>'Persona',
     'area'=>'Area',
     'areas'=>'Areas',
-    
+    'return'=>'Regresar',
     'user' => 'Usuario',
     'fullname' => 'Nombre Completo',
     'cardid' => 'Identificación',
@@ -295,6 +295,9 @@ return [
     'cardId'=>'Tarjeta de Identificación',
     'photo'=>'Foto',
     'disassociation'=>'Desvinculación',
-
-    
+    'value'=>'Valor',
+    'field'=>'Campo',
+    'admissions'=>'Admisiones',
+    'family'=>'Familia',
+    'families'=>'Familias',
 ];

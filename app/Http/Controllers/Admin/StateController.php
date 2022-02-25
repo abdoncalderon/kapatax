@@ -34,7 +34,7 @@ class StateController extends Controller
             State::create($request ->validated());
             return redirect()->route('states.index');
         }catch(Exception $e){
-            return back()->withErrors($e->getMessage());
+            return back()->withErrors(exception_code($e->errorInfo[0]));
         }
         
     }
@@ -61,7 +61,7 @@ class StateController extends Controller
             $state->update($request->validated());
             return redirect()->route('states.index');
         }catch(Exception $e){
-            return back()->withErrors($e->getMessage());
+            return back()->withErrors(exception_code($e->errorInfo[0]));
         }
     }
 
@@ -71,7 +71,7 @@ class StateController extends Controller
             $state->delete();
             return redirect()->route('states.index');
         }catch(Exception $e){
-            return back()->withErrors($e->getMessage());
+            return back()->withErrors(exception_code($e->errorInfo[0]));
         }
     }
 
@@ -79,9 +79,9 @@ class StateController extends Controller
     {
         try{
             State::create($request ->validated());
-            return back();
+            return back()->withInput();
         }catch(Exception $e){
-            return back()->withErrors($e->getMessage());
+            return back()->withErrors(exception_code($e->errorInfo[0]));
         }
     }
 
