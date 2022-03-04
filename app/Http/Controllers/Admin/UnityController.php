@@ -4,8 +4,11 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Models\Unity;
+use App\Imports\UnitiesImport;
 use App\Http\Requests\Admin\StoreUnityRequest;
 use App\Http\Requests\Admin\UpdateUnityRequest;
+use Maatwebsite\Excel\Facades\Excel;
+use Illuminate\Http\Request;
 use Exception;
 
 class UnityController extends Controller
@@ -60,4 +63,16 @@ class UnityController extends Controller
             return back()->withErrors(exception_code($e->errorInfo[0]));
         }
     } 
+
+    public function import(Request $request){
+        try{
+            if($request->hasFile('file')){
+                $file = $request->file('file');
+                Excel::import(new UnitiesImport,$file);
+                return back()->with('success',__('messages.successfullImport'));
+            }
+        }catch(Exception $e){
+            return back()->withErrors(exception_code($e->errorInfo[0]));
+        }
+    }
 }

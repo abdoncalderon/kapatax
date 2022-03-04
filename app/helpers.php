@@ -1,6 +1,7 @@
 <?php
 
 use App\Models\ProjectUser;
+use App\Models\ProjectRole;
 use App\Models\Permit;
 use App\Models\Role;
 use App\Models\RolePermit;
@@ -256,10 +257,10 @@ if (! function_exists('is_valid_date_for_create_comment')) {
 }
 
 if (! function_exists('is_role_menu_active')) {
-    function is_role_menu_active(Role $role, Menu $menu)
+    function is_role_menu_active(ProjectRole $projectRole, Menu $menu)
     {
         try{
-            $roleMenu=RoleMenu::where('role_id',$role->id)->where('menu_id',$menu->id)->first();
+            $roleMenu=RoleMenu::where('role_id',$projectRole->role->id)->where('menu_id',$menu->id)->first();
             if (!empty($roleMenu)){
                 return $roleMenu->isActive;
             }else{

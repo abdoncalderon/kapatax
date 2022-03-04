@@ -3,11 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Models\ProjectUser;
-use App\Models\Project;
-use App\Models\User;
 use Illuminate\Http\Request;
 use App\Models\RoleMenu;
-use Illuminate\Support\Facades\Auth;
 
 class HomeController extends Controller
 {
@@ -19,7 +16,7 @@ class HomeController extends Controller
     
     public function index()
     {
-        $roleMenus = RoleMenu::where('role_id',current_user()->role_id)->where('isActive','1')->get();
+        $roleMenus = RoleMenu::where('role_id',current_user()->projectRole->role->id)->where('isActive','1')->get();
         session(['roleMenus' => $roleMenus]);
         return view('layouts.main');
     }

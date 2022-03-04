@@ -100,6 +100,13 @@ return [
     'admissionsNotAllowed'=>'Admisiones no permitidas',
     'peopleInProject'=>'Personas en Projecto',
     'successfullImport'=>'Importación Exitosa',
+    'accessToProjectsOf'=>'Accesos a Proyectos de',
+    'assignRoleToProject'=>'Asignar Roles a Proyecto',
+    'choiceProject'=>'Escoja un proyecto',
+    'choiceRole'=>'Escoja un Role',
+    'choiceUser'=>'Escoja un Usuario',
+
+
 
 
 

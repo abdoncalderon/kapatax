@@ -22,6 +22,8 @@ class CreateMaterialsTable extends Migration
             $table->unsignedBigInteger('model_id')->nullable();
             $table->foreignId('category_id');
             $table->foreign('category_id')->references('id')->on('categories')->onUpdate('cascade')->onDelete('restrict');
+            $table->unsignedBigInteger('group_id')->nullable();
+            $table->unsignedBigInteger('unity_id')->nullable();
             $table->timestamps();
         });
     }

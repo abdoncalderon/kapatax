@@ -53,7 +53,7 @@
                                 {{  current_user()->user->person->fullName }}
                             @endauth
                             </span>
-                            <small>{{ current_user()->role->name }}</small>
+                            <small>{{ current_user()->projectRole->role->name }}</small>
                         </p>
                     </li>
                     

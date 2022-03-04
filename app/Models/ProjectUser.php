@@ -5,7 +5,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class ProjectUser extends Model
 {
-    protected $fillable = ['user_id','project_id','role_id'];
+    protected $fillable = ['user_id','project_id','project_role_id'];
 
     public function user()
     {
@@ -17,8 +17,8 @@ class ProjectUser extends Model
         return $this->belongsTo(Project::class);
     }
 
-    public function role()
+    public function projectRole()
     {
-        return $this->belongsTo(Role::class);
+        return $this->belongsTo(ProjectRole::class);
     }
 }

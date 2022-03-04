@@ -1,16 +1,16 @@
 @extends('layouts.main')
 
-@section('title', __('content.users').' ['.__('content.projects').']')
+@section('title', __('content.projects').' ['.__('content.roles').']')
 
-@section('section', __('content.users').' ['.__('content.projects').']')
+@section('section', __('content.projects').' ['.__('content.roles').']')
 
 @section('level', __('content.administration'))
 
 @section('breadcrumb')
     <ol class="breadcrumb">
         <li><a href="{{ route('home') }}"><i class="fa fa-home"></i>Home</a></li>
-        <li><a href="{{ route('people.edit',$user->person)}}"> {{ __('content.users') }} </a></li>
-        <li class="active">{{ __('content.projects') }}</li>
+        <li><a href="{{ route('projects.index')}}"> {{ __('content.projects') }} </a></li>
+        <li class="active">{{ __('content.roles') }}</li>
     </ol>
 @endsection
 
@@ -23,8 +23,8 @@
             {{-- Title --}}
 
             <div class="box-header with-border center-block">
-                <h3 class="box-title"><strong>{{ __('messages.accessToProjectsOf') }} {{ $user->person->fullName }}</strong></h3> | 
-                <a class="btn btn-success btn-sm" href="{{ route('userProjects.create',$user) }}">{{ __('content.add') }}</a>
+                <h3 class="box-title"><strong>{{ __('messages.assignRoleToProject') }} {{ $project->name }}</strong></h3> | 
+                <a class="btn btn-success btn-sm" href="{{ route('projectRoles.create',$project) }}">{{ __('content.add') }}</a>
             </div>
             
             <div class="box-body">
@@ -46,14 +46,14 @@
                     {{-- Rows  --}}
 
                     <tbody>
-                        @foreach($projectUsers as $projectUser)
+                        @foreach($projectRoles as $projectRole)
                             <tr>
-                                <td>{{ $projectUser->project->name }}</td>
-                                <td>{{ $projectUser->projectRole->role->name }}</td>
+                                <td>{{ $projectRole->role->name }}</td>
                                 <td>
-                                    @if($user->name!='SUPERUSER')
-                                        <a class="btn btn-info btn-xs" href="{{ route('userProjects.edit', $projectUser)}}">{{ __('content.edit') }}</a>
-                                    @endif
+                                    {{-- @if($projectRole->role->id!=1) --}}
+                                        {{-- <a class="btn btn-info btn-xs" href="{{ route('projectRoles.edit', $projectRole)}}">{{ __('content.edit') }}</a> --}}
+                                        <a class="btn btn-info btn-xs" href="{{ route('projectRoles.destroy', $projectRole)}}">{{ __('content.delete') }}</a>
+                                    {{-- @endif --}}
                                 </td>
 
                             </tr>
@@ -66,7 +66,7 @@
 
                 <hr>
 
-                <a class="btn btn-danger btn-sm" href=" {{ route('people.edit',$user->person) }} "><<< {{ __('content.return') }}</a>
+                <a class="btn btn-danger btn-sm" href=" {{ route('projects.index') }} "><<< {{ __('content.return') }}</a>
 
             </div>
 

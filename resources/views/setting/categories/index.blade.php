@@ -1,15 +1,15 @@
 @extends('layouts.main')
 
-@section('title', __('content.families'))
+@section('title', __('content.categories'))
 
-@section('section', __('content.families'))
+@section('section', __('content.categories'))
 
-@section('level', __('content.configuration'))
+@section('level', __('content.administration'))
 
 @section('breadcrumb')
     <ol class="breadcrumb">
         <li><a href="{{ route('home') }}"><i class="fa fa-home"></i>Home</a></li>
-        <li class="active">{{ __('content.families') }}</li>
+        <li class="active">{{ __('content.categories') }}</li>
     </ol>
 @endsection
 
@@ -19,10 +19,12 @@
 
         <div class="box box-info">
 
+            {{-- Title --}}
+
             <div class="box-header with-border center-block">
-                <h3 class="box-title"><strong>{{ __('content.families') }}</strong></h3> | 
-                <a class="btn btn-success btn-sm" href="{{ route('families.create') }}">{{ __('content.add') }}</a>
-                <button type="button" class="btn btn-info btn-sm" data-toggle="modal" data-target="#importFamilies">{{ __('content.import') }} {{ __('content.from') }} Excel </button>
+                <h3 class="box-title"><strong>{{ __('content.categories') }}</strong></h3> | 
+                <a class="btn btn-success btn-sm" href="{{ route('categories.create') }}">{{ __('content.add') }}</a>
+                <button type="button" class="btn btn-info btn-sm" data-toggle="modal" data-target="#importCategories">{{ __('content.import') }} {{ __('content.from') }} Excel </button>
             </div>
             
             <div class="box-body">
@@ -36,6 +38,8 @@
                     <thead>
                         <tr>
                             <th>{{ __('content.name') }}</th>
+                            <th>{{ __('content.code') }}</th>
+                            <th>{{ __('content.family') }}</th>
                             <th>{{ __('content.actions') }}</th>
                         </tr>
                     </thead>
@@ -43,12 +47,14 @@
                     {{-- Rows  --}}
 
                     <tbody>
-                        @foreach(current_user()->project->families as $family)
+                        @foreach($categories as $category)
                             <tr>
-                                <td>{{ $family->name }}</td>
+                                <td>{{ $category->name }}</td>
+                                <td>{{ $category->code }}</td>
+                                <td>{{ $category->family->name }}</td>
                                 <td>
-                                    <a class="btn btn-info btn-xs" href="{{ route('families.edit', $family)}}">{{ __('content.edit') }}</a>
-                                    <a class="btn btn-danger btn-xs" href="{{ route('families.destroy', $family)}}">{{ __('content.delete')}}</a>
+                                    <a class="btn btn-info btn-xs" href="{{ route('categories.edit', $category)}}">{{ __('content.edit') }}</a>
+                                    <a class="btn btn-danger btn-xs" href="{{ route('categories.destroy', $category)}}">{{ __('content.delete') }}</a>
                                 </td>
                             </tr>
                         @endforeach
@@ -66,16 +72,16 @@
 
     {{-- Import from Excel File --}}
 
-    <div class="modal fade" id="importFamilies">
+    <div class="modal fade" id="importCategories">
         <div class="modal-dialog">
-            <form method="POST" action="{{ route('families.import') }}" enctype="multipart/form-data">
+            <form method="POST" action="{{ route('categories.import') }}" enctype="multipart/form-data">
                 @csrf
                 <div class="modal-content">
                     <div class="modal-header">
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                             <span aria-hidden="true">&times;</span>
                         </button>
-                        <h4 class="modal-title">{{ __('content.import').' '.__('content.families') }}</h4>
+                        <h4 class="modal-title">{{ __('content.import').' '.__('content.categories') }}</h4>
                     </div>
                     <div class="modal-body">
                         <div>

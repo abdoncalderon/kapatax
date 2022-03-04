@@ -51,15 +51,6 @@
 
                             <input id="project_id" type="hidden" class="form-control" name="project_id" value="{{ $project->id }}" type="text">
 
-                            {{-- Name  --}}
-
-                            <div class="form-group">
-                                <label class="col-sm-2 control-label">{{ __('content.name') }}</label>
-                                <div class="input-group input-group-sm col-xs-12 col-sm-10">
-                                    <input type="text" class="form-control" name="name" maxlength="255" required>
-                                </div>
-                            </div>
-
                             {{-- Zone --}}
 
                             <div class="form-group">
@@ -76,6 +67,17 @@
                                     </span>
                                 </div>
                             </div>
+
+                            {{-- Name  --}}
+
+                            <div class="form-group">
+                                <label class="col-sm-2 control-label">{{ __('content.name') }}</label>
+                                <div class="input-group input-group-sm col-xs-12 col-sm-10">
+                                    <input type="text" class="form-control" name="name" maxlength="255" required>
+                                </div>
+                            </div>
+
+                            
                        
                         </div>
 

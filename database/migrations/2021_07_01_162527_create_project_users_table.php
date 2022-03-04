@@ -19,8 +19,8 @@ class CreateProjectUsersTable extends Migration
             $table->foreign('user_id')->references('id')->on('users')->onUpdate('cascade')->onDelete('restrict');
             $table->foreignId('project_id');
             $table->foreign('project_id')->references('id')->on('projects')->onUpdate('cascade')->onDelete('restrict');
-            $table->foreignId('role_id');
-            $table->foreign('role_id')->references('id')->on('roles')->onUpdate('cascade')->onDelete('restrict');
+            $table->foreignId('project_role_id');
+            $table->foreign('project_role_id')->references('id')->on('project_roles')->onUpdate('cascade')->onDelete('restrict');
             $table->unique(['user_id','project_id'],'project_user_unique');
             $table->timestamps();
         });

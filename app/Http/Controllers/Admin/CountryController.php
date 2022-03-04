@@ -100,7 +100,7 @@ class CountryController extends Controller
             if($request->hasFile('file')){
                 $file = $request->file('file');
                 Excel::import(new CountriesImport,$file);
-                return back();
+                return back()->with('success',__('messages.successfullImport'));
             }
         }catch(Exception $e){
             return back()->withErrors(exception_code($e->errorInfo[0]));

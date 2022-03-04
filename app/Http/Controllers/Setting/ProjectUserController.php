@@ -4,8 +4,7 @@ namespace App\Http\Controllers\Setting;
 
 use App\Http\Controllers\Controller;
 use App\Models\User;
-use App\Models\Project;
-use App\Models\Role;
+use App\Models\ProjectRole;
 use App\Models\ProjectUser;
 use App\Http\Requests\Admin\StoreProjectUserRequest;
 use App\Models\StakeholderPerson;
@@ -22,35 +21,15 @@ class ProjectUserController extends Controller
 
     public function create(User $user)
     {
-        /* $myProjects = $user->projectUsers;
-        $projects = Project::get();
-        $availablesProjects = [];
-        foreach ($projects as $menu){
-            $exist = false;
-            foreach($myProjects as $myProject)
-            {
-                if($menu->id==$myProject->menu_id){
-                    $exist = true;
-                    break;
-                }
-            }
-            if (!$exist){
-                array_push($availablesProjects,$menu);
-            }
-        }
-        $projects = ProjectUser::where('user_id','!=',$user->id); */
         $availableUsers = User::select('users.*')
                         ->join('people','users.person_id','=','people.id')
                         ->join('stakeholder_people','people.id','=','stakeholder_people.person_id')
                         ->join('stakeholders','stakeholder_people.stakeholder_id','=','stakeholders.id')
                         ->where('stakeholders.project_id',session('current_project_id'))
                         ->get();
-       /*  $stakeholderPeople = StakeholderPerson::select('stakeholder_people.*')
-                            ->join('stakeholders','stakeholder_people.stakeholder_id','=','stakeholders.id')
-                            ->where('stakeholders.project_id',session('current_project_id'))
-                            ->get(); */
-        $roles = Role::all();
+        $roles = ProjectRole::select('roles.*')->join('roles','project_roles.role_id','=','roles.id')->where('project_roles.project_id',session('current_project_id'))->get();
         return view('setting.projectUsers.create')
+        ->with(compact('user'))
         ->with(compact('availableUsers'))
         ->with(compact('roles'));
     }
@@ -76,4 +55,6 @@ class ProjectUserController extends Controller
             return back()->withErrors(exception_code($e->errorInfo[0]));
         }
     }
+
+    
 }

@@ -25,6 +25,7 @@ Route::get('/menus/destroy/{menu}','Admin\MenuController@destroy')->name('menus.
 Route::resource('roles','Admin\RoleController');
 Route::get('/roles/activate/{role}/{value}','Admin\RoleController@activate')->name('roles.activate');
 Route::get('/role/destroy/{role}','Admin\RoleController@destroy')->name('roles.destroy');
+Route::post('/role/add','Admin\RoleController@add')->name('roles.add');
 
 /* Routes Profiles */
 Route::resource('profiles','Admin\ProfileController');
@@ -76,9 +77,19 @@ Route::get('/projects/activate/{project}/{value}','Admin\ProjectController@activ
 Route::get('projects/lock/{project}/{value}','Admin\ProjectController@lock')->name('projects.lock');
 Route::get('/projects/destroy/{project}','Admin\ProjectController@destroy')->name('projects.destroy');
 
+/* Routes Project Roles  */
+Route::get('/projectRoles/{project}','Admin\ProjectRoleController@index')->name('projectRoles.index');
+Route::get('/create/projectRole/{project}','Admin\ProjectRoleController@create')->name('projectRoles.create');
+Route::post('/projectRoles/{project}','Admin\ProjectRoleController@store')->name('projectRoles.store');
+Route::get('/projectRoles/edit/{projectRole}','Admin\ProjectRoleController@edit')->name('projectRoles.edit');
+Route::patch('/projectRole/{projectRole}','Admin\ProjectRoleController@update')->name('projectRoles.update');
+Route::get('/projectRoles/destroy/{projectRole}','Admin\ProjectRoleController@destroy')->name('projectRoles.destroy');
+Route::get('getRoles/{project}','Admin\ProjectRoleController@getRoles')->name('projectRoles.getRoles');
+
 /* Routes Unities */
 Route::resource('unities','Admin\UnityController');
 Route::get('/unity/destroy/{unity}','Admin\UnityController@destroy')->name('unities.destroy');
+Route::post('/unitiesImport','Admin\UnityController@import')->name('unities.import');
 
 /* Routes Brands */
 Route::resource('brands','Admin\BrandController');
@@ -125,11 +136,12 @@ Route::post('/users/add','Admin\UserController@add')->name('users.add');
 
 /* Routes User Projects  */
 Route::get('/userProjects/{user}','Admin\UserProjectController@index')->name('userProjects.index');
-Route::get('/create/project/{user}','Admin\UserProjectController@create')->name('userProjects.create');
+Route::get('/create/userProject/{user}','Admin\UserProjectController@create')->name('userProjects.create');
 Route::post('/userProjects/{user}','Admin\UserProjectController@store')->name('userProjects.store');
 Route::get('/userProjects/edit/{projectUser}','Admin\UserProjectController@edit')->name('userProjects.edit');
 Route::patch('/userProject/{projectUser}','Admin\UserProjectController@update')->name('userProjects.update');
 Route::get('/userProjects/destroy/{projectUser}','Admin\UserProjectController@destroy')->name('userProjects.destroy');
+
 
 /********************************************* SETTING ROUTES *************************************************************** */
 
@@ -177,6 +189,7 @@ Route::get('/location/destroy/{location}','Setting\LocationController@destroy')-
 /* Routes Equipments */
 Route::resource('equipments','Setting\EquipmentController');
 Route::get('/equipment/destroy/{equipment}','Setting\EquipmentController@destroy')->name('equipments.destroy');
+Route::post('/equipmentsImport','Setting\EquipmentController@import')->name('equipments.import');
 
 /* Routes Turns */
 Route::resource('turns','Setting\TurnController');
@@ -187,6 +200,13 @@ Route::resource('families','Setting\FamilyController');
 Route::get('/families/destroy/{turn}','Setting\FamilyController@destroy')->name('families.destroy');
 Route::post('/families/add','Setting\FamilyController@add')->name('families.add');
 Route::post('/familiesImport','Setting\FamilyController@import')->name('families.import');
+
+/* Routes Categories */
+Route::resource('categories','Setting\CategoryController');
+Route::get('/categories/destroy/{turn}','Setting\CategoryController@destroy')->name('categories.destroy');
+Route::post('/categories/add','Setting\CategoryController@add')->name('categories.add');
+Route::post('/categoriesImport','Setting\CategoryController@import')->name('categories.import');
+
 
 /* Routes Project People */
 Route::resource('projectPeople','Setting\PersonController');

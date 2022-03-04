@@ -187,9 +187,14 @@ class DefaultSeeder extends Seeder
             'person_id' => '1',
         ]);
 
+        DB::table('project_roles')->insert([
+            'project_id' => '1',
+            'role_id' => '1',
+        ]);
+
         DB::table('project_users')->insert([
             'user_id' => '1',
-            'role_id' => '1',
+            'project_role_id' => '1',
             'project_id' => '1',
         ]);
 

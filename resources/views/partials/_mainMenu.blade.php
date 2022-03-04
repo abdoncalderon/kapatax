@@ -76,7 +76,7 @@
 
                         @foreach ($roleMenu->menu->menus as $submenu1)
 
-                            @if (is_role_menu_active(current_user()->role,$submenu1)==1)
+                            @if (is_role_menu_active(current_user()->projectRole,$submenu1)==1)
 
                                 @if(!$submenu1->menus->isEmpty())
                                     <li class="treeview">
@@ -102,7 +102,7 @@
 
                                             @foreach ($submenu1->menus as $submenu2 )
 
-                                                @if (is_role_menu_active(current_user()->role,$submenu2)==1)
+                                                @if (is_role_menu_active(current_user()->projectRole,$submenu2)==1)
                                                     
                                                     @if(!$submenu2->menus->isEmpty())
                                                         <li class="treeview">
@@ -128,7 +128,7 @@
 
                                                                 @foreach ($submenu2->menus as $submenu3 )
 
-                                                                    @if (is_role_menu_active(current_user()->role,$submenu3)==1)
+                                                                    @if (is_role_menu_active(current_user()->projectRole,$submenu3)==1)
 
                                                                         @if (is_null($submenu3->route))
                                                                             <li><a href="#"><i class="{{ $submenu3->icon }}"></i> {{ __($submenu3->showName) }} </a></li>

@@ -51,34 +51,26 @@
                                 <label class="col-sm-2 control-label">{{ __('content.person') }}</label>
                                 <div class="input-group input-group-sm col-xs-12 col-sm-10" >
                                     <select name="user_id" class="form-control" style="width: 100%;">
+                                        <option value="">{{ __('messages.choiceUser') }}</option>
                                         @foreach ($availableUsers as $user)
                                             <option value="{{ $user->id }}">{{ $user->person->fullName }}</option>
                                         @endforeach
                                     </select>
-                                    @error('user_id')
-                                        <span class="invalid-feedback" role="alert" style="color:red">
-                                            <strong>{{ $message }}</strong>
-                                        </span>
-                                    @enderror
+                                    
                                 </div>
                             </div>
 
-                            {{-- role --}}
+                            {{-- project role --}}
 
                             <div class="form-group">
                                 <label class="col-sm-2 control-label">{{ __('content.role') }}</label>
                                 <div class="input-group input-group-sm col-xs-12 col-sm-10" >
-                                    <select name="role_id" class="form-control" style="width: 100%;">
+                                    <select name="project_role_id" class="form-control" style="width: 100%;">
+                                        <option value="">{{ __('messages.choiceRole') }}</option>
                                         @foreach ($roles as $role)
                                             <option value="{{ $role->id }}">{{ $role->name }}</option>
                                         @endforeach
                                     </select>
-                                    @error('role_id')
-                                        <span class="invalid-feedback" role="alert" style="color:red">
-                                            <strong>{{ $message }}</strong>
-                                        </span>
-                                    @enderror
-
                                 </div>
                             </div>
                             

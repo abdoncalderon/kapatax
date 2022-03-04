@@ -49,7 +49,7 @@
                         @foreach($projectUsers as $projectUser)
                             <tr>
                                 <td>{{ $projectUser->user->user }}</td>
-                                <td>{{ $projectUser->role->name }}</td>
+                                <td>{{ $projectUser->projectRole->role->name }}</td>
                                 <td>
                                     <a class="btn btn-info btn-xs" href="#">{{ __('content.deactivate') }}</a>
                                 </td>

@@ -94,6 +94,16 @@ class MenuSeeder extends Seeder
                         // 9
 
                         DB::table('menus')->insert([
+                            'code' => 'administration.roles',
+                            'showName' => 'content.roles',
+                            'menu_id' => '1',
+                            'route' => 'roles.index',
+                            'icon' => 'fa fa-circle-o',
+                        ]);
+                        
+                        // 10
+
+                        DB::table('menus')->insert([
                             'code' => 'administration.projects',
                             'showName' => 'content.projects',
                             'menu_id' => '1',
@@ -101,15 +111,6 @@ class MenuSeeder extends Seeder
                             'icon' => 'fa fa-circle-o',
                         ]);
 
-                        // 10
-
-                        DB::table('menus')->insert([
-                            'code' => 'administration.roles',
-                            'showName' => 'content.roles',
-                            'menu_id' => '1',
-                            'route' => 'roles.index',
-                            'icon' => 'fa fa-circle-o',
-                        ]);
 
                         // 11
 
@@ -147,7 +148,7 @@ class MenuSeeder extends Seeder
                             'code' => 'administration.users',
                             'showName' => 'content.users',
                             'menu_id' => '1',
-                            'route' => 'users.index',
+                            'route' => null,
                             'icon' => 'fa fa-circle-o',
                         ]);
 
@@ -308,7 +309,7 @@ class MenuSeeder extends Seeder
                             'code' => 'settings.categories',
                             'showName' => 'content.categories',
                             'menu_id' => '18',
-                            'route' => null,
+                            'route' => 'categories.index',
                             'icon' => 'fa fa-circle-o',
                         ]);
 

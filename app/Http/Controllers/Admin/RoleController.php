@@ -79,6 +79,16 @@ class RoleController extends Controller
         }
     } 
 
+    public function add(StoreRoleRequest $request )
+    {
+        try{
+            Role::create($request ->validated());
+            return back();
+        }catch(Exception $e){
+            return back()->withErrors(exception_code($e->errorInfo[0]));
+        }
+    }
+
     
     
 }

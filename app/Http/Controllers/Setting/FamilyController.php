@@ -33,7 +33,7 @@ class FamilyController extends Controller
             Family::create($request ->validated());
             return redirect()->route('families.index');
         }catch(Exception $e){
-            return back()->withErrors(exception_code($e->errorInfo[0]));
+            return back()->withErrors($e->getMessage());
         }
     }
 
@@ -81,7 +81,7 @@ class FamilyController extends Controller
                 return back();
             }
         }catch(Exception $e){
-            return back()->withErrors(exception_code($e->errorInfo[0]));
+            return back()->withErrors($e->getMessage());
         }
     }
 
@@ -91,7 +91,7 @@ class FamilyController extends Controller
             Family::create($request ->validated());
             return back();
         }catch(Exception $e){
-            return back()->withErrors(exception_code($e->errorInfo[0]));
+            return back()->withErrors($e->getMessage());
         }
     }
 }

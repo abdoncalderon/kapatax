@@ -15,11 +15,12 @@ class CreateCategoriesTable extends Migration
     {
         Schema::create('categories', function (Blueprint $table) {
             $table->id();
-            $table->string('name')->unique();
-            $table->string('code')->unique();
+            $table->string('name');
+            $table->string('code');
             $table->string('description')->nullable();
             $table->foreignId('family_id');
             $table->foreign('family_id')->references('id')->on('families')->onUpdate('cascade')->onDelete('restrict');
+            $table->unique(['code','name','family_id'],'family_category_name_code_unique');
             $table->timestamps();
         });
     }

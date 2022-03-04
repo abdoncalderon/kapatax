@@ -315,6 +315,14 @@
                                                     <td>{{ $user->email }}</td>
                                                     <td>
                                                         <a class="btn btn-info btn-xs" href="#">{{ __('content.edit') }}</a>
+                                                        <a class="btn btn-info btn-xs" href="{{ route('userProjects.index', $user) }}">{{ __('content.access') }}</a>
+                                                        @if($user->id!=1)
+                                                            @if ($user->isActive())
+                                                                <a class="btn btn-danger btn-xs" href="{{ route('users.activate', [$user, '0']) }}">{{ __('content.deactivate') }}</a>
+                                                            @else
+                                                                <a class="btn btn-info btn-xs" href="{{ route('users.activate', [$user, '1']) }}">{{ __('content.activate') }}</a>
+                                                            @endif
+                                                        @endif
                                                     </td>
                                                 </tr>
                                             @endforeach

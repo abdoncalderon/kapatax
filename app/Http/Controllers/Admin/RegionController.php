@@ -91,7 +91,7 @@ class RegionController extends Controller
             if($request->hasFile('file')){
                 $file = $request->file('file');
                 Excel::import(new RegionsImport,$file);
-                return back()->with('success',__('content.import').' '.__('content.successfull'));
+                return back()->with('success',__('messages.successfullImport'));
             }
         }catch(Exception $e){
             return back()->withErrors(exception_code($e->errorInfo[0]));

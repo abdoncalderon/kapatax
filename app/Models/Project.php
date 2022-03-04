@@ -40,6 +40,9 @@ class Project extends Model
         return $this->hasMany(Family::class);
     }
 
+    public function projectRoles(){
+        return $this->hasMany(ProjectRole::class);
+    }
 
     public function isActive(){
         if($this->isActive==1){

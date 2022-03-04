@@ -20,8 +20,7 @@ class CreateFamiliesTable extends Migration
             $table->string('description')->nullable();
             $table->foreignId('project_id');
             $table->foreign('project_id')->references('id')->on('projects')->onUpdate('cascade')->onDelete('restrict');
-            $table->unique(['name','project_id'],'project_family_name_unique');
-            $table->unique(['code','project_id'],'project_family_code_unique');
+            $table->unique(['code','name','project_id'],'project_family_name_code_unique');
             $table->timestamps();
         });
     }

@@ -239,6 +239,18 @@
             }
         );
 
+        $("#project").change(
+            function(event){
+                $.get("/getRoles/"+event.target.value+"", 
+                    function(response,state){
+                        $("#role").empty();
+                        $("#role").append("<option value=''>Choice Role</option>");
+                        for(i=0;i<response.length;i++){
+                            $("#role").append("<option value='"+response[i].id+"'> "+response[i].name+"</option>");
+                        } 
+                    });
+        })
+
         $("#photo").on('change', function() {
                 $("#photoPreview").removeAttr('src');
                 $('#photoPreview').attr('src', URL.createObjectURL(event.target.files[0]));

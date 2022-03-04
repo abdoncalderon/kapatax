@@ -4,7 +4,7 @@ namespace App\Http\Requests\Setting;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class StoreFamilyRequest extends FormRequest
+class UpdateCategoryRequest extends FormRequest
 {
     public function authorize()
     {
@@ -17,7 +17,8 @@ class StoreFamilyRequest extends FormRequest
             'name'=>'required',
             'code'=>'required',
             'description'=>'nullable',
-            'project_id'=>'required',
+            'family_id'=>'required',
         ];
+    };
     }
 }

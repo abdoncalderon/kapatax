@@ -17,7 +17,7 @@ class StoreProjectUserRequest extends FormRequest
         return [
             'user_id'=>'required',
             'project_id'=>'required',
-            'role_id'=>'required',
+            'project_role_id'=>'required',
         ];
     }
 }
