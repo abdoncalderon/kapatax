@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Folio extends Model
 {
-    protected $fillable = ['date','location_id','user_id','number',];
+    protected $fillable = ['date','location_id','project_user_id','number',];
 
     public function location(){
         return $this->belongsTo(Location::class);
@@ -26,9 +26,8 @@ class Folio extends Model
     }
 
     public function status(){
-        $date = strtotime($this->date);
 
-        if(is_valid_date_for_open_folio($date,$this->location)){
+        if(is_valid_date_for_open_folio($this->date,$this->location)){
             return __('content.opened');
         }else{
             return __('content.closed');

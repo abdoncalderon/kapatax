@@ -219,6 +219,19 @@
                     });
         })
 
+        $("#zone").change(
+            function(event){
+                $.get("/getLocations/"+event.target.value+"", 
+                    function(response,state){
+                        console.log(response);
+                        $("#location").empty();
+                        $("#location").append("<option value=''>Select Option</option>");
+                        for(i=0;i<response.length;i++){
+                            $("#location").append("<option value='"+response[i].id+"'> "+response[i].name+"</option>");
+                        } 
+                    });
+        })
+
         $("#folio_location_id").change(
             function(event){
                 $.get("/getNumber/"+event.target.value+"", 
@@ -292,6 +305,92 @@
 
             }
         )
+
+        $("#asset").change(
+            function(event){
+                $.get("/getMaterial/"+event.target.value+"", 
+                    function(response,state){
+                            $("#brand").attr('value',response.brand);
+                            $("#model").attr('value',response.model);
+                            $("#family").attr('value',response.family);
+                            $("#category").attr('value',response.category);
+                        } 
+                    );
+    
+        })
+
+        $("#family").change(
+            function(event){
+
+                $("#familyModal1Text").val($('#family option:selected').text())
+                $("#familyModal1Id").val($('#family option:selected').val())
+
+                $("#familyModal2Text").val($('#family option:selected').text())
+                $("#familyModal2Id").val($('#family option:selected').val())
+                
+                $.get("/getCategories/"+event.target.value+"", 
+                    function(response,state){
+                        $("#category").empty();
+                        $("#category").append("<option value=''>Select Option</option>");
+                        for(i=0;i<response.length;i++){
+                            
+                            $("#category").append("<option value='"+response[i].id+"'> "+response[i].name+"</option>");
+                        } 
+                    });
+        })
+
+        $("#category").change(
+            function(event){
+
+                $("#categoryModal1Text").val($('#category option:selected').text())
+                $("#categoryModal1Id").val($('#category option:selected').val())
+
+                $.get("/getSubcategories/"+event.target.value+"", 
+                    function(response,state){
+                        $("#subcategory").empty();
+                        $("#subcategory").append("<option value=''>Select Option</option>");
+                        for(i=0;i<response.length;i++){
+                            
+                            $("#subcategory").append("<option value='"+response[i].id+"'> "+response[i].name+"</option>");
+                        } 
+                    });
+        })
+
+
+
+        $("#brand").change(
+            function(event){
+
+                $("#brandModal1Text").val($('#brand option:selected').text())
+                $("#brandModal1Id").val($('#brand option:selected').val())
+
+                $("#name").attr('value',$("#subcategory option:selected").text()+" - "+$("#brand option:selected").text()+" - "+$("#model option:selected").text());
+
+                $.get("/getModels/"+event.target.value+"", 
+                    function(response,state){
+                        $("#model").empty();
+                        $("#model").append("<option value=''>Select Option</option>");
+                        for(i=0;i<response.length;i++){
+                            $("#model").append("<option value='"+response[i].id+"'> "+response[i].name+"</option>");
+                        } 
+                    });
+        })
+
+        $("#subcategory").on('change', function() {
+            $("#name").attr('value',$("#subcategory option:selected").text()+" - "+$("#brand option:selected").text()+" - "+$("#model option:selected").text());
+            }
+        )
+
+        $("#model").on('change', function() {
+            $("#name").attr('value',$("#subcategory option:selected").text()+" - "+$("#brand option:selected").text()+" - "+$("#model option:selected").text());
+            }
+        )
+
+        $("#partOf").on('change', function() {
+            $("#name").attr('value',$("#subcategory option:selected").text()+" - "+$("#brand option:selected").text()+" - "+$("#model option:selected").text()+" - PART OF( "+$("#partOf option:selected").text()+" )");
+            }
+        )
+
         
 
         

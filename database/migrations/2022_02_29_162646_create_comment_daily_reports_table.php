@@ -20,8 +20,8 @@ class CreateCommentDailyReportsTable extends Migration
             $table->string('section');
             $table->dateTime('date');
             $table->text('comment');
-            $table->foreignId('user_id');
-            $table->foreign('user_id')->references('id')->on('users')->onUpdate('cascade')->onDelete('restrict');
+            $table->foreignId('project_user_id');
+            $table->foreign('project_user_id')->references('id')->on('project_users')->onUpdate('cascade')->onDelete('restrict');
             $table->timestamps();
         });
     }

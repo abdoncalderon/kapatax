@@ -22,8 +22,8 @@ class CreateEventDailyReportsTable extends Migration
             $table->time('finish');
             $table->text('description');
             $table->boolean('haveImpact')->default(false);
-            $table->foreignId('user_id');
-            $table->foreign('user_id')->references('id')->on('users')->onUpdate('cascade')->onDelete('restrict');
+            $table->foreignId('project_user_id');
+            $table->foreign('project_user_id')->references('id')->on('project_users')->onUpdate('cascade')->onDelete('restrict');
             $table->timestamps();
         });
     }

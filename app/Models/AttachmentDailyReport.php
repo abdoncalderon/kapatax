@@ -6,11 +6,11 @@ use Illuminate\Database\Eloquent\Model;
 
 class AttachmentDailyReport extends Model
 {
-    protected $fillable = ['daily_report_id','filename','description','user_id',];
+    protected $fillable = ['daily_report_id','filename','description','project_user_id',];
 
-    public function user()
+    public function projectUser()
     {
-        return $this->belongsTo(User::class);
+        return $this->belongsTo(ProjectUser::class);
     }
 
     public function dailyReport()

@@ -198,7 +198,7 @@ class DefaultSeeder extends Seeder
             'project_id' => '1',
         ]);
 
-        DB::table('location_users')->insert([
+        DB::table('location_project_users')->insert([
             'location_id' => '1',
             'project_user_id' => '1',
             'dailyreport_collaborator' => '1',

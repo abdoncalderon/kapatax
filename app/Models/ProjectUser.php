@@ -21,4 +21,14 @@ class ProjectUser extends Model
     {
         return $this->belongsTo(ProjectRole::class);
     }
+
+    public function locationProjectUsers()
+    {
+        return $this->hasMany(LocationProjectUser::class);
+    }
+
+    public function needRequests()
+    {
+        return $this->hasMany(NeedRequest::class);
+    }
 }

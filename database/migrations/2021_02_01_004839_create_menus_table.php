@@ -12,10 +12,11 @@ class CreateMenusTable extends Migration
             $table->id();
             $table->string('code')->unique();
             $table->string('showName');
-            $table->unsignedBigInteger('menu_id')->nullable();
+            $table->string('father')->nullable();
             $table->string('route')->nullable();
             $table->string('icon')->deafult('fa fa-circle-o');
             $table->boolean('isActive')->default(true);
+
             $table->timestamps();
         });
     }

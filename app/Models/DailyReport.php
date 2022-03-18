@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class DailyReport extends Model
 {
-    protected $fillable = ['folio_id','turn_id','report','user_id','status','approvedby','reviewedby','responsible',];
+    protected $fillable = ['folio_id','turn_id','report','project_user_id','status','approvedby','reviewedby','responsible',];
     
     public function folio()
     {
@@ -16,6 +16,11 @@ class DailyReport extends Model
     public function turn()
     {
         return $this->belongsTo(Turn::class);
+    }
+
+    public function projectUser()
+    {
+        return $this->belongsTo(ProjectUser::class);
     }
 
     public function equipments()
@@ -45,20 +50,20 @@ class DailyReport extends Model
 
     public function reviewer()
     {
-        $user = User::find($this->reviewedby);
-        return $user;
+        $projectUser = ProjectUser::find($this->reviewedby);
+        return $projectUser->user;
     }
 
     public function approver()
     {
-        $user = User::find($this->approvedby);
-        return $user;
+        $projectUser = ProjectUser::find($this->approvedby);
+        return $projectUser->user;
     }
 
     public function responsible()
     {
-        $user = User::find($this->responsible);
-        return $user;
+        $projectUser = ProjectUser::find($this->responsible);
+        return $projectUser->user;
     }
     
     public function haveCommentsReport(){

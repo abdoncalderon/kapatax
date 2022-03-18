@@ -1,4 +1,4 @@
-<?php
+    <?php
 
 use App\Models\ProjectUser;
 use App\Models\ProjectRole;
@@ -7,16 +7,14 @@ use App\Models\Role;
 use App\Models\RolePermit;
 use App\Models\RoleMenu;
 use App\Models\Menu;
-use App\Models\LocationUser;
+use App\Models\LocationProjectUser;
 use App\Models\Location;
 use App\Models\Project;
 use App\Models\LocationTurn;
 use App\Models\Stakeholder;
-use App\Models\StakeholderPerson;
 use App\Models\Person;
-use App\Models\User;
+use App\Models\NeedRequest;
 use Carbon\Carbon;
-use Facade\FlareClient\Flare;
 
 function yesNo($value){
     if ($value==1){
@@ -45,7 +43,7 @@ if (! function_exists('current_user')) {
 if (! function_exists('user_have_permission')) {
     function user_have_permission($permit)
     {
-        $role = current_user()->role;
+        $role = current_user()->projectRole->role;
         $permit = Permit::where('name',$permit)->first();
         $rolePermit = RolePermit::where('role_id',$role->id)->where('permit_id',$permit->id)->first();
         return $rolePermit->isActive;
@@ -55,19 +53,18 @@ if (! function_exists('user_have_permission')) {
 if (! function_exists('user_managed_locations')) {
     function user_managed_locations(ProjectUser $projectUser)
     {
-        $user = $projectUser->user;
-        $userLocations = LocationUser::where('user_id',$user->id)->get();
-        return $userLocations;
+        $locationProjectUsers = LocationProjectUser::where('project_user_id',$projectUser->id)->get();
+        return $locationProjectUsers;
     }
 }
 
 if (! function_exists('menu_access_users')) {
     function menu_access_users($code)
     {
-        $projectId = session('current_project_id');
         $menu = Menu::where('code',$code)->first();
         $projectUsers = ProjectUser::select('project_users.*')
-                                    ->join('roles','project_users.role_id','=','roles.id')
+                                    ->join('project_roles','project_users.project_role_id','=','project_roles.id')
+                                    ->join('roles','project_roles.role_id','=','roles.id')
                                     ->join('role_menus','roles.id','=','role_menus.role_id')
                                     ->join('menus','role_menus.menu_id','=','menus.id')
                                     ->where('menus.id',$menu->id)
@@ -90,7 +87,7 @@ if (! function_exists('assign_permits_to_role')) {
                 ]);
             }
         }catch(Exception $e){
-            return back()->withErrors(exception_code($e->errorInfo[0]));
+            return back()->withErrors( $e->getMessage());
         }
     }
 }
@@ -107,7 +104,7 @@ if (! function_exists('assign_menus_to_role')) {
                 ]);
             }
         }catch(Exception $e){
-            return back()->withErrors(exception_code($e->errorInfo[0]));
+            return back()->withErrors( $e->getMessage());
         }
     }
 }
@@ -124,7 +121,7 @@ if (! function_exists('assign_roles_to_menu')) {
                 ]);
             }
         }catch(Exception $e){
-            return back()->withErrors(exception_code($e->errorInfo[0]));
+            return back()->withErrors( $e->getMessage());
         }
     }
 }
@@ -141,7 +138,7 @@ if (! function_exists('assign_roles_to_permit')) {
                 ]);
             }
         }catch(Exception $e){
-            return back()->withErrors(exception_code($e->errorInfo[0]));
+            return back()->withErrors( $e->getMessage());
         }
     }
 }
@@ -149,17 +146,17 @@ if (! function_exists('assign_roles_to_permit')) {
 if (! function_exists('user_have_profile_in_location')) {
     function user_have_profile_in_location($profile, Location $location)
     {
-        $user = current_user()->user;
-        $locationUser = LocationUser::where('user_id',$user->id)->where('location_id',$location->id)->first();
+        
+        $locationProjectUser = LocationProjectUser::where('project_user_id',current_user()->id)->where('location_id',$location->id)->first();
         switch ($profile){
             case 'dailyreport_collaborator';
-                return $locationUser->dailyreport_collaborator;
+                return $locationProjectUser->dailyreport_collaborator;
             case 'dailyreport_approver';
-                return $locationUser->dailyreport_approver;
+                return $locationProjectUser->dailyreport_approver;
             case 'folio_approver';
-                return $locationUser->folio_approver;
+                return $locationProjectUser->folio_approver;
             case 'receive_notification';
-                return $locationUser->receive_notification;
+                return $locationProjectUser->receive_notification;
         }
     }
 }
@@ -167,9 +164,9 @@ if (! function_exists('user_have_profile_in_location')) {
 if (! function_exists('is_valid_date_for_location')) {
     function is_valid_date_for_location($date, Location $location)
     {
-        $finishDateLocation=strtotime($location->finishDate);
         $startDateLocation=strtotime($location->startDate);
-        if (($date>=$startDateLocation)&&($date<=$finishDateLocation)){
+        $finishDateLocation=strtotime($location->finishDate);
+        if ((strtotime($date)>=$startDateLocation)&&(strtotime($date)<=$finishDateLocation)){
             return true;
         } else {
             return false;
@@ -180,9 +177,7 @@ if (! function_exists('is_valid_date_for_location')) {
 if (! function_exists('is_valid_date_for_project')) {
     function is_valid_date_for_project($date, Project $project)
     {
-        $finishDateProject=strtotime($project->finishDate);
-        $startDateProject=strtotime($project->startDate);
-        if (($date>=$startDateProject)&&($date<=$finishDateProject)){
+        if ((strtotime($date)>=strtotime($project->startDate))&&(strtotime($date)<=strtotime($project->finishDate))){
             return true;
         } else {
             return false;
@@ -195,7 +190,7 @@ if (! function_exists('is_valid_date_for_turn')) {
     {
         $dateFromLocationTurn=strtotime($locationTurn->dateFrom);
         $dateToLocationTurn=strtotime($locationTurn->dateTo);
-        if (($date>=$dateFromLocationTurn)&&($date<=$dateToLocationTurn)){
+        if ((strtotime($date)>=$dateFromLocationTurn)&&(strtotime($date)<=$dateToLocationTurn)){
             return true;
         } else {
             return false;
@@ -207,7 +202,7 @@ if (! function_exists('is_valid_date_for_open_folio')) {
     function is_valid_date_for_open_folio($date, Location $location)
     {
         $today = strtotime(Carbon::today()->toDateString());
-        $differenceInHours = abs(round(($date - $today)/60/60,0));
+        $differenceInHours = abs(round((strtotime($date) - $today)/60/60,0));
         
         if ($differenceInHours <= $location->max_time_open_folio){
             return true;
@@ -221,7 +216,7 @@ if (! function_exists('is_valid_date_for_create_dailyreport')) {
     function is_valid_date_for_create_dailyreport($date, Location $location)
     {
         $today = strtotime(Carbon::today()->toDateString());
-        $differenceInHours = abs(round(($date - $today)/60/60,0));
+        $differenceInHours = abs(round((strtotime($date) - $today)/60/60,0));
         if (($differenceInHours <= $location->max_time_create_dailyreport)){
             return true;
         }else{
@@ -234,7 +229,7 @@ if (! function_exists('is_valid_date_for_create_note')) {
     function is_valid_date_for_create_note($date, Location $location)
     {
         $today = strtotime(Carbon::today()->toDateString());
-        $differenceInHours = abs(round(($date - $today)/60/60,0));
+        $differenceInHours = abs(round((strtotime($date) - $today)/60/60,0));
         if (($differenceInHours <= $location->max_time_create_note)){
             return true;
         }else{
@@ -247,7 +242,7 @@ if (! function_exists('is_valid_date_for_create_comment')) {
     function is_valid_date_for_create_comment($date, Location $location)
     {
         $today = strtotime(Carbon::today()->toDateString());
-        $differenceInHours = abs(round(($date - $today)/60/60,0));
+        $differenceInHours = abs(round((strtotime($date) - $today)/60/60,0));
         if (($differenceInHours <= $location->max_time_create_comment)){
             return true;
         }else{
@@ -268,7 +263,7 @@ if (! function_exists('is_role_menu_active')) {
             }
             
         }catch(Exception $e){
-            return back()->withErrors(exception_code($e->errorInfo[0]));
+            return back()->withErrors( $e->getMessage());
         }
     }
 }
@@ -327,6 +322,7 @@ if (! function_exists('is_valid_date_for_departure')) {
     }
 }
 
+
 if (! function_exists('is_active_stakeholder_person')) {
     function is_active_stakeholder_person(Person $person)
     {
@@ -341,7 +337,6 @@ if (! function_exists('is_active_stakeholder_person')) {
     }
 }
 
-
 if (! function_exists('exception_code')) {
     function exception_code($code)
     {
@@ -353,3 +348,41 @@ if (! function_exists('exception_code')) {
         }
     }
 }
+
+if (! function_exists('update_need_request_items_status')) {
+    function update_need_request_items_status(NeedRequest $needRequest, $status)
+    {
+        try{
+            foreach ($needRequest->needRequestItems as $needRequestItem){
+                $needRequestItem->update([
+                    'status_id'=>$status,
+                ]);
+            }
+            return true;
+        }catch(Exception $e){
+            return back()->withErrors( $e->getMessage());
+        }
+    }
+}
+
+if (! function_exists('my_pending_requests')) {
+    function my_pending_requests()
+    {
+        $pendingRequests = NeedRequest::where('project_user_id',current_user()->id)
+                                        ->where('status_id','<=',5)
+                                        ->get();
+        return $pendingRequests->count();
+    }
+}
+
+if (! function_exists('my_pending_approvals')) {
+    function my_pending_approvals()
+    {
+        $pendingApprovals = NeedRequest::where('approving_user_id',current_user()->id)
+                                        ->get();
+        return $pendingApprovals->count();
+    }
+}
+
+
+

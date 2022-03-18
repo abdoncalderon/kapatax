@@ -20,8 +20,8 @@ class CreateDailyReportsTable extends Migration
             $table->foreignId('turn_id');
             $table->foreign('turn_id')->references('id')->on('turns')->onUpdate('cascade')->onDelete('restrict');
             $table->text('report');
-            $table->foreignId('user_id');
-            $table->foreign('user_id')->references('id')->on('users')->onUpdate('cascade')->onDelete('restrict');
+            $table->foreignId('project_user_id');
+            $table->foreign('project_user_id')->references('id')->on('project_users')->onUpdate('cascade')->onDelete('restrict');
             $table->unsignedTinyInteger('status')->default(0);
             $table->unsignedBigInteger('approvedby')->nullable();
             $table->unsignedBigInteger('reviewedby')->nullable();

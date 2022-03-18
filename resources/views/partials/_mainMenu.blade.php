@@ -14,7 +14,7 @@
 
         <!-- Home Menu -->
 
-        <li class="treeview">
+        <li class="treeview active">
 
             <a href="#">
                 <i class="fa fa-home"></i>
@@ -29,11 +29,20 @@
                     <a href="{{ route('profiles.show', auth()->user()->id) }}"><i class="fa fa-user"></i> {{ __('content.profile') }} </a>
                 </li>
                 <li>
-                    <a href="#">
+                    <a href="{{ route('myNeedRequests.index') }}">
                         <i class="fa fa-shopping-cart"></i>
                             {{ __('messages.myOrders') }} 
                         <span class="pull-right-container">
-                            <small class="label pull-right bg-yellow">12</small>
+                            <small class="label pull-right bg-yellow">{{ my_pending_requests() }}</small>
+                        </span>
+                    </a>
+                </li>
+                <li>
+                    <a href="#">
+                        <i class="fa fa-check"></i>
+                            {{ __('messages.pendingApprovals') }} 
+                        <span class="pull-right-container">
+                            <small class="label pull-right bg-yellow">{{ my_pending_approvals() }}</small>
                         </span>
                     </a>
                 </li>
@@ -52,7 +61,7 @@
 
     @foreach ($roleMenus as $roleMenu)
 
-        @if (empty($roleMenu->menu->menu_id))
+        @if (empty($roleMenu->menu->father))
 
             <li class="treeview">
 

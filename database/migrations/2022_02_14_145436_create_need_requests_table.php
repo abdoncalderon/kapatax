@@ -19,10 +19,12 @@ class CreateNeedRequestsTable extends Migration
             $table->dateTime('date');
             $table->foreignId('project_user_id');
             $table->foreign('project_user_id')->references('id')->on('project_users')->onUpdate('cascade')->onDelete('restrict');
-            $table->unsignedBigInteger('aprroving_user_id');
+            $table->foreignId('location_id');
+            $table->foreign('location_id')->references('id')->on('locations')->onUpdate('cascade')->onDelete('restrict');
+            $table->unsignedBigInteger('approving_user_id')->nullable();
             $table->unsignedBigInteger('cost_account_id')->nullable();
-            $table->string('typeRequest');
-            $table->string('status');
+            $table->decimal('expectedCost')->nullable();
+            $table->integer('status_id');
             $table->timestamps();
         });
     }

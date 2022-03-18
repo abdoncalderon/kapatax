@@ -24,7 +24,7 @@ class ReportCompleted extends Mailable
     {
         $this->dailyReport = $dailyReport;
 
-        $this->subject = __('messages.ReportCompletedSubject');
+        $this->subject = __('messages.reportCompletedSubject');
 
     }
 
@@ -35,6 +35,6 @@ class ReportCompleted extends Mailable
      */
     public function build()
     {
-        return $this->view('agreement.emails.reportCompleted');
+        return $this->view('workbooks.emails.reportCompleted');
     }
 }

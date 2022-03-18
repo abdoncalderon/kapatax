@@ -16,18 +16,20 @@ class CreateLocationsTable extends Migration
         Schema::create('locations', function (Blueprint $table) {
             $table->id();
             $table->string('name')->unique();
-            $table->string('code')->unique()->nullable();
+            $table->string('code');
             $table->foreignId('zone_id');
             $table->foreign('zone_id')->references('id')->on('zones')->onUpdate('cascade')->onDelete('restrict');
             $table->string('latitude')->nullable();
             $table->string('longitude')->nullable();
             $table->integer('sequence')->default('1');
-            $table->date('startDate')->nullable();
-            $table->date('finishDate')->nullable();
+            $table->date('startDate');
+            $table->date('finishDate');
             $table->integer('max_time_open_folio')->default('48');
             $table->integer('max_time_create_dailyreport')->default('48');
             $table->integer('max_time_create_note')->default('48');
             $table->integer('max_time_create_comment')->default('48');
+            $table->unique(['name','zone_id'],'zone_location_name_unique');
+            $table->unique(['code','zone_id'],'zone_location_code_unique');
             $table->timestamps();
         });
     }

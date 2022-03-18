@@ -21,8 +21,8 @@ class CreateNotesTable extends Migration
             $table->foreign('turn_id')->references('id')->on('turns')->onUpdate('cascade')->onDelete('restrict');
             $table->dateTime('date');
             $table->text('note');
-            $table->foreignId('user_id');
-            $table->foreign('user_id')->references('id')->on('users')->onUpdate('cascade')->onDelete('restrict');
+            $table->foreignId('project_user_id');
+            $table->foreign('project_user_id')->references('id')->on('project_users')->onUpdate('cascade')->onDelete('restrict');
             $table->integer('status')->default('0');
             $table->timestamps();
         });

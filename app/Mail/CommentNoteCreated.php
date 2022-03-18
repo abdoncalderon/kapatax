@@ -34,6 +34,6 @@ class CommentNoteCreated extends Mailable
      */
     public function build()
     {
-        return $this->view('agreement.emails.commentNoteCreated');
+        return $this->view('workbooks.emails.commentNoteCreated');
     }
 }

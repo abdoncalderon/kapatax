@@ -12,340 +12,325 @@ class MenuSeeder extends Seeder
      */
     public function run()
     {
-        // Administration Menu
+        // Settings Menu
+
+        DB::table('menus')->insert([
+            'code' => 'settings',
+            'showName' => 'content.settings',
+            'route' => null,
+            'icon' => 'fa fa-cogs',
+        ]);
+
+                        DB::table('menus')->insert([
+                            'code' => 'settings.regions',
+                            'showName' => 'content.regions',
+                            'father' => 'settings',
+                            'route' => 'regions.index',
+                            'icon' => 'fa fa-circle-o',
+                        ]);
+
+                        DB::table('menus')->insert([
+                            'code' => 'settings.countries',
+                            'showName' => 'content.countries',
+                            'father' => 'settings',
+                            'route' => 'countries.index',
+                            'icon' => 'fa fa-circle-o',
+                        ]);
+
+                        DB::table('menus')->insert([
+                            'code' => 'settings.states',
+                            'showName' => 'content.states',
+                            'father' => 'settings',
+                            'route' => 'states.index',
+                            'icon' => 'fa fa-circle-o',
+                        ]);
+
+                        DB::table('menus')->insert([
+                            'code' => 'settings.cities',
+                            'showName' => 'content.cities',
+                            'father' => 'settings',
+                            'route' => 'cities.index',
+                            'icon' => 'fa fa-circle-o',
+                        ]);
+
+                        DB::table('menus')->insert([
+                            'code' => 'settings.companies',
+                            'showName' => 'content.companies',
+                            'father' => 'settings',
+                            'route' => 'companies.index',
+                            'icon' => 'fa fa-circle-o',
+                        ]);
+
+                        DB::table('menus')->insert([
+                            'code' => 'settings.divisions',
+                            'showName' => 'content.divisions',
+                            'father' => 'settings',
+                            'route' => 'divisions.index',
+                            'icon' => 'fa fa-circle-o',
+                        ]);
+
+                        DB::table('menus')->insert([
+                            'code' => 'settings.subsidiaries',
+                            'showName' => 'content.subsidiaries',
+                            'father' => 'settings',
+                            'route' => 'subsidiaries.index',
+                            'icon' => 'fa fa-circle-o',
+                        ]);
+
+                        DB::table('menus')->insert([
+                            'code' => 'settings.roles',
+                            'showName' => 'content.roles',
+                            'father' => 'settings',
+                            'route' => 'roles.index',
+                            'icon' => 'fa fa-circle-o',
+                        ]);
+                        
+                        DB::table('menus')->insert([
+                            'code' => 'settings.projects',
+                            'showName' => 'content.projects',
+                            'father' => 'settings',
+                            'route' => 'projects.index',
+                            'icon' => 'fa fa-circle-o',
+                        ]);
+
+                        DB::table('menus')->insert([
+                            'code' => 'settings.menus',
+                            'showName' => 'content.menus',
+                            'father' => 'settings',
+                            'route' => 'menus.index',
+                            'icon' => 'fa fa-circle-o',
+                        ]);
+
+                        DB::table('menus')->insert([
+                            'code' => 'settings.permits',
+                            'showName' => 'content.permits',
+                            'father' => 'settings',
+                            'route' => 'permits.index',
+                            'icon' => 'fa fa-circle-o',
+                        ]);
+
+                        DB::table('menus')->insert([
+                            'code' => 'settings.people',
+                            'showName' => 'content.people',
+                            'father' => 'settings',
+                            'route' => 'people.index',
+                            'icon' => 'fa fa-circle-o',
+                        ]);
+
+                        DB::table('menus')->insert([
+                            'code' => 'settings.brands',
+                            'showName' => 'content.brands',
+                            'father' => 'settings',
+                            'route' => 'brands.index',
+                            'icon' => 'fa fa-circle-o',
+                        ]);
+
+                        DB::table('menus')->insert([
+                            'code' => 'settings.models',
+                            'showName' => 'content.models',
+                            'father' => 'settings',
+                            'route' => 'models.index',
+                            'icon' => 'fa fa-circle-o',
+                        ]);
+
+                        DB::table('menus')->insert([
+                            'code' => 'settings.unities',
+                            'showName' => 'content.unities',
+                            'father' => 'settings',
+                            'route' => 'unities.index',
+                            'icon' => 'fa fa-circle-o',
+                        ]);
+
+        // Project Menu
+
+        DB::table('menus')->insert([
+            'code' => 'project',
+            'showName' => 'content.project',
+            'route' => null,
+            'icon' => 'fa fa-sliders',
+        ]);
+
+                        DB::table('menus')->insert([
+                            'code' => 'project.data',
+                            'showName' => 'content.data',
+                            'father' => 'project',
+                            'route' => 'project.index',
+                            'icon' => 'fa fa-circle-o',
+                        ]);
+
+                        DB::table('menus')->insert([
+                            'code' => 'project.stakeholders',
+                            'showName' => 'content.stakeholders',
+                            'father' => 'project',
+                            'route' => 'stakeholders.index',
+                            'icon' => 'fa fa-circle-o',
+                        ]);
+
+                        DB::table('menus')->insert([
+                            'code' => 'project.functions',
+                            'showName' => 'content.functions',
+                            'father' => 'project',
+                            'route' => 'functions.index',
+                            'icon' => 'fa fa-circle-o',
+                        ]);
+
+                        DB::table('menus')->insert([
+                            'code' => 'project.positions',
+                            'showName' => 'content.positions',
+                            'father' => 'project',
+                            'route' => 'positions.index',
+                            'icon' => 'fa fa-circle-o',
+                        ]);
+
+                        DB::table('menus')->insert([
+                            'code' => 'project.sectors',
+                            'showName' => 'content.sectors',
+                            'father' => 'project',
+                            'route' => 'sectors.index',
+                            'icon' => 'fa fa-circle-o',
+                        ]);
+
+                        DB::table('menus')->insert([
+                            'code' => 'project.departments',
+                            'showName' => 'content.departments',
+                            'father' => 'project',
+                            'route' => 'departments.index',
+                            'icon' => 'fa fa-circle-o',
+                        ]);
+
+                        DB::table('menus')->insert([
+                            'code' => 'project.zones',
+                            'showName' => 'content.zones',
+                            'father' => 'project',
+                            'route' => 'zones.index',
+                            'icon' => 'fa fa-circle-o',
+                        ]);
+
+                        DB::table('menus')->insert([
+                            'code' => 'project.locations',
+                            'showName' => 'content.locations',
+                            'father' => 'project',
+                            'route' => 'locations.index',
+                            'icon' => 'fa fa-circle-o',
+                        ]);
+
+                        DB::table('menus')->insert([
+                            'code' => 'project.equipments',
+                            'showName' => 'content.equipments',
+                            'father' => 'project',
+                            'route' => 'equipments.index',
+                            'icon' => 'fa fa-circle-o',
+                        ]);
+
+                        DB::table('menus')->insert([
+                            'code' => 'project.projectPeople',
+                            'showName' => 'content.people',
+                            'father' => 'project',
+                            'route' => 'projectPeople.index',
+                            'icon' => 'fa fa-circle-o',
+                        ]);
+
+                        DB::table('menus')->insert([
+                            'code' => 'project.projectUsers',
+                            'showName' => 'content.users',
+                            'father' => 'project',
+                            'route' => 'projectUsers.index',
+                            'icon' => 'fa fa-circle-o',
+                        ]);
+
+                        DB::table('menus')->insert([
+                            'code' => 'project.families',
+                            'showName' => 'content.families',
+                            'father' => 'project',
+                            'route' => 'families.index',
+                            'icon' => 'fa fa-circle-o',
+                        ]);
+
+                        DB::table('menus')->insert([
+                            'code' => 'project.categories',
+                            'showName' => 'content.categories',
+                            'father' => 'project',
+                            'route' => 'categories.index',
+                            'icon' => 'fa fa-circle-o',
+                        ]);
+
+                        DB::table('menus')->insert([
+                            'code' => 'project.periods',
+                            'showName' => 'content.periods',
+                            'father' => 'project',
+                            'route' => null,
+                            'icon' => 'fa fa-circle-o',
+                        ]);
+
+                        DB::table('menus')->insert([
+                            'code' => 'project.shifts',
+                            'showName' => 'content.shifts',
+                            'father' => 'project',
+                            'route' => 'turns.index',
+                            'icon' => 'fa fa-circle-o',
+                        ]);
+
+                        
+
+        // Administration Menu 
 
         DB::table('menus')->insert([
             'code' => 'administration',
             'showName' => 'content.administration',
             'route' => null,
-            'icon' => 'fa fa-lock',
+            'icon' => 'fa fa-calendar',
         ]);
 
-                        // 2
-
                         DB::table('menus')->insert([
-                            'code' => 'administration.regions',
-                            'showName' => 'content.regions',
-                            'menu_id' => '1',
-                            'route' => 'regions.index',
-                            'icon' => 'fa fa-circle-o',
-                        ]);
-
-                        // 3
-
-                        DB::table('menus')->insert([
-                            'code' => 'administration.countries',
-                            'showName' => 'content.countries',
-                            'menu_id' => '1',
-                            'route' => 'countries.index',
-                            'icon' => 'fa fa-circle-o',
-                        ]);
-
-                        // 4
-
-                        DB::table('menus')->insert([
-                            'code' => 'administration.states',
-                            'showName' => 'content.states',
-                            'menu_id' => '1',
-                            'route' => 'states.index',
-                            'icon' => 'fa fa-circle-o',
-                        ]);
-
-                        // 5
-
-                        DB::table('menus')->insert([
-                            'code' => 'administration.cities',
-                            'showName' => 'content.cities',
-                            'menu_id' => '1',
-                            'route' => 'cities.index',
-                            'icon' => 'fa fa-circle-o',
-                        ]);
-
-                        // 6
-
-                        DB::table('menus')->insert([
-                            'code' => 'administration.companies',
-                            'showName' => 'content.companies',
-                            'menu_id' => '1',
-                            'route' => 'companies.index',
-                            'icon' => 'fa fa-circle-o',
-                        ]);
-
-                        // 7
-
-                        DB::table('menus')->insert([
-                            'code' => 'administration.divisions',
-                            'showName' => 'content.divisions',
-                            'menu_id' => '1',
-                            'route' => 'divisions.index',
-                            'icon' => 'fa fa-circle-o',
-                        ]);
-
-                        // 8
-
-                        DB::table('menus')->insert([
-                            'code' => 'administration.subsidiaries',
-                            'showName' => 'content.subsidiaries',
-                            'menu_id' => '1',
-                            'route' => 'subsidiaries.index',
-                            'icon' => 'fa fa-circle-o',
-                        ]);
-
-                        // 9
-
-                        DB::table('menus')->insert([
-                            'code' => 'administration.roles',
-                            'showName' => 'content.roles',
-                            'menu_id' => '1',
-                            'route' => 'roles.index',
-                            'icon' => 'fa fa-circle-o',
-                        ]);
-                        
-                        // 10
-
-                        DB::table('menus')->insert([
-                            'code' => 'administration.projects',
-                            'showName' => 'content.projects',
-                            'menu_id' => '1',
-                            'route' => 'projects.index',
-                            'icon' => 'fa fa-circle-o',
-                        ]);
-
-
-                        // 11
-
-                        DB::table('menus')->insert([
-                            'code' => 'administration.menus',
-                            'showName' => 'content.menus',
-                            'menu_id' => '1',
-                            'route' => 'menus.index',
-                            'icon' => 'fa fa-circle-o',
-                        ]);
-
-                        // 12
-
-                        DB::table('menus')->insert([
-                            'code' => 'administration.permits',
-                            'showName' => 'content.permits',
-                            'menu_id' => '1',
-                            'route' => 'permits.index',
-                            'icon' => 'fa fa-circle-o',
-                        ]);
-
-                        // 13
-
-                        DB::table('menus')->insert([
-                            'code' => 'administration.people',
-                            'showName' => 'content.people',
-                            'menu_id' => '1',
-                            'route' => 'people.index',
-                            'icon' => 'fa fa-circle-o',
-                        ]);
-
-                        // 14
-
-                        DB::table('menus')->insert([
-                            'code' => 'administration.users',
-                            'showName' => 'content.users',
-                            'menu_id' => '1',
+                            'code' => 'administration.technology',
+                            'showName' => 'content.technology',
+                            'father' => 'administration',
                             'route' => null,
-                            'icon' => 'fa fa-circle-o',
+                            'icon' => 'fa fa-laptop',
                         ]);
 
-                        // 15
+                                        DB::table('menus')->insert([
+                                            'code' => 'administration.technology.requests',
+                                            'showName' => 'content.requests',
+                                            'father' => 'administration.technology',
+                                            'route' => null,
+                                            'icon' => 'fa fa-ticket',
+                                        ]);
+
+                                        DB::table('menus')->insert([
+                                            'code' => 'administration.technology.assignments.',
+                                            'showName' => 'content.assignments',
+                                            'father' => 'administration.technology',
+                                            'route' => 'technology.stakeholderPeople.index',
+                                            'icon' => 'fa fa-laptop',
+                                        ]);
 
                         DB::table('menus')->insert([
-                            'code' => 'administration.brands',
-                            'showName' => 'content.brands',
-                            'menu_id' => '1',
-                            'route' => 'brands.index',
-                            'icon' => 'fa fa-circle-o',
-                        ]);
-
-                        // 16
-
-                        DB::table('menus')->insert([
-                            'code' => 'administration.models',
-                            'showName' => 'content.models',
-                            'menu_id' => '1',
-                            'route' => 'models.index',
-                            'icon' => 'fa fa-circle-o',
-                        ]);
-
-                        // 17
-                        
-                        DB::table('menus')->insert([
-                            'code' => 'administration.unities',
-                            'showName' => 'content.unities',
-                            'menu_id' => '1',
-                            'route' => 'unities.index',
-                            'icon' => 'fa fa-circle-o',
-                        ]);
-
-        // Settings Menu
-
-        // 18
-
-        DB::table('menus')->insert([
-            'code' => 'settings',
-            'showName' => 'content.setting',
-            'route' => null,
-            'icon' => 'fa fa-sliders',
-        ]);
-
-                        // 19
-
-                        DB::table('menus')->insert([
-                            'code' => 'settings.project',
-                            'showName' => 'content.project',
-                            'menu_id' => '18',
-                            'route' => 'project.index',
-                            'icon' => 'fa fa-circle-o',
-                        ]);
-
-                        // 20
-
-                        DB::table('menus')->insert([
-                            'code' => 'settings.stakeholders',
-                            'showName' => 'content.stakeholders',
-                            'menu_id' => '18',
-                            'route' => 'stakeholders.index',
-                            'icon' => 'fa fa-circle-o',
-                        ]);
-
-                        // 21
-
-                        DB::table('menus')->insert([
-                            'code' => 'settings.functions',
-                            'showName' => 'content.functions',
-                            'menu_id' => '18',
-                            'route' => 'functions.index',
-                            'icon' => 'fa fa-circle-o',
-                        ]);
-
-                        // 22
-
-                        DB::table('menus')->insert([
-                            'code' => 'settings.positions',
-                            'showName' => 'content.positions',
-                            'menu_id' => '18',
-                            'route' => 'positions.index',
-                            'icon' => 'fa fa-circle-o',
-                        ]);
-
-                        // 23
-
-                        DB::table('menus')->insert([
-                            'code' => 'settings.sectors',
-                            'showName' => 'content.sectors',
-                            'menu_id' => '18',
-                            'route' => 'sectors.index',
-                            'icon' => 'fa fa-circle-o',
-                        ]);
-
-                        // 24
-
-                        DB::table('menus')->insert([
-                            'code' => 'settings.departments',
-                            'showName' => 'content.departments',
-                            'menu_id' => '18',
-                            'route' => 'departments.index',
-                            'icon' => 'fa fa-circle-o',
-                        ]);
-
-                        // 25
-
-                        DB::table('menus')->insert([
-                            'code' => 'settings.zones',
-                            'showName' => 'content.zones',
-                            'menu_id' => '18',
-                            'route' => 'zones.index',
-                            'icon' => 'fa fa-circle-o',
-                        ]);
-
-                        // 26
-
-                        DB::table('menus')->insert([
-                            'code' => 'settings.locations',
-                            'showName' => 'content.locations',
-                            'menu_id' => '18',
-                            'route' => 'locations.index',
-                            'icon' => 'fa fa-circle-o',
-                        ]);
-
-                        // 27
-
-                        DB::table('menus')->insert([
-                            'code' => 'settings.projectPeople',
-                            'showName' => 'content.people',
-                            'menu_id' => '18',
-                            'route' => 'projectPeople.index',
-                            'icon' => 'fa fa-circle-o',
-                        ]);
-
-                        // 28
-
-                        DB::table('menus')->insert([
-                            'code' => 'settings.projectUsers',
-                            'showName' => 'content.users',
-                            'menu_id' => '18',
-                            'route' => 'projectUsers.index',
-                            'icon' => 'fa fa-circle-o',
-                        ]);
-
-                        // 29
-
-                        DB::table('menus')->insert([
-                            'code' => 'settings.families',
-                            'showName' => 'content.families',
-                            'menu_id' => '18',
-                            'route' => 'families.index',
-                            'icon' => 'fa fa-circle-o',
-                        ]);
-
-                        // 30
-
-                        DB::table('menus')->insert([
-                            'code' => 'settings.categories',
-                            'showName' => 'content.categories',
-                            'menu_id' => '18',
-                            'route' => 'categories.index',
-                            'icon' => 'fa fa-circle-o',
-                        ]);
-
-                        // 31
-
-                        DB::table('menus')->insert([
-                            'code' => 'settings.periods',
-                            'showName' => 'content.periods',
-                            'menu_id' => '18',
+                            'code' => 'administration.services',
+                            'showName' => 'content.services',
+                            'father' => 'administration',
                             'route' => null,
-                            'icon' => 'fa fa-circle-o',
+                            'icon' => 'fa fa-support',
                         ]);
 
-                        // 32
+                                        DB::table('menus')->insert([
+                                            'code' => 'administration.services.requests',
+                                            'showName' => 'content.requests',
+                                            'father' => 'administration.services',
+                                            'route' => null,
+                                            'icon' => 'fa fa-ticket',
+                                        ]);
 
-                        DB::table('menus')->insert([
-                            'code' => 'settings.shifts',
-                            'showName' => 'content.shifts',
-                            'menu_id' => '18',
-                            'route' => 'turns.index',
-                            'icon' => 'fa fa-circle-o',
-                        ]);
-
-                        // 33
-
-                        DB::table('menus')->insert([
-                            'code' => 'settings.equipments',
-                            'showName' => 'content.equipments',
-                            'menu_id' => '18',
-                            'route' => 'equipments.index',
-                            'icon' => 'fa fa-circle-o',
-                        ]);
+                                        DB::table('menus')->insert([
+                                            'code' => 'administration.services.catering',
+                                            'showName' => 'content.catering',
+                                            'father' => 'administration.services',
+                                            'route' => null,
+                                            'icon' => 'fa fa-cutlery',
+                                        ]);
+        
 
         // Production Menu 
-
-        // 34
 
         DB::table('menus')->insert([
             'code' => 'production',
@@ -354,130 +339,104 @@ class MenuSeeder extends Seeder
             'icon' => 'fa fa-industry',
         ]);
 
-                        // 35
-
                         DB::table('menus')->insert([
                             'code' => 'production.workbook',
                             'showName' => 'content.workbook',
-                            'menu_id' => '34',
+                            'father' => 'production',
                             'route' => null,
                             'icon' => 'fa fa-book',
                         ]);
 
-                                        // 36
-
                                         DB::table('menus')->insert([
                                             'code' => 'production.workbook.documents',
                                             'showName' => 'content.documents',
-                                            'menu_id' => '35',
+                                            'father' => 'production.workbook',
                                             'route' => null,
                                             'icon' => 'fa fa-file-text',
                                         ]);
 
-                                                        // 37
-
                                                         DB::table('menus')->insert([
                                                             'code' => 'production.workbook.documents.folios',
                                                             'showName' => 'content.folios',
-                                                            'menu_id' => '36',
+                                                            'father' => 'production.workbook.documents',
                                                             'route' => 'folios.index',
                                                             'icon' => 'fa fa-circle-o',
                                                         ]);
 
-                                                        // 38
-
                                                         DB::table('menus')->insert([
                                                             'code' => 'production.workbook.documents.dailyReports',
                                                             'showName' => 'content.dailyreports',
-                                                            'menu_id' => '36',
+                                                            'father' => 'production.workbook.documents',
                                                             'route' => 'dailyReports.index',
                                                             'icon' => 'fa fa-circle-o',
                                                         ]);
 
-                                                        // 39
-
                                                         DB::table('menus')->insert([
                                                             'code' => 'production.workbook.documents.notes',
                                                             'showName' => 'content.notes',
-                                                            'menu_id' => '36',
+                                                            'father' => 'production.workbook.documents',
                                                             'route' => 'notes.index',
                                                             'icon' => 'fa fa-circle-o',
                                                         ]);
 
-                                        // 40
-
                                         DB::table('menus')->insert([
                                             'code' => 'production.workbook.reports',
                                             'showName' => 'content.reports',
-                                            'menu_id' => '35',
+                                            'father' => 'production.workbook',
                                             'route' => null,
                                             'icon' => 'fa fa-print',
                                         ]);
 
-                                                        // 41
-
                                                         DB::table('menus')->insert([
                                                             'code' => 'production.workbook.reports.folios',
                                                             'showName' => 'content.folios',
-                                                            'menu_id' => '40',
+                                                            'father' => 'production.workbook.reports',
                                                             'route' => null,
                                                             'icon' => 'fa fa-circle-o',
                                                         ]);
-
-                                                        // 42
 
                                                         DB::table('menus')->insert([
                                                             'code' => 'production.workbook.reports.dailyReports',
                                                             'showName' => 'content.dailyreports',
-                                                            'menu_id' => '40',
+                                                            'father' => 'production.workbook.reports',
                                                             'route' => null,
                                                             'icon' => 'fa fa-circle-o',
                                                         ]);
-
-                                                        // 43
 
                                                         DB::table('menus')->insert([
                                                             'code' => 'production.workbook.reports.notes',
                                                             'showName' => 'content.notes',
-                                                            'menu_id' => '40',
+                                                            'father' => 'production.workbook.reports',
                                                             'route' => null,
                                                             'icon' => 'fa fa-circle-o',
                                                         ]);
 
-                                        // 44
-                                        
                                         DB::table('menus')->insert([
                                             'code' => 'production.workbook.settings',
                                             'showName' => 'content.settings',
-                                            'menu_id' => '35',
+                                            'father' => 'production.workbook',
                                             'route' => null,
                                             'icon' => 'fa fa-cogs',
                                         ]);
 
-                                                        // 45
-
                                                         DB::table('menus')->insert([
                                                             'code' => 'production.workbook.settings.users',
                                                             'showName' => 'content.users',
-                                                            'menu_id' => '44',
+                                                            'father' => 'production.workbook.settings',
                                                             'route' => 'workbook_settings_users',
                                                             'icon' => 'fa fa-circle-o',
                                                         ]);
 
-                                                        // 46
-
                                                         DB::table('menus')->insert([
                                                             'code' => 'production.workbook.settings.locations',
                                                             'showName' => 'content.locations',
-                                                            'menu_id' => '44',
+                                                            'father' => 'production.workbook.settings',
                                                             'route' => 'workbook_settings_locations',
                                                             'icon' => 'fa fa-circle-o',
                                                         ]);
 
         // Commercial Menu
         
-        // 47
-
         DB::table('menus')->insert([
             'code' => 'commercial',
             'showName' => 'content.commercial',
@@ -485,92 +444,74 @@ class MenuSeeder extends Seeder
             'icon' => 'fa fa-money',
         ]);
 
-                        // 48
-                        
                         DB::table('menus')->insert([
                             'code' => 'commercial.purchases',
                             'showName' => 'content.purchases',
-                            'menu_id' => '47',
+                            'father' => 'commercial',
                             'route' => null,
                             'icon' => 'fa fa-shopping-cart',
                         ]);
 
-                                        // 49
-                        
                                         DB::table('menus')->insert([
                                             'code' => 'commercial.purchases.orders',
                                             'showName' => 'content.orders',
-                                            'menu_id' => '48',
+                                            'father' => 'commercial.purchases',
                                             'route' => null,
                                             'icon' => 'fa fa-check-square',
                                         ]);
 
-                                        // 50
-
                                         DB::table('menus')->insert([
                                             'code' => 'commercial.purchases.agreements',
                                             'showName' => 'content.agreements',
-                                            'menu_id' => '48',
+                                            'father' => 'commercial.purchases',
                                             'route' => null,
                                             'icon' => 'fa fa-file',
                                         ]);
 
-                                        // 51
-
                                         DB::table('menus')->insert([
                                             'code' => 'commercial.purchases.reports',
                                             'showName' => 'content.reports',
-                                            'menu_id' => '48',
+                                            'father' => 'commercial.purchases',
                                             'route' => null,
                                             'icon' => 'fa fa-print',
                                         ]);
                         
-                        // 52
-
                         DB::table('menus')->insert([
                             'code' => 'commercial.warehouse',
                             'showName' => 'content.warehouse',
-                            'menu_id' => '47',
+                            'father' => 'commercial',
                             'route' => null,
                             'icon' => 'fa fa-industry',
                         ]);
 
-                                        // 53
-
                                         DB::table('menus')->insert([
                                             'code' => 'commercial.warehouse.warehouses',
                                             'showName' => 'content.warehouses',
-                                            'menu_id' => '52',
+                                            'father' => 'commercial.warehouse',
                                             'route' => null,
                                             'icon' => 'fa fa-industry',
                                         ]);
 
-                                        // 54
-
                                         DB::table('menus')->insert([
                                             'code' => 'commercial.warehouse.materials',
                                             'showName' => 'content.materials',
-                                            'menu_id' => '52',
-                                            'route' => null,
+                                            'father' => 'commercial.warehouse',
+                                            'route' => 'materials.index',
                                             'icon' => 'fa fa-cubes',
                                         ]);
-
-                                        // 55
 
                                         DB::table('menus')->insert([
                                             'code' => 'commercial.warehouse.reports',
                                             'showName' => 'content.reports',
-                                            'menu_id' => '52',
+                                            'father' => 'commercial.warehouse',
                                             'route' => null,
                                             'icon' => 'fa fa-print',
                                         ]);
 
-                        // 56
-
                         DB::table('menus')->insert([
                             'code' => 'commercial.assets',
                             'showName' => 'content.assets',
-                            'menu_id' => '47',
+                            'father' => 'commercial',
                             'route' => null,
                             'icon' => 'fa fa-cube',
                         ]);
@@ -578,15 +519,15 @@ class MenuSeeder extends Seeder
                                         DB::table('menus')->insert([
                                             'code' => 'commercial.assets.record',
                                             'showName' => 'content.record',
-                                            'menu_id' => '56',
+                                            'father' => 'commercial.assets',
                                             'route' => null,
                                             'icon' => 'fa fa-pencil',
                                         ]);
 
                                         DB::table('menus')->insert([
-                                            'code' => 'commercial.assets.assigments',
+                                            'code' => 'commercial.assets.assignments',
                                             'showName' => 'content.assignments',
-                                            'menu_id' => '56',
+                                            'father' => 'commercial.assets',
                                             'route' => null,
                                             'icon' => 'fa fa-check-square',
                                         ]);
@@ -594,7 +535,7 @@ class MenuSeeder extends Seeder
                                         DB::table('menus')->insert([
                                             'code' => 'commercial.assets.updates',
                                             'showName' => 'content.updates',
-                                            'menu_id' => '56',
+                                            'father' => 'commercial.assets',
                                             'route' => null,
                                             'icon' => 'fa fa-refresh',
                                         ]);
@@ -602,7 +543,7 @@ class MenuSeeder extends Seeder
                                         DB::table('menus')->insert([
                                             'code' => 'commercial.assets.reports',
                                             'showName' => 'content.reports',
-                                            'menu_id' => '56',
+                                            'father' => 'commercial.assets',
                                             'route' => null,
                                             'icon' => 'fa fa-print',
                                         ]);
@@ -610,47 +551,37 @@ class MenuSeeder extends Seeder
 
         // Persons Menu 
 
-        // 61
-
         DB::table('menus')->insert([
             'code' => 'people',
             'showName' => 'content.people',
             'route' => null,
             'icon' => 'fa fa-user',
         ]);
-                        // 62
-
                         DB::table('menus')->insert([
                             'code' => 'people.record',
                             'showName' => 'content.record',
-                            'menu_id' => '61',
-                            'route' => null,
+                            'father' => 'people',
+                            'route' => 'employees.index',
                             'icon' => 'fa fa-pencil',
                         ]);
-
-                        // 63
 
                         DB::table('menus')->insert([
                             'code' => 'people.payroll',
                             'showName' => 'content.payroll',
-                            'menu_id' => '61',
+                            'father' => 'people',
                             'route' => null,
                             'icon' => 'fa fa-list',
                         ]);
 
-                        // 64
-
                         DB::table('menus')->insert([
                             'code' => 'people.timesheet',
                             'showName' => 'content.timesheet',
-                            'menu_id' => '61',
+                            'father' => 'people',
                             'route' => null,
                             'icon' => 'fa fa-table',
                         ]);
         
         // Safety & Health Menu 
-
-        // 65
 
         DB::table('menus')->insert([
             'code' => 'shw',
@@ -659,20 +590,18 @@ class MenuSeeder extends Seeder
             'icon' => 'fa fa-stethoscope',
         ]);
 
-                        // 66
-
                         DB::table('menus')->insert([
                             'code' => 'shw.ppes',
                             'showName' => 'content.ppes',
-                            'menu_id' => '65',
+                            'father' => 'shw',
                             'route' => null,
                             'icon' => 'fa fa-medkit',
                         ]);
 
                                         DB::table('menus')->insert([
-                                            'code' => 'shw.ppes.assigments',
+                                            'code' => 'shw.ppes.assignments',
                                             'showName' => 'content.assignments',
-                                            'menu_id' => '66',
+                                            'father' => 'shw.ppes',
                                             'route' => null,
                                             'icon' => 'fa fa-check-square',
                                         ]);
@@ -680,7 +609,7 @@ class MenuSeeder extends Seeder
                                         DB::table('menus')->insert([
                                             'code' => 'shw.ppes.rules',
                                             'showName' => 'content.rules',
-                                            'menu_id' => '66',
+                                            'father' => 'shw.ppes',
                                             'route' => null,
                                             'icon' => 'fa fa-list',
                                         ]);
@@ -688,17 +617,15 @@ class MenuSeeder extends Seeder
                                         DB::table('menus')->insert([
                                             'code' => 'shw.ppes.reports',
                                             'showName' => 'content.reports',
-                                            'menu_id' => '66',
+                                            'father' => 'shw.ppes',
                                             'route' => null,
                                             'icon' => 'fa fa-print',
                                         ]);
 
-                        // 70
-
                         DB::table('menus')->insert([
                             'code' => 'shw.health',
                             'showName' => 'content.health',
-                            'menu_id' => '65',
+                            'father' => 'shw',
                             'route' => null,
                             'icon' => 'fa fa-heart',
                         ]);
@@ -706,7 +633,7 @@ class MenuSeeder extends Seeder
                                         DB::table('menus')->insert([
                                             'code' => 'shw.health.history',
                                             'showName' => 'content.history',
-                                            'menu_id' => '70',
+                                            'father' => 'shw.health',
                                             'route' => null,
                                             'icon' => 'fa fa-folder-open',
                                         ]);
@@ -714,7 +641,7 @@ class MenuSeeder extends Seeder
                                         DB::table('menus')->insert([
                                             'code' => 'shw.health.record',
                                             'showName' => 'content.record',
-                                            'menu_id' => '70',
+                                            'father' => 'shw.health',
                                             'route' => null,
                                             'icon' => 'fa fa-list',
                                         ]);
@@ -722,17 +649,15 @@ class MenuSeeder extends Seeder
                                         DB::table('menus')->insert([
                                             'code' => 'shw.health.reports',
                                             'showName' => 'content.reports',
-                                            'menu_id' => '70',
+                                            'father' => 'shw.health',
                                             'route' => null,
                                             'icon' => 'fa fa-print',
                                         ]);
 
-                        // 74
-
                         DB::table('menus')->insert([
                             'code' => 'shw.access',
                             'showName' => 'content.access',
-                            'menu_id' => '65',
+                            'father' => 'shw',
                             'route' => null,
                             'icon' => 'fa fa-sign-in',
                         ]);
@@ -740,7 +665,7 @@ class MenuSeeder extends Seeder
                                         DB::table('menus')->insert([
                                             'code' => 'shw.access.requirements',
                                             'showName' => 'content.requirements',
-                                            'menu_id' => '74',
+                                            'father' => 'shw.access',
                                             'route' => null,
                                             'icon' => 'fa fa-list',
                                         ]);
@@ -748,7 +673,7 @@ class MenuSeeder extends Seeder
                                         DB::table('menus')->insert([
                                             'code' => 'shw.access.profiles',
                                             'showName' => 'content.profiles',
-                                            'menu_id' => '74',
+                                            'father' => 'shw.access',
                                             'route' => null,
                                             'icon' => 'fa fa-user',
                                         ]);
@@ -757,7 +682,7 @@ class MenuSeeder extends Seeder
                                         DB::table('menus')->insert([
                                             'code' => 'shw.access.organizations',
                                             'showName' => 'content.organizations',
-                                            'menu_id' => '74',
+                                            'father' => 'shw.access',
                                             'route' => null,
                                             'icon' => 'fa fa-institution',
                                         ]);
@@ -765,7 +690,7 @@ class MenuSeeder extends Seeder
                                         DB::table('menus')->insert([
                                             'code' => 'shw.access.checkings',
                                             'showName' => 'content.checkings',
-                                            'menu_id' => '74',
+                                            'father' => 'shw.access',
                                             'route' => null,
                                             'icon' => 'fa fa-search',
                                         ]);
@@ -773,7 +698,7 @@ class MenuSeeder extends Seeder
                                         DB::table('menus')->insert([
                                             'code' => 'shw.access.reports',
                                             'showName' => 'content.reports',
-                                            'menu_id' => '74',
+                                            'father' => 'shw.access',
                                             'route' => null,
                                             'icon' => 'fa fa-print',
                                         ]);

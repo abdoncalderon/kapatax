@@ -34,6 +34,6 @@ class CommentReportCreated extends Mailable
      */
     public function build()
     {
-        return $this->view('agreement.emails.commentReportCreated');
+        return $this->view('workbooks.emails.commentReportCreated');
     }
 }

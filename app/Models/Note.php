@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Note extends Model
 {
-    protected $fillable = ['folio_id','turn_id','date','note','user_id','status',];
+    protected $fillable = ['folio_id','turn_id','date','note','project_user_id','status',];
 
     public function folio()
     {
@@ -18,9 +18,9 @@ class Note extends Model
         return $this->belongsTo(Turn::class);
     }
 
-    public function user()
+    public function projectUser()
     {
-        return $this->belongsTo(User::class);
+        return $this->belongsTo(ProjectUser::class);
     }
 
     public function attachments()

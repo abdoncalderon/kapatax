@@ -19,6 +19,9 @@ class CreateNeedRequestItemsTable extends Migration
             $table->foreign('need_request_id')->references('id')->on('need_requests')->onUpdate('cascade')->onDelete('restrict');
             $table->text('reference');
             $table->integer('quantity');
+            $table->foreignId('unity_id');
+            $table->foreign('unity_id')->references('id')->on('unities')->onUpdate('cascade')->onDelete('restrict');
+            $table->integer('status_id');
             $table->timestamps();
         });
     }

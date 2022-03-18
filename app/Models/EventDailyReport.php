@@ -6,11 +6,11 @@ use Illuminate\Database\Eloquent\Model;
 
 class EventDailyReport extends Model
 {
-    protected $fillable = ['daily_report_id','cause','start','finish','description','haveImpact','user_id',];
+    protected $fillable = ['daily_report_id','cause','start','finish','description','haveImpact','project_user_id',];
 
-    public function user()
+    public function projectUser()
     {
-        return $this->belongsTo(User::class);
+        return $this->belongsTo(ProjectUser::class);
     }
 
     public function haveImpact(){

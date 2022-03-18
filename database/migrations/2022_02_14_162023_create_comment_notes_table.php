@@ -19,8 +19,8 @@ class CreateCommentNotesTable extends Migration
             $table->foreign('note_id')->references('id')->on('notes')->onUpdate('cascade')->onDelete('restrict');
             $table->dateTime('date');
             $table->text('comment');
-            $table->foreignId('user_id');
-            $table->foreign('user_id')->references('id')->on('users')->onUpdate('cascade')->onDelete('restrict');
+            $table->foreignId('project_user_id');
+            $table->foreign('project_user_id')->references('id')->on('project_users')->onUpdate('cascade')->onDelete('restrict');
             $table->timestamps();
         });
     }
