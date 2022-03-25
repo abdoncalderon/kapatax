@@ -37,7 +37,7 @@ class DefaultSeeder extends Seeder
         ]);
 
         DB::table('states')->insert([
-            'name' => 'Pichincha    ',
+            'name' => 'Pichincha',
             'country_id' => '1',
         ]);
 
@@ -80,13 +80,17 @@ class DefaultSeeder extends Seeder
             'finishDate' => Carbon::create('2050', '12', '31'),
         ]);
 
+        DB::table('parameters')->insert([
+            'project_id' => '1',
+        ]);
+
         DB::table('sectors')->insert([
             'name' => 'Administration',
             'project_id' => '1',
         ]);
 
         DB::table('funct1ons')->insert([
-            'name' => 'Technician',
+            'name' => 'Manager',
             'project_id' => '1',
         ]);
 
@@ -153,7 +157,7 @@ class DefaultSeeder extends Seeder
         ]);
 
         DB::table('positions')->insert([
-            'name' => 'Foreman',
+            'name' => 'IT Manager',
             'function_id' => '1',
         ]);
 
@@ -178,6 +182,8 @@ class DefaultSeeder extends Seeder
             'stakeholder_id' => '1',
             'person_id' => '1',
             'admissionDate' => Carbon::create('1970', '01', '01'),
+            'position_id' => '1',
+            'department_id' => '1',
         ]);
 
         DB::table('users')->insert([

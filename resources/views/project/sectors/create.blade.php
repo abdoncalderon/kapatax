@@ -41,7 +41,7 @@
 
                             {{-- project --}}
     
-                            <input id="project_id" hidden type="text" name="project_id" value="{{ $project->id }}">
+                            <input id="project_id" hidden type="text" name="project_id" value="{{ current_user()->project_id }}">
 
                             {{-- Sector name --}}
                                 
@@ -65,7 +65,7 @@
 
                     <div class="box-footer">
                         <button type="submit" class="btn btn-success pull-left btn-sm" style="margin: 0px 5px;">{{ __('content.save') }}</button>
-                        <a class="btn btn-danger btn-sm" href=" {{ route('sectors.index',$project) }} ">{{ __('content.cancel') }}</a>
+                        <a class="btn btn-danger btn-sm" href=" {{ route('sectors.index') }} ">{{ __('content.cancel') }}</a>
                     </div>
 
                 </form>

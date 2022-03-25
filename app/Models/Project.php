@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use PHPUnit\Framework\MockObject\Rule\Parameters;
 
 class Project extends Model
 {
@@ -42,6 +43,10 @@ class Project extends Model
 
     public function projectRoles(){
         return $this->hasMany(ProjectRole::class);
+    }
+
+    public function parameter(){
+        return $this->hasOne(Parameter::class);
     }
 
     public function isActive(){

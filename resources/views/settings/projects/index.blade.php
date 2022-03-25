@@ -19,15 +19,6 @@
 
         <div class="box box-info">
 
-            {{-- Error Messages --}}
-
-            @if($errors->any())
-                <div class="alert alert-danger alert-dismissible">
-                    <button type="button" class="close" data-dismiss="alert">&times;</button>
-                    {{ $errors->first() }}
-                </div>
-            @endif
-
             {{-- Title --}}
 
             <div class="box-header with-border center-block">
@@ -62,6 +53,7 @@
                                     <a class="btn btn-info btn-xs" href="{{ route('projects.edit', $project)}}">{{ __('content.edit') }}</a>
                                     @if($project->id!=1)
                                         <a class="btn btn-info btn-xs" href="{{ route('projectRoles.index', $project)}}">{{ __('content.roles') }}</a>
+                                        <a class="btn btn-info btn-xs" href="{{ route('projectUsers.index', $project)}}">{{ __('content.users') }}</a>
                                         @if ($project->isActive())
                                             <a class="btn btn-danger btn-xs" href="{{ route('projects.activate', [$project, '0']) }}">{{ __('content.deactivate') }}</a>
                                         @else

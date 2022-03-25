@@ -4,7 +4,6 @@ namespace App\Http\Controllers\Project;
 
 use App\Http\Controllers\Controller;
 use App\Models\Equipment;
-use App\Models\Project;
 use App\Imports\EquipmentsImport;
 use App\Http\Requests\Project\StoreEquipmentRequest;
 use App\Http\Requests\Project\UpdateEquipmentRequest;
@@ -22,36 +21,38 @@ class EquipmentController extends Controller
 
     public function create()
     {
-        $project_id = session('current_project_id');
-        $project = Project::where('id',$project_id)->first();
-        return view('project.equipments.create')
-        ->with(compact('project'));
+        return view('project.equipments.create');
     }
 
     public function store(StoreEquipmentRequest $request )
     {
-        Equipment::create($request ->validated());
-        return redirect()->route('equipments.index');
+        try{
+            Equipment::create($request ->validated());
+            return redirect()->route('equipments.index');
+        }catch(Exception $e){
+            return back()->withErrors( $e->getMessage());
+        }
+        
     }
 
     public function show(Equipment $equipment)
     {
-        return view('project.equipments.show',[
-            'equipment'=>$equipment
-            ]);
+        return view('project.equipments.show', compact('equipment'));
     }
 
     public function edit(Equipment $equipment)
     {
-        return view('project.equipments.edit',[
-            'equipment'=>$equipment
-            ]);
+        return view('project.equipments.edit', compact('equipment'));
     }
     
     public function update(Equipment $equipment, UpdateEquipmentRequest $request)
     {
-        $equipment->update($request->validated());
-        return redirect()->route('equipments.index');
+        try{
+            $equipment->update($request->validated());
+            return redirect()->route('equipments.index');
+        }catch(Exception $e){
+            return back()->withErrors( $e->getMessage());
+        }
     }
 
     public function destroy(Equipment $equipment)

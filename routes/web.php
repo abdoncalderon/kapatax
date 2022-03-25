@@ -24,8 +24,18 @@ Route::get('/myNeedRequestItems/destroy/{myNeedRequestItem}','Session\NeedReques
 
 /********************************************* SETTINGS ROUTES *************************************************************** */
 
-/* Routes Gender */
+/* Routes Genders */
 Route::resource('genders','Settings\GenderController');
+
+/* Route Parameters */
+Route::get('/settings/parameters','Settings\ParameterController@index')->name('settings.parameters.index');
+Route::post('/regionsImport','Settings\ParameterController@regionsImport')->name('parameters.regionsImport');
+Route::post('/countriesImport','Settings\ParameterController@countriesImport')->name('parameters.countriesImport');
+Route::post('/statesImport','Settings\ParameterController@statesImport')->name('parameters.statesImport');
+Route::post('/citiesImport','Settings\ParameterController@citiesImport')->name('parameters.citiesImport');
+Route::post('/brandsImport','Settings\ParameterController@brandsImport')->name('parameters.brandsImport');
+Route::post('/modelsImport','Settings\ParameterController@modelsImport')->name('parameters.modelsImport');
+Route::post('/unitiesImport','Settings\ParameterController@unitiesImport')->name('parameters.unitiesImport');
 
 /* Routes Menus */
 Route::resource('menus','Settings\MenuController');
@@ -62,14 +72,12 @@ Route::resource('regions','Settings\RegionController');
 Route::get('/region/destroy/{region}','Settings\RegionController@destroy')->name('regions.destroy');
 Route::post('/region/add','Settings\RegionController@add')->name('regions.add');
 Route::get('getCountries/{region}','Settings\RegionController@getCountries')->name('regions.getCountries');
-Route::post('/regionsImport','Settings\RegionController@import')->name('regions.import');
 
 /* Routes Countries */
 Route::resource('countries','Settings\CountryController');
 Route::get('/countries/destroy/{country}','Settings\CountryController@destroy')->name('countries.destroy');
 Route::post('/countries/add','Settings\CountryController@add')->name('countries.add');
 Route::get('getStates/{country}','Settings\CountryController@getStates')->name('countries.getStates');
-Route::post('/countriesImport','Settings\CountryController@import')->name('countries.import');
 
 /* Routes States */
 Route::resource('states','Settings\StateController');
@@ -100,14 +108,12 @@ Route::get('getRoles/{project}','Settings\ProjectRoleController@getRoles')->name
 /* Routes Unities */
 Route::resource('unities','Settings\UnityController');
 Route::get('/unity/destroy/{unity}','Settings\UnityController@destroy')->name('unities.destroy');
-Route::post('/unitiesImport','Settings\UnityController@import')->name('unities.import');
 Route::post('/unities/add','Settings\UnityController@add')->name('unities.add');
 
 /* Routes Brands */
 Route::resource('brands','Settings\BrandController');
 Route::get('/brand/destroy/{brand}','Settings\BrandController@destroy')->name('brands.destroy');
 Route::post('/brands/add','Settings\BrandController@add')->name('brands.add');
-Route::post('/brandsImport','Settings\BrandController@import')->name('brands.import');
 Route::get('getModels/{brand}','Settings\BrandController@getModels')->name('brands.getModels');
 
 /* Routes Models */
@@ -136,11 +142,6 @@ Route::get('/roleMenus/activate/{roleMenu}/{value}','Settings\RoleMenuController
 Route::post('/cloneRoleMenus','Settings\RoleMenuController@clone')->name('roleMenus.clone');
 Route::get('setOpen/{roleMenu}','Settings\RoleMenuController@setOpen')->name('roleMenus.setOpen');
 
-/* Routes People */
-Route::resource('people','Settings\PersonController');
-Route::get('/person/destroy/{person}','Settings\PersonController@destroy')->name('people.destroy');
-
-
 /* Routes Users */
 Route::resource('users','Settings\UserController');
 Route::get('/users/activate/{user}/{value}','Settings\UserController@activate')->name('users.activate');
@@ -158,6 +159,31 @@ Route::get('/userProjects/destroy/{projectUser}','Settings\UserProjectController
 
 /********************************************* PROJECT ROUTES *************************************************************** */
 
+/* Route Parameters */
+Route::get('/project/parameters','Project\ParameterController@index')->name('project.parameters.index');
+Route::patch('/project/parameters/edit','Project\ParameterController@update')->name('project.parameters.update');
+
+Route::post('/functionsImport','Project\ParameterController@functionsImport')->name('parameters.functionsImport');
+Route::post('/positionsImport','Project\ParameterController@positionsImport')->name('parameters.positionsImport');
+Route::post('/sectorsImport','Project\ParameterController@sectorsImport')->name('parameters.sectorsImport');
+Route::post('/departmentsImport','Project\ParameterController@departmentsImport')->name('parameters.departmentsImport');
+Route::post('/zonesImport','Project\ParameterController@zonesImport')->name('parameters.zonesImport');
+Route::post('/locationsImport','Project\ParameterController@locationsImport')->name('parameters.locationsImport');
+Route::post('/familiesImport','Project\ParameterController@familiesImport')->name('parameters.familiesImport');
+Route::post('/categoriesImport','Project\ParameterController@categoriesImport')->name('parameters.categoriesImport');
+Route::post('/equipmentsImport','Project\ParameterController@equipmentsImport')->name('parameters.equipmentsImport');
+Route::post('/turnsImport','Project\ParameterController@turnsImport')->name('parameters.turnsImport');
+
+Route::post('/functionsClone','Project\ParameterController@functionsClone')->name('parameters.functionsClone');
+Route::post('/sectorsClone','Project\ParameterController@sectorsClone')->name('parameters.sectorsClone');
+Route::post('/zonesClone','Project\ParameterController@zonesClone')->name('parameters.zonesClone');
+Route::post('/familiesClone','Project\ParameterController@familiesClone')->name('parameters.familiesClone');
+Route::post('/equipmentsClone','Project\ParameterController@equipmentsClone')->name('parameters.equipmentsClone');
+Route::post('/turnsClone','Project\ParameterController@turnsClone')->name('parameters.turnsClone');
+
+
+
+
 /* Routes Project */
 Route::get('/project','Project\ProjectController@index')->name('project.index');
 Route::get('/project/show','Project\ProjectController@show')->name('project.show');
@@ -168,13 +194,13 @@ Route::patch('project/update/{project}','Project\ProjectController@update')->nam
 Route::resource('functions','Project\FunctionController');
 Route::get('/functions/destroy/{function}','Project\FunctionController@destroy')->name('functions.destroy');
 Route::post('/function/add','Project\FunctionController@add')->name('functions.add'); 
-Route::post('/functionsImport','Project\FunctionController@import')->name('functions.import');
+Route::get('getPositions/{function}','Project\FunctionController@getPositions')->name('functions.getPositions');
 
 /* Routes Sectors */
 Route::resource('sectors','Project\SectorController');
 Route::get('/sector/destroy/{sector}','Project\SectorController@destroy')->name('sectors.destroy');
 Route::post('/sector/add','Project\SectorController@add')->name('sectors.add'); 
-Route::post('/sectorsImport','Project\SectorController@import')->name('sectors.import');
+Route::get('getDepartments/{sector}','Project\SectorController@getDepartments')->name('sectors.getDepartments');
 
 /* Routes Departments */
 Route::resource('departments','Project\DepartmentController');
@@ -189,12 +215,12 @@ Route::get('/stakeholders/destroy/{stakeholder}','Project\StakeholderController@
 Route::resource('zones','Project\ZoneController');
 Route::get('/zones/destroy/{zone}','Project\ZoneController@destroy')->name('zones.destroy');
 Route::post('/zones/add','Project\ZoneController@add')->name('zones.add');
-Route::post('/zonesImport','Project\ZoneController@import')->name('zones.import');
 Route::get('getLocations/{zone}','Project\ZoneController@getLocations')->name('zones.getLocations');
 
 /* Routes Positions */
 Route::resource('positions','Project\PositionController');
 Route::get('/position/destroy/{position}','Project\PositionController@destroy')->name('positions.destroy');
+Route::post('/positions/add','Project\PositionController@add')->name('positions.add');
 
 /* Routes Locations */
 Route::resource('locations','Project\LocationController');
@@ -203,39 +229,26 @@ Route::get('/location/destroy/{location}','Project\LocationController@destroy')-
 /* Routes Equipments */
 Route::resource('equipments','Project\EquipmentController');
 Route::get('/equipment/destroy/{equipment}','Project\EquipmentController@destroy')->name('equipments.destroy');
-Route::post('/equipmentsImport','Project\EquipmentController@import')->name('equipments.import');
 
 /* Routes Turns */
 Route::resource('turns','Project\TurnController');
 Route::get('/turns/destroy/{turn}','Project\TurnController@destroy')->name('turns.destroy');
-Route::post('/turnsImport','Project\TurnController@import')->name('turns.import');
 
 /* Routes Families */
 Route::resource('families','Project\FamilyController');
 Route::get('/families/destroy/{turn}','Project\FamilyController@destroy')->name('families.destroy');
 Route::post('/families/add','Project\FamilyController@add')->name('families.add');
-Route::post('/familiesImport','Project\FamilyController@import')->name('families.import');
 Route::get('getCategories/{family}','Project\FamilyController@getCategories')->name('families.getCategories');
 
 /* Routes Categories */
 Route::resource('categories','Project\CategoryController');
 Route::get('/categories/destroy/{turn}','Project\CategoryController@destroy')->name('categories.destroy');
 Route::post('/categories/add','Project\CategoryController@add')->name('categories.add');
-Route::post('/categoriesImport','Project\CategoryController@import')->name('categories.import');
 Route::get('getSubcategories/{category}','Project\CategoryController@getSubcategories')->name('categories.getSubcategories');
 
 /* Routes Categories */
 Route::resource('subcategories','Project\SubcategoryController');
 Route::post('/subcategories/add','Project\SubcategoryController@add')->name('subcategories.add');
-
-/* Routes Project People */
-Route::resource('projectPeople','Project\PersonController');
-Route::post('/searchProjectPerson','Project\PersonController@search')->name('projectPeople.search');
-
-/* Routes StakeholderPeople */
-Route::post('/stakeholderPeople','Project\StakeholderPersonController@store')->name('stakeholderPeople.store');
-Route::get('/stakeholderPeople/edit/{stakeholderPerson}','Project\StakeholderPersonController@edit')->name('stakeholderPeople.edit');
-Route::patch('/stakeholderPeople/{stakeholderPerson}','Project\StakeholderPersonController@update')->name('stakeholderPeople.update');
 
 /* Routes Project Users  */
 Route::get('/projectUsers','Project\ProjectUserController@index')->name('projectUsers.index');
@@ -354,6 +367,26 @@ Route::resource('materials','Warehouse\MaterialController');
 
 /******************************************************** EMPLOYEES ROUTES ******************************************************* */
 
+/* Routes People */
+
+Route::get('/people','People\PersonController@index')->name('people.index');
+Route::get('/person/createNew','People\PersonController@createNew')->name('people.createNew');
+Route::get('/person/createExist/{person}','People\PersonController@createExist')->name('people.createExist');
+Route::get('/person/edit/{person}','People\PersonController@edit')->name('people.edit');
+Route::post('/people/new','People\PersonController@storeNew')->name('people.storeNew');
+Route::post('/people/exist','People\PersonController@storeExist')->name('people.storeExist');
+Route::patch('/people/{person}','People\PersonController@update')->name('people.update');
+Route::post('/person/search','People\PersonController@search')->name('people.search');
+
+/* Routes StakeholderPeople */
+Route::get('/stakeholderPeople/{person}','People\StakeholderPersonController@index')->name('stakeholderPeople.index');
+Route::get('/stakeholderPeople/create/{person}','People\StakeholderPersonController@create')->name('stakeholderPeople.create');
+Route::post('/stakeholderPeople','People\StakeholderPersonController@store')->name('stakeholderPeople.store');
+Route::get('/stakeholderPeople/edit/{stakeholderPerson}','People\StakeholderPersonController@edit')->name('stakeholderPeople.edit');
+Route::patch('/stakeholderPeople/{stakeholderPerson}','People\StakeholderPersonController@update')->name('stakeholderPeople.update');
+
 /* Routes Employees */
-Route::resource('employees','Employees\EmployeeController');
-Route::post('/person/search','Employees\PersonController@search')->name('employees.peopleSearch');
+Route::get('/employees','People\EmployeeController@index')->name('employees.index');
+Route::get('/employee/edit/{stakeholderPerson}','People\EmployeeController@edit')->name('employees.edit');
+Route::patch('/employees/{stakeholderPerson}','People\EmployeeController@update')->name('employees.update');
+

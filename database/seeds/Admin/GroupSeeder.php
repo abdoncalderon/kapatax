@@ -21,11 +21,11 @@ class GroupSeeder extends Seeder
         ]);
 
         DB::table('groups')->insert([
-            'name' => __('messages.assetControlled'),
+            'name' => __('messages.asset'),
         ]);
 
         DB::table('groups')->insert([
-            'name' => __('messages.assetUncontrolled'),
+            'name' => __('messages.assetControlled'),
         ]);
 
         DB::table('groups')->insert([

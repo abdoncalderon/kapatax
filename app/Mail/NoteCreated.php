@@ -11,8 +11,6 @@ class NoteCreated extends Mailable
 {
     use Queueable, SerializesModels;
 
-    // public $subject = __('messages.noteCreatedSubject');
-
     public $note;
 
     public $subject;
@@ -36,6 +34,9 @@ class NoteCreated extends Mailable
      */
     public function build()
     {
-        return $this->view('workbooks.emails.noteCreated');
+        $parameter = current_user()->project->parameter;
+        return $this
+            ->from($parameter->senderEmail,'Kapatax')
+            ->view('workbooks.emails.noteCreated');
     }
 }

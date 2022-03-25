@@ -4,7 +4,7 @@ namespace App\Http\Controllers\Project;
 
 use App\Http\Controllers\Controller;
 use App\Models\Funct1on;
-use App\Models\Project;
+use App\Models\Position;
 use App\Imports\FunctionsImport;
 use App\Http\Requests\Project\StoreFunctionRequest;
 use App\Http\Requests\Project\UpdateFunctionRequest;
@@ -22,9 +22,7 @@ class FunctionController extends Controller
 
     public function create()
     {
-        $project = Project::where('id',session('current_project_id'))->first();
-        return view('project.functions.create')
-        ->with(compact('project'));
+        return view('project.functions.create');
     }
 
     public function store(StoreFunctionRequest $request )
@@ -46,10 +44,7 @@ class FunctionController extends Controller
 
     public function edit(Funct1on $function)
     {
-        $project = Project::where('id',session('current_project_id'))->first();
-        return view('project.functions.edit',[
-            'function'=>$function
-            ])->with(compact('project'));
+        return view('project.functions.edit',compact('function'));
     }
     
     public function update(Funct1on $function, UpdateFunctionRequest $request)
@@ -92,6 +87,15 @@ class FunctionController extends Controller
             return back();
         }catch(Exception $e){
             return back()->withErrors( $e->getMessage());
+        }
+    }
+
+    public function getPositions(Request $request, $id)
+    {
+        if($request->ajax())
+        {
+            $positions = Position::where('function_id',$id)->get();
+            return response()->json($positions);
         }
     }
 }

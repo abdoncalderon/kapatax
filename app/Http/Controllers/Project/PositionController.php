@@ -14,7 +14,7 @@ class PositionController extends Controller
 {
     public function index()
     {
-        $positions = Position::select('positions.id as id','positions.name as name')
+        $positions = Position::select('positions.*')
                                 ->join('funct1ons','positions.function_id','=','funct1ons.id')
                                 ->where('funct1ons.project_id',session('current_project_id'))
                                 ->get();
@@ -23,24 +23,20 @@ class PositionController extends Controller
 
     public function create()
     {
-        if(current_user()->project->functions->count()>0){
-            $functions = Funct1on::select('funct1ons.id as id','funct1ons.name as name')
-                                ->leftJoin('positions','funct1ons.id','=','positions.function_id')
-                                ->where('project_id',session('current_project_id'))
-                                ->whereNull('function_id')
-                                ->get();
-        }else{
-            $functions = Funct1on::where('project_id',session('current_project_id'))
-                                ->get();
-        }
+        $functions = Funct1on::where('project_id',current_user()->project_id)->get();
         return view('project.positions.create')
         ->with(compact('functions'));
     }
 
-    public function store(StorePositionRequest $request )
+    public function store(StorePositionRequest $request)
     {
-        Position::create($request ->validated());
-        return redirect()->route('positions.index');
+        try{
+            Position::create($request ->validated());
+            return redirect()->route('positions.index');
+        }catch(Exception $e){
+            return back()->withErrors( $e->getMessage());
+        }
+        
     }
 
     public function show(Position $position)
@@ -60,8 +56,13 @@ class PositionController extends Controller
     
     public function update(Position $position, UpdatePositionRequest $request)
     {
-        $position->update($request->validated());
-        return redirect()->route('positions.index');
+        try{
+            $position->update($request->validated());
+            return redirect()->route('positions.index');
+        }catch(Exception $e){
+            return back()->withErrors( $e->getMessage());
+        }
+        
     }
 
     public function destroy(Position $position)
@@ -74,5 +75,14 @@ class PositionController extends Controller
         }
     }
 
+    public function add(StorePositionRequest $request)
+    {
+        try{
+            Position::create($request ->validated());
+            return back();
+        }catch(Exception $e){
+            return back()->withErrors( $e->getMessage());
+        }
+    }
     
 }

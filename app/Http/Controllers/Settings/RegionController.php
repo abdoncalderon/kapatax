@@ -8,8 +8,7 @@ use App\Models\Country;
 use App\Http\Requests\Settings\StoreRegionRequest;
 use App\Http\Requests\Settings\UpdateRegionRequest;
 use Illuminate\Http\Request;
-use Maatwebsite\Excel\Facades\Excel;
-use App\Imports\RegionsImport;
+
 use Exception;
 
 class RegionController extends Controller
@@ -85,17 +84,5 @@ class RegionController extends Controller
         }
     }
 
-    public function import(Request $request){
-        try{
-            
-            if($request->hasFile('file')){
-                $file = $request->file('file');
-                Excel::import(new RegionsImport,$file);
-                return back()->with('success',__('messages.successfullImport'));
-            }
-        }catch(Exception $e){
-            return back()->withErrors( $e->getMessage());
-        }
-        
-    }
+    
 }

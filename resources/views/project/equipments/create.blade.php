@@ -43,7 +43,7 @@
 
                             {{-- project_id --}}
 
-                            <input id="project_id" type="hidden" class="form-control" name="project_id" value="{{ $project->id }}" type="text">
+                            <input id="project_id" type="hidden" class="form-control" name="project_id" value="{{ current_user()->project_id }}" type="text">
 
                             {{-- name --}}
 

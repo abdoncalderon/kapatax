@@ -42,7 +42,7 @@
 
                             {{-- project --}}
     
-                            <input id="project_id" hidden type="text" name="project_id" value="{{ $project->id }}">
+                            <input id="project_id" hidden type="text" name="project_id" value="{{ $sector->project_id }}">
 
                             {{-- name --}}
 

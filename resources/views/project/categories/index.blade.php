@@ -24,7 +24,6 @@
             <div class="box-header with-border center-block">
                 <h3 class="box-title"><strong>{{ __('content.categories') }}</strong></h3> | 
                 <a class="btn btn-success btn-sm" href="{{ route('categories.create') }}">{{ __('content.add') }}</a>
-                <button type="button" class="btn btn-info btn-sm" data-toggle="modal" data-target="#importCategories">{{ __('content.import') }} {{ __('content.from') }} Excel </button>
             </div>
             
             <div class="box-body">
@@ -69,39 +68,5 @@
         </div>
 
     </section>
-
-    {{-- Import from Excel File --}}
-
-    <div class="modal fade" id="importCategories">
-        <div class="modal-dialog">
-            <form method="POST" action="{{ route('categories.import') }}" enctype="multipart/form-data">
-                @csrf
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                            <span aria-hidden="true">&times;</span>
-                        </button>
-                        <h4 class="modal-title">{{ __('content.import').' '.__('content.categories') }}</h4>
-                    </div>
-                    <div class="modal-body">
-                        <div>
-                            
-                            {{-- Filename --}}
-
-                            <div class="form-group">
-                                <label for="file">{{ __('content.file') }} Excel</label>
-                                <input id="file" type="file" class="form-control" name="file" accept="application/xls" required>
-                            </div>
-                            
-                        </div>
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-default" data-dismiss="modal">{{__('content.close')}}</button>
-                        <button type="submit" class="btn btn-primary">{{__('content.import')}}</button>
-                    </div>
-                </div>
-            </form>
-        </div>
-    </div>
 
 @endsection

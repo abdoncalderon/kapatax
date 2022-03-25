@@ -94,19 +94,7 @@ class CountryController extends Controller
         }
     }
 
-    public function import(Request $request){
-        try{
-            
-            if($request->hasFile('file')){
-                $file = $request->file('file');
-                Excel::import(new CountriesImport,$file);
-                return back()->with('success',__('messages.successfullImport'));
-            }
-        }catch(Exception $e){
-            return back()->withErrors( $e->getMessage());
-        }
-        
-    }
+    
     
    
 }

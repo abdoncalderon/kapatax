@@ -4,7 +4,7 @@
 
 @section('section', __('content.categories'))
 
-@section('level', __('content.administration'))
+@section('level', __('content.settings'))
 
 @section('breadcrumb')
     <ol class="breadcrumb">

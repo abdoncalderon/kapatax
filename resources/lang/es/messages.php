@@ -141,6 +141,22 @@ return [
     'employeesInProject'=>'Empleados en Projecto',
     'employeeData'=>'Datos de Empleado',
     'personalInformation'=>'Datos Personales',
+    'personNotRegisteredInProject'=>'Persona no registrada en el proyecto',
+    'addPersonToProject'=>'Agregar Persona a Proyecto',
+    'searchPerson'=>'Buscar Persona',
+    'editPersonData'=>'Editar Datos de Persona',
+    'addAdmissionTo'=>'Agregar Admisión para',
+    'hiredSince'=>'Contratado Desde',
+    'contractedUntil'=>'Contratado Hasta',  
+    'bulkLoad'=>'Carga Masiva',
+    'downloadTemplate'=>'Descargar Plantilla',
+    'importFromExcel'=>'Importar desde Excel',
+    'cloneFromProject'=>'Clonar desde Proyecto',
+    'cloningWarning'=>'ADVERTENCIA. La clonación de informacion desde otro proyecto eliminará toda la informacion existente en la tabla del proyecto actual',
+    'successfulCloning'=>'Clonacion Exitosa',
+    'emailSettings'=>'Configuración de Correo Electrónico',
+    'updatedParameters'=>'Parámetros Actualizados',
+
 
 
 

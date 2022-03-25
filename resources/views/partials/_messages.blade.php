@@ -11,11 +11,13 @@
 
 {{-- Error Messages --}}
 
-@if($errors->any())
+@if(isset($errors) && $errors->any())
     <div class="message">
         <div class="alert alert-danger alert-dismissible">
             <button type="button" class="close" data-dismiss="alert">&times;</button>
-            {{ $errors->first() }}
+            @foreach ($errors->all() as $error )
+                {{ $error }}
+            @endforeach
         </div>
     </div>
 @endif

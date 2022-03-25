@@ -21,7 +21,18 @@ class CreateStakeholderPeopleTable extends Migration
             $table->foreign('person_id')->references('id')->on('people')->onUpdate('cascade')->onDelete('restrict');
             $table->date('admissionDate');
             $table->date('departureDate')->nullable();
+            $table->foreignId('position_id');
+            $table->foreign('position_id')->references('id')->on('positions')->onUpdate('cascade')->onDelete('restrict');
+            $table->foreignId('department_id');
+            $table->foreign('department_id')->references('id')->on('departments')->onUpdate('cascade')->onDelete('restrict');
+            $table->unsignedBigInteger('leader_id')->nullable();
+            $table->string('businessEmail')->unique()->nullable();
+            $table->date('hiredSince')->nullable();
+            $table->date('contractedUntil')->nullable();
+            $table->decimal('salary',8,2)->nullable();
+            $table->string('contractFile')->nullable();
             $table->boolean('isActive')->default(true);
+            $table->boolean('isLocked')->default(false);
             $table->timestamps();
         });
     }

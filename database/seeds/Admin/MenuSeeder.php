@@ -110,14 +110,6 @@ class MenuSeeder extends Seeder
                         ]);
 
                         DB::table('menus')->insert([
-                            'code' => 'settings.people',
-                            'showName' => 'content.people',
-                            'father' => 'settings',
-                            'route' => 'people.index',
-                            'icon' => 'fa fa-circle-o',
-                        ]);
-
-                        DB::table('menus')->insert([
                             'code' => 'settings.brands',
                             'showName' => 'content.brands',
                             'father' => 'settings',
@@ -138,6 +130,14 @@ class MenuSeeder extends Seeder
                             'showName' => 'content.unities',
                             'father' => 'settings',
                             'route' => 'unities.index',
+                            'icon' => 'fa fa-circle-o',
+                        ]);
+
+                        DB::table('menus')->insert([
+                            'code' => 'settings.parameters',
+                            'showName' => 'content.parameters',
+                            'father' => 'settings',
+                            'route' => 'settings.parameters.index',
                             'icon' => 'fa fa-circle-o',
                         ]);
 
@@ -221,15 +221,7 @@ class MenuSeeder extends Seeder
                             'route' => 'equipments.index',
                             'icon' => 'fa fa-circle-o',
                         ]);
-
-                        DB::table('menus')->insert([
-                            'code' => 'project.projectPeople',
-                            'showName' => 'content.people',
-                            'father' => 'project',
-                            'route' => 'projectPeople.index',
-                            'icon' => 'fa fa-circle-o',
-                        ]);
-
+                        
                         DB::table('menus')->insert([
                             'code' => 'project.projectUsers',
                             'showName' => 'content.users',
@@ -267,6 +259,14 @@ class MenuSeeder extends Seeder
                             'showName' => 'content.shifts',
                             'father' => 'project',
                             'route' => 'turns.index',
+                            'icon' => 'fa fa-circle-o',
+                        ]);
+
+                        DB::table('menus')->insert([
+                            'code' => 'project.parameters',
+                            'showName' => 'content.parameters',
+                            'father' => 'project',
+                            'route' => 'project.parameters.index',
                             'icon' => 'fa fa-circle-o',
                         ]);
 
@@ -561,7 +561,7 @@ class MenuSeeder extends Seeder
                             'code' => 'people.record',
                             'showName' => 'content.record',
                             'father' => 'people',
-                            'route' => 'employees.index',
+                            'route' => 'people.index',
                             'icon' => 'fa fa-pencil',
                         ]);
 
@@ -569,7 +569,7 @@ class MenuSeeder extends Seeder
                             'code' => 'people.payroll',
                             'showName' => 'content.payroll',
                             'father' => 'people',
-                            'route' => null,
+                            'route' => 'employees.index',
                             'icon' => 'fa fa-list',
                         ]);
 

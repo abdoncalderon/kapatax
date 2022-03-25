@@ -4,11 +4,12 @@ namespace App\Http\Controllers\Settings;
 
 use App\Models\Project;
 use App\Models\Subsidiary;
-use App\Models\City;
 use App\Models\Region;
+use App\Models\Parameter;
 use App\Http\Requests\Settings\StoreProjectRequest;
 use App\Http\Requests\Settings\UpdateProjectRequest;
 use App\Http\Controllers\Controller;
+use App\Models\ProjectUser;
 use Exception;
 
 
@@ -32,7 +33,10 @@ class ProjectController extends Controller
     public function store(StoreProjectRequest $request )
     {
         try{
-            Project::create($request ->validated());
+            $project = Project::create($request->validated());
+            Parameter::create([ 
+                'project_id'=>$project->id,
+            ]);
             return redirect()->route('projects.index');
         }catch(Exception $e){
             return back()->withErrors( $e->getMessage());

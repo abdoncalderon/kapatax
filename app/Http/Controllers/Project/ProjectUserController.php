@@ -21,11 +21,10 @@ class ProjectUserController extends Controller
 
     public function create(User $user)
     {
-        $availableUsers = User::select('users.*')
-                        ->join('people','users.person_id','=','people.id')
-                        ->join('stakeholder_people','people.id','=','stakeholder_people.person_id')
+        $availableUsers = StakeholderPerson::select('stakeholder_people.*')
                         ->join('stakeholders','stakeholder_people.stakeholder_id','=','stakeholders.id')
                         ->where('stakeholders.project_id',session('current_project_id'))
+                        ->where('stakeholder_people.isActive',1)
                         ->get();
         $roles = ProjectRole::select('roles.*')->join('roles','project_roles.role_id','=','roles.id')->where('project_roles.project_id',session('current_project_id'))->get();
         return view('project.projectUsers.create')
@@ -33,6 +32,7 @@ class ProjectUserController extends Controller
         ->with(compact('availableUsers'))
         ->with(compact('roles'));
     }
+    
 
     public function store(StoreProjectUserRequest $request, User $user)
     {

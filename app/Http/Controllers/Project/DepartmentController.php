@@ -4,7 +4,6 @@ namespace App\Http\Controllers\Project;
 
 use App\Http\Controllers\Controller;
 use App\Models\Department;
-use App\Models\ProjectSector;
 use App\Models\Sector;
 use App\Http\Requests\Project\StoreDepartmentRequest;
 use App\Http\Requests\Project\UpdateDepartmentRequest;

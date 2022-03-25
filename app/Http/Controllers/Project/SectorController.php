@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Project;
 use App\Http\Controllers\Controller;
 use App\Models\Sector;
 use App\Models\Project;
+use App\Models\Department;
 use App\Imports\SectorsImport;
 use App\Http\Requests\Project\StoreSectorRequest;
 use App\Http\Requests\Project\UpdateSectorRequest;
@@ -16,15 +17,14 @@ class SectorController extends Controller
 {
     public function index()
     {
-        $project = Project::where('id',session('current_project_id'))->first();
-        return view('project.sectors.index', compact('project'));
+        $sectors = Sector::where('project_id',current_user()->project_id)->get();
+        return view('project.sectors.index')
+        ->with(compact('sectors'));
     }
 
     public function create()
     {
-        $project = Project::where('id',session('current_project_id'))->first();
-        return view('project.sectors.create')
-        ->with(compact('project'));
+        return view('project.sectors.create');
     }
 
     public function store(StoreSectorRequest $request )
@@ -46,10 +46,7 @@ class SectorController extends Controller
 
     public function edit(Sector $sector)
     {
-        $project = Project::where('id',session('current_project_id'))->first();
-        return view('project.sectors.edit',[
-            'sector'=>$sector
-            ])->with(compact('project'));
+        return view('project.sectors.edit',compact('sector'));
     }
     
     public function update(Sector $sector, UpdateSectorRequest $request)
@@ -82,7 +79,6 @@ class SectorController extends Controller
         }catch(Exception $e){
             return back()->withErrors( $e->getMessage());
         }
-        
     }
 
     public function add(StoreSectorRequest $request )
@@ -92,6 +88,15 @@ class SectorController extends Controller
             return back();
         }catch(Exception $e){
             return back()->withErrors( $e->getMessage());
+        }
+    }
+
+    public function getDepartments(Request $request, $id)
+    {
+        if($request->ajax())
+        {
+            $positions = Department::where('sector_id',$id)->get();
+            return response()->json($positions);
         }
     }
 }

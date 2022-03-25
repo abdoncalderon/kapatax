@@ -21,7 +21,7 @@ class UpdateLocationRequest extends FormRequest
             'latitude'=>'nullable',
             'longitude'=>'nullable',
             'startDate'=>'required',
-            'finishDate'=>'required',
+            'finishDate'=>'required|after:startDat',
             'max_time_open_folio'=>'required',
             'max_time_create_dailyreport'=>'required',
             'max_time_create_note'=>'required',

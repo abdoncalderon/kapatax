@@ -150,15 +150,11 @@
                 $("#regionModal3Text").val($('#region option:selected').text())
                 $("#regionModal3Id").val($('#region option:selected').val())
 
-                /* $("#regionModal1 option[value="+event.target.value+"]").attr("selected",true)
-                $("#regionModal1").trigger('change')
-                $("#regionModal2 option[value="+event.target.value+"]").attr("selected",true) */
-
                 $.get("/getCountries/"+event.target.value+"", 
                     function(response,state){
                         console.log(response);
                         $("#country").empty();
-                        $("#country").append("<option value=''>Seleccione Pais</option>");
+                        $("#country").append("<option value=''>Select Option</option>");
                         for(i=0;i<response.length;i++){
                             $("#country").append("<option value='"+response[i].id+"'> "+response[i].name+"</option>");
                         } 
@@ -178,7 +174,7 @@
                     function(response,state){
                         console.log(response);
                         $("#state").empty();
-                        $("#state").append("<option value=''>Seleccione Estado/Provincia</option>");
+                        $("#state").append("<option value=''>Select Option</option>");
                         for(i=0;i<response.length;i++){
                             $("#state").append("<option value='"+response[i].id+"'> "+response[i].name+"</option>");
                         } 
@@ -195,7 +191,7 @@
                     function(response,state){
                         console.log(response);
                         $("#city").empty();
-                        $("#city").append("<option value=''>Seleccione Ciudad</option>");
+                        $("#city").append("<option value=''>Select Option</option>");
                         for(i=0;i<response.length;i++){
                             $("#city").append("<option value='"+response[i].id+"'> "+response[i].name+"</option>");
                         } 
@@ -210,11 +206,26 @@
 
                 $.get("/getDepartments/"+event.target.value+"", 
                     function(response,state){
-                        console.log(response);
                         $("#department").empty();
-                        $("#department").append("<option value=''>Seleccione Departamento</option>");
+                        $("#department").append("<option value=''>Select Option</option>");
                         for(i=0;i<response.length;i++){
                             $("#department").append("<option value='"+response[i].id+"'> "+response[i].name+"</option>");
+                        } 
+                    });
+        })
+
+        $("#function").change(
+            function(event){
+
+                $("#functionModalText").val($('#function option:selected').text())
+                $("#functionModalId").val($('#function option:selected').val())
+
+                $.get("/getPositions/"+event.target.value+"", 
+                    function(response,state){
+                        $("#position").empty();
+                        $("#position").append("<option value=''>Select Option</option>");
+                        for(i=0;i<response.length;i++){
+                            $("#position").append("<option value='"+response[i].id+"'> "+response[i].name+"</option>");
                         } 
                     });
         })
@@ -257,7 +268,7 @@
                 $.get("/getRoles/"+event.target.value+"", 
                     function(response,state){
                         $("#role").empty();
-                        $("#role").append("<option value=''>Choice Role</option>");
+                        $("#role").append("<option value=''>Select Option</option>");
                         for(i=0;i<response.length;i++){
                             $("#role").append("<option value='"+response[i].id+"'> "+response[i].name+"</option>");
                         } 
@@ -302,6 +313,13 @@
         $("#lastName").on('change', function() {
             $("#fullName").attr('value',"");
             $("#fullName").attr('value',$("#lastName").val()+" "+$("#firstName").val());
+
+            }
+        )
+
+        $("#cardIdSearch").on('change', function() {
+            $("#cardId").attr('value',"");
+            $("#cardId").attr('value',$("#cardIdSearch").val());
 
             }
         )
@@ -391,6 +409,7 @@
             }
         )
 
+        
         
 
         

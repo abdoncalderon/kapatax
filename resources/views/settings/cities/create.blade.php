@@ -21,7 +21,6 @@
         <div>
 
             <div class="box box-info">
-
                 
                 {{-- Title --}}
 

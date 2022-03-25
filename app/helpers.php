@@ -14,6 +14,7 @@ use App\Models\LocationTurn;
 use App\Models\Stakeholder;
 use App\Models\Person;
 use App\Models\NeedRequest;
+use App\Models\StakeholderPerson;
 use Carbon\Carbon;
 
 function yesNo($value){
@@ -288,39 +289,44 @@ if (! function_exists('stakeholder_logofile')) {
     }
 }
 
-if (! function_exists('is_valid_date_for_admission')) {
-    function is_valid_date_for_admission($date, $person_id)
+if (! function_exists('is_valid_date_for_new_admission')) {
+    function is_valid_date_for_new_admission($date, $person_id)
     {
         $flag = true;
         $person = Person::find($person_id);
         foreach($person->stakeholderPeople as $stakeholderPerson){
-            $admissionDate = strtotime($stakeholderPerson->admissionDate);
-            $departureDate = strtotime($stakeholderPerson->departureDate);
-            if((strtotime($date)>=$admissionDate)&&(strtotime($date)<=$departureDate)){
-                $flag = false;
-                break;
+            if ($stakeholderPerson->isActive==0){
+                $admissionDate = strtotime($stakeholderPerson->admissionDate);
+                $departureDate = strtotime($stakeholderPerson->departureDate);
+                if((strtotime($date)>=$admissionDate)&&(strtotime($date)<=$departureDate)){
+                    $flag = false;
+                    break;
+                }
             }
         }
         return $flag;
     }
 }
 
-if (! function_exists('is_valid_date_for_departure')) {
-    function is_valid_date_for_departure($date, $person_id)
+
+if (! function_exists('is_valid_date_for_edit_admission')) {
+    function is_valid_date_for_edit_admission($date, StakeholderPerson $stakeholderPerson)
     {
         $flag = true;
-        $person = Person::find($person_id);
-        foreach($person->stakeholderPeople as $stakeholderPerson){
-            $admissionDate = strtotime($stakeholderPerson->admissionDate);
-            $departureDate = strtotime($stakeholderPerson->departureDate);
-            if((strtotime($date)>=$admissionDate)&&(strtotime($date)<=$departureDate)){
-                $flag = false;
-                break;
+        foreach($stakeholderPerson->person->stakeholderPeople as $admission){
+            if ($admission->id!=$stakeholderPerson->id){
+                $admissionDate = strtotime($admission->admissionDate);
+                $departureDate = strtotime($admission->departureDate);
+                if((strtotime($date)>=$admissionDate)&&(strtotime($date)<=$departureDate)){
+                    $flag = false;
+                    break;
+                }
             }
         }
         return $flag;
     }
 }
+
 
 
 if (! function_exists('is_active_stakeholder_person')) {
@@ -383,6 +389,17 @@ if (! function_exists('my_pending_approvals')) {
         return $pendingApprovals->count();
     }
 }
+
+if (! function_exists('status')) {
+    function status($status){
+        if($status==1){
+            return __('content.active');
+        }else{
+            return __('content.inactive');
+        }
+    }
+}
+    
 
 
 

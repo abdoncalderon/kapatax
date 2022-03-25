@@ -53,7 +53,7 @@
                                     <select name="user_id" class="form-control" style="width: 100%;">
                                         <option value="">{{ __('messages.choiceUser') }}</option>
                                         @foreach ($availableUsers as $user)
-                                            <option value="{{ $user->id }}">{{ $user->person->fullName }}</option>
+                                            <option value="{{ $user->person->user->id }}">{{ $user->person->fullName }}</option>
                                         @endforeach
                                     </select>
                                     
