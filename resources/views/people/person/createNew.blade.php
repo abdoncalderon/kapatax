@@ -37,7 +37,7 @@
                             <div class="form-group">
                                 <label class="col-sm-2 control-label">{{ __('content.cardId') }}</label>
                                 <div class="input-group input-group-sm col-xs-12 col-sm-10" >
-                                    <input id="cardIdSearch" class="form-control" name="cardIdSearch" type="text" value="{{ old('cardIdSearch') }}" placeholder="{{ __('content.cardId') }}" required>
+                                    <input id="cardIdSearch" class="form-control" name="cardIdSearch" type="text" value="{{ old('cardId') }}" placeholder="{{ __('content.cardId') }}" required>
                                     @error('cardIdSearch')
                                         <span class="invalid-feedback" role="alert" style="color:red">
                                             <strong>{{ $message }}</strong>
@@ -162,7 +162,7 @@
                             <div class="form-group">
                                 <label class="col-sm-2 control-label">{{ __('content.email') }}</label>
                                 <div class="input-group input-group-sm col-xs-12 col-sm-10" >
-                                    <input id="email" class="form-control" name="email" type="email" value="{{ old('jobTitle') }}" placeholder="{{ __('content.email') }}" required>
+                                    <input id="email" class="form-control" name="email" type="email" value="{{ old('email') }}" placeholder="{{ __('content.email') }}" required>
                                     @error('email')
                                         <span class="invalid-feedback" role="alert">
                                             <strong>{{ $message }}</strong>
@@ -286,7 +286,11 @@
                                     <select id="stakeholder_id" class="form-control" name="stakeholder_id" required>
                                         <option value="">{{__('messages.select')}} {{__('content.stakeholder')}}</option>
                                         @foreach (current_user()->project->stakeholders as $stakeholder)
-                                            <option value="{{ $stakeholder->id }}">{{ $stakeholder->name }}</option>
+                                            <option value="{{ $stakeholder->id }}"
+                                                @if ($stakeholder->id==old('stakeholder_id'))
+                                                    selected
+                                                @endif
+                                            >{{ $stakeholder->name }}</option>
                                         @endforeach
                                     </select>
                                 </div>
@@ -297,43 +301,12 @@
                             <div class="form-group">
                                 <label class="col-sm-2 control-label">{{ __('messages.admissionDate') }}</label>
                                 <div class="input-group input-group-sm col-xs-12 col-sm-10">
-                                    <input id="admissionhDate" class="form-control pull-right" name="admissionDate" type="date" required >
+                                    <input id="admissionhDate" class="form-control pull-right" name="admissionDate" type="date" value="{{ old('admissionDate') }}" required >
                                     @error('admissionDate')
                                         <span class="invalid-feedback" role="alert" style="color:red">
                                             <strong>{{ $message }}</strong>
                                         </span>
                                     @enderror
-                                </div>
-                            </div>
-
-                            {{-- function --}}
-
-                            <div class="form-group">
-                                <label class="col-sm-2 control-label">{{ __('content.function') }}</label>
-                                <div class="input-group input-group-sm col-xs-12 col-sm-10" >
-                                    <select id="function" name="function_id" class="form-control" style="width: 100%;" required>
-                                        <option value="">{{__('messages.select')}} {{__('content.function')}}</option>
-                                        @foreach ($functions as $function)
-                                            <option value="{{ $function->id }}">{{ $function->name }}</option>                                              
-                                        @endforeach
-                                    </select>
-                                    <span class="input-group-btn">
-                                        <button type="button" class="btn btn-info btn-flat" data-toggle="modal" data-target="#addFunction"> + </button>
-                                    </span>
-                                </div>
-                            </div>
-
-                            {{-- position --}}
-
-                            <div class="form-group">
-                                <label class="col-sm-2 control-label">{{ __('content.position') }}</label>
-                                <div class="input-group input-group-sm col-xs-12 col-sm-10" >
-                                    <select id="position" name="position_id" class="form-control" style="width: 100%;" required>
-                                        <option value="">{{__('messages.select')}} {{__('content.position')}}</option>
-                                    </select>
-                                    <span class="input-group-btn">
-                                        <button type="button" class="btn btn-info btn-flat" data-toggle="modal" data-target="#addPosition"> + </button>
-                                    </span>
                                 </div>
                             </div>
 
@@ -345,7 +318,11 @@
                                     <select id="sector" name="sector_id" class="form-control" style="width: 100%;" required>
                                         <option value="">{{__('messages.select')}} {{__('content.sector')}}</option>
                                         @foreach ($sectors as $sector)
-                                            <option value="{{ $sector->id }}">{{ $sector->name }}</option>
+                                            <option value="{{ $sector->id }}"
+                                                @if ($sector->id==old('sector_id'))
+                                                    selected
+                                                @endif
+                                            >{{ $sector->name }}</option>
                                         @endforeach
                                     </select>
                                     <span class="input-group-btn">
@@ -364,6 +341,41 @@
                                     </select>
                                     <span class="input-group-btn">
                                         <button type="button" class="btn btn-info btn-flat" data-toggle="modal" data-target="#addDepartment"> + </button>
+                                    </span>
+                                </div>
+                            </div>
+
+                            {{-- function --}}
+
+                            <div class="form-group">
+                                <label class="col-sm-2 control-label">{{ __('content.function') }}</label>
+                                <div class="input-group input-group-sm col-xs-12 col-sm-10" >
+                                    <select id="function" name="function_id" class="form-control" style="width: 100%;" required>
+                                        <option value="">{{__('messages.select')}} {{__('content.function')}}</option>
+                                        @foreach ($functions as $function)
+                                            <option value="{{ $function->id }}"
+                                                @if ($function->id==old('function_id'))
+                                                    selected
+                                                @endif
+                                            >{{ $function->name }}</option>                                              
+                                        @endforeach
+                                    </select>
+                                    <span class="input-group-btn">
+                                        <button type="button" class="btn btn-info btn-flat" data-toggle="modal" data-target="#addFunction"> + </button>
+                                    </span>
+                                </div>
+                            </div>
+
+                            {{-- position --}}
+
+                            <div class="form-group">
+                                <label class="col-sm-2 control-label">{{ __('content.position') }}</label>
+                                <div class="input-group input-group-sm col-xs-12 col-sm-10" >
+                                    <select id="position" name="position_id" class="form-control" style="width: 100%;" required>
+                                        <option value="">{{__('messages.select')}} {{__('content.position')}}</option>
+                                    </select>
+                                    <span class="input-group-btn">
+                                        <button type="button" class="btn btn-info btn-flat" data-toggle="modal" data-target="#addPosition"> + </button>
                                     </span>
                                 </div>
                             </div>

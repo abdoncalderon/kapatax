@@ -54,8 +54,13 @@ class RoleController extends Controller
     
     public function update(Role $role, UpdateRoleRequest $request)
     {
-        $role->update($request->validated());
-        return redirect()->route('roles.index');
+        try{
+            $role->update($request->validated());
+            return redirect()->route('roles.index');
+        }catch(Exception $e){
+            return back()->withErrors( $e->getMessage());
+        }
+        
     }
 
     public function activate(Role $role, $value){

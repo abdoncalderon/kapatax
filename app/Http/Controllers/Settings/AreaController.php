@@ -23,22 +23,17 @@ class AreaController extends Controller
 
     public function store(StoreAreaRequest $request )
     {
-        Area::create($request ->validated());
-        return redirect()->route('areas.index');
+        try{
+            Area::create($request ->validated());
+            return redirect()->route('areas.index');
+        }catch(Exception $e){
+            return back()->withErrors( $e->getMessage());
+        }
     }
-
-    public function show(Area $area)
-    {
-        return view('settings.areas.show',[
-            'area'=>$area
-            ]);
-    }
-
+    
     public function edit(Area $area)
     {
-        return view('settings.areas.edit',[
-            'area'=>$area
-            ]);
+        return view('settings.areas.edit', compact('area'));
     }
     
     public function update(Area $area, UpdateAreaRequest $request)

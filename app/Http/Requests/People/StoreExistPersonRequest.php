@@ -24,7 +24,7 @@ class StoreExistPersonRequest extends FormRequest
             'city_id'=>'required',
             'address'=>'nullable',
             'homePhone'=>'nullable',
-            'mobilePhone'=>'nullable',
+            'mobilePhone'=>'required',
             'project_user_id'=>'nullable',
             'photo'=>'nullable',
             'signature'=>'nullable',

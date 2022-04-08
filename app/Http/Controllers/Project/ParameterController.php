@@ -5,6 +5,11 @@ namespace App\Http\Controllers\Project;
 use App\Http\Controllers\Controller;
 use App\Models\Project;
 use App\Models\Parameter;
+use App\Models\Position;
+use App\Models\Department;
+use App\Models\Location;
+use App\Models\Category;
+use App\Models\Subcategory;
 use App\Http\Requests\Project\UpdateParameterRequest;
 use App\Imports\FunctionsImport;
 use App\Imports\PositionsImport;
@@ -14,6 +19,7 @@ use App\Imports\ZonesImport;
 use App\Imports\LocationsImport;
 use App\Imports\FamiliesImport;
 use App\Imports\CategoriesImport;
+use App\Imports\SubcategoriesImport;
 use App\Imports\EquipmentsImport;
 use App\Imports\TurnsImport;
 use App\Models\Funct1on;
@@ -28,8 +34,36 @@ use Exception;
 class ParameterController extends Controller
 {
     public function index(){
+
         $projects = Project::where('id','!=',current_user()->project_id)->get();
-        return view('project.parameters.index')->with(compact('projects'));
+        $positions = Position::select('positions.*')
+                    ->join('funct1ons','positions.function_id','=','funct1ons.id')
+                    ->where('funct1ons.project_id',current_user()->project_id)
+                    ->get();
+        $departments = Department::select('departments.*')
+                    ->join('sectors','departments.sector_id','=','sectors.id')
+                    ->where('sectors.project_id',current_user()->project_id)
+                    ->get();
+        $locations = Location::select('locations.*')
+                    ->join('zones','locations.zone_id','=','zones.id')
+                    ->where('zones.project_id',current_user()->project_id)
+                    ->get();
+        $categories = Category::select('categories.*')
+                    ->join('families','categories.family_id','=','families.id')
+                    ->where('families.project_id',current_user()->project_id)
+                    ->get();
+        $subcategories = Subcategory::select('subcategories.*')
+                    ->join('categories','subcategories.category_id','=','categories.id')
+                    ->join('families','categories.family_id','=','families.id')
+                    ->where('families.project_id',current_user()->project_id)
+                    ->get();
+
+        return view('project.parameters.index')->with(compact('projects'))
+        ->with(compact('positions'))
+        ->with(compact('departments'))
+        ->with(compact('locations'))
+        ->with(compact('categories'))
+        ->with(compact('subcategories'));
     }
 
     public function update(UpdateParameterRequest $request)
@@ -126,6 +160,8 @@ class ParameterController extends Controller
                 $import->import($file);
                 if($import->failures()->isNotEmpty()){
                     return back()->withFailures($import->failures());
+                }elseif($import->errors()->isNotEmpty()){
+                    return back()->withErrors(__('messages.errorsInImport'));
                 }else{
                     return back()->with('success',__('messages.successfullImport'));
                 }
@@ -177,6 +213,24 @@ class ParameterController extends Controller
             if($request->hasFile('file')){
                 $file = $request->file('file');
                 $import = new CategoriesImport;
+                $import->import($file);
+                if($import->failures()->isNotEmpty()){
+                    return back()->withFailures($import->failures());
+                }else{
+                    return back()->with('success',__('messages.successfullImport'));
+                }
+            }
+        }catch(Exception $e){
+            return back()->withErrors( $e->getMessage());
+        }
+    }
+
+    public function subcategoriesImport(Request $request){
+        try{
+            
+            if($request->hasFile('file')){
+                $file = $request->file('file');
+                $import = new SubcategoriesImport;
                 $import->import($file);
                 if($import->failures()->isNotEmpty()){
                     return back()->withFailures($import->failures());

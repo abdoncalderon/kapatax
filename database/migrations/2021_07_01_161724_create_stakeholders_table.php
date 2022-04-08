@@ -25,7 +25,7 @@ class CreateStakeholdersTable extends Migration
             $table->string('address')->nullable();
             $table->string('zipCode')->nullable();
             $table->string('phoneNumber')->nullable();
-            $table->string('email')->nullable();
+            $table->string('email');
             $table->string('logofile')->default('logo.png');
             $table->foreignId('stakeholder_type_id');
             $table->foreign('stakeholder_type_id')->references('id')->on('stakeholder_types')->onUpdate('cascade')->onDelete('restrict');

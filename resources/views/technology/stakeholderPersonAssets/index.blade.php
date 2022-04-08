@@ -71,7 +71,7 @@
 
                 <hr>
 
-                <a class="btn btn-danger btn-sm" href=" {{ route('technology.stakeholderPeople.index') }} "><<< {{ __('content.return') }}</a>
+                <a class="btn btn-danger btn-sm" href=" {{ route('technology.stakeholderPeople.index') }} ">{{ __('content.return') }}</a>
 
             </div>
 

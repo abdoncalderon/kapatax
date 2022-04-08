@@ -1,15 +1,15 @@
 @extends('layouts.main')
 
-@section('title', __('content.home'))
+@section('title', __('content.purchases'))
 
-@section('section',__('messages.myNeedRequests'))
+@section('section',__('messages.needRequests'))
 
-@section('level',__('content.home'))
+@section('level',__('content.show'))
 
 @section('breadcrumb')
     <ol class="breadcrumb">
         <li><a href="{{ route('home') }}"><i class="fa fa-home"></i>Home</a></li>
-        <li><a href="{{ route('myNeedRequests.index')}}"> {{ __('messages.myNeedRequests') }} </a></li>
+        <li><a href="{{ route('myNeedRequests.index')}}"> {{ __('messages.needRequests') }} </a></li>
         <li class="active">{{ __('content.edit') }}</li>
     </ol>
 @endsection
@@ -25,14 +25,13 @@
                 {{-- Title --}}
 
                 <div class="box-header with-border">
-                    <h3 class="box-title"><strong>{{ __('content.modify') }} {{ __('messages.needRequest') }}</strong></h3>
+                    <h3 class="box-title"><strong>{{ __('content.add') }}</strong></h3>
                 </div>
 
                 {{-- Start Form  --}}
             
-                <form class="form-horizontal" method="POST" action="{{ route('myNeedRequests.update',$myNeedRequest) }}">
-                    @csrf
-                    @method('PATCH')
+                
+                   
 
                     {{-- Form Body --}}
 
@@ -52,23 +51,14 @@
 
                             {{-- status --}}
 
-                            <input id="status" type="hidden" name="status_id" value="{{ $myNeedRequest->status_id }}">
+                            <input id="status" type="hidden" name="status_id" value="{{ $needRequest->status_id }}">
 
                             {{-- zone --}}
 
                             <div class="form-group">
                                 <label class="col-sm-2 control-label">{{ __('content.zone') }}</label>
                                 <div class="input-group input-group-sm col-xs-12 col-sm-10" >
-                                    <select id="zone" name="zone_id" class="form-control" style="width: 100%;" required>
-                                        <option value="">{{__('messages.select')}} {{__('content.zone')}}</option>
-                                        @foreach ($zones as $zone)
-                                            <option value="{{ $zone->id }}"
-                                                @if($myNeedRequest->location->zone->id==$zone->id)    
-                                                    selected
-                                                @endif
-                                            >{{ $zone->name }}</option>
-                                        @endforeach
-                                    </select>
+                                    <input id="zone" disabled class="form-control" name="zone_id" type="text" value="{{ $needRequest->location->zone->name }}">
                                 </div>
                             </div>
 
@@ -77,9 +67,7 @@
                             <div class="form-group">
                                 <label class="col-sm-2 control-label">{{ __('content.location') }}</label>
                                 <div class="input-group input-group-sm col-xs-12 col-sm-10" >
-                                    <select id="location" name="location_id" class="form-control" style="width: 100%;" required>
-                                        <option value="{{ $myNeedRequest->location_id }}">{{ $myNeedRequest->location->name }}</option>
-                                    </select>
+                                    <input id="location" disabled class="form-control" name="location_id" type="text" value="{{ $needRequest->location->name }}">
                                 </div>
                             </div>
 
@@ -88,9 +76,8 @@
                             <div class="form-group">
                                 <label class="col-sm-2 control-label">{{ __('messages.costAccount') }}</label>
                                 <div class="input-group input-group-sm col-xs-12 col-sm-10" >
-                                    <select id="cost_account" name="cost_account_id" class="form-control" style="width: 100%;">
-                                        <option value="">{{__('messages.select')}} {{__('messages.costAccount')}}</option>
-                                    </select>
+                                    {{-- <input id="cost_account" disabled class="form-control" name="cost_account_id" type="text" value="{{ $needRequest->costAccount->name }}"> --}}
+                                    <input id="cost_account" disabled class="form-control" name="cost_account_id" type="text" value="">
                                 </div>
                             </div>
 
@@ -99,12 +86,7 @@
                             <div class="form-group">
                                 <label class="col-sm-2 control-label">{{ __('messages.descriptionOfNeed') }}</label>
                                 <div class="input-group input-group-sm col-xs-12 col-sm-10" >
-                                    <textarea id="description" class="form-control @error('description') is-invalid @enderror" name="description" style="resize: vertical; height: 100px;" rows="5">{{ $myNeedRequest->description }}</textarea>
-                                    @error('description')
-                                        <span class="invalid-feedback" role="alert" style="color:red">
-                                            <strong>{{ $message }}</strong>
-                                        </span>
-                                    @enderror
+                                    <textarea id="description" disabled class="form-control" name="description" style="resize: vertical; height: 100px;" >{{ $needRequest->description }}</textarea>
                                 </div>
                             </div>
 
@@ -113,12 +95,7 @@
                             <div class="form-group">
                                 <label class="col-sm-2 control-label">{{ __('messages.expectedCost') }}</label>
                                 <div class="input-group input-group-sm col-xs-12 col-sm-10" >
-                                    <input id="expectedCost" class="form-control @error('expectedCost') is-invalid @enderror" name="expectedCost" type="number" value="{{ $myNeedRequest->expectedCost }}" min="0.0">
-                                    @error('expectedCost')
-                                        <span class="invalid-feedback" role="alert" style="color:red">
-                                            <strong>{{ $message }}</strong>
-                                        </span>
-                                    @enderror
+                                    <input id="expectedCost" disabled class="form-control" name="expectedCost" type="number" value="{{ $needRequest->expectedCost }}">
                                 </div>
                             </div>
 
@@ -127,8 +104,7 @@
                             <div class="form-group">
                                 <label class="col-sm-2 control-label">{{ __('messages.approvingUser') }}</label>
                                 <div class="input-group input-group-sm col-xs-12 col-sm-10" >
-                                    {{-- <input id="approving_user" disabled class="form-control" name="approving_user_id" type="text" value="{{ $myNeedRequest->approvingUser->user->person->fullName }}"> --}}
-                                    <input id="approving_user" disabled class="form-control" name="approving_user_id" type="text" value="">
+                                    <input id="approving_user" disabled class="form-control" name="approver_id" type="text" value="{{ $needRequest->approver->person->fullName }}">
                                 </div>
                             </div>
 
@@ -149,21 +125,15 @@
                                                 <th>{{ __('content.quantity') }}</th>
                                                 <th>{{ __('content.unity') }}</th>
                                                 <th>{{ __('content.status') }}</th>
-                                                <th>{{ __('content.actions') }}</th>
                                             </tr>
                                         </thead>
                                         <tbody>
-                                            @foreach($myNeedRequest->needRequestItems as $myNeedRequestItem)
+                                            @foreach($needRequest->needRequestItems as $needRequestItem)
                                                 <tr>
-                                                    <td>{{ $myNeedRequestItem->reference }}</td>
-                                                    <td>{{ $myNeedRequestItem->quantity }}</td>
-                                                    <td>{{ $myNeedRequestItem->unity->code }}</td>
-                                                    <td>{{ $myNeedRequestItem->status() }}</td>
-                                                    <td>
-                                                        @if ($myNeedRequestItem->needRequest->status=1)
-                                                            <a class="btn btn-info btn-xs" href="{{ route('myNeedRequestItems.edit',$myNeedRequestItem) }}">{{ __('content.edit') }}</a>
-                                                        @endif
-                                                    </td>
+                                                    <td>{{ $needRequestItem->reference }}</td>
+                                                    <td>{{ $needRequestItem->quantity }}</td>
+                                                    <td>{{ $needRequestItem->unity->code }}</td>
+                                                    <td>{{ $needRequestItem->status() }}</td>
                                                 </tr>
                                             @endforeach
                                         </tbody>
@@ -178,11 +148,8 @@
                     {{-- Form Footer --}}
 
                     <div class="box-footer">
-                        <button id="save" type="submit" class="btn btn-success pull-left btn-sm" style="margin: 0px 5px;">{{ __('content.modify') }}</button>
-                        <a class="btn btn-danger btn-sm" href=" {{ route('myNeedRequests.index') }} ">{{ __('content.cancel') }}</a>
+                        <a class="btn btn-danger btn-sm" href=" {{ route('needRequests.index') }} ">{{ __('content.return') }}</a>
                     </div>
-                    
-                </form>
 
                 {{-- End Form  --}}
 

@@ -20,12 +20,13 @@ class NeedRequestItem extends Model
         switch($this->status_id){
             case 0: return __('content.draft');
             case 1: return __('content.sent');
-            case 2: return __('content.approved');
-            case 3: return __('content.rejected');
-            case 4: return __('content.processed');
-            case 5: return __('content.dispatched');
-            case 6: return __('content.received');
-            case 7: return __('content.delivered');
+            case 2: return __('content.rejected');
+            case 3: return __('content.approved');
+            case 4: return __('content.quote');
+            case 5: return __('content.destocking');
+            case 6: return __('content.dispatched');
+            case 7: return __('content.received');
+            case 8: return __('content.delivered');
         }
     }
 }

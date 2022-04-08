@@ -22,7 +22,8 @@ class CreateQuotationsTable extends Migration
             $table->dateTime('date');
             $table->foreignId('project_user_id');
             $table->foreign('project_user_id')->references('id')->on('project_users')->onUpdate('cascade')->onDelete('restrict');
-            $table->string('status');
+            $table->string('quotationFile')->nullable();
+            $table->integer('status_id');
             $table->timestamps();
         });
     }

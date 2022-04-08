@@ -43,6 +43,8 @@ class EmployeeController extends Controller
         try{
             $request->validated();
 
+            $isApprover = $request->has('isApprover');
+
             if($request->hasFile('contractFile'))
             {
                 $file = $request->file('contractFile');
@@ -66,6 +68,7 @@ class EmployeeController extends Controller
                             'contractedUntil'=>$request->contractedUntil,
                             'salary'=>$request->salary,
                             'contractFile'=>$contractFileName,
+                            'isApprover'=>$isApprover,
                         ]);
                         return redirect()->route('employees.index');
                     }else{

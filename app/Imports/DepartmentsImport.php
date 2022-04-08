@@ -35,7 +35,7 @@ class DepartmentsImport implements ToModel, WithHeadingRow, SkipsOnError, WithVa
     public function rules(): array
     {
         return [
-            '*.name'=> ['unique:departments,name'],
+            '*.name'=> ['string'],
             '*.sector_name'=> ['string'],
         ];
     }

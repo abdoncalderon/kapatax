@@ -22,17 +22,14 @@ class CompanyController extends Controller
 
     public function store(StoreCompanyRequest $request )
     {
-        Company::create($request ->validated()); 
-        return redirect()->route('companies.index');
+        try{
+            Company::create($request ->validated()); 
+            return redirect()->route('companies.index');
+        }catch(Exception $e){
+            return back()->withErrors( $e->getMessage());
+        }
     }
-
-    public function show(Company $company)
-    {
-        return view('settings.companies.show',[
-            'company'=>$company
-            ]);
-    }
-
+    
     public function edit(Company $company)
     {
         return view('settings.companies.edit',[

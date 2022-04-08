@@ -179,7 +179,7 @@
                             <div class="form-group">
                                 <label class="col-sm-2 control-label">{{ __('content.email') }}</label>
                                 <div class="input-group input-group-sm col-xs-12 col-sm-10" >
-                                    <input id="businessEmail" type="email" class="form-control" name="businessEmail" value="{{ old('businessEmail',$stakeholderPerson->businessEmail) }}" placeholder="{{ __('content.email') }}">
+                                    <input id="businessEmail" type="email" class="form-control" name="businessEmail" value="{{ old('businessEmail',$stakeholderPerson->businessEmail) }}" placeholder="{{ __('content.email') }}" required>
                                     @error('email')
                                         <span class="invalid-feedback" role="alert">
                                             <strong>{{ $message }}</strong>
@@ -194,6 +194,19 @@
                                 <label class="col-sm-2 control-label">{{ __('content.agreement') }}</label>
                                 <div class="input-group input-group-sm col-xs-12 col-sm-10">
                                     <input id="contractFile" class="form-control" name="contractFile" type="file">
+                                </div>
+                            </div>
+
+                            {{-- is approver --}}
+
+                            <div class="form-group">
+                                <label class="col-sm-2 control-label">{{ __('content.approver') }}</label>
+                                <div class="input-group input-group-sm col-xs-12 col-sm-10" >
+                                    <input id="isApprover" name="isApprover" type="checkbox" 
+                                        @if ($stakeholderPerson->isApprover==1)
+                                            checked
+                                        @endif
+                                    >
                                 </div>
                             </div>
 

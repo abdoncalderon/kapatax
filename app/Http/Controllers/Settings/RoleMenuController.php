@@ -83,16 +83,15 @@ class RoleMenuController extends Controller
     public function clone(Request $request){
         try{
             $roleSourceMenus=RoleMenu::where('role_id',$request->role_source_id)->get();
-            $roleTargetMenus=RoleMenu::where('role_id',$request->role_target_id)->get();    
             $role = Role::find($request->role_target_id);
-            foreach($roleTargetMenus as $roleTargetMenu){
-                foreach($roleSourceMenus as $roleSourceMenu){
-                    if($roleTargetMenu->permit_id==$roleSourceMenu->permit_id){
-                        $roleTargetMenu->update([
-                            'isActive' => $roleSourceMenu->isActive,
-                        ]);
-                        break;
-                    }
+            foreach($roleSourceMenus as $roleSourceMenu){
+                $roleTargetMenu = RoleMenu::where('role_id',$request->role_target_id)
+                                ->where('menu_id',$roleSourceMenu->menu_id)
+                                ->first();
+                if ($roleTargetMenu != null){
+                    $roleTargetMenu->update([
+                        'isActive' => $roleSourceMenu->isActive,
+                    ]);
                 }
             }
             return redirect()->route('roleMenus.index',$role);

@@ -127,12 +127,17 @@
                             <div class="form-group">
                                 <label class="col-sm-2 control-label">{{ __('messages.approvingUser') }}</label>
                                 <div class="input-group input-group-sm col-xs-12 col-sm-10" >
-                                    <select id="approving_user" name="approving_user_id" class="form-control" style="width: 100%;">
-                                        <option value="">{{__('messages.select')}} {{__('content.approver')}}</option>
+                                    <select id="approving_user" name="approver_id" class="form-control" style="width: 100%;" required>
+                                        @foreach ($approvers as $approver)
+                                            <option value="{{ $approver->person_id }}"
+                                                @if ( $approver->person_id == $myNeedRequest->approver_id )
+                                                    selected
+                                                @endif
+                                            >{{ $approver->person->fullName }}</option>
+                                        @endforeach
                                     </select>
                                 </div>
                             </div>
-
                             <hr>
 
                             {{-- items --}}
@@ -164,7 +169,7 @@
                                                     <td>{{ $myNeedRequestItem->unity->code }}</td>
                                                     <td>{{ $myNeedRequestItem->status() }}</td>
                                                     <td>
-                                                        @if ($myNeedRequestItem->needRequest->status=1)
+                                                        @if ( $myNeedRequestItem->needRequest->status_id==0 || $myNeedRequestItem->needRequest->status_id==2 )
                                                             <a class="btn btn-info btn-xs" href="{{ route('myNeedRequestItems.edit',$myNeedRequestItem) }}">{{ __('content.edit') }}</a>
                                                             <a class="btn btn-danger btn-xs" href="{{ route('myNeedRequestItems.destroy',$myNeedRequestItem) }}">{{ __('content.delete') }}</a>
                                                         @endif
@@ -184,7 +189,9 @@
 
                     <div class="box-footer">
                         <button id="save" type="submit" class="btn btn-success pull-left btn-sm" style="margin: 0px 5px;">{{ __('content.update') }}</button>
-                        <button type="button" class="btn btn-success btn-sm" data-toggle="modal" data-target="#modalSaveAndSendRequest">{{ __('content.send') }}</button>
+                        @if ($myNeedRequest->needRequestItems->count()>0)
+                            <button type="button" class="btn btn-success btn-sm" data-toggle="modal" data-target="#modalSaveAndSendRequest">{{ __('content.send') }}</button>
+                        @endif
                         <a class="btn btn-danger btn-sm" href=" {{ route('myNeedRequests.index') }} ">{{ __('content.cancel') }}</a>
                     </div>
                     
@@ -246,17 +253,6 @@
     
                             <input id="status" type="hidden" name="status_id" value="0">
     
-                            {{-- Type of Request --}}
-
-                            {{-- <div class="form-group">
-                                <label for="requestType">{{ __('messages.requestType') }}</label>
-                                <select id="requestType" class="form-control" name="requestType" style="width: 100%;" required>
-                                    <option value="">{{__('messages.select')}} {{ __('messages.requestType') }}</option>
-                                    <option value="{{ __('content.purchase') }}">{{ __('content.purchase') }}</option>
-                                    <option value="{{ __('content.withdrawal') }}">{{ __('content.withdrawal') }}</option>
-                                </select>
-                            </div> --}}
-                            
                             {{-- reference --}}
 
                             <div class="form-group">

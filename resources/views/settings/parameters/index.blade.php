@@ -48,15 +48,15 @@
 
                 {{-- Import Regions --}}
 
-                <div class="col-md-3">
+                <div class="col-sm-12 col-md-6 col-lg-6 col-xl-3">
                     <div class="box box-solid">
 
                         <div class="box-header with-border">
-                            <h3 class="box-title">{{ __('content.regions') }}</h3>
+                            <h3 class="box-title">{{ __('content.regions') }} | {{ $regions->count().' '.__('content.records') }}</h3>
                         </div>
                         <!-- /.box-header -->
 
-                        <div class="box-body text-center">
+                        <div class="box-body">
                             <a class="btn btn-info btn-sm" href="{{ asset('templates/regions.xlsx') }}">{{ __('messages.downloadTemplate') }}</a>
                             <button type="button" class="btn btn-success btn-sm" data-toggle="modal" data-target="#importRegions">{{ __('messages.importFromExcel') }}</button>
                         </div>
@@ -70,15 +70,15 @@
 
                 {{-- Import Countries --}}
 
-                <div class="col-md-3">
+                <div class="col-sm-12 col-md-6 col-lg-6 col-xl-3">
                     <div class="box box-solid">
 
                         <div class="box-header with-border">
-                            <h3 class="box-title">{{ __('content.countries') }}</h3>
+                            <h3 class="box-title">{{ __('content.countries') }} | {{ $countries->count().' '.__('content.records') }}</h3>
                         </div>
                         <!-- /.box-header -->
 
-                        <div class="box-body text-center">
+                        <div class="box-body">
                             <a class="btn btn-info btn-sm" href="{{ asset('templates/countries.xlsx') }}">{{ __('messages.downloadTemplate') }}</a>
                             <button type="button" class="btn btn-success btn-sm" data-toggle="modal" data-target="#importCountries">{{ __('messages.importFromExcel') }}</button>
                         </div>
@@ -92,15 +92,15 @@
 
                 {{-- Import States --}}
 
-                <div class="col-md-3">
+                <div class="col-sm-12 col-md-6 col-lg-6 col-xl-3">
                     <div class="box box-solid">
 
                         <div class="box-header with-border">
-                            <h3 class="box-title">{{ __('content.states') }}</h3>
+                            <h3 class="box-title">{{ __('content.states') }} | {{ $states->count().' '.__('content.records') }}</h3>
                         </div>
                         <!-- /.box-header -->
 
-                        <div class="box-body text-center">
+                        <div class="box-body">
                             <a class="btn btn-info btn-sm" href="{{ asset('templates/states.xlsx') }}">{{ __('messages.downloadTemplate') }}</a>
                             <button type="button" class="btn btn-success btn-sm" data-toggle="modal" data-target="#importStates">{{ __('messages.importFromExcel') }}</button>
                         </div>
@@ -114,15 +114,15 @@
 
                 {{-- Import Cities --}}
 
-                <div class="col-md-3">
+                <div class="col-sm-12 col-md-6 col-lg-6 col-xl-3">
                     <div class="box box-solid">
 
                         <div class="box-header with-border">
-                            <h3 class="box-title">{{ __('content.cities') }}</h3>
+                            <h3 class="box-title">{{ __('content.cities') }} | {{ $cities->count().' '.__('content.records') }}</h3>
                         </div>
                         <!-- /.box-header -->
 
-                        <div class="box-body text-center">
+                        <div class="box-body">
                             <a class="btn btn-info btn-sm" href="{{ asset('templates/cities.xlsx') }}">{{ __('messages.downloadTemplate') }}</a>
                             <button type="button" class="btn btn-success btn-sm" data-toggle="modal" data-target="#importCities">{{ __('messages.importFromExcel') }}</button>
                         </div>
@@ -136,15 +136,15 @@
 
                 {{-- Import Brands --}}
 
-                <div class="col-md-3">
+                <div class="col-sm-12 col-md-6 col-lg-6 col-xl-3">
                     <div class="box box-solid">
 
                         <div class="box-header with-border">
-                            <h3 class="box-title">{{ __('content.brands') }}</h3>
+                            <h3 class="box-title">{{ __('content.brands') }} | {{ $brands->count().' '.__('content.records') }}</h3>
                         </div>
                         <!-- /.box-header -->
 
-                        <div class="box-body text-center">
+                        <div class="box-body">
                             <a class="btn btn-info btn-sm" href="{{ asset('templates/brands.xlsx') }}">{{ __('messages.downloadTemplate') }}</a>
                             <button type="button" class="btn btn-success btn-sm" data-toggle="modal" data-target="#importBrands">{{ __('messages.importFromExcel') }}</button>
                         </div>
@@ -159,15 +159,15 @@
 
                 {{-- Import Models --}}
 
-                <div class="col-md-3">
+                <div class="col-sm-12 col-md-6 col-lg-6 col-xl-3">
                     <div class="box box-solid">
 
                         <div class="box-header with-border">
-                            <h3 class="box-title">{{ __('content.models') }}</h3>
+                            <h3 class="box-title">{{ __('content.models') }} | {{ $models->count().' '.__('content.records') }}</h3>
                         </div>
                         <!-- /.box-header -->
 
-                        <div class="box-body text-center">
+                        <div class="box-body">
                             <a class="btn btn-info btn-sm" href="{{ asset('templates/models.xlsx') }}">{{ __('messages.downloadTemplate') }}</a>
                             <button type="button" class="btn btn-success btn-sm" data-toggle="modal" data-target="#importModels">{{ __('messages.importFromExcel') }}</button>
                         </div>
@@ -181,15 +181,15 @@
 
                 {{-- Import Unities --}}
 
-                <div class="col-md-3">
+                <div class="col-sm-12 col-md-6 col-lg-6 col-xl-3">
                     <div class="box box-solid">
 
                         <div class="box-header with-border">
-                            <h3 class="box-title">{{ __('content.unities') }}</h3>
+                            <h3 class="box-title">{{ __('content.unities') }} | {{ $unities->count().' '.__('content.records') }}</h3>
                         </div>
                         <!-- /.box-header -->
 
-                        <div class="box-body text-center">
+                        <div class="box-body">
                             <a class="btn btn-info btn-sm" href="{{ asset('templates/unities.xlsx') }}">{{ __('messages.downloadTemplate') }}</a>
                             <button type="button" class="btn btn-success btn-sm" data-toggle="modal" data-target="#importUnities">{{ __('messages.importFromExcel') }}</button>
                         </div>

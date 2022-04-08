@@ -14,11 +14,16 @@ class RolePermitController extends Controller
 {
     public function index(Role $role)
     {
-        $otherRoles = Role::where('id','!=',$role->id)->get();
-        $rolePermits = RolePermit::where('role_id',$role->id)->get();
-        return view('settings.rolePermits.index', compact('role'))
-        ->with(compact('rolePermits'))
-        ->with(compact('otherRoles'));
+        try{
+            $otherRoles = Role::where('id','!=',$role->id)->get();
+            $rolePermits = RolePermit::where('role_id',$role->id)->get();
+            return view('settings.rolePermits.index', compact('role'))
+            ->with(compact('rolePermits'))
+            ->with(compact('otherRoles'));
+        }catch(Exception $e){
+            return back()->withErrors( $e->getMessage());
+        }
+        
     }
 
     public function create(Role $role)
@@ -83,16 +88,15 @@ class RolePermitController extends Controller
     public function clone(Request $request){
         try{
             $roleSourcePermits=RolePermit::where('role_id',$request->role_source_id)->get();
-            $roleTargetPermits=RolePermit::where('role_id',$request->role_target_id)->get();    
             $role = Role::find($request->role_target_id);
-            foreach($roleTargetPermits as $roleTargetPermit){
-                foreach($roleSourcePermits as $roleSourcePermit){
-                    if($roleTargetPermit->permit_id==$roleSourcePermit->permit_id){
-                        $roleTargetPermit->update([
-                            'isActive' => $roleSourcePermit->isActive,
-                        ]);
-                        break;
-                    }
+            foreach($roleSourcePermits as $roleSourcePermit){
+                $roleTargetPermit = RolePermit::where('role_id',$request->role_target_id)
+                                ->where('permit_id',$roleSourcePermit->permit_id)
+                                ->first();
+                if ($roleTargetPermit != null){
+                    $roleTargetPermit->update([
+                        'isActive' => $roleSourcePermit->isActive,
+                    ]);
                 }
             }
             return redirect()->route('rolePermits.index',$role);

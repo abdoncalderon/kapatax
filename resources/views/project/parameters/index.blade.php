@@ -100,11 +100,11 @@
 
                 {{-- Import Functions --}}
 
-                <div class="col-md-6">
+                <div class="col-sm-12 col-md-6 col-lg-6">
                     <div class="box box-solid">
 
                         <div class="box-header with-border">
-                            <h3 class="box-title">{{ __('content.functions') }}</h3>
+                            <h3 class="box-title">{{ __('content.functions') }} | {{ current_user()->project->functions->count().' '.__('content.records') }} </h3>
                         </div>
                         <!-- /.box-header -->
 
@@ -127,7 +127,7 @@
                     <div class="box box-solid">
 
                         <div class="box-header with-border">
-                            <h3 class="box-title">{{ __('content.positions') }}</h3>
+                            <h3 class="box-title">{{ __('content.positions') }} | {{ $positions->count().' '.__('content.records') }} </h3>
                         </div>
                         <!-- /.box-header -->
 
@@ -149,7 +149,7 @@
                     <div class="box box-solid">
 
                         <div class="box-header with-border">
-                            <h3 class="box-title">{{ __('content.sectors') }}</h3>
+                            <h3 class="box-title">{{ __('content.sectors') }} | {{ current_user()->project->sectors->count().' '.__('content.records') }} </h3>
                         </div>
                         <!-- /.box-header -->
 
@@ -172,7 +172,7 @@
                     <div class="box box-solid">
 
                         <div class="box-header with-border">
-                            <h3 class="box-title">{{ __('content.departments') }}</h3>
+                            <h3 class="box-title">{{ __('content.departments') }} | {{ $departments->count().' '.__('content.records') }}</h3>
                         </div>
                         <!-- /.box-header -->
 
@@ -194,14 +194,14 @@
                     <div class="box box-solid">
 
                         <div class="box-header with-border">
-                            <h3 class="box-title">{{ __('content.zones') }}</h3>
+                            <h3 class="box-title">{{ __('content.zones') }}  | {{ current_user()->project->zones->count().' '.__('content.records') }}</h3>
                         </div>
                         <!-- /.box-header -->
 
                         <div class="box-body">
                             <a class="btn btn-info btn-sm" href="{{ asset('templates/zones.xlsx') }}">{{ __('messages.downloadTemplate') }}</a>
                             <button type="button" class="btn btn-success btn-sm" data-toggle="modal" data-target="#importZones">{{ __('messages.importFromExcel') }}</button>
-                            <button type="button" class="btn btn-success btn-sm" data-toggle="modal" data-target="#cloneFunctions">{{ __('messages.cloneFromProject') }}</button>
+                            <button type="button" class="btn btn-success btn-sm" data-toggle="modal" data-target="#cloneZones">{{ __('messages.cloneFromProject') }}</button>
                         </div>
                         <!-- /.box-body -->
 
@@ -217,7 +217,7 @@
                     <div class="box box-solid">
 
                         <div class="box-header with-border">
-                            <h3 class="box-title">{{ __('content.locations') }}</h3>
+                            <h3 class="box-title">{{ __('content.locations') }} | {{ $locations->count().' '.__('content.records') }}</h3>
                         </div>
                         <!-- /.box-header -->
 
@@ -239,7 +239,7 @@
                     <div class="box box-solid">
 
                         <div class="box-header with-border">
-                            <h3 class="box-title">{{ __('content.families') }}</h3>
+                            <h3 class="box-title">{{ __('content.families') }} | {{ current_user()->project->families->count().' '.__('content.records') }}</h3>
                         </div>
                         <!-- /.box-header -->
 
@@ -262,7 +262,7 @@
                     <div class="box box-solid">
 
                         <div class="box-header with-border">
-                            <h3 class="box-title">{{ __('content.categories') }}</h3>
+                            <h3 class="box-title">{{ __('content.categories') }} | {{ $categories->count().' '.__('content.records') }}</h3>
                         </div>
                         <!-- /.box-header -->
 
@@ -278,13 +278,35 @@
                 </div>
                 <!-- /.col -->
 
+                 {{-- Import Subcategories --}}
+                
+                 <div class="col-md-6">
+                    <div class="box box-solid">
+
+                        <div class="box-header with-border">
+                            <h3 class="box-title">{{ __('content.subcategories') }} | {{ $subcategories->count().' '.__('content.records') }}</h3>
+                        </div>
+                        <!-- /.box-header -->
+
+                        <div class="box-body">
+                            <a class="btn btn-info btn-sm" href="{{ asset('templates/subcategories.xlsx') }}">{{ __('messages.downloadTemplate') }}</a>
+                            <button type="button" class="btn btn-success btn-sm" data-toggle="modal" data-target="#importSubcategories">{{ __('messages.importFromExcel') }}</button>
+                        </div>
+                        <!-- /.box-body -->
+
+                    </div>
+                    <!-- /.box -->
+
+                </div>
+                <!-- /.col -->
+
                 {{-- Import Equipments --}}
 
                 <div class="col-md-6">
                     <div class="box box-solid">
 
                         <div class="box-header with-border">
-                            <h3 class="box-title">{{ __('content.equipments') }}</h3>
+                            <h3 class="box-title">{{ __('content.equipments') }} | {{ current_user()->project->equipments->count().' '.__('content.records') }}</h3>
                         </div>
                         <!-- /.box-header -->
 
@@ -307,7 +329,7 @@
                     <div class="box box-solid">
 
                         <div class="box-header with-border">
-                            <h3 class="box-title">{{ __('content.turns') }}</h3>
+                            <h3 class="box-title">{{ __('content.turns') }} | {{ current_user()->project->turns->count().' '.__('content.records') }}</h3>
                         </div>
                         <!-- /.box-header -->
 
@@ -639,6 +661,40 @@
         </div>
     </div>
 
+    {{-- Import Subcategories from Excel File --}}
+
+    <div class="modal fade" id="importSubcategories">
+        <div class="modal-dialog">
+            <form method="POST" action="{{ route('parameters.subcategoriesImport') }}" enctype="multipart/form-data">
+                @csrf
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                        <h4 class="modal-title">{{ __('content.import').' '.__('content.subcategories') }}</h4>
+                    </div>
+                    <div class="modal-body">
+                        <div>
+                            
+                            {{-- Filename --}}
+
+                            <div class="form-group">
+                                <label for="file">{{ __('content.file') }} Excel</label>
+                                <input id="file" type="file" class="form-control" name="file" accept="application/xls" required>
+                            </div>
+                            
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default" data-dismiss="modal">{{__('content.close')}}</button>
+                        <button type="submit" class="btn btn-primary">{{__('content.import')}}</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+
     {{-- Import Turns from Excel File --}}
 
     <div class="modal fade" id="importTurns">
@@ -721,6 +777,53 @@
         </div>
     </div>
 
+
+    {{-- Clone Zones Project  --}}
+
+    <div class="modal fade" id="cloneZones">
+        <div class="modal-dialog">
+            <form method="POST" action="{{ route('parameters.zonesClone') }}">
+                @csrf
+
+                <div class="modal-content">
+
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                        <h4 class="modal-title">{{ __('content.clone').' '.__('content.zones').' '.__('content.from') }}</h4>
+                    </div>
+                    <div class="modal-body">
+                        <div>
+                            <div class="alert alert-danger">
+                                <p>
+                                    {{ __('messages.cloningWarning')}}
+                                </p>
+                            </div>
+                            
+
+                            {{--project --}}
+
+                            <div class="form-group">
+                                <label for="project">{{ __('content.project') }}</label>
+                                <select id="project" name="project_id" class="form-control" style="width: 100%;" required>
+                                    <option value="">{{__('messages.select')}} {{__('content.project')}}</option>
+                                    @foreach ($projects as $project)
+                                        <option value="{{ $project->id }}">{{ $project->name }}</option>                                                
+                                    @endforeach
+                                </select>
+                            </div>
+                            
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default" data-dismiss="modal">{{__('content.cancel')}}</button>
+                        <button type="submit" class="btn btn-danger">{{__('content.clone')}}</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
 
     {{--Show Errors --}}
 

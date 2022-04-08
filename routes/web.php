@@ -17,10 +17,17 @@ Route::get('/main', 'HomeController@index')->name('home');
 Route::resource('myNeedRequests','Session\NeedRequestController');
 Route::get('/myNeedRequests/modify/{myNeedRequest}','Session\NeedRequestController@modify')->name('myNeedRequests.modify');
 Route::get('/myNeedRequests/destroy/{myNeedRequest}','Session\NeedRequestController@destroy')->name('myNeedRequests.destroy');
+Route::get('/myNeedRequest/approval/{id}/{status}','Session\NeedRequestController@approval')->name('myNeedRequest.approval');
 
 /* Routes My Need Requests Items */
 Route::resource('myNeedRequestItems','Session\NeedRequestItemController');
 Route::get('/myNeedRequestItems/destroy/{myNeedRequestItem}','Session\NeedRequestItemController@destroy')->name('myNeedRequestItems.destroy');
+
+/* Routes My Need Requests */
+Route::get('/myApprovals','Session\ApprovalController@index')->name('myApprovals.index');
+Route::get('/myApprovals/approval/{id}/{status}','Session\ApprovalController@approval')->name('myApprovals.approval');
+Route::get('/myApprovals/show/{needRequest}','Session\ApprovalController@show')->name('myApprovals.show');
+
 
 /********************************************* SETTINGS ROUTES *************************************************************** */
 
@@ -105,6 +112,14 @@ Route::patch('/projectRole/{projectRole}','Settings\ProjectRoleController@update
 Route::get('/projectRoles/destroy/{projectRole}','Settings\ProjectRoleController@destroy')->name('projectRoles.destroy');
 Route::get('getRoles/{project}','Settings\ProjectRoleController@getRoles')->name('projectRoles.getRoles');
 
+/* Routes Project Users  */
+Route::get('/settingsProjectUsers/{project}','Settings\ProjectUserController@index')->name('settings.projectUsers.index');
+Route::get('/settingsProjectUsers/create/{project}','Settings\ProjectUserController@create')->name('settings.projectUsers.create');
+Route::post('/settingsProjectUsers/{project}','Settings\ProjectUserController@store')->name('settings.projectUsers.store');
+Route::get('/settingsProjectUsers/edit/{projectUser}','Settings\ProjectUserController@edit')->name('settings.projectUsers.edit');
+Route::patch('/settingsProjectUsers/update/{projectUser}','Settings\ProjectUserController@update')->name('settings.projectUsers.update');
+Route::get('/settingsProjectUsers/destroy/{projectUser}','Settings\ProjectUserController@destroy')->name('settings.projectUsers.destroy');
+
 /* Routes Unities */
 Route::resource('unities','Settings\UnityController');
 Route::get('/unity/destroy/{unity}','Settings\UnityController@destroy')->name('unities.destroy');
@@ -148,15 +163,6 @@ Route::get('/users/activate/{user}/{value}','Settings\UserController@activate')-
 Route::get('/user/destroy/{user}','Settings\UserController@destroy')->name('users.destroy');
 Route::post('/users/add','Settings\UserController@add')->name('users.add');
 
-/* Routes User Projects  */
-Route::get('/userProjects/{user}','Settings\UserProjectController@index')->name('userProjects.index');
-Route::get('/create/userProject/{user}','Settings\UserProjectController@create')->name('userProjects.create');
-Route::post('/userProjects/{user}','Settings\UserProjectController@store')->name('userProjects.store');
-Route::get('/userProjects/edit/{projectUser}','Settings\UserProjectController@edit')->name('userProjects.edit');
-Route::patch('/userProject/{projectUser}','Settings\UserProjectController@update')->name('userProjects.update');
-Route::get('/userProjects/destroy/{projectUser}','Settings\UserProjectController@destroy')->name('userProjects.destroy');
-
-
 /********************************************* PROJECT ROUTES *************************************************************** */
 
 /* Route Parameters */
@@ -171,6 +177,7 @@ Route::post('/zonesImport','Project\ParameterController@zonesImport')->name('par
 Route::post('/locationsImport','Project\ParameterController@locationsImport')->name('parameters.locationsImport');
 Route::post('/familiesImport','Project\ParameterController@familiesImport')->name('parameters.familiesImport');
 Route::post('/categoriesImport','Project\ParameterController@categoriesImport')->name('parameters.categoriesImport');
+Route::post('/subcategoriesImport','Project\ParameterController@subcategoriesImport')->name('parameters.subcategoriesImport');
 Route::post('/equipmentsImport','Project\ParameterController@equipmentsImport')->name('parameters.equipmentsImport');
 Route::post('/turnsImport','Project\ParameterController@turnsImport')->name('parameters.turnsImport');
 
@@ -180,9 +187,6 @@ Route::post('/zonesClone','Project\ParameterController@zonesClone')->name('param
 Route::post('/familiesClone','Project\ParameterController@familiesClone')->name('parameters.familiesClone');
 Route::post('/equipmentsClone','Project\ParameterController@equipmentsClone')->name('parameters.equipmentsClone');
 Route::post('/turnsClone','Project\ParameterController@turnsClone')->name('parameters.turnsClone');
-
-
-
 
 /* Routes Project */
 Route::get('/project','Project\ProjectController@index')->name('project.index');
@@ -357,13 +361,10 @@ Route::post('/stakeholderPersonAssets/{stakeholderPerson}','Technology\Stakehold
 
 /******************************************************** ASSET ROUTES ******************************************************* */
 
-/* Routes Asset */
-Route::get('getMaterial/{id}','Assets\AssetController@getMaterial')->name('assets.getMaterial');
 
 /******************************************************** WAREHOUSE ROUTES ******************************************************* */
 
-/* Routes Materials */
-Route::resource('materials','Warehouse\MaterialController');
+
 
 /******************************************************** EMPLOYEES ROUTES ******************************************************* */
 
@@ -384,9 +385,57 @@ Route::get('/stakeholderPeople/create/{person}','People\StakeholderPersonControl
 Route::post('/stakeholderPeople','People\StakeholderPersonController@store')->name('stakeholderPeople.store');
 Route::get('/stakeholderPeople/edit/{stakeholderPerson}','People\StakeholderPersonController@edit')->name('stakeholderPeople.edit');
 Route::patch('/stakeholderPeople/{stakeholderPerson}','People\StakeholderPersonController@update')->name('stakeholderPeople.update');
+Route::get('getStakeholderPerson/{cardId}','People\StakeholderPersonController@getStakeholderPerson')->name('stakeholderPeople.getStakeholderPerson');
 
 /* Routes Employees */
 Route::get('/employees','People\EmployeeController@index')->name('employees.index');
 Route::get('/employee/edit/{stakeholderPerson}','People\EmployeeController@edit')->name('employees.edit');
 Route::patch('/employees/{stakeholderPerson}','People\EmployeeController@update')->name('employees.update');
 
+/* ******************************************************* PURCHASES ROUTES ******************************************************* */
+
+/* Route Need Request */
+Route::get('/needRequests','Purchases\NeedRequestController@index')->name('needRequests.index');
+Route::get('/needRequests/review/{needRequest}','Purchases\NeedRequestController@review')->name('needRequests.review');
+Route::get('/needRequests/show/{needRequest}','Purchases\NeedRequestController@show')->name('needRequests.show');
+Route::get('/needRequests/process/{needRequest}','Purchases\NeedRequestController@process')->name('needRequests.process');
+
+/* Route Need Request Item */
+Route::get('/needRequestItems/edit/{needRequestItem}','Purchases\NeedRequestItemController@edit')->name('needRequestItems.edit');
+Route::patch('/needRequestItems/{needRequestItem}','Purchases\NeedRequestItemController@update')->name('needRequestItems.update');
+Route::get('/needRequestItems/quote/{needRequestItem}','Purchases\NeedRequestItemController@quote')->name('needRequestItems.quote');
+Route::get('/needRequestItems/destocking/{needRequestItem}','Purchases\NeedRequestItemController@destocking')->name('needRequestItems.destocking');
+
+/* Route Quotations Request */
+Route::get('/quotationRequests','Purchases\QuotationRequestController@index')->name('quotationRequests.index');
+Route::get('/quotationRequests/open/{quotationRequest}','Purchases\QuotationRequestController@open')->name('quotationRequests.open');
+Route::get('/quotationRequests/dispatch/{quotationRequest}','Purchases\QuotationRequestController@send')->name('quotationRequests.dispatch');
+
+/* Route Quotations Request Items */
+Route::get('/quotationRequestItems','Purchases\QuotationRequestItemController@index')->name('quotationRequestItems.index');
+Route::post('/quotationRequestItems','Purchases\QuotationRequestItemController@store')->name('quotationRequestItems.store');
+
+/* Route Quotations Request Notifications */
+Route::post('/quotationRequestNotifications','Purchases\QuotationRequestNotificationController@store')->name('quotationRequestNotifications.store');
+Route::get('/quotationRequestNotifications/destroy/{quotationRequestNotification}','Purchases\QuotationRequestNotificationController@destroy')->name('quotationRequestNotifications.destroy');
+
+/* Route Quotations */
+Route::get('/quotations','Purchases\QuotationController@index')->name('quotations.index');
+
+/* Route Orders */
+Route::get('/orders','Purchases\OrderController@index')->name('orders.index');
+
+
+/* ******************************************************* PURCHASES ROUTES ******************************************************* */
+
+/* Route Destocking Request */
+Route::get('/destockingRequests','Materials\DestockingRequestController@index')->name('destockingRequests.index');
+Route::get('/destockingRequests/open/{destockingRequest}','Materials\DestockingRequestController@open')->name('destockingRequests.open');
+
+/* Route Stock Movements */
+Route::get('/stockMovements/createDestocking/{destockingRequestItem}','Materials\StockMovementController@createDestocking')->name('stockMovements.createDestocking');
+Route::post('/stockMovements/destocking','Materials\StockMovementController@destocking')->name('stockMovements.destocking');
+
+/* Routes Materials */
+Route::resource('materials','Materials\MaterialController');
+Route::get('getMaterial/{id}','Materials\MaterialController@getMaterial')->name('materials.getMaterial');

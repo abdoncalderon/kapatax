@@ -107,4 +107,16 @@ class StakeholderPersonController extends Controller
         }
     }
 
+    public function getStakeholderPerson(Request $request, $cardId)
+    {
+        if($request->ajax())
+        {
+            $stakeholderPerson = StakeholderPerson::select('stakeholder_people.id as stakeholderPersonId','people.cardId as cardId','people.fullName as fullName')
+                        ->join('people','stakeholder_people.person_id','=','people.id')
+                        ->where('people.cardId',$cardId)
+                        ->first();
+            return response()->json($stakeholderPerson);
+        }
+    }
+
 }

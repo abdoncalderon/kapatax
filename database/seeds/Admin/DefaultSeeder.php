@@ -14,6 +14,14 @@ class DefaultSeeder extends Seeder
             'name' => 'SuperUser',
         ]);
 
+        DB::table('roles')->insert([
+            'name' => 'Project Admin',
+        ]);
+
+        DB::table('roles')->insert([
+            'name' => 'Project User',
+        ]);
+
         DB::table('regions')->insert([
             'name' => 'América del Sur',
         ]);
@@ -169,12 +177,32 @@ class DefaultSeeder extends Seeder
         ]);
 
         DB::table('people')->insert([
-            'cardId' => '000000000000000000',
+            'cardId' => '0000000000',
             'firstName' => 'Super',
             'LastName' => 'User',
             'fullName' => 'Super User',
             'gender_id' => '1',
             'birthDate' => Carbon::create('1970', '01', '01'),
+            'city_id' => '1',
+        ]);
+
+        DB::table('people')->insert([
+            'cardId' => '1308864642',
+            'firstName' => 'Abdon Antonio',
+            'LastName' => 'Calderon Macias',
+            'fullName' => 'Calderon Macias Abdon Antonio',
+            'gender_id' => '1',
+            'birthDate' => Carbon::create('1977', '08', '30'),
+            'city_id' => '1',
+        ]);
+
+        DB::table('people')->insert([
+            'cardId' => '1308050705',
+            'firstName' => 'Fanny Rocio',
+            'LastName' => 'Garcia Bazurto',
+            'fullName' => 'Garcia Bazurto Fanny Rocio',
+            'gender_id' => '2',
+            'birthDate' => Carbon::create('1978', '04', '01'),
             'city_id' => '1',
         ]);
 
@@ -186,6 +214,25 @@ class DefaultSeeder extends Seeder
             'department_id' => '1',
         ]);
 
+        DB::table('stakeholder_people')->insert([
+            'stakeholder_id' => '1',
+            'person_id' => '2',
+            'admissionDate' => Carbon::create('2016', '01', '01'),
+            'position_id' => '1',
+            'department_id' => '1',
+            'businessEmail' => 'abdonc@gamil.com',
+        ]);
+
+        DB::table('stakeholder_people')->insert([
+            'stakeholder_id' => '1',
+            'person_id' => '3',
+            'admissionDate' => Carbon::create('2016', '01', '01'),
+            'position_id' => '1',
+            'department_id' => '1',
+            'businessEmail' => 'fannygarciab@hotmail.es',
+            'isApprover' => '1',
+        ]);
+
         DB::table('users')->insert([
             'user' => 'su',
             'email' => 'example@email.com',
@@ -193,14 +240,50 @@ class DefaultSeeder extends Seeder
             'person_id' => '1',
         ]);
 
+        DB::table('users')->insert([
+            'user' => 'acalderon4642',
+            'email' => 'abdonc@gmail.com',
+            'password' => Hash::make('1308864642'),
+            'person_id' => '2',
+        ]);
+
+        DB::table('users')->insert([
+            'user' => 'fgarcia0705',
+            'email' => 'fannygarciab@hotmail.es',
+            'password' => Hash::make('1308050705'),
+            'person_id' => '3',
+        ]);
+
         DB::table('project_roles')->insert([
             'project_id' => '1',
             'role_id' => '1',
         ]);
 
+        DB::table('project_roles')->insert([
+            'project_id' => '1',
+            'role_id' => '2',
+        ]);
+
+        DB::table('project_roles')->insert([
+            'project_id' => '1',
+            'role_id' => '3',
+        ]);
+
         DB::table('project_users')->insert([
             'user_id' => '1',
             'project_role_id' => '1',
+            'project_id' => '1',
+        ]);
+
+        DB::table('project_users')->insert([
+            'user_id' => '2',
+            'project_role_id' => '3',
+            'project_id' => '1',
+        ]);
+
+        DB::table('project_users')->insert([
+            'user_id' => '3',
+            'project_role_id' => '2',
             'project_id' => '1',
         ]);
 

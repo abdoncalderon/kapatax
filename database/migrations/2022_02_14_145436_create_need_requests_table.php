@@ -21,7 +21,7 @@ class CreateNeedRequestsTable extends Migration
             $table->foreign('project_user_id')->references('id')->on('project_users')->onUpdate('cascade')->onDelete('restrict');
             $table->foreignId('location_id');
             $table->foreign('location_id')->references('id')->on('locations')->onUpdate('cascade')->onDelete('restrict');
-            $table->unsignedBigInteger('approving_user_id')->nullable();
+            $table->unsignedBigInteger('approver_id')->nullable();
             $table->unsignedBigInteger('cost_account_id')->nullable();
             $table->decimal('expectedCost')->nullable();
             $table->integer('status_id');

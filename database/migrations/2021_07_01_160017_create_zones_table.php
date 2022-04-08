@@ -15,7 +15,7 @@ class CreateZonesTable extends Migration
     {
         Schema::create('zones', function (Blueprint $table) {
             $table->id();
-            $table->string('name')->unique();
+            $table->string('name');
             $table->foreignId('project_id');
             $table->foreign('project_id')->references('id')->on('projects')->onUpdate('cascade')->onDelete('restrict');
             $table->unique(['name','project_id'],'project_zone_unique');

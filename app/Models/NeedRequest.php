@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class NeedRequest extends Model
 {
-    protected $fillable = ['project_user_id','date','description','location_id','approving_user_id','cost_account_id','expectedCost','status_id',];
+    protected $fillable = ['project_user_id','date','description','location_id','approver_id','cost_account_id','expectedCost','status_id',];
 
     public function projectUser(){
         return $this->belongsTo(ProjectUser::class);
@@ -20,19 +20,22 @@ class NeedRequest extends Model
         return $this->hasMany(NeedRequestItem::class);
     }
 
-    public function approvingUser(){
-        return $this->hasMany(ProjectUser::class,'approving_user_id','id');
+    public function approver(){
+        return $this->belongsTo(StakeholderPerson::class,'approver_id','id');
+    }
+
+    public function quotationRequest(){
+        return $this->hasOne(QuotationRequest::class);
     }
 
     public function status(){
         switch($this->status_id){
             case 0: return __('content.draft');
             case 1: return __('content.sent');
-            case 2: return __('content.reviewed');
-            case 3: return __('content.rejected');
-            case 4: return __('content.processed');
-            case 5: return __('content.dispatched');
-            case 6: return __('content.received');
+            case 2: return __('content.rejected');
+            case 3: return __('content.approved');
+            case 4: return __('messages.inProcess');
+            case 5: return __('content.complete');
         }
     }
 }

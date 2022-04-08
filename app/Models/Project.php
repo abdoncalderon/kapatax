@@ -45,8 +45,24 @@ class Project extends Model
         return $this->hasMany(ProjectRole::class);
     }
 
+    public function projectUsers(){
+        return $this->hasMany(ProjectUser::class);
+    }
+
     public function parameter(){
         return $this->hasOne(Parameter::class);
+    }
+
+    public function zones(){
+        return $this->hasMany(Zone::class);
+    }
+
+    public function equipments(){
+        return $this->hasMany(Equipment::class);
+    }
+
+    public function turns(){
+        return $this->hasMany(Turn::class);
     }
 
     public function isActive(){

@@ -25,8 +25,8 @@ class StoreMaterialRequest extends FormRequest
             'group_id'=>'nullable',
             'partOf'=>'nullable',
             'unity_id'=>'required',
-            'weight'=>'nullable',
-            'volume'=>'nullable'
+            'weight'=>'nullable|numeric',
+            'volume'=>'nullable|numeric',
         ];
     }
 }

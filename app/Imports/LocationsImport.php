@@ -13,6 +13,8 @@ use Maatwebsite\Excel\Concerns\ToModel;
 use Maatwebsite\Excel\Concerns\WithHeadingRow;
 use Maatwebsite\Excel\Concerns\WithValidation;
 
+use Carbon\Carbon;
+
 class LocationsImport implements ToModel, WithHeadingRow, SkipsOnError, WithValidation, SkipsOnFailure
 {
     use Importable, SkipsErrors, SkipsFailures;
@@ -32,8 +34,8 @@ class LocationsImport implements ToModel, WithHeadingRow, SkipsOnError, WithVali
             'latitude' => $row['latitude'],
             'longitude' => $row['longitude'],
             'sequence' => $row['sequence'],
-            'startDate' => $row['startDate'],
-            'finishDate' => $row['finishDate'],
+            'startDate' => \PhpOffice\PhpSpreadsheet\Shared\Date::excelToDateTimeObject($row['start_date']),
+            'finishDate' => \PhpOffice\PhpSpreadsheet\Shared\Date::excelToDateTimeObject($row['finish_date']),
             'max_time_open_folio' => $row['max_time_open_folio'],
             'max_time_create_dailyReport' => $row['max_time_create_daily_report'],
             'max_time_create_note' => $row['max_time_create_note'],
@@ -46,11 +48,11 @@ class LocationsImport implements ToModel, WithHeadingRow, SkipsOnError, WithVali
         return [
             '*.name'=> ['string'],
             '*.code'=> ['string'],
-            '*.latitude'=> ['numeric'],
-            '*.longitude'=> ['numeric'],
+            '*.latitude'=> ['nullable','numeric'],
+            '*.longitude'=> ['nullable','numeric'],
             '*.sequence'=> ['integer'],
-            '*.startDate'=> ['date'],
-            '*.finishDate'=> ['date'],
+            '*.start_date'=> ['required'],
+            '*.finish_date'=> ['required'],
             '*.max_time_open_folio'=>['integer'],
             '*.max_time_create_dailyreport'=>['integer'],
             '*.max_time_create_note'=>['integer'],

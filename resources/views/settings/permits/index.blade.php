@@ -63,7 +63,7 @@
 
                 <hr>
 
-                <a class="btn btn-danger btn-sm" href=" {{ route('home') }} "><<< {{ __('content.return') }}</a>
+                <a class="btn btn-danger btn-sm" href=" {{ route('home') }} ">{{ __('content.return') }}</a>
 
             </div>
 

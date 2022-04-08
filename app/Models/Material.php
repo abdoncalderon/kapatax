@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Material extends Model
 {
-    protected $fillable = ['project_id','name','description','sku','upc','model_id','subcategory_id','group_id','partOf','unity_id','weight','volume',];
+    protected $fillable = ['project_id','name','description','sku','upc','model_id','subcategory_id','group_id','partOf','unity_id','weight','volume','stock','status_id'];
 
     public function project(){
         return $this->belongsTo(Project::class);
@@ -30,6 +30,14 @@ class Material extends Model
 
     public function group(){
         return $this->belongsTo(Group::class);
+    }
+
+    public function status(){
+        switch($this->status_id){
+            case 0: return __('messages.outOfStock');
+            case 1: return __('content.available');
+            case 2: return __('content.deprecated');
+        }
     }
 
 }

@@ -44,7 +44,7 @@
                     {{-- Rows  --}}
 
                     <tbody>
-                        @foreach($project->sectors as $sector)
+                        @foreach(current_user()->project->sectors as $sector)
                             <tr>
                                 <td>{{ $sector->name }}</td>
                                 <td>

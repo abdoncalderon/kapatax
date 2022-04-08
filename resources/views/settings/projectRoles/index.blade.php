@@ -1,10 +1,10 @@
 @extends('layouts.main')
 
-@section('title', __('content.projects').' ['.__('content.roles').']')
+@section('title', __('content.settings'))
 
-@section('section', __('content.projects').' ['.__('content.roles').']')
+@section('section', __('content.roles'))
 
-@section('level', __('content.administration'))
+@section('level', __('content.projects'))
 
 @section('breadcrumb')
     <ol class="breadcrumb">
@@ -23,7 +23,7 @@
             {{-- Title --}}
 
             <div class="box-header with-border center-block">
-                <h3 class="box-title"><strong>{{ __('messages.assignRoleToProject') }} {{ $project->name }}</strong></h3> | 
+                <h3 class="box-title"><strong>{{ __('messages.rolesOfProject') }} {{ $project->name }}</strong></h3> | 
                 <a class="btn btn-success btn-sm" href="{{ route('projectRoles.create',$project) }}">{{ __('content.add') }}</a>
             </div>
             
@@ -37,7 +37,6 @@
 
                     <thead>
                         <tr>
-                            <th>{{ __('content.project') }}</th>
                             <th>{{ __('content.role') }}</th>
                             <th>{{ __('content.actions') }}</th>
                         </tr>
@@ -50,10 +49,7 @@
                             <tr>
                                 <td>{{ $projectRole->role->name }}</td>
                                 <td>
-                                    {{-- @if($projectRole->role->id!=1) --}}
-                                        {{-- <a class="btn btn-info btn-xs" href="{{ route('projectRoles.edit', $projectRole)}}">{{ __('content.edit') }}</a> --}}
-                                        <a class="btn btn-info btn-xs" href="{{ route('projectRoles.destroy', $projectRole)}}">{{ __('content.delete') }}</a>
-                                    {{-- @endif --}}
+                                    <a class="btn btn-info btn-xs" href="{{ route('projectRoles.destroy', $projectRole)}}">{{ __('content.delete') }}</a>
                                 </td>
 
                             </tr>
@@ -66,7 +62,7 @@
 
                 <hr>
 
-                <a class="btn btn-danger btn-sm" href=" {{ route('projects.index') }} "><<< {{ __('content.return') }}</a>
+                <a class="btn btn-danger btn-sm" href=" {{ route('projects.index') }} ">{{ __('content.return') }}</a>
 
             </div>
 

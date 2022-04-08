@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\Warehouse;
+namespace App\Http\Controllers\Materials;
 use App\Http\Controllers\Controller;
 use App\Models\Material;
 use App\Models\Brand;
@@ -19,7 +19,7 @@ class MaterialController extends Controller
     public function index()
     {
         $materials = Material::where('project_id',session('current_project_id'))->get();
-        return view('warehouse.materials.index', compact('materials'));
+        return view('materials.materials.index', compact('materials'));
     }
 
     public function create()
@@ -30,7 +30,7 @@ class MaterialController extends Controller
         $materials = Material::where('project_id',session('current_project_id'))->get();
         $families = Family::where('project_id',session('current_project_id'))->get();
         
-        return view('warehouse.materials..create')
+        return view('materials.materials..create')
         ->with(compact('brands'))
         ->with(compact('unities'))
         ->with(compact('groups'))
@@ -51,9 +51,7 @@ class MaterialController extends Controller
 
     public function show(Material $material)
     {
-        return view('warehouse.materials.show',[
-            'material'=>$material
-            ]);
+        return view('warehouse.materials.show',compact('material'));
     }
 
     public function edit(Material $material)
@@ -63,7 +61,7 @@ class MaterialController extends Controller
         $groups = Group::get();
         $materials = Material::where('project_id',session('current_project_id'))->get();
         $families = Family::where('project_id',session('current_project_id'))->get();
-        return view('warehouse.materials.edit',[
+        return view('materials.materials.edit',[
             'material'=>$material
             ])
         ->with(compact('brands'))
@@ -115,4 +113,14 @@ class MaterialController extends Controller
             return back()->withErrors( $e->getMessage());
         }
     }
+
+    public function getMaterial(Request $request, $id)
+    {
+        if($request->ajax())
+        {
+            $material = Material::find($id);
+            return response()->json($material);
+        }
+    }
+       
 }

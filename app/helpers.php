@@ -375,7 +375,7 @@ if (! function_exists('my_pending_requests')) {
     function my_pending_requests()
     {
         $pendingRequests = NeedRequest::where('project_user_id',current_user()->id)
-                                        ->where('status_id','<=',5)
+                                        ->where('status_id','<',5)
                                         ->get();
         return $pendingRequests->count();
     }
@@ -384,7 +384,8 @@ if (! function_exists('my_pending_requests')) {
 if (! function_exists('my_pending_approvals')) {
     function my_pending_approvals()
     {
-        $pendingApprovals = NeedRequest::where('approving_user_id',current_user()->id)
+        $pendingApprovals = NeedRequest::where('approver_id',current_user()->user->person_id)
+                                        ->where('status_id',1)
                                         ->get();
         return $pendingApprovals->count();
     }

@@ -34,6 +34,8 @@ class CreateMaterialsTable extends Migration
             $table->decimal('volume')->default('0.0');
             $table->unique(['name','project_id'],'material_project_unique');
             $table->unique(['SKU','project_id'],'material_project_sku_unique');
+            $table->decimal('stock')->default('0.0');
+            $table->integer('status_id')->default('0');
             $table->timestamps();
         });
     }

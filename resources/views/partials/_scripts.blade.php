@@ -409,6 +409,37 @@
             }
         )
 
+        $("#codeMaterial").on('change', function() {
+            $.get("/getMaterial/"+event.target.value+"", 
+                function(response,state){
+                    $("#nameMaterial").empty();
+                    $("#nameMaterial").attr('value',response.name);
+                    $("#stockMaterial").attr('value',response.stock);
+                    $("#material").attr('value',response.id);
+                    $stock = response.stock;
+                    $quantity = $("#quantity").val();
+                    if($stock>=$quantity){
+                        $("#processButton").attr('style','display: block; margin: 0px 5px;');
+                    }
+                    else{
+                        $("#processButton").attr('style','display: none; margin: 0px 5px;');
+                    }
+                }
+            )
+        })
+
+        $("#cardIdStakeholderPerson").on('change', function() {
+            $.get("/getStakeholderPerson/"+event.target.value+"", 
+                function(response,state){
+                    $("#fullNameStakeholderPerson").attr('value','');
+                    $("#fullNameStakeholderPerson").attr('value',response.fullName);
+                    $("#stakeholderPerson").attr('value',response.stakeholderPersonId);
+                });
+            }
+        )
+
+        
+
         
         
 

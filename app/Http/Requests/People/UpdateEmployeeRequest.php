@@ -24,6 +24,7 @@ class UpdateEmployeeRequest extends FormRequest
             'contractedUntil'=>'nullable',
             'salary'=>'nullable',
             'contractFile'=>'nullable',
+            'isApprover'=>'nullable',
         ];
     }
 }

@@ -5,11 +5,7 @@ use Illuminate\Support\Facades\DB;
 
 class GroupSeeder extends Seeder
 {
-    /**
-     * Run the database seeds.
-     *
-     * @return void
-     */
+   
     public function run()
     {
         DB::table('groups')->insert([
@@ -21,7 +17,7 @@ class GroupSeeder extends Seeder
         ]);
 
         DB::table('groups')->insert([
-            'name' => __('messages.asset'),
+            'name' => __('content.asset'),
         ]);
 
         DB::table('groups')->insert([

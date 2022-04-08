@@ -34,6 +34,7 @@
 
                     <thead>
                         <tr>
+                            <th>ID</th>
                             <th>{{ __('content.name') }}</th>
                             <th>{{ __('content.subcategory') }}</th>
                             <th>{{ __('content.brand') }}</th>
@@ -47,6 +48,7 @@
                     <tbody>
                         @foreach($materials as $material)
                             <tr>
+                                <td>{{ $material->id }}</td>
                                 <td>{{ $material->name }}</td>
                                 <td>{{ $material->subcategory->name }}</td>
                                 <td>{{ $material->model->brand->name }}</td>

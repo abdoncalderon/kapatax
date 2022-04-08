@@ -1,10 +1,10 @@
 @extends('layouts.main')
 
-@section('title', __('content.projects').' ['.__('content.roles').']')
+@section('title', __('content.settings'))
 
-@section('section', __('content.projects').' ['.__('content.roles').']')
+@section('section', __('content.roles'))
 
-@section('level', __('content.administration'))
+@section('level', __('content.projects'))
 
 @section('breadcrumb')
     <ol class="breadcrumb">

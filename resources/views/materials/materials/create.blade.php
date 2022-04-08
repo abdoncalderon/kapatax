@@ -1,6 +1,6 @@
 @extends('layouts.main')
 
-@section('title', __('content.materials'))
+@section('title', __('content.warehouse'))
 
 @section('section', __('content.materials'))
 
@@ -204,7 +204,7 @@
                             <div class="form-group">
                                 <label class="col-sm-2 control-label">{{ __('content.weight') }} (kg)</label>
                                 <div class="input-group input-group-sm col-xs-12 col-sm-10" >
-                                    <input id="weight" class="form-control @error('weight') is-invalid @enderror" name="weight" type="number" placeholder="{{ __('content.weight') }}" value="0.0" min="0.0">
+                                    <input id="weight" class="form-control @error('weight') is-invalid @enderror" name="weight" type="text" placeholder="{{ __('content.weight') }}" value="0.0" required>
                                     @error('weight')
                                         <span class="invalid-feedback" role="alert" style="color:red">
                                             <strong>{{ $message }}</strong>
@@ -218,7 +218,7 @@
                             <div class="form-group">
                                 <label class="col-sm-2 control-label">{{ __('content.volume') }} (m3)</label>
                                 <div class="input-group input-group-sm col-xs-12 col-sm-10" >
-                                    <input id="volume" class="form-control @error('volume') is-invalid @enderror" name="volume" type="number" placeholder="{{ __('content.volume') }}" value="0.0" min="0.0">
+                                    <input id="volume" class="form-control @error('volume') is-invalid @enderror" name="volume" type="text" placeholder="{{ __('content.volume') }}" value="0.0" required>
                                     @error('volume')
                                         <span class="invalid-feedback" role="alert" style="color:red">
                                             <strong>{{ $message }}</strong>

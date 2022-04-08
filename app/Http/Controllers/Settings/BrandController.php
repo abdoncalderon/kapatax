@@ -27,15 +27,12 @@ class BrandController extends Controller
 
     public function store(StoreBrandRequest $request )
     {
-        Brand::create($request ->validated());
-        return redirect()->route('brands.index');
-    }
-
-    public function show(Brand $brand)
-    {
-        return view('settings.brands.show',[
-            'brand'=>$brand
-            ]);
+        try{
+            Brand::create($request ->validated());
+            return redirect()->route('brands.index');
+        }catch(Exception $e){
+            return back()->withErrors( $e->getMessage());
+        }
     }
 
     public function edit(Brand $brand)

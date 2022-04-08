@@ -66,7 +66,7 @@
 
                 <hr>
 
-                <a class="btn btn-danger btn-sm" href=" {{ route('roles.index') }} "><<< {{ __('content.return') }}</a>
+                <a class="btn btn-danger btn-sm" href=" {{ route('roles.index') }} ">{{ __('content.return') }}</a>
 
             </div>
 
@@ -92,7 +92,7 @@
                     <div class="modal-body">
 
 
-                        <input type="hidden" class="form-control" name="role_target_id" value="{{ $role->id }}">
+                        <input type="hidden" name="role_target_id" value="{{ $role->id }}">
 
                         <div class="form-group">
                             <label class="col-sm-2 control-label">{{ __('content.role') }}</label>

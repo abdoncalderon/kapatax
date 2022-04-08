@@ -55,11 +55,12 @@
                                 <td>{{ $myNeedRequest->status() }}</td>
                                 <td>
                                     
-                                    @if ( $myNeedRequest->status_id==0 )
+                                    @if ( $myNeedRequest->status_id==0 || $myNeedRequest->status_id==2 )
                                         <a class="btn btn-info btn-xs" href="{{ route('myNeedRequests.edit', $myNeedRequest) }}">{{ __('content.edit') }}</a>
                                         <a class="btn btn-danger btn-xs" href="{{ route('myNeedRequests.destroy', $myNeedRequest)}}">{{ __('content.delete') }}</a>
-                                    @elseif( $myNeedRequest->status_id==1 )
+                                   {{--  @elseif( $myNeedRequest->status_id==2 )
                                         <a class="btn btn-info btn-xs" href="{{ route('myNeedRequests.modify', $myNeedRequest) }}">{{ __('content.modify') }}</a>
+                                        <a class="btn btn-danger btn-xs" href="{{ route('myNeedRequests.destroy', $myNeedRequest)}}">{{ __('content.delete') }}</a> --}}
                                     @else
                                         <a class="btn btn-info btn-xs" href="{{ route('myNeedRequests.show', $myNeedRequest) }}">{{ __('content.show') }}</a>
                                     @endif
@@ -75,7 +76,7 @@
 
                 <hr>
 
-                <a class="btn btn-danger btn-sm" href=" {{ route('home') }} "><<< {{ __('content.return') }}</a>
+                <a class="btn btn-danger btn-sm" href=" {{ route('home') }} ">{{ __('content.return') }}</a>
 
             </div>
 

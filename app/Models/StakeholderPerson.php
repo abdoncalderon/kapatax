@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class StakeholderPerson extends Model
 {
     
-    protected $fillable = ['stakeholder_id','person_id','admissionDate','departureDate', 'position_id', 'department_id','leader_id','businessEmail','hiredSince','contractedUntil','salary','contractFile','isActive','isBlocked',];
+    protected $fillable = ['stakeholder_id','person_id','admissionDate','departureDate', 'position_id', 'department_id','leader_id','businessEmail','hiredSince','contractedUntil','salary','contractFile','isApprover','isActive','isBlocked',];
 
     public function person(){
         return $this->belongsTo(Person::class);

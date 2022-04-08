@@ -22,7 +22,7 @@ class StoreStakeholderRequest extends FormRequest
             'city_id'=>'required',
             'address'=>'nullable',
             'zipCode'=>'nullable',
-            'email'=>'nullable',
+            'email'=>'required',
             'phoneNumber'=>'nullable',
             'stakeholder_type_id'=>'required',
         ];

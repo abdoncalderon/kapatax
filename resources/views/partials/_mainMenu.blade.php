@@ -38,9 +38,9 @@
                     </a>
                 </li>
                 <li>
-                    <a href="#">
+                    <a href="{{ route('myApprovals.index') }}">
                         <i class="fa fa-check"></i>
-                            {{ __('messages.pendingApprovals') }} 
+                            {{ __('messages.myApprovals') }} 
                         <span class="pull-right-container">
                             <small class="label pull-right bg-yellow">{{ my_pending_approvals() }}</small>
                         </span>

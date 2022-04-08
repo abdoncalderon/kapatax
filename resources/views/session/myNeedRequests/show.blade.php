@@ -104,8 +104,7 @@
                             <div class="form-group">
                                 <label class="col-sm-2 control-label">{{ __('messages.approvingUser') }}</label>
                                 <div class="input-group input-group-sm col-xs-12 col-sm-10" >
-                                    {{-- <input id="approving_user" disabled class="form-control" name="approving_user_id" type="text" value="{{ $myNeedRequest->approvingUser->user->person->fullName }}"> --}}
-                                    <input id="approving_user" disabled class="form-control" name="approving_user_id" type="text" value="">
+                                    <input id="approving_user" disabled class="form-control" name="approver_id" type="text" value="{{ $myNeedRequest->approver->person->fullName }}">
                                 </div>
                             </div>
 
@@ -149,7 +148,7 @@
                     {{-- Form Footer --}}
 
                     <div class="box-footer">
-                        <a class="btn btn-danger btn-sm" href=" {{ route('myNeedRequests.index') }} "><<< {{ __('content.return') }}</a>
+                        <a class="btn btn-danger btn-sm" href=" {{ route('myNeedRequests.index') }} ">{{ __('content.return') }}</a>
                     </div>
 
                 {{-- End Form  --}}

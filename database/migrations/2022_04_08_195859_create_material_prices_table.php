@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateStockRequestItemsTable extends Migration
+class CreateMaterialPricesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,14 +13,12 @@ class CreateStockRequestItemsTable extends Migration
      */
     public function up()
     {
-        Schema::create('stock_request_items', function (Blueprint $table) {
+        Schema::create('material_prices', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('stock_request_id');
-            $table->foreign('stock_request_id')->references('id')->on('stock_requests')->onUpdate('cascade')->onDelete('restrict');
             $table->foreignId('material_id');
             $table->foreign('material_id')->references('id')->on('materials')->onUpdate('cascade')->onDelete('restrict');
-            $table->integer('quantity');
-            $table->decimal('unitPrice');
+            $table->dateTime('date');
+            $table->decimal('price')->default('0');
             $table->timestamps();
         });
     }
@@ -32,6 +30,6 @@ class CreateStockRequestItemsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('stock_request_items');
+        Schema::dropIfExists('material_prices');
     }
 }

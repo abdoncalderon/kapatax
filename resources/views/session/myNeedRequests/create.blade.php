@@ -123,8 +123,11 @@
                             <div class="form-group">
                                 <label class="col-sm-2 control-label">{{ __('messages.approvingUser') }}</label>
                                 <div class="input-group input-group-sm col-xs-12 col-sm-10" >
-                                    <select id="approving_user" name="approving_user_id" class="form-control" style="width: 100%;">
+                                    <select id="approving_user" name="approver_id" class="form-control" style="width: 100%;" required>
                                         <option value="">{{__('messages.select')}} {{__('content.approver')}}</option>
+                                        @foreach ($approvers as $approver)
+                                            <option value="{{ $approver->person_id }}">{{ $approver->person->fullName }}</option>
+                                        @endforeach
                                     </select>
                                 </div>
                             </div>

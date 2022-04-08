@@ -19,7 +19,7 @@ class StoreNeedRequestRequest extends FormRequest
             'date'=>'required',
             'project_user_id'=>'required',
             'location_id'=>'required',
-            'approving_user_id'=>'nullable',
+            'approver_id'=>'nullable',
             'cost_account_id'=>'nullable',
             'expectedCost'=>'nullable',
             'status_id'=>'required',
