@@ -52,7 +52,7 @@ class NeedRequestController extends Controller
                 $quotationRequest = QuotationRequest::create([
                     'need_request_id' => $needRequest->id,
                     'project_user_id' => current_user()->id,
-                    'date' => Carbon::today()->toDateString(),
+                    'date' => Carbon::now()->toDateString(),
                 ]);
                 foreach ($itemsForQuote as $item){
                     QuotationRequestItem::create([
@@ -74,7 +74,7 @@ class NeedRequestController extends Controller
                 $destockingRequest = destockingRequest::create([
                     'need_request_id' => $needRequest->id,
                     'project_user_id' => current_user()->id,
-                    'date' => Carbon::today()->toDateString(),
+                    'date' => Carbon::now()->toDateString(),
                 ]);
                 foreach ($itemsForDestocking as $item){
                     DestockingRequestItem::create([

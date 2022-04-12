@@ -8,5 +8,7 @@ use Illuminate\Http\Request;
 
 class QuotationController extends Controller
 {
-    
+    public function index(){
+        
+    }
 }

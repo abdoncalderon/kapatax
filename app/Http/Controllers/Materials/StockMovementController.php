@@ -37,7 +37,7 @@ class StockMovementController extends Controller
             $needRequest = NeedRequest::find($request->need_request_id);
             $needRequestItem = NeedRequestItem::find($request->need_request_item_id);
             $stockMovement = StockMovement::create([
-                'date' => Carbon::today()->toDateString(),
+                'date' => Carbon::now()->toDateString(),
                 'transactionType_id' => '1',
                 'need_request_item_id' => $request->need_request_item_id,
                 'material_id' => $request->material_id,

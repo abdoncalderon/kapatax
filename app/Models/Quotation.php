@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Quotation extends Model
 {
-    protected $fillable = ['quotation_request_id','stakeholder_id','date','project_user_id','status_id','quotationFile'];
+    protected $fillable = ['quotation_request_id','stakeholder_id','sendDate','answerDate','totalPrice','deliveryTime','project_user_id','quotationFile','status_id',];
 
     public function quotationRequest()
     {
@@ -29,5 +29,13 @@ class Quotation extends Model
 
     public function purchaseOrder(){
         return $this->hasOne(PurchaseOrder::class);
+    }
+
+    public function status(){
+        switch($this->status_id){
+            case 0: return __('content.pending');
+            case 1: return __('content.accepted');
+            case 2: return __('content.rejected');
+        }
     }
 }

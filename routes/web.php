@@ -28,6 +28,18 @@ Route::get('/myApprovals','Session\ApprovalController@index')->name('myApprovals
 Route::get('/myApprovals/approval/{id}/{status}','Session\ApprovalController@approval')->name('myApprovals.approval');
 Route::get('/myApprovals/show/{needRequest}','Session\ApprovalController@show')->name('myApprovals.show');
 
+/* Routes My Quotations */
+Route::get('/myQuotations','Session\QuotationController@index')->name('myQuotations.index');
+Route::get('/myQuotations/open/{myQuotation}','Session\QuotationController@open')->name('myQuotations.open');
+Route::get('/myQuotations/show/{myQuotation}','Session\QuotationController@show')->name('myQuotations.show');
+Route::get('/myQuotations/accept/{myQuotation}','Session\QuotationController@accept')->name('myQuotations.accept');
+Route::get('/myQuotations/reject/{myQuotation}','Session\QuotationController@reject')->name('myQuotations.reject');
+
+
+/* Routes My Quotation Items */
+
+Route::post('/myQuotationItems','Session\QuotationItemController@store')->name('myQuotationItems.store');
+Route::get('/myQuotationItems/{myQuotation}/{quotationRequestItem}','Session\QuotationItemController@create')->name('myQuotationItems.create');
 
 /********************************************* SETTINGS ROUTES *************************************************************** */
 

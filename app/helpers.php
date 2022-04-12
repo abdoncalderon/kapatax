@@ -14,6 +14,7 @@ use App\Models\LocationTurn;
 use App\Models\Stakeholder;
 use App\Models\Person;
 use App\Models\NeedRequest;
+use App\Models\Quotation;
 use App\Models\StakeholderPerson;
 use Carbon\Carbon;
 
@@ -343,7 +344,7 @@ if (! function_exists('is_active_stakeholder_person')) {
     }
 }
 
-if (! function_exists('exception_code')) {
+/* if (! function_exists('exception_code')) {
     function exception_code($code)
     {
         switch ($code) {
@@ -352,6 +353,14 @@ if (! function_exists('exception_code')) {
             default:
                 return __('messages.transactionError');
         }
+    }
+} */
+if (! function_exists('active_stakeholder')) {
+    function active_stakeholder(Person $person){
+        $stakeholderPerson = StakeholderPerson::where('person_id',$person->id)
+                                                ->where('isActive',1)
+                                                ->first();
+        return $stakeholderPerson;
     }
 }
 
@@ -388,6 +397,17 @@ if (! function_exists('my_pending_approvals')) {
                                         ->where('status_id',1)
                                         ->get();
         return $pendingApprovals->count();
+    }
+}
+
+if (! function_exists('my_quotations')) {
+    function my_quotations()
+    {
+        $stakeholderPerson = active_stakeholder(current_user()->user->person);
+        $myQuotations = Quotation::where('stakeholder_id',$stakeholderPerson->stakeholder_id)
+                                ->where('status_id',0)
+                                ->get();
+        return $myQuotations->count();
     }
 }
 

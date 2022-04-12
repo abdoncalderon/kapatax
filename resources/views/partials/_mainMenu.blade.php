@@ -47,9 +47,18 @@
                     </a>
                 </li>
                 <li>
+                    <a href="{{ route('myQuotations.index') }}">
+                        <i class="fa fa-money"></i>
+                            {{ __('messages.myQuotations') }} 
+                        <span class="pull-right-container">
+                            <small class="label pull-right bg-yellow">{{ my_quotations() }}</small>
+                        </span>
+                    </a>
+                </li>
+                <li>
                     <a href="#">
                         <i class="fa fa-envelope"></i>
-                            {{ __('content.notifications') }} 
+                            {{ __('messages.myNotifications') }} 
                         <span class="pull-right-container">
                             <small class="label pull-right bg-yellow">12</small>
                         </span>

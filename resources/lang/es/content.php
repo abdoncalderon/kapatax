@@ -4,6 +4,7 @@ return [
 
     'about' => 'Acerca de',
     'access'=>'Accesos',
+    'accept'=>'Aceptar',
     'account'=>'Cuenta',
     'actions' => 'Acciones',
     'activate'=>'Activar',

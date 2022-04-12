@@ -4,11 +4,13 @@ namespace App\Http\Controllers\Purchases;
 
 use App\Http\Controllers\Controller;
 use App\Models\QuotationRequest;
+use App\Models\Quotation;
 use App\Models\Stakeholder;
 use App\Models\QuotationRequestNotification;
 use Illuminate\Support\Facades\Mail;
 use App\Mail\RequestForQuote;
 use Illuminate\Http\Request;
+use Carbon\Carbon;
 use Exception;
 
 class QuotationRequestController extends Controller
@@ -47,9 +49,17 @@ class QuotationRequestController extends Controller
         try{
             
             foreach($quotationRequest->quotationRequestNotifications as $notification){
+
                 Mail::to($notification->stakeholder->email)->queue(new RequestForQuote($quotationRequest));
+
                 $notification->update([
                     'status_id' => '1',
+                ]);
+                Quotation::create([
+                    'quotation_request_id'=>$quotationRequest->id,
+                    'stakeholder_id'=>$notification->stakeholder_id,
+                    'sendDate'=>Carbon::now()->toDateString(),
+                    'project_user_id'=>current_user()->id,
                 ]);
             }
             $quotationRequest->update([

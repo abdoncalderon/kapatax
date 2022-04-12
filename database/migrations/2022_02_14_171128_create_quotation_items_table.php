@@ -17,11 +17,15 @@ class CreateQuotationItemsTable extends Migration
             $table->id();
             $table->foreignId('quotation_id');
             $table->foreign('quotation_id')->references('id')->on('quotations')->onUpdate('cascade')->onDelete('restrict');
-            $table->foreignId('material_id');
-            $table->foreign('material_id')->references('id')->on('materials')->onUpdate('cascade')->onDelete('restrict');
+            $table->foreignId('quotation_request_item_id');
+            $table->foreign('quotation_request_item_id')->references('id')->on('quotation_request_items')->onUpdate('cascade')->onDelete('restrict');
+            $table->text('description');
             $table->integer('quantity');
+            $table->foreignId('unity_id');
+            $table->foreign('unity_id')->references('id')->on('unities')->onUpdate('cascade')->onDelete('restrict');
             $table->decimal('unitPrice');
             $table->dateTime('deliveryDate');
+            $table->integer('status_id')->default('0');
             $table->timestamps();
         });
     }

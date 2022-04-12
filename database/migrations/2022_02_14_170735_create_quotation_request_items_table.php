@@ -23,6 +23,7 @@ class CreateQuotationRequestItemsTable extends Migration
             $table->integer('quantity');
             $table->foreignId('unity_id');
             $table->foreign('unity_id')->references('id')->on('unities')->onUpdate('cascade')->onDelete('restrict');
+            $table->integer('status_id')->default('0');
             $table->timestamps();
         });
     }
