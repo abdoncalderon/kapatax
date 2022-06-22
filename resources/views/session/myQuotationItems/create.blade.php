@@ -2,7 +2,7 @@
 
 @section('title', __('content.home'))
 
-@section('section', __('messages.myQuotationItems'))
+@section('section', __('messages.myQuotations'))
 
 @section('level', __('content.home'))
 
@@ -10,7 +10,7 @@
     <ol class="breadcrumb">
         <<li><a href="{{ route('home') }}"><i class="fa fa-home"></i>Home</a></li>
         <li><a href="{{ route('myQuotations.index')}}"> {{ __('messages.myQuotations') }} </a></li>
-        <li class="active">{{ __('content.edit') }}</li>
+        <li class="active">{{ __('content.quote') }}</li>
     </ol>
 @endsection
 
@@ -23,7 +23,7 @@
             <div class="box box-info">
                 
                 <div class="box-header with-border">
-                    <h3 class="box-title"><strong>{{ __('content.edit').' '.__('messages.needRequestItem') }}</strong></h3>
+                    <h3 class="box-title"><strong>{{ __('messages.quoteItem') }}</strong></h3>
                 </div>
 
                 {{-- Start Form  --}}
@@ -45,9 +45,17 @@
 
                             {{-- quotation request item --}}
     
-                            <input id="quotationRequest" type="hidden" name="quotation_request_item_id" value="{{ $quotationRequestItem->id }}">
-
+                            <input id="purchaseRequest" type="hidden" name="quotation_request_item_id" value="{{ $purchaseRequestItem->id }}">
     
+                            {{-- request --}}
+
+                            <div class="form-group">
+                                <label class="col-sm-2 control-label">{{ __('content.request') }}</label>
+                                <div class="input-group input-group-sm col-xs-12 col-sm-10" >
+                                    <textarea class="form-control" style="resize: vertical; height: 100px;" rows="5" disabled>{{ $purchaseRequestItem->reference }}</textarea>
+                                </div>
+                            </div>
+
                             {{-- description --}}
 
                             <div class="form-group">
@@ -107,7 +115,7 @@
 
                     <div class="box-footer">
                         <button type="submit" class="btn btn-success pull-left btn-sm" style="margin: 0px 5px;">{{ __('content.quote') }}</button>
-                        <a class="btn btn-danger btn-sm" href=" {{ route('myQuotations.open',$myQuotation) }} ">{{ __('content.cancel') }}</a>
+                        <a class="btn btn-danger btn-sm" href=" {{ route('myQuotations.quote',$myQuotation) }} ">{{ __('content.cancel') }}</a>
                     </div>
 
                 </form>

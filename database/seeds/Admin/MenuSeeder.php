@@ -445,12 +445,38 @@ class MenuSeeder extends Seeder
         ]);
 
                         DB::table('menus')->insert([
-                            'code' => 'commercial.needRequests',
-                            'showName' => 'messages.needRequests',
+                            'code' => 'commercial.controls',
+                            'showName' => 'content.controls',
                             'father' => 'commercial',
-                            'route' => 'needRequests.index',
-                            'icon' => 'fa fa-list',
+                            'route' => null,
+                            'icon' => 'fa fa-check-square-o',
                         ]);
+
+                                        DB::table('menus')->insert([
+                                            'code' => 'commercial.controls.needRequests',
+                                            'showName' => 'messages.needRequests',
+                                            'father' => 'commercial.controls',
+                                            'route' => 'needRequests.index',
+                                            'icon' => 'fa fa-list',
+                                        ]);
+
+                                        DB::table('menus')->insert([
+                                            'code' => 'commercial.controls.receptions',
+                                            'showName' => 'content.receptions',
+                                            'father' => 'commercial.controls',
+                                            'route' => 'receptions.index',
+                                            'icon' => 'fa fa-inbox',
+                                        ]);
+
+                                        DB::table('menus')->insert([
+                                            'code' => 'commercial.controls.destocking',
+                                            'showName' => 'content.destocking',
+                                            'father' => 'commercial.controls',
+                                            'route' => 'destockingRequests.index',
+                                            'icon' => 'fa fa-arrow-left',
+                                        ]);
+
+
 
                         DB::table('menus')->insert([
                             'code' => 'commercial.materials',
@@ -459,6 +485,7 @@ class MenuSeeder extends Seeder
                             'route' => null,
                             'icon' => 'fa fa-cubes',
                         ]);
+
                                         DB::table('menus')->insert([
                                             'code' => 'commercial.materials.record',
                                             'showName' => 'content.record',
@@ -468,19 +495,11 @@ class MenuSeeder extends Seeder
                                         ]);
 
                                         DB::table('menus')->insert([
-                                            'code' => 'commercial.materials.inputs',
-                                            'showName' => 'content.inputs',
+                                            'code' => 'commercial.materials.stockingUp',
+                                            'showName' => 'messages.stockingUp',
                                             'father' => 'commercial.materials',
                                             'route' => null,
                                             'icon' => 'fa fa-arrow-right',
-                                        ]);
-                        
-                                        DB::table('menus')->insert([
-                                            'code' => 'commercial.materials.outputs',
-                                            'showName' => 'content.outputs',
-                                            'father' => 'commercial.materials',
-                                            'route' => 'destockingRequests.index',
-                                            'icon' => 'fa fa-arrow-left',
                                         ]);
 
                                         DB::table('menus')->insert([
@@ -500,10 +519,10 @@ class MenuSeeder extends Seeder
                         ]);
 
                                         DB::table('menus')->insert([
-                                            'code' => 'commercial.purchases.quotationRequests',
-                                            'showName' => 'messages.quotationRequests',
+                                            'code' => 'commercial.purchases.purchaseRequests',
+                                            'showName' => 'messages.purchaseRequests',
                                             'father' => 'commercial.purchases',
-                                            'route' => 'quotationRequests.index',
+                                            'route' => 'purchaseRequests.index',
                                             'icon' => 'fa fa-check-square',
                                         ]);
 
@@ -514,21 +533,13 @@ class MenuSeeder extends Seeder
                                             'route' => 'quotations.index',
                                             'icon' => 'fa fa-money',
                                         ]);
-
+                                        
                                         DB::table('menus')->insert([
-                                            'code' => 'commercial.purchases.orders',
-                                            'showName' => 'content.orders',
+                                            'code' => 'commercial.purchases.purchaseOrders',
+                                            'showName' => 'messages.purchaseOrders',
                                             'father' => 'commercial.purchases',
-                                            'route' => 'orders.index',
-                                            'icon' => 'fa fa-shopping-cart',
-                                        ]);
-
-                                        DB::table('menus')->insert([
-                                            'code' => 'commercial.purchases.agreements',
-                                            'showName' => 'content.agreements',
-                                            'father' => 'commercial.purchases',
-                                            'route' => null,
-                                            'icon' => 'fa fa-file',
+                                            'route' => 'purchaseOrders.index',
+                                            'icon' => 'fa fa-file-text-o',
                                         ]);
 
                                         DB::table('menus')->insert([
@@ -538,6 +549,46 @@ class MenuSeeder extends Seeder
                                             'route' => null,
                                             'icon' => 'fa fa-print',
                                         ]);
+
+                        /* DB::table('menus')->insert([
+                            'code' => 'commercial.contracts',
+                            'showName' => 'content.contracts',
+                            'father' => 'commercial',
+                            'route' => null,
+                            'icon' => 'fa fa-bookmark',
+                        ]);
+
+                                        DB::table('menus')->insert([
+                                            'code' => 'commercial.contracts.serviceRequests',
+                                            'showName' => 'messages.serviceRequests',
+                                            'father' => 'commercial.contracts',
+                                            'route' => 'serviceRequests.index',
+                                            'icon' => 'fa fa-check-square',
+                                        ]);
+
+                                        DB::table('menus')->insert([
+                                            'code' => 'commercial.purchases.proposals',
+                                            'showName' => 'content.proposals',
+                                            'father' => 'commercial.contracts',
+                                            'route' => 'serviceProposals.index',
+                                            'icon' => 'fa fa-money',
+                                        ]);
+
+                                        DB::table('menus')->insert([
+                                            'code' => 'commercial.contracts.serviceOrders',
+                                            'showName' => 'messages.serviceOrders',
+                                            'father' => 'commercial.contracts',
+                                            'route' => 'purchaseOrders.index',
+                                            'icon' => 'fa fa-file-text-o',
+                                        ]);
+
+                                        DB::table('menus')->insert([
+                                            'code' => 'commercial.contracts.reports',
+                                            'showName' => 'content.reports',
+                                            'father' => 'commercial.contracts',
+                                            'route' => null,
+                                            'icon' => 'fa fa-print',
+                                        ]); */
                         
                         DB::table('menus')->insert([
                             'code' => 'commercial.warehouses',
@@ -551,7 +602,7 @@ class MenuSeeder extends Seeder
                                             'code' => 'commercial.warehouses.record',
                                             'showName' => 'content.record',
                                             'father' => 'commercial.warehouses',
-                                            'route' => null,
+                                            'route' => 'warehouses.index',
                                             'icon' => 'fa fa-pencil',
                                         ]);
 

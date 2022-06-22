@@ -38,7 +38,6 @@
                         <tr>
                             <th>{{ __('content.number') }}</th>
                             <th>{{ __('content.date') }}</th>
-                            <th>{{ __('content.buyer') }}</th>
                             <th>{{ __('content.status') }}</th>
                             <th>{{ __('content.actions') }}</th>
                         </tr>
@@ -50,17 +49,10 @@
                         @foreach($myQuotations as $myQuotation)
                             <tr>
                                 <td>{{ $myQuotation->id }}</td>
-                                <td>{{ $myQuotation->sendDate }}</td>
-                                <td>{{ $myQuotation->projectUser->user->person->fullName }}</td>
+                                <td>{{ $myQuotation->answerDate }}</td>
                                 <td>{{ $myQuotation->status() }}</td>
                                 <td>
-                                    @if ( $myQuotation->status_id==0 )
-                                        <a class="btn btn-info btn-xs" href="{{ route('myQuotations.open', $myQuotation) }}">{{ __('content.open') }}</a>
-                                    @elseif( $myQuotation->status_id==0 )
-                                        <a class="btn btn-info btn-xs" href="{{ route('myQuotations.edit', $myQuotation) }}">{{ __('content.edit') }}</a>
-                                    @else
-                                        <a class="btn btn-info btn-xs" href="{{ route('myQuotations.show', $myQuotation) }}">{{ __('content.show') }}</a>
-                                    @endif
+                                    <a class="btn btn-default btn-xs" href="{{ route('myQuotations.show', $myQuotation) }}">{{ __('content.show') }}</a>
                                 </td>
                             </tr>
                         @endforeach

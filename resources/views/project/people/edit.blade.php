@@ -380,13 +380,13 @@
 
                             <div class="photo">
 
-                                <img id="photoPreview" src="{{ asset('images/people/photos/'.$projectPerson->photo) }}" alt="{{ __('content.photo') }}">
+                                <img id="photoPreview" src="{{ asset('documents/people/photos/'.$projectPerson->photo) }}" alt="{{ __('content.photo') }}">
 
                             </div>
 
                             <div class="signature">
 
-                                <img id="signaturePreview" src="{{ asset('images/people/signatures/'.$projectPerson->signature) }}" alt="{{ __('content.signature') }}">
+                                <img id="signaturePreview" src="{{ asset('documents/people/signatures/'.$projectPerson->signature) }}" alt="{{ __('content.signature') }}">
 
                             </div>
                         </div>

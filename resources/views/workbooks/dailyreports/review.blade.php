@@ -352,7 +352,7 @@
                                         <tbody>
                                             @foreach($dailyReport->attachments as $attachmentDailyReport)
                                                 <tr>
-                                                    <td style="width:50%"><img src="{{ asset('images/agreement/dailyreports/attachments/'.$attachmentDailyReport->filename) }}" alt="" style="width:100%"></td>
+                                                    <td style="width:50%"><img src="{{ asset('documents/agreement/dailyreports/attachments/'.$attachmentDailyReport->filename) }}" alt="" style="width:100%"></td>
                                                     <td style="width:40%">{{ $attachmentDailyReport->description }}</td>
                                                     {{-- <td style="width:10%">{{ $attachmentDailyReport->projectUser->user->person->fullName }}</td> --}}
                                                 </tr>

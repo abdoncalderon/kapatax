@@ -30,9 +30,6 @@
 
                 {{-- Start Form  --}}
 
-
-
-
                     {{-- Form Body --}}
 
                     <div class="box-body">
@@ -46,7 +43,7 @@
                             <div class="form-group">
                                 <label class="col-sm-2 control-label">{{ __('content.company') }}</label>
                                 <div class="input-group input-group-sm col-xs-12 col-sm-10" >
-                                    <input id="company" disabled class="form-control" name="company" type="text" value="{{ active_stakeholder($myQuotation->quotationRequest->projectUser->user->person)->stakeholder->name }}">
+                                    <input id="company" disabled class="form-control" name="company" type="text" value="{{ active_stakeholder($myQuotation->quotationRequest->buyer->user->person)->stakeholder->name }}">
                                 </div>
                             </div>
                             
@@ -55,7 +52,7 @@
                             <div class="form-group">
                                 <label class="col-sm-2 control-label">{{ __('content.buyer') }}</label>
                                 <div class="input-group input-group-sm col-xs-12 col-sm-10" >
-                                    <input id="buyer" disabled class="form-control" name="buyer" type="text" value="{{ $myQuotation->quotationRequest->projectUser->user->person->fullName }}">
+                                    <input id="buyer" disabled class="form-control" name="buyer" type="text" value="{{ $myQuotation->quotationRequest->buyer->user->person->fullName }}">
                                 </div>
                             </div>
 
@@ -64,7 +61,16 @@
                             <div class="form-group">
                                 <label class="col-sm-2 control-label">{{ __('messages.sendDate') }}</label>
                                 <div class="input-group input-group-sm col-xs-12 col-sm-10" >
-                                    <input id="buyer" disabled class="form-control" name="buyer" type="text" value="{{ $myQuotation->sendDate }}">
+                                    <input id="sendDate" disabled class="form-control" name="sendDate" type="text" value="{{ $myQuotation->quotationRequest->sendDate }}">
+                                </div>
+                            </div>
+
+                            {{-- answer date --}}
+
+                            <div class="form-group">
+                                <label class="col-sm-2 control-label">{{ __('messages.answerDate') }}</label>
+                                <div class="input-group input-group-sm col-xs-12 col-sm-10" >
+                                    <input id="answerDate" disabled class="form-control" name="answerDate" type="text" value="{{ $myQuotation->answerDate }}">
                                 </div>
                             </div>
 
@@ -87,22 +93,20 @@
                                     <div>
                                         <br>
                                     </div>
-                                    <table id="quotationRequests" class="table table-bordered table-striped">
+                                    <table id="purchaseRequests" class="table table-bordered table-striped">
                                         <thead>
                                             <tr>
                                                 <th>{{ __('content.reference') }}</th>
                                                 <th>{{ __('content.quantity') }}</th>
                                                 <th>{{ __('content.unity') }}</th>
-                                                <th>{{ __('content.status') }}</th>
                                             </tr>
                                         </thead>
                                         <tbody>
-                                            @foreach($myQuotation->quotationRequest->quotationRequestItems as $quotationRequestItem)
+                                            @foreach($myQuotation->quotationRequest->purchaseRequest->purchaseRequestItems as $purchaseRequestItem)
                                                 <tr>
-                                                    <td>{{ $quotationRequestItem->reference }}</td>
-                                                    <td>{{ $quotationRequestItem->quantity }}</td>
-                                                    <td>{{ $quotationRequestItem->unity->code }}</td>
-                                                    <td>{{ $quotationRequestItem->status() }}</td>
+                                                    <td>{{ $purchaseRequestItem->reference }}</td>
+                                                    <td>{{ $purchaseRequestItem->quantity }}</td>
+                                                    <td>{{ $purchaseRequestItem->unity->code }}</td>
                                                 </tr>
                                             @endforeach
                                         </tbody>
@@ -120,7 +124,7 @@
                                         <div>
                                             <br>
                                         </div>
-                                        <table id="quotationRequests" class="table table-bordered table-striped">
+                                        <table id="purchaseRequests" class="table table-bordered table-striped">
                                             <thead>
                                                 <tr>
                                                     <th>{{ __('content.description') }}</th>
@@ -128,7 +132,6 @@
                                                     <th>{{ __('content.unity') }}</th>
                                                     <th>{{ __('messages.unitPrice') }}</th>
                                                     <th>{{ __('messages.deliveryDate') }}</th>
-                                                    <th>{{ __('content.actions') }}</th>
                                                 </tr>
                                             </thead>
                                             <tbody>
@@ -139,8 +142,39 @@
                                                         <td>{{ $quotationItem->unity->code }}</td>
                                                         <td>{{ $quotationItem->unitPrice }}</td>
                                                         <td>{{ $quotationItem->deliveryDate }}</td>
+                                                        
+                                                    </tr>
+                                                @endforeach
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+
+                            @endif
+
+                            @if ($myQuotation->quotationAttachments->count()>0)
+
+                                <hr>
+
+                                <div class="form-group">
+                                    <label class="col-sm-2 control-label">{{ __('content.attachments') }}</label>
+                                    <div class="input-group input-group-sm col-xs-12 col-sm-10" >
+                                        <div>
+                                            <br>
+                                        </div>
+                                        <table id="quotationAttachments" class="table table-bordered table-striped">
+                                            <thead>
+                                                <tr>
+                                                    <th>{{ __('content.filename') }}</th>
+                                                    <th>{{ __('content.actions') }}</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                @foreach($myQuotation->quotationAttachments as $quotationAttachment)
+                                                    <tr>
+                                                        <td>{{ $quotationAttachment->filename }}</td>
                                                         <td>
-                                                            <a class="btn btn-success btn-xs" href="#">{{ __('content.delete') }}</a>
+                                                            <a class="btn btn-info btn-xs" href="{{  asset('documents/commercial/purchases/quotations/attachments/',$quotationAttachment->file)  }}">{{ __('content.open') }}</a>
                                                         </td>
                                                     </tr>
                                                 @endforeach

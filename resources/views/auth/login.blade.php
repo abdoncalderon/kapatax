@@ -2,10 +2,6 @@
 
 @section('content')
 
-
-
-
-
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-8">
@@ -14,10 +10,12 @@
 
                 <div class="card-body">
                     <div class="p-5 text-center">
-                        <img src="{{ asset('images/admin/logo/kapatax.png') }}" class="img-fluid" />
+                        <img src="{{ asset('documents/admin/logo/kapatax.png') }}" class="img-fluid" />
                     </div>
                     <form method="POST" action="{{ route('login') }}">
-                        @csrf
+                        {{-- @csrf --}}
+
+                        {{ csrf_field() }}
 
                         <div class="form-group row">
                             <label for="email" class="col-md-4 col-form-label text-md-right">{{ __('content.email') }}</label>

@@ -34,7 +34,7 @@
             <li class="dropdown user user-menu">
 
                 <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                    <img src="{{ asset('images/people/photos/'.current_user()->user->person->photo) }}" class="user-image" alt="User Image">
+                    <img src="{{ asset('documents/people/photos/'.current_user()->user->person->photo) }}" class="user-image" alt="User Image">
                     <span class="hidden-xs"> 
                             @auth
                                 {{  current_user()->user->person->fullName }}
@@ -47,7 +47,7 @@
                     <!-- User image -->
 
                     <li class="user-header">
-                    <img src="{{ asset('images/people/photos/'.current_user()->user->person->photo) }}" class="img-circle" alt="User Image">
+                    <img src="{{ asset('documents/people/photos/'.current_user()->user->person->photo) }}" class="img-circle" alt="User Image">
                         <p>
                             @auth
                                 {{  current_user()->user->person->fullName }}

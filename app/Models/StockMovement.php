@@ -6,10 +6,10 @@ use Illuminate\Database\Eloquent\Model;
 
 class StockMovement extends Model
 {
-    protected $fillable = ['transactionType_id','need_request_id', 'material_id','quantity','warehouse_id','project_user_id', 'receiver_id'];
+    protected $fillable = ['date', 'transactionType_id', 'need_request_item_id', 'material_id', 'quantity', 'unitPrice', 'balance', 'warehouse_id', 'project_user_id', 'receiver_id'];
 
-    public function needRequest(){
-        return $this->belongsTo(NeedRequest::class);
+    public function needRequestItem(){
+        return $this->belongsTo(NeedRequestItem::class);
     }
     
     public function material(){
@@ -35,4 +35,5 @@ class StockMovement extends Model
         }
     }
 
+    
 }

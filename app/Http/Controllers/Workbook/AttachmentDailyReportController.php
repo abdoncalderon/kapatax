@@ -16,7 +16,7 @@ class AttachmentDailyReportController extends Controller
             {
                 $file = $request->file('image');
                 $filename = time().'-'.$file->getClientOriginalName();
-                $file->move(public_path().'/images/agreement/dailyreports/attachments/',$filename);
+                $file->move(public_path().'/documents/agreement/dailyreports/attachments/',$filename);
                 $request ->validated();
                 AttachmentDailyReport::create([
                     'daily_report_id'=>$request->daily_report_id,
@@ -38,7 +38,7 @@ class AttachmentDailyReportController extends Controller
         $dailyReport = DailyReport::find($attachmentDailyReport->daily_report_id);
         $filename = $attachmentDailyReport->filename;
         $attachmentDailyReport->delete();
-        unlink(public_path().'/images/agreement/dailyreports/attachments/'.$filename);
+        unlink(public_path().'/documents/agreement/dailyreports/attachments/'.$filename);
         return redirect()->route('dailyReports.edit',$dailyReport);
     }
 }

@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\DestockingRequestItem;
 use App\Models\Material;
 use App\Models\NeedRequest;
+use App\Models\NeedRequestItem;
 use App\Models\StakeholderPerson;
 use App\Models\StockMovement;
 use App\Models\Warehouse;
@@ -30,12 +31,14 @@ class StockMovementController extends Controller
         ->with(compact('materials'));
     }
     
-    public function destocking(DestockingRequestItem $destockingRequestItem, Request $request){
+    public function destocking(DestockingRequestItem $destockingRequestItem, Request $request)
+    {
         try{
             $material = Material::find($request->material_id);
             $balance = $material->stock - $request->quantity;
             $needRequest = NeedRequest::find($request->need_request_id);
             $needRequestItem = NeedRequestItem::find($request->need_request_item_id);
+            
             $stockMovement = StockMovement::create([
                 'date' => Carbon::now()->toDateString(),
                 'transactionType_id' => '1',
@@ -44,7 +47,7 @@ class StockMovementController extends Controller
                 'quantity' => $request->quantity,
                 'balance' =>  $balance,
                 'warehouse_id' => $request->warehouse_id,
-                'project_user' => current_user()->id,
+                'project_user_id' => current_user()->id,
                 'receiver_id' => $request->receiver_id,
             ]);
 

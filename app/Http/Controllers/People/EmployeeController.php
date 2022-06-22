@@ -39,7 +39,8 @@ class EmployeeController extends Controller
         ->with(compact('leaders'));
     }
 
-    public function update(StakeholderPerson $stakeholderPerson, UpdateEmployeeRequest $request){
+    public function update(StakeholderPerson $stakeholderPerson, UpdateEmployeeRequest $request)
+    {
         try{
             $request->validated();
 
@@ -49,7 +50,7 @@ class EmployeeController extends Controller
             {
                 $file = $request->file('contractFile');
                 $contractFileName = time().'-'.$file->getClientOriginalName();
-                $file->move(public_path().'/images/people/documents/',$contractFileName);
+                $file->move(public_path().'/documents/people/employees/',$contractFileName);
             }else{
                 $contractFileName = null;
             }
@@ -82,7 +83,5 @@ class EmployeeController extends Controller
             return back()->withErrors($e->getMessage());
         }
     }
-
-    
         
 }

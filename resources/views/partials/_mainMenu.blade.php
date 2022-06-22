@@ -28,6 +28,7 @@
                 <li>
                     <a href="{{ route('profiles.show', auth()->user()->id) }}"><i class="fa fa-user"></i> {{ __('content.profile') }} </a>
                 </li>
+
                 <li>
                     <a href="{{ route('myNeedRequests.index') }}">
                         <i class="fa fa-shopping-cart"></i>
@@ -37,24 +38,73 @@
                         </span>
                     </a>
                 </li>
-                <li>
-                    <a href="{{ route('myApprovals.index') }}">
-                        <i class="fa fa-check"></i>
-                            {{ __('messages.myApprovals') }} 
-                        <span class="pull-right-container">
-                            <small class="label pull-right bg-yellow">{{ my_pending_approvals() }}</small>
-                        </span>
-                    </a>
-                </li>
-                <li>
-                    <a href="{{ route('myQuotations.index') }}">
-                        <i class="fa fa-money"></i>
-                            {{ __('messages.myQuotations') }} 
-                        <span class="pull-right-container">
-                            <small class="label pull-right bg-yellow">{{ my_quotations() }}</small>
-                        </span>
-                    </a>
-                </li>
+
+                @if ( active_stakeholder(current_user()->user->person)->stakeholder->stakeholder_type_id!=4 )
+                    <li class="treeview">
+                        <a href="#">
+                            <i class="fa fa-check"></i>
+                                {{ __('messages.myApprovals') }} 
+                            <span class="pull-right-container">
+                                <i class="fa fa-angle-left pull-right"></i> 
+                            </span>
+                        </a>
+                        <ul class="treeview-menu">
+                            <li>
+                                <a href="{{ route('myApprovalRequests.index') }}">
+                                    <i class="fa fa-list"></i>
+                                        {{ __('content.requests') }} 
+                                    <span class="pull-right-container">
+                                        <small class="label pull-right bg-yellow">{{ my_pending_approvals_requests() }}</small>
+                                    </span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="{{ route('myApprovalOrders.index') }}">
+                                    <i class="fa fa-shopping-cart"></i>
+                                        {{ __('content.orders') }} 
+                                    <span class="pull-right-container">
+                                        <small class="label pull-right bg-yellow">{{ my_pending_approvals_orders() }}</small>
+                                    </span>
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+                @endif
+
+                @if ( active_stakeholder(current_user()->user->person)->stakeholder->stakeholder_type_id==4 )
+                    <li class="treeview">
+                        <a href="#">
+                            <i class="fa fa-money"></i>
+                                {{ __('messages.myQuotations') }} 
+                            <span class="pull-right-container">
+                                <i class="fa fa-angle-left pull-right"></i> 
+                            </span>
+                        </a>
+                        <ul class="treeview-menu">
+                            <li>
+                                <a href="{{ route('myQuotationRequests.index') }}">
+                                    <i class="fa fa-inbox"></i>
+                                        {{ __('content.requests') }}
+                                    <span class="pull-right-container">
+                                        <small class="label pull-right bg-yellow">{{ my_quotation_requests() }}</small>
+                                    </span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="{{ route('myQuotations.index') }}">
+                                    <i class="fa fa-send"></i>
+                                        {{ __('content.sent') }}s
+                                    <span class="pull-right-container">
+                                        <small class="label pull-right bg-yellow">{{ my_quotations() }}</small>
+                                    </span>
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+                @endif
+
+                
+
                 <li>
                     <a href="#">
                         <i class="fa fa-envelope"></i>

@@ -7,10 +7,10 @@
     @section('header')
 
         <div class="logos">
-            <div class="logo"><img src="{{ asset('images/setting/stakeholders/logos/'.stakeholder_logofile($dailyReport->folio->location->zone->project,1)) }}" class="logo-img"></div>
-            <div class="logo"><img src="{{ asset('images/setting/stakeholders/logos/'.stakeholder_logofile($dailyReport->folio->location->zone->project,2)) }}" class="logo-img"></div>
-            <div class="logo"><img src="{{ asset('images/setting/stakeholders/logos/'.stakeholder_logofile($dailyReport->folio->location->zone->project,3)) }}" class="logo-img"></div>
-            <div class="logo"><img src="{{ asset('images/setting/stakeholders/logos/'.stakeholder_logofile($dailyReport->folio->location->zone->project,4)) }}" class="logo-img"></div>
+            <div class="logo"><img src="{{ asset('documents/setting/stakeholders/logos/'.stakeholder_logofile($dailyReport->folio->location->zone->project,1)) }}" class="logo-img"></div>
+            <div class="logo"><img src="{{ asset('documents/setting/stakeholders/logos/'.stakeholder_logofile($dailyReport->folio->location->zone->project,2)) }}" class="logo-img"></div>
+            <div class="logo"><img src="{{ asset('documents/setting/stakeholders/logos/'.stakeholder_logofile($dailyReport->folio->location->zone->project,3)) }}" class="logo-img"></div>
+            <div class="logo"><img src="{{ asset('documents/setting/stakeholders/logos/'.stakeholder_logofile($dailyReport->folio->location->zone->project,4)) }}" class="logo-img"></div>
         </div>
         <p class="projectTitle">{{ $dailyReport->folio->location->zone->project->name }}</p>
         <hr class="line">
@@ -263,7 +263,7 @@
                     <tbody>
                         @foreach($dailyReport->attachments as $attachmentDailyReport)
                             <tr>
-                                <td class="td-attachment"><img src="{{ asset('images/agreement/dailyreports/attachments/'.$attachmentDailyReport->filename) }}" alt=""></td>
+                                <td class="td-attachment"><img src="{{ asset('documents/agreement/dailyreports/attachments/'.$attachmentDailyReport->filename) }}" alt=""></td>
                                 <td class="td-description">{{ $attachmentDailyReport->description }}</td>
                             </tr>
                         @endforeach
@@ -369,8 +369,8 @@
                 </thead>
                 <tbody>
                     <tr>
-                        <td class="td-signature"><img src="{{ asset('images/people/signatures/'.$dailyReport->approver()->person->signature) }}" alt=""></td>
-                        <td class="td-signature"><img src="{{ asset('images/people/signatures/'.$dailyReport->reviewer()->person->signature) }}" alt=""></td>
+                        <td class="td-signature"><img src="{{ asset('documents/people/signatures/'.$dailyReport->approver()->person->signature) }}" alt=""></td>
+                        <td class="td-signature"><img src="{{ asset('documents/people/signatures/'.$dailyReport->reviewer()->person->signature) }}" alt=""></td>
                     </tr>
                     <tr>
                         <td class="td-signature-name">{{ $dailyReport->approver()->person->fullName ?? '' }}</td>

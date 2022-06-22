@@ -38,7 +38,7 @@ class MaterialController extends Controller
         ->with(compact('families'));
     }
 
-    public function store(StoreMaterialRequest $request )
+    public function store(StoreMaterialRequest $request)
     {
         try{
             Material::create($request ->validated());
@@ -46,7 +46,6 @@ class MaterialController extends Controller
         }catch(Exception $e){
             return back()->withErrors( $e->getMessage());
         }
-        
     }
 
     public function show(Material $material)
@@ -91,7 +90,8 @@ class MaterialController extends Controller
         }
     }
 
-    public function import(Request $request){
+    public function import(Request $request)
+    {
         try{
             
             if($request->hasFile('file')){
@@ -104,7 +104,7 @@ class MaterialController extends Controller
         }
     }
 
-    public function add(StoreMaterialRequest $request )
+    public function add(StoreMaterialRequest $request)
     {
         try{
             Material::create($request ->validated());

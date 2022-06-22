@@ -16,7 +16,7 @@ class AttachmentNoteController extends Controller
             {
                 $file = $request->file('image');
                 $filename = time().'-'.$file->getClientOriginalName();
-                $file->move(public_path().'/images/agreement/notes/attachments/',$filename);
+                $file->move(public_path().'/documents/agreement/notes/attachments/',$filename);
                 $request ->validated();
                 AttachmentNote::create([
                     'note_id'=>$request->note_id,
@@ -37,7 +37,7 @@ class AttachmentNoteController extends Controller
         $note = Note::find($attachmentNote->note_id);
         $filename = $attachmentNote->filename;
         $attachmentNote->delete();
-        unlink(public_path().'/images/agreement/notes/attachments/'.$filename);
+        unlink(public_path().'/documents/agreement/notes/attachments/'.$filename);
         return redirect()->route('notes.edit',$note);
     }
 }

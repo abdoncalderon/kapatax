@@ -34,21 +34,21 @@ class ProfileController extends Controller
             {
                 $file = $request->file('photo');
                 $photo = time().$file->getClientOriginalName();
-                $file->move(public_path().'/images/people/photos/',$photo);
+                $file->move(public_path().'/documents/people/photos/',$photo);
             }
             $signature = $person->signature;
             if($request->hasFile('signature'))
             {
                 $file = $request->file('signature');
                 $signature = time().$file->getClientOriginalName();
-                $file->move(public_path().'/images/people/signatures/',$signature);
+                $file->move(public_path().'/documents/people/signatures/',$signature);
             }
             $person->photo = $photo;
             $person->signature = $signature;
             $person->update($request->validated());
             return redirect()->route('home');
         }catch(Exception $e){
-            return back()->withErrors(exception_code($e->errorInfo[0]));
+            return back()->withErrors($e->getMessage());
         }
     }
 }

@@ -132,7 +132,7 @@ class DefaultSeeder extends Seeder
             'project_id' => '1',
             'city_id' => '1',
             'code' => 'CONEX',
-            'stakeholder_type_id' => 1,
+            'stakeholder_type_id' => '1',
         ]);
 
         DB::table('stakeholders')->insert([
@@ -140,7 +140,7 @@ class DefaultSeeder extends Seeder
             'project_id' => '1',
             'city_id' => '1',
             'code' => 'CLIEX',
-            'stakeholder_type_id' => 2,
+            'stakeholder_type_id' => '2',
         ]);
 
         DB::table('stakeholders')->insert([
@@ -148,7 +148,7 @@ class DefaultSeeder extends Seeder
             'project_id' => '1',
             'city_id' => '1',
             'code' => 'INSEX',
-            'stakeholder_type_id' => 3,
+            'stakeholder_type_id' => '3',
         ]);
 
         DB::table('stakeholders')->insert([
@@ -156,7 +156,8 @@ class DefaultSeeder extends Seeder
             'project_id' => '1',
             'city_id' => '1',
             'code' => 'SUPEX',
-            'stakeholder_type_id' => 4,
+            'stakeholder_type_id' => '4',
+            'email' => 'abdonc@gmail.com',
         ]);
                 
         DB::table('departments')->insert([
@@ -206,6 +207,16 @@ class DefaultSeeder extends Seeder
             'city_id' => '1',
         ]);
 
+        DB::table('people')->insert([
+            'cardId' => '1701010101',
+            'firstName' => 'Evelyn',
+            'LastName' => 'Villarreal',
+            'fullName' => 'Villarreal Evelyn',
+            'gender_id' => '2',
+            'birthDate' => Carbon::create('1980', '01', '01'),
+            'city_id' => '1',
+        ]);
+
         DB::table('stakeholder_people')->insert([
             'stakeholder_id' => '1',
             'person_id' => '1',
@@ -233,6 +244,16 @@ class DefaultSeeder extends Seeder
             'isApprover' => '1',
         ]);
 
+        DB::table('stakeholder_people')->insert([
+            'stakeholder_id' => '4',
+            'person_id' => '4',
+            'admissionDate' => Carbon::create('2016', '01', '01'),
+            'position_id' => '1',
+            'department_id' => '1',
+            'businessEmail' => 'evillarreal@consorciolinea1.com',
+            'isApprover' => '0',
+        ]);
+
         DB::table('users')->insert([
             'user' => 'su',
             'email' => 'example@email.com',
@@ -252,6 +273,13 @@ class DefaultSeeder extends Seeder
             'email' => 'fannygarciab@hotmail.es',
             'password' => Hash::make('1308050705'),
             'person_id' => '3',
+        ]);
+
+        DB::table('users')->insert([
+            'user' => 'evillarreal0101',
+            'email' => 'evillarreal@consorciolinea1.com',
+            'password' => Hash::make('1701010101'),
+            'person_id' => '4',
         ]);
 
         DB::table('project_roles')->insert([
@@ -287,6 +315,12 @@ class DefaultSeeder extends Seeder
             'project_id' => '1',
         ]);
 
+        DB::table('project_users')->insert([
+            'user_id' => '4',
+            'project_role_id' => '2',
+            'project_id' => '1',
+        ]);
+
         DB::table('location_project_users')->insert([
             'location_id' => '1',
             'project_user_id' => '1',
@@ -294,6 +328,11 @@ class DefaultSeeder extends Seeder
             'dailyreport_approver' => '1',
             'folio_approver' => '1',
             'receive_notification' => '1',
+        ]);
+
+        DB::table('warehouses')->insert([
+            'name' => 'ALMACEN CENTRAL',
+            'project_id' => '1',
         ]);
 
         

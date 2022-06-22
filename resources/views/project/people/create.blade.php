@@ -293,13 +293,13 @@
 
                             <div class="photo">
 
-                                <img id="photoPreview" src="{{asset('images/people/photos/noPhoto.png')}}" alt="{{ __('content.photo') }}">
+                                <img id="photoPreview" src="{{asset('documents/people/photos/noPhoto.png')}}" alt="{{ __('content.photo') }}">
 
                             </div>
 
                             <div class="signature">
 
-                                <img id="signaturePreview" src="{{asset('images/people/signatures/noSignature.png')}}" alt="{{ __('content.signature') }}">
+                                <img id="signaturePreview" src="{{asset('documents/people/signatures/noSignature.png')}}" alt="{{ __('content.signature') }}">
 
                             </div>
                         </div>

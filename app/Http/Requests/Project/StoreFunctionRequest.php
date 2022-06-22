@@ -14,7 +14,7 @@ class StoreFunctionRequest extends FormRequest
     public function rules()
     {
         return [
-            'name'=>'required|unique:funct1ons',
+            'name'=>'required',
             'project_id'=>'required',
         ];
     }

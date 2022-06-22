@@ -65,6 +65,10 @@ class Project extends Model
         return $this->hasMany(Turn::class);
     }
 
+    public function warehouses(){
+        return $this->hasMany(Warehouse::class);
+    }
+
     public function isActive(){
         if($this->isActive==1){
             return true;

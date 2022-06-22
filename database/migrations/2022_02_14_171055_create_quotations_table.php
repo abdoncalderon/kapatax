@@ -17,14 +17,11 @@ class CreateQuotationsTable extends Migration
             $table->id();
             $table->foreignId('quotation_request_id');
             $table->foreign('quotation_request_id')->references('id')->on('quotation_requests')->onUpdate('cascade')->onDelete('restrict');
-            $table->foreignId('stakeholder_id');
-            $table->foreign('stakeholder_id')->references('id')->on('stakeholders')->onUpdate('cascade')->onDelete('restrict');
-            $table->dateTime('sendDate');
             $table->dateTime('answerDate')->nullable();
             $table->decimal('totalPrice')->default('0.0');
-            $table->foreignId('project_user_id');
-            $table->foreign('project_user_id')->references('id')->on('project_users')->onUpdate('cascade')->onDelete('restrict');
+            $table->unsignedBigInteger('seller_user_id')->nullable();
             $table->string('quotationFile')->nullable();
+            $table->text('observations')->nullable();
             $table->integer('status_id')->default('0');
             $table->timestamps();
         });

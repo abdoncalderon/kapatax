@@ -6,25 +6,24 @@ use Illuminate\Database\Eloquent\Model;
 
 class Quotation extends Model
 {
-    protected $fillable = ['quotation_request_id','stakeholder_id','sendDate','answerDate','totalPrice','deliveryTime','project_user_id','quotationFile','status_id',];
+    protected $fillable = ['quotation_request_id','answerDate','totalPrice','seller_user_id','quotationFile','observations','status_id',];
 
     public function quotationRequest()
     {
         return $this->belongsTo(QuotationRequest::class);
     }
 
-    public function stakeholder()
+    public function seller()
     {
-        return $this->belongsTo(Stakeholder::class);
-    }
-
-    public function projectUser()
-    {
-        return $this->belongsTo(ProjectUser::class);
+        return $this->belongsTo(ProjectUser::class,'seller_user_id','id');
     }
 
     public function quotationItems(){
         return $this->hasMany(QuotationItem::class);
+    }
+
+    public function quotationAttachments(){
+        return $this->hasMany(QuotationAttachment::class);
     }
 
     public function purchaseOrder(){
@@ -36,6 +35,11 @@ class Quotation extends Model
             case 0: return __('content.pending');
             case 1: return __('content.accepted');
             case 2: return __('content.rejected');
+            case 3: return __('content.answered');
+            case 4: return __('content.reviewed');
+            case 5: return __('content.approved');
+            case 6: return __('content.discarded');
+
         }
     }
 }

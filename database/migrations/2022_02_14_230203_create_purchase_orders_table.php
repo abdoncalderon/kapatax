@@ -17,10 +17,10 @@ class CreatePurchaseOrdersTable extends Migration
             $table->id();
             $table->foreignId('quotation_id');
             $table->foreign('quotation_id')->references('id')->on('quotations')->onUpdate('cascade')->onDelete('restrict');
-            $table->dateTime('date');
-            $table->foreignId('project_user_id');
-            $table->foreign('project_user_id')->references('id')->on('project_users')->onUpdate('cascade')->onDelete('restrict');
-            $table->string('status');
+            $table->dateTime('sendDate')->nullable();
+            $table->unsignedBigInteger('buyer_user_id');
+            $table->unsignedBigInteger('approver_id');
+            $table->string('status_id')->default('0');
             $table->timestamps();
         });
     }

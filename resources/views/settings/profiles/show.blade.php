@@ -91,13 +91,13 @@
 
                             <div class="photo">
 
-                                <img id="photoPreview" src="{{ asset('images/people/photos/'.$projectUser->user->person->photo) }}" alt="{{ __('content.photo') }}">
+                                <img id="photoPreview" src="{{ asset('documents/people/photos/'.$projectUser->user->person->photo) }}" alt="{{ __('content.photo') }}">
 
                             </div>
 
                             <div class="signature">
 
-                                <img id="photoPreview" src="{{ asset('images/people/signatures/'.$projectUser->user->person->signature) }}" alt="{{ __('content.signature') }}">
+                                <img id="photoPreview" src="{{ asset('documents/people/signatures/'.$projectUser->user->person->signature) }}" alt="{{ __('content.signature') }}">
 
                             </div>
 

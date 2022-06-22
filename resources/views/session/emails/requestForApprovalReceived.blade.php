@@ -120,10 +120,10 @@
     <div class="container">
         <div class="logos">
             <div class="logo1">
-                <img src="{{ asset('images/admin/logo/kapatax.png') }}" alt="logo" style="float: left;">
+                <img src="{{ asset('documents/admin/logo/kapatax.png') }}" alt="logo" style="float: left;">
             </div>
             <div class="logo2">
-                <img src="{{ asset('images/admin/logo/kapatax.png') }}" alt="logo" style="float: right;">
+                <img src="{{ asset('documents/admin/logo/kapatax.png') }}" alt="logo" style="float: right;">
             </div>
         </div>
         <div class="title">

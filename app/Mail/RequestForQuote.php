@@ -11,13 +11,13 @@ class RequestForQuote extends Mailable
 {
     use Queueable, SerializesModels;
 
-    public $quotationRequest;
+    public $purchaseRequest;
 
     public $subject;
 
-    public function __construct($quotationRequest)
+    public function __construct($purchaseRequest)
     {
-        $this->quotationRequest = $quotationRequest;
+        $this->purchaseRequest = $purchaseRequest;
 
         $this->subject = __('messages.requestForQuote');
     }

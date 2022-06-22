@@ -45,7 +45,7 @@ class PersonController extends Controller
             {
                 $file = $request->file('photo');
                 $photoFileName = time().'-'.$file->getClientOriginalName();
-                $file->move(public_path().'/images/people/photos/',$photoFileName);
+                $file->move(public_path().'/documents/people/photos/',$photoFileName);
             }else{
                 $photoFileName = 'noPhoto.png';
             }
@@ -54,7 +54,7 @@ class PersonController extends Controller
             {
                 $file = $request->file('signature');
                 $signatureFileName = time().'-'.$file->getClientOriginalName();
-                $file->move(public_path().'/images/people/signatures/',$signatureFileName);
+                $file->move(public_path().'/documents/people/signatures/',$signatureFileName);
             }else{
                 $signatureFileName = 'noSignature.png';
             }
@@ -109,7 +109,7 @@ class PersonController extends Controller
             {
                 $file = $request->file('photo');
                 $photoFileName = time().'-'.$file->getClientOriginalName();
-                $file->move(public_path().'/images/people/photos/',$photoFileName);
+                $file->move(public_path().'/documents/people/photos/',$photoFileName);
             }else{
                 $photoFileName = 'noPhoto.png';
             }
@@ -118,7 +118,7 @@ class PersonController extends Controller
             {
                 $file = $request->file('signature');
                 $signatureFileName = time().'-'.$file->getClientOriginalName();
-                $file->move(public_path().'/images/people/signatures/',$signatureFileName);
+                $file->move(public_path().'/documents/people/signatures/',$signatureFileName);
             }else{
                 $signatureFileName = 'noSignature.png';
             }

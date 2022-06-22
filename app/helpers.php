@@ -15,7 +15,9 @@ use App\Models\Stakeholder;
 use App\Models\Person;
 use App\Models\NeedRequest;
 use App\Models\Quotation;
+use App\Models\QuotationRequest;
 use App\Models\StakeholderPerson;
+use App\Models\PurchaseOrder;
 use Carbon\Carbon;
 
 function yesNo($value){
@@ -344,17 +346,7 @@ if (! function_exists('is_active_stakeholder_person')) {
     }
 }
 
-/* if (! function_exists('exception_code')) {
-    function exception_code($code)
-    {
-        switch ($code) {
-            case '23000':
-                return __('messages.transactionError').' - '.__('messages.duplicateRecord');
-            default:
-                return __('messages.transactionError');
-        }
-    }
-} */
+
 if (! function_exists('active_stakeholder')) {
     function active_stakeholder(Person $person){
         $stakeholderPerson = StakeholderPerson::where('person_id',$person->id)
@@ -390,8 +382,8 @@ if (! function_exists('my_pending_requests')) {
     }
 }
 
-if (! function_exists('my_pending_approvals')) {
-    function my_pending_approvals()
+if (! function_exists('my_pending_approvals_requests')) {
+    function my_pending_approvals_requests()
     {
         $pendingApprovals = NeedRequest::where('approver_id',current_user()->user->person_id)
                                         ->where('status_id',1)
@@ -400,12 +392,35 @@ if (! function_exists('my_pending_approvals')) {
     }
 }
 
+if (! function_exists('my_pending_approvals_orders')) {
+    function my_pending_approvals_orders()
+    {
+        $pendingApprovals = PurchaseOrder::where('approver_id',current_user()->user->person_id)
+                                        ->where('status_id',1)
+                                        ->get();
+        return $pendingApprovals->count();
+    }
+}
+
+if (! function_exists('my_quotation_requests')) {
+    function my_quotation_requests()
+    {
+        $stakeholderPerson = active_stakeholder(current_user()->user->person);
+        $myQuotations = QuotationRequest::where('stakeholder_id',$stakeholderPerson->stakeholder_id)
+                                ->where('status_id',0)
+                                ->get();
+        return $myQuotations->count();
+    }
+}
+
 if (! function_exists('my_quotations')) {
     function my_quotations()
     {
         $stakeholderPerson = active_stakeholder(current_user()->user->person);
-        $myQuotations = Quotation::where('stakeholder_id',$stakeholderPerson->stakeholder_id)
-                                ->where('status_id',0)
+        $myQuotations = Quotation::select('quotations.*')
+                                ->join('quotation_requests','quotations.quotation_request_id','=','quotation_requests.id')
+                                ->where('quotation_requests.stakeholder_id',$stakeholderPerson->stakeholder_id)
+                                ->where('quotations.status_id',0)
                                 ->get();
         return $myQuotations->count();
     }
@@ -420,7 +435,28 @@ if (! function_exists('status')) {
         }
     }
 }
-    
+
+
+if (! function_exists('dateFormat')) {
+    function dateFormat($date, $format){
+        return date($format,strtotime($date));
+    }
+}
+
+if (! function_exists('all_items_associated')) {
+    function all_items_associated(PurchaseOrder $purchaseOrder){
+        $flag = true;
+        foreach($purchaseOrder->purchaseOrderItems as $purchaseOrderItem)
+        {
+            if($purchaseOrderItem->material_id==null)
+            {
+                $flag = false;
+                break;
+            }
+        }
+        return $flag;
+    }
+}
 
 
 

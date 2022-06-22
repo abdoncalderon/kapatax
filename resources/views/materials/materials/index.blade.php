@@ -19,6 +19,8 @@
 
         <div class="box box-info">
 
+            {{-- Title --}}
+
             <div class="box-header with-border center-block">
                 <h3 class="box-title"><strong>{{ __('content.materials') }} - {{ current_user()->project->name }} </strong></h3> | 
                 <a class="btn btn-success btn-sm" href="{{ route('materials.create') }}">{{ __('content.add') }}</a>

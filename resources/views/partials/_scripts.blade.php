@@ -71,6 +71,24 @@
                                 },
                     }
         })
+
+        $('#example2').DataTable({
+        "language": {
+                    "lengthMenu": "Mostrar _MENU_ registros por página",
+                    "zeroRecords": "No hay resultados",
+                    "info": "Mostrando página _PAGE_ de _PAGES_",
+                    "infoEmpty": "No hay registros",
+                    "search":    "Buscar:",
+                    "infoFiltered": "(filtrado de _MAX_ registros totales)",
+                    "paginate": {
+                                    "first":      "Primero",
+                                    "last":       "Ultimo",
+                                    "next":       "Siguiente",
+                                    "previous":   "Anterior"
+                                },
+                    }
+        })
+
         $('#datatable').DataTable({
             'paging'      : true,
             'lengthChange': false,
@@ -79,6 +97,9 @@
             'info'        : true,
             'autoWidth'   : false
         })
+
+        
+        
 
         //Datemask dd/mm/yyyy
         // $('#datemask').inputmask('dd/mm/yyyy', { 'placeholder': 'dd/mm/yyyy' })
@@ -416,14 +437,23 @@
                     $("#nameMaterial").attr('value',response.name);
                     $("#stockMaterial").attr('value',response.stock);
                     $("#material").attr('value',response.id);
-                    $stock = response.stock;
-                    $quantity = $("#quantity").val();
-                    if($stock>=$quantity){
+                    var stock = response.stock;
+                    var quantity = $("#quantity").val();
+                    if(stock>=quantity){
                         $("#processButton").attr('style','display: block; margin: 0px 5px;');
-                    }
-                    else{
+                    }else{
                         $("#processButton").attr('style','display: none; margin: 0px 5px;');
                     }
+                }
+            )
+        })
+
+        $("#codeMaterial2").on('change', function() {
+            $.get("/getMaterial/"+event.target.value+"", 
+                function(response,state){
+                    $("#nameMaterial").empty();
+                    $("#nameMaterial").attr('value',response.name);
+                    $("#material").attr('value',response.id);
                 }
             )
         })
@@ -434,6 +464,18 @@
                     $("#fullNameStakeholderPerson").attr('value','');
                     $("#fullNameStakeholderPerson").attr('value',response.fullName);
                     $("#stakeholderPerson").attr('value',response.stakeholderPersonId);
+                });
+            }
+        )
+
+        $("#purchaseOrderItem").on('change', function() {
+            
+            $.get("/getQuantity/"+event.target.value+"", 
+                function(response,state){
+                    $("#quantity").attr('max','');
+                    $("#quantity").attr('max',response.consumptionAvailable);
+                    $("#maximum").attr('value','');
+                    $("#maximum").attr('value','<= '+response.consumptionAvailable);
                 });
             }
         )

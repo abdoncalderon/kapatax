@@ -10,7 +10,7 @@
     <ol class="breadcrumb">
         <<li><a href="{{ route('home') }}"><i class="fa fa-home"></i>Home</a></li>
         <li><a href="{{ route('destockingRequests.index')}}"> {{ __('content.destocking') }} </a></li>
-        <li class="active">{{ __('content.destocking') }}</li>
+        <li class="active">{{ __('content.process') }}</li>
     </ol>
 @endsection
 
@@ -23,7 +23,7 @@
             <div class="box box-info">
                 
                 <div class="box-header with-border">
-                    <h3 class="box-title"><strong>{{ __('messages.createDestocking') }}</strong></h3>
+                    <h3 class="box-title"><strong>{{ __('messages.processDestocking') }}</strong></h3>
                 </div>
 
                 {{-- Start Form  --}}
@@ -101,7 +101,7 @@
                             <div class="form-group">
                                 <label class="col-sm-2 control-label">{{__('content.quantity')}}</label>
                                 <div class="input-group input-group-sm col-xs-12 col-sm-10" >
-                                    <input id="quantity" type="text" class="form-control" name="quantity" value="{{ $destockingRequestItem->quantity }}" disabled>
+                                    <input id="quantity" type="text" class="form-control" name="quantity" value="{{ $destockingRequestItem->quantity }}">
                                 </div>
                             </div>
 
@@ -112,8 +112,8 @@
                     {{-- Form Footer --}}
 
                     <div class="box-footer">
-                        <button id="processButton" type="submit" class="btn btn-success pull-left btn-sm" style="margin: 0px 5px;">{{ __('content.process') }}</button>
-                        <a class="btn btn-danger btn-sm" href=" {{ route('destockingRequests.open',$destockingRequestItem->destockingRequest) }} ">{{ __('content.cancel') }}</a>
+                        <button id="processButton" type="submit" class="btn btn-success pull-left btn-sm" style="margin: 0px 5px; display:none;">{{ __('content.process') }}</button>
+                        <a class="btn btn-danger btn-sm" href=" {{ route('destockingRequests.open',$destockingRequestItem->destockingRequest) }} " >{{ __('content.cancel') }}</a>
                     </div>
 
                 </form>

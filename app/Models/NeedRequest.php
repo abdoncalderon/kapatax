@@ -24,8 +24,8 @@ class NeedRequest extends Model
         return $this->belongsTo(StakeholderPerson::class,'approver_id','id');
     }
 
-    public function quotationRequest(){
-        return $this->hasOne(QuotationRequest::class);
+    public function purchaseRequest(){
+        return $this->hasOne(PurchaseRequest::class);
     }
 
     public function status(){

@@ -114,7 +114,7 @@
     
                             <div class="form-group">
                                 <label class="col-sm-2 control-label">{{ __('content.items') }}</label>
-                                <div class="col-sm-10" >
+                                <div class="input-group input-group-sm col-xs-12 col-sm-10" >
                                     <div>
                                         <br>
                                     </div>

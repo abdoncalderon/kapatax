@@ -62,7 +62,7 @@
                                         <a class="btn btn-info btn-xs" href="{{ route('myNeedRequests.modify', $myNeedRequest) }}">{{ __('content.modify') }}</a>
                                         <a class="btn btn-danger btn-xs" href="{{ route('myNeedRequests.destroy', $myNeedRequest)}}">{{ __('content.delete') }}</a> --}}
                                     @else
-                                        <a class="btn btn-info btn-xs" href="{{ route('myNeedRequests.show', $myNeedRequest) }}">{{ __('content.show') }}</a>
+                                        <a class="btn btn-default btn-xs" href="{{ route('myNeedRequests.show', $myNeedRequest) }}">{{ __('content.show') }}</a>
                                     @endif
                                     
                                 </td>

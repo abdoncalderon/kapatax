@@ -138,13 +138,14 @@
                                     </select>
                                 </div>
                             </div>
+                            
                             <hr>
 
                             {{-- items --}}
     
                             <div class="form-group">
                                 <label class="col-sm-2 control-label">{{ __('content.items') }}</label>
-                                <div class="col-sm-10" >
+                                <div class="input-group input-group-sm col-xs-12 col-sm-10" >
                                     <button type="button" class="btn btn-default" data-toggle="modal" data-target="#addNeedRequestItem">
                                         {{ __('content.add') }}
                                     </button>
