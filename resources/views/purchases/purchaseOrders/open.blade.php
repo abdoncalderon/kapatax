@@ -125,7 +125,7 @@
                     {{-- Form Footer --}}
 
                     <div class="box-footer">
-                        <a class="btn btn-danger btn-sm" href="{{ route('quotations.index') }}">{{ __('content.return') }}</a>
+                        <a class="btn btn-danger btn-sm" href="{{ route('quotations.index') }}">{{ __('messages.goBack') }}</a>
                         @if (($purchaseOrder->status_id==0)&&(all_items_associated($purchaseOrder)))
                             <button type="button" class="btn btn-success btn-sm" data-toggle="modal" data-target="#sendToApprove">{{ __('messages.sendToApprove') }}</button>
                         @endif

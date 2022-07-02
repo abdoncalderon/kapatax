@@ -123,7 +123,6 @@
                                                 <th>{{ __('content.reference') }}</th>
                                                 <th>{{ __('content.quantity') }}</th>
                                                 <th>{{ __('content.unity') }}</th>
-                                                <th>{{ __('content.actions') }}</th>
                                             </tr>
                                         </thead>
                                         <tbody>
@@ -132,9 +131,6 @@
                                                     <td>{{ $purchaseRequestItem->reference }}</td>
                                                     <td>{{ $purchaseRequestItem->quantity }}</td>
                                                     <td>{{ $purchaseRequestItem->unity->code }}</td>
-                                                    <td>
-                                                        
-                                                    </td>
                                                 </tr>
                                             @endforeach
                                         </tbody>
@@ -186,7 +182,7 @@
                     {{-- Form Footer --}}
 
                     <div class="box-footer">
-                        <a class="btn btn-danger btn-sm" href=" {{ route('purchaseRequests.index') }} ">{{ __('content.return') }}</a>
+                        <a class="btn btn-danger btn-sm" href=" {{ route('purchaseRequests.index') }} ">{{ __('messages.goBack') }}</a>
                         @if ($notifications->count()>0)
                             <a class="btn btn-success btn-sm" href=" {{ route('purchaseRequests.dispatch',$purchaseRequest) }} ">{{ __('content.dispatch') }}</a>
                         @endif

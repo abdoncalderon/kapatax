@@ -6,16 +6,21 @@ use Illuminate\Database\Eloquent\Model;
 
 class PurchaseRequest extends Model
 {
-    protected $fillable = ['need_request_id','project_user_id','date','status_id'];
+    protected $fillable = ['need_request_id','sorter_id','buyer_id','date','status_id'];
 
     public function needRequest()
     {
         return $this->belongsTo(NeedRequest::class);
     }
 
-    public function projectUser()
+    public function sorter()
     {
-        return $this->belongsTo(ProjectUser::class);
+        return $this->belongsTo(ProjectUser::class,'sorter_id','id');
+    }
+
+    public function buyer()
+    {
+        return $this->belongsTo(ProjectUser::class,'buyer_id','id');
     }
 
     public function purchaseRequestItems(){

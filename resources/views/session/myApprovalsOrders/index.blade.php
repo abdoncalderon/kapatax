@@ -37,7 +37,7 @@
                         <tr>
                             <th>{{ __('content.number') }}</th>
                             <th>{{ __('messages.requestedBy') }}</th>
-                            <th>{{ __('messages.quotedBy') }}</th>
+                            <th>{{ __('content.buyer') }}</th>
                             <th>{{ __('content.supplier') }}</th>
                             <th>{{ __('content.amount') }}</th>
                             <th>{{ __('content.status') }}</th>
@@ -51,13 +51,12 @@
                         @foreach($purchaseOrders as $purchaseOrder)
                             <tr>
                                 <td>{{ $purchaseOrder->id }}</td>
-                                <td>{{ $purchaseOrder->quotation->quotationRequest->purchaseRequest->needRequest->projectUser->user->person->fullName }}</td>
+                                <td>{{ $purchaseOrder->quotation->quotationRequest->purchaseRequest->needRequest->applicant->user->person->fullName }}</td>
                                 <td>{{ $purchaseOrder->quotation->quotationRequest->buyer->user->person->fullName }}</td>
                                 <td>{{ $purchaseOrder->quotation->quotationRequest->stakeholder->name }}</td>
                                 <td>{{ $purchaseOrder->quotation->totalPrice }}</td>
                                 <td>{{ $purchaseOrder->status() }}</td>
                                 <td>
-                                    
                                     @if ( $purchaseOrder->status_id == 1 )
                                         <a class="btn btn-info btn-xs" href="{{ route('myApprovalOrders.show', $purchaseOrder) }}">{{ __('content.review') }}</a>
                                     @else
@@ -75,7 +74,7 @@
 
                 <hr>
 
-                <a class="btn btn-danger btn-sm" href=" {{ route('home') }} ">{{ __('content.return') }}</a>
+                <a class="btn btn-danger btn-sm" href=" {{ route('home') }} ">{{ __('messages.goBack') }}</a>
 
             </div>
 

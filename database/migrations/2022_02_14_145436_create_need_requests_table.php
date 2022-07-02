@@ -17,8 +17,9 @@ class CreateNeedRequestsTable extends Migration
             $table->id();
             $table->text('description');
             $table->dateTime('date');
-            $table->foreignId('project_user_id');
-            $table->foreign('project_user_id')->references('id')->on('project_users')->onUpdate('cascade')->onDelete('restrict');
+            /* $table->foreignId('project_user_id');
+            $table->foreign('project_user_id')->references('id')->on('project_users')->onUpdate('cascade')->onDelete('restrict'); */
+            $table->unsignedBigInteger('applicant_id');
             $table->foreignId('location_id');
             $table->foreign('location_id')->references('id')->on('locations')->onUpdate('cascade')->onDelete('restrict');
             $table->unsignedBigInteger('approver_id')->nullable();

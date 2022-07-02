@@ -32,31 +32,4 @@ class NeedRequestItemController extends Controller
         }
     }
 
-    /* public function purchase(NeedRequestItem $needRequestItem)
-    {
-        try{
-            $needRequestItem->update([
-                'status_id'=>'4',
-            ]);
-            return redirect()->route('needRequests.review',$needRequestItem->needRequest);;
-        }catch(Exception $e){
-            return back()->withErrors( $e->getMessage());
-        }
-    }
-
-    public function destocking(NeedRequestItem $needRequestItem)
-    {
-        try{
-            $needRequestItem->update([
-                'status_id'=>'5',
-            ]);
-            return redirect()->route('needRequests.review',$needRequestItem->needRequest);
-        }catch(Exception $e){
-            return back()->withErrors( $e->getMessage());
-        }
-    } */
-
-    
-
-
 }

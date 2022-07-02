@@ -35,6 +35,16 @@ class PurchaseOrderController extends Controller
         }
     }
 
+    public function show(PurchaseOrder $purchaseOrder)
+    {
+        try{
+            
+            return view('purchases.purchaseOrders.show', compact('purchaseOrder'));
+        }catch(Exception $e){
+            return back()->withErrors($e->getMessage());
+        }
+    }
+
     public function sendToApprove(PurchaseOrder $purchaseOrder, Request $request)
     {
         try{

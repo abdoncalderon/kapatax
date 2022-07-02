@@ -83,6 +83,15 @@
                                 </div>
                             </div>
 
+                            {{-- status--}}
+
+                            <div class="form-group">
+                                <label class="col-sm-2 control-label">{{ __('content.status') }}</label>
+                                <div class="input-group input-group-sm col-xs-12 col-sm-10" >
+                                    <input id="statusr" disabled class="form-control" name="status_id" type="text" value="{{ $myQuotation->status() }}">
+                                </div>
+                            </div>
+
                             <hr>
 
                             {{-- items --}}
@@ -192,7 +201,7 @@
                     {{-- Form Footer --}}
 
                     <div class="box-footer">
-                        <a class="btn btn-danger btn-sm" href="{{ route('myQuotations.index') }}">{{ __('content.return') }}</a>
+                        <a class="btn btn-danger btn-sm" href="{{ route('myQuotations.index') }}">{{ __('messages.goBack') }}</a>
                     </div>
 
                 {{-- End Form  --}}

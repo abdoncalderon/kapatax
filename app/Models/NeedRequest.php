@@ -6,10 +6,10 @@ use Illuminate\Database\Eloquent\Model;
 
 class NeedRequest extends Model
 {
-    protected $fillable = ['project_user_id','date','description','location_id','approver_id','cost_account_id','expectedCost','status_id',];
+    protected $fillable = ['applicant_id','date','description','location_id','approver_id','cost_account_id','expectedCost','status_id',];
 
-    public function projectUser(){
-        return $this->belongsTo(ProjectUser::class);
+    public function applicant(){
+        return $this->belongsTo(ProjectUser::class,'applicant_id','id');
     }
 
     public function location(){
@@ -31,7 +31,7 @@ class NeedRequest extends Model
     public function status(){
         switch($this->status_id){
             case 0: return __('content.draft');
-            case 1: return __('content.sent');
+            case 1: return __('messages.sentToApprove');
             case 2: return __('content.rejected');
             case 3: return __('content.approved');
             case 4: return __('messages.inProcess');
@@ -39,3 +39,4 @@ class NeedRequest extends Model
         }
     }
 }
+

@@ -226,7 +226,7 @@ class MenuSeeder extends Seeder
                             'code' => 'project.projectUsers',
                             'showName' => 'content.users',
                             'father' => 'project',
-                            'route' => 'projectUsers.index',
+                            'route' => 'projects.projectUsers.index',
                             'icon' => 'fa fa-circle-o',
                         ]);
 
@@ -472,7 +472,7 @@ class MenuSeeder extends Seeder
                                             'code' => 'commercial.controls.destocking',
                                             'showName' => 'content.destocking',
                                             'father' => 'commercial.controls',
-                                            'route' => 'destockingRequests.index',
+                                            'route' => 'destocking.index',
                                             'icon' => 'fa fa-arrow-left',
                                         ]);
 

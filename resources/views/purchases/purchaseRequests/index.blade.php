@@ -37,6 +37,7 @@
                         <tr>
                             <th>{{ __('content.number') }}</th>
                             <th>{{ __('content.date') }}</th>
+                            <th>{{ __('messages.requestedBy') }}</th>
                             <th>{{ __('messages.processedBy') }}</th>
                             <th>{{ __('content.status') }}</th>
                             <th>{{ __('content.actions') }}</th>
@@ -50,13 +51,14 @@
                             <tr>
                                 <td>{{ $purchaseRequest->id }}</td>
                                 <td>{{ $purchaseRequest->date }}</td>
-                                <td>{{ $purchaseRequest->projectUser->user->person->fullName }}</td>
+                                <td>{{ $purchaseRequest->needRequest->applicant->user->person->fullName }}</td>
+                                <td>{{ $purchaseRequest->sorter->user->person->fullName }}</td>
                                 <td>{{ $purchaseRequest->status() }}</td>
                                 <td>
                                     @if ($purchaseRequest->status_id==0)
                                         <a class="btn btn-info btn-xs" href="{{ route('purchaseRequests.open', $purchaseRequest) }}">{{ __('content.open') }}</a>
-                                    @elseif ($purchaseRequest->purchase != null)
-                                        <a class="btn btn-default btn-xs" href="{{ route('purchases.index', $purchaseRequest) }}">{{ __('content.purchases') }}</a>
+                                    @else
+                                    <a class="btn btn-default btn-xs" href="{{ route('purchaseRequests.show', $purchaseRequest) }}">{{ __('content.show') }}</a>
                                     @endif
                                 </td>
                             </tr>
@@ -69,7 +71,7 @@
 
                 <hr>
 
-                <a class="btn btn-danger btn-sm" href=" {{ route('home') }} ">{{ __('content.return') }}</a>
+                <a class="btn btn-danger btn-sm" href=" {{ route('home') }} ">{{ __('messages.goBack') }}</a>
 
             </div>
 

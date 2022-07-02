@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Material extends Model
 {
-    protected $fillable = ['project_id','name','description','sku','upc','model_id','subcategory_id','group_id','partOf','unity_id','weight','volume','stock','status_id'];
+    protected $fillable = ['project_id','name','description','sku','upc','model_id','subcategory_id','group_id','partOf','unity_id','weight','volume','stock','lastUnitPrice','status_id'];
 
     public function project(){
         return $this->belongsTo(Project::class);
@@ -32,6 +32,10 @@ class Material extends Model
         return $this->belongsTo(Group::class);
     }
 
+    public function stockMovements(){
+        return $this->hasMany(StockMovement::class);
+    }
+    
     public function status(){
         switch($this->status_id){
             case 0: return __('messages.outOfStock');
@@ -39,5 +43,7 @@ class Material extends Model
             case 2: return __('content.deprecated');
         }
     }
+
+    
 
 }

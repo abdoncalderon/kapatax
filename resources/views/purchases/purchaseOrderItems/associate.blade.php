@@ -9,8 +9,9 @@
 @section('breadcrumb')
     <ol class="breadcrumb">
         <<li><a href="{{ route('home') }}"><i class="fa fa-home"></i>Home</a></li>
-        <li><a href="{{ route('destockingRequests.index')}}"> {{ __('content.destocking') }} </a></li>
-        <li class="active">{{ __('content.process') }}</li>
+        <li><a href="{{ route('purchaseOrders.index')}}"> {{ __('content.destocking') }} </a></li>
+        <li><a href="{{ route('purchaseOrders.open',$purchaseOrderItem->purchaseOrder)}}"> {{ __('content.open') }} </a></li>
+        <li class="active">{{ __('content.associate') }}</li>
     </ol>
 @endsection
 

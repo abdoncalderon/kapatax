@@ -51,7 +51,7 @@
                             <tr>
                                 <td>{{ $needRequest->id }}</td>
                                 <td>{{ $needRequest->date }}</td>
-                                <td>{{ $needRequest->projectUser->user->person->fullName }}</td>
+                                <td>{{ $needRequest->applicant->user->person->fullName }}</td>
                                 <td>{{ $needRequest->description }}</td>
                                 <td>{{ $needRequest->status() }}</td>
                                 <td>
@@ -72,7 +72,7 @@
 
                 <hr>
 
-                <a class="btn btn-danger btn-sm" href=" {{ route('home') }} ">{{ __('content.return') }}</a>
+                <a class="btn btn-danger btn-sm" href=" {{ route('home') }} ">{{ __('messages.goBack') }}</a>
 
             </div>
 

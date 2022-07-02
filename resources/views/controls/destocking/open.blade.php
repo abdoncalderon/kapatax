@@ -9,7 +9,7 @@
 @section('breadcrumb')
     <ol class="breadcrumb">
         <li><a href="{{ route('home') }}"><i class="fa fa-home"></i>Home</a></li>
-        <li><a href="{{ route('destockingRequests.index')}}"> {{ __('messages.destockingRequests') }} </a></li>
+        <li><a href="{{ route('destocking.index')}}"> {{ __('content.destocking') }} </a></li>
         <li class="active">{{ __('content.open') }}</li>
     </ol>
 @endsection
@@ -126,16 +126,20 @@
                                         </thead>
                                         <tbody>
                                             @foreach($needRequest->needRequestItems as $needRequestItem)
-                                                @if ($needRequestItem->class_id == 1)
+                                                
                                                     <tr>
                                                         <td>{{ $needRequestItem->reference }}</td>
                                                         <td>{{ $needRequestItem->quantity }}</td>
                                                         <td>{{ $needRequestItem->unity->code }}</td>
                                                         <td>
-                                                            <a class="btn btn-danger btn-sm" href=" {{ route('stockMovements.createDestocking',$needRequestItem) }} ">{{ __('content.destocking') }}</a>
+                                                            @if ($needRequestItem->status_id==7)
+                                                                <a class="btn btn-danger btn-sm" href=" {{ route('destocking.create',$needRequestItem) }} ">{{ __('content.destocking') }}</a>
+                                                            @else
+                                                                {{ $needRequestItem->status() }}
+                                                            @endif
                                                         </td>
                                                     </tr>
-                                                @endif
+                                                
                                             @endforeach
                                         </tbody>
                                     </table>
@@ -149,10 +153,8 @@
                     {{-- Form Footer --}}
 
                     <div class="box-footer">
-                        <a class="btn btn-danger btn-sm" href=" {{ route('destockingRequests.index') }} ">{{ __('content.return') }}</a>
-                        {{-- @if ($notifications->count()>0)
-                            <a class="btn btn-success btn-sm" href=" {{ route('destockingRequests.dispatch',$destockingRequest) }} ">{{ __('content.dispatch') }}</a>
-                        @endif --}}
+                        <a class="btn btn-danger btn-sm" href=" {{ route('destocking.index') }} ">{{ __('messages.goBack') }}</a>
+                        
                     </div>
 
                 {{-- End Form  --}}

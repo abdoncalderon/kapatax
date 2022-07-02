@@ -25,10 +25,10 @@
                 {{-- Title --}}
 
                 <div class="box-header with-border">
-                    <h3 class="box-title"><strong>{{ __('content.quotation') }} # {{ $myQuotationRequest->id }}</strong></h3> |
-                    @if ($myQuotationRequest->status_id==0)
+                    <h3 class="box-title"><strong>{{ __('messages.quotationRequest') }} # {{ $myQuotationRequest->id }}</strong></h3> |
+                    @if (($myQuotationRequest->status_id==0) || ($myQuotationRequest->status_id==4))
                         <a class="btn btn-danger btn-sm" href="{{ route('myQuotationRequests.reject',$myQuotationRequest) }}">{{ __('content.reject') }}</a>
-                        <a class="btn btn-success btn-sm" href="{{ route('myQuotationRequests.accept',$myQuotationRequest) }}">{{ __('content.accept') }}</a>
+                        <a class="btn btn-success btn-sm" href="{{ route('myQuotationRequests.accept',$myQuotationRequest) }}">{{ __('content.quote') }}</a>
                     @endif
                     
                 </div>
@@ -48,7 +48,7 @@
                             <div class="form-group">
                                 <label class="col-sm-2 control-label">{{ __('content.company') }}</label>
                                 <div class="input-group input-group-sm col-xs-12 col-sm-10" >
-                                    <input id="company" disabled class="form-control" name="company" type="text" value="{{ active_stakeholder($myQuotationRequest->purchaseRequest->projectUser->user->person)->stakeholder->name }}">
+                                    <input id="company" disabled class="form-control" name="company" type="text" value="{{ active_stakeholder($myQuotationRequest->purchaseRequest->buyer->user->person)->stakeholder->name }}">
                                 </div>
                             </div>
                             
@@ -57,7 +57,7 @@
                             <div class="form-group">
                                 <label class="col-sm-2 control-label">{{ __('content.buyer') }}</label>
                                 <div class="input-group input-group-sm col-xs-12 col-sm-10" >
-                                    <input id="buyer" disabled class="form-control" name="buyer" type="text" value="{{ $myQuotationRequest->purchaseRequest->projectUser->user->person->fullName }}">
+                                    <input id="buyer" disabled class="form-control" name="buyer" type="text" value="{{ $myQuotationRequest->purchaseRequest->buyer->user->person->fullName }}">
                                 </div>
                             </div>
 
@@ -75,12 +75,7 @@
                             <div class="form-group">
                                 <label class="col-sm-2 control-label">{{ __('messages.totalPrice') }} ( {{ __('messages.withoutTaxation') }} )</label>
                                 <div class="input-group input-group-sm col-xs-12 col-sm-10" >
-                                    <input id="totalPrice" class="form-control" name="totalPrice" type="number" value="{{ $myQuotationRequest->totalPrice }}" min="0.0">
-                                    @error('totalPrice')
-                                        <span class="invalid-feedback" role="alert" style="color:red">
-                                            <strong>{{ $message }}</strong>
-                                        </span>
-                                    @enderror
+                                    <input id="totalPrice" disabled class="form-control" name="totalPrice" type="number" value="{{ $myQuotationRequest->totalPrice }}" min="0.0">
                                 </div>
                             </div>
 
@@ -125,7 +120,7 @@
                     {{-- Form Footer --}}
 
                     <div class="box-footer">
-                        <a class="btn btn-danger btn-sm" href="{{ route('myQuotationRequests.index') }}">{{ __('content.return') }}</a>
+                        <a class="btn btn-danger btn-sm" href="{{ route('myQuotationRequests.index') }}">{{ __('messages.goBack') }}</a>
                         {{-- @if ($myQuotationRequest->quotationRequestItems->count()>0)
                             <a class="btn btn-success btn-sm" href="{{ route('myQuotationRequests.send',$myQuotationRequest) }}">{{ __('messages.sendQuote') }}</a>
                         @endif --}}

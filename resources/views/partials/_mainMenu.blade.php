@@ -29,18 +29,24 @@
                     <a href="{{ route('profiles.show', auth()->user()->id) }}"><i class="fa fa-user"></i> {{ __('content.profile') }} </a>
                 </li>
 
-                <li>
-                    <a href="{{ route('myNeedRequests.index') }}">
-                        <i class="fa fa-shopping-cart"></i>
-                            {{ __('messages.myOrders') }} 
-                        <span class="pull-right-container">
-                            <small class="label pull-right bg-yellow">{{ my_pending_requests() }}</small>
-                        </span>
-                    </a>
-                </li>
+                @if ( active_stakeholder(current_user()->user->person)->stakeholder->stakeholder_type_id!=4 )
+                    <li>
+                        <a href="{{ route('myNeedRequests.index') }}">
+                            <i class="fa fa-shopping-cart"></i>
+                                {{ __('messages.myOrders') }} 
+                            <span class="pull-right-container">
+                                <small class="label pull-right bg-yellow">{{ my_pending_requests() }}</small>
+                            </span>
+                        </a>
+                    </li>
+                @endif
+
+                
+
+                <!-- is Not Supplier -->
 
                 @if ( active_stakeholder(current_user()->user->person)->stakeholder->stakeholder_type_id!=4 )
-                    <li class="treeview">
+                    <li class="active treeview">
                         <a href="#">
                             <i class="fa fa-check"></i>
                                 {{ __('messages.myApprovals') }} 
@@ -49,7 +55,7 @@
                             </span>
                         </a>
                         <ul class="treeview-menu">
-                            <li>
+                            <li class="active">
                                 <a href="{{ route('myApprovalRequests.index') }}">
                                     <i class="fa fa-list"></i>
                                         {{ __('content.requests') }} 
@@ -58,10 +64,10 @@
                                     </span>
                                 </a>
                             </li>
-                            <li>
+                            <li class="active">
                                 <a href="{{ route('myApprovalOrders.index') }}">
                                     <i class="fa fa-shopping-cart"></i>
-                                        {{ __('content.orders') }} 
+                                        {{ __('messages.purchaseOrders') }} 
                                     <span class="pull-right-container">
                                         <small class="label pull-right bg-yellow">{{ my_pending_approvals_orders() }}</small>
                                     </span>
@@ -71,8 +77,10 @@
                     </li>
                 @endif
 
+                <!-- is Supplier -->
+
                 @if ( active_stakeholder(current_user()->user->person)->stakeholder->stakeholder_type_id==4 )
-                    <li class="treeview">
+                    <li class="active treeview">
                         <a href="#">
                             <i class="fa fa-money"></i>
                                 {{ __('messages.myQuotations') }} 
@@ -84,7 +92,7 @@
                             <li>
                                 <a href="{{ route('myQuotationRequests.index') }}">
                                     <i class="fa fa-inbox"></i>
-                                        {{ __('content.requests') }}
+                                        {{ __('content.requested') }}
                                     <span class="pull-right-container">
                                         <small class="label pull-right bg-yellow">{{ my_quotation_requests() }}</small>
                                     </span>
@@ -103,9 +111,7 @@
                     </li>
                 @endif
 
-                
-
-                <li>
+                {{-- <li>
                     <a href="#">
                         <i class="fa fa-envelope"></i>
                             {{ __('messages.myNotifications') }} 
@@ -113,7 +119,8 @@
                             <small class="label pull-right bg-yellow">12</small>
                         </span>
                     </a>
-                </li>
+                </li> --}}
+
             </ul>
 
         </li>

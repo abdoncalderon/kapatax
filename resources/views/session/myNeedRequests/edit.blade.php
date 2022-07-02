@@ -42,9 +42,9 @@
 
                         <div class="col-sm-11 col-md-11 col-lg-11">
 
-                            {{-- project user --}}
+                            {{-- apllicant --}}
 
-                            <input id="project_user" type="hidden" name="project_user_id" value="{{ current_user()->id }}">
+                            <input id="applicant" type="hidden" name="applicant_id" value="{{ current_user()->id }}">
 
                             {{-- date --}}
 

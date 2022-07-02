@@ -50,14 +50,19 @@
                     <tbody>
                         @foreach($purchaseOrders as $purchaseOrder)
                             <tr>
-                                <td style="width: 5%;">{{ dateFormat($purchaseOrder->date,'d-M-Y') }}</td>
+                                <td style="width: 5%;">{{ dateFormat($purchaseOrder->sendDate,'d-M-Y') }}</td>
                                 <td style="width: 10%;">{{ $purchaseOrder->id }}</td>
                                 <td style="width: 10%;">{{ $purchaseOrder->quotation_id }}</td>
                                 <td style="width: 20%;">{{ $purchaseOrder->quotation->quotationRequest->stakeholder->name }}</td>
                                 <td style="width: 20%;">{{ $purchaseOrder->quotation->seller->user->person->fullName }}</td>
                                 <td style="width: 10%;">{{ $purchaseOrder->status() }}</td>
                                 <td>
-                                    <a class="btn btn-info btn-xs" href="{{ route('purchaseOrders.open', $purchaseOrder) }}">{{ __('content.open') }}</a>
+                                    @if ($purchaseOrder->status_id==0)
+                                        <a class="btn btn-info btn-xs" href="{{ route('purchaseOrders.open', $purchaseOrder) }}">{{ __('content.open') }}</a>
+                                    @else
+                                        <a class="btn btn-default btn-xs" href="{{ route('purchaseOrders.show', $purchaseOrder) }}">{{ __('content.show') }}</a>
+                                    @endif
+                                    
                                 </td>
                             </tr>
                         @endforeach
@@ -69,7 +74,7 @@
 
                 <hr>
 
-                <a class="btn btn-danger btn-sm" href=" {{ route('home') }} ">{{ __('content.return') }}</a>
+                <a class="btn btn-danger btn-sm" href=" {{ route('home') }} ">{{ __('messages.goBack') }}</a>
 
             </div>
 

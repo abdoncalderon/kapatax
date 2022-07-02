@@ -6,8 +6,11 @@ use Illuminate\Database\Eloquent\Model;
 
 class Asset extends Model
 {
-    protected $fillable = ['asset_category_id', 'serialNumber', 'partNumber', 'internalCode', 'partOf','stock_movement_id','status_id',];
+    protected $fillable = ['project_id','asset_category_id', 'serialNumber', 'partNumber', 'internalCode', 'partOf','stock_movement_id','status_id',];
 
+    public function project(){
+        return $this->belongsTo(Project::class);
+    }
     public function assetCategory(){
         return $this->belongsTo(AssetCategory::class);
     }

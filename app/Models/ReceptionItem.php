@@ -17,4 +17,9 @@ class ReceptionItem extends Model
     {
         return $this->belongsTo(PurchaseOrderItem::class);
     }
+
+    public function receptionItemDetails()
+    {
+        return $this->hasMany(ReceptionItemDetail::class);
+    }
 }

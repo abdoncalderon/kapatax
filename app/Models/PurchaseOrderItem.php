@@ -13,6 +13,11 @@ class PurchaseOrderItem extends Model
         return $this->belongsTo(PurchaseOrder::class);
     }
 
+    public function quotationItem()
+    {
+        return $this->belongsTo(QuotationItem::class);
+    }
+
     public function unity()
     {
         return $this->belongsTo(Unity::class);

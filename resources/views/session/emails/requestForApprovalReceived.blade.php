@@ -138,7 +138,7 @@
                 <p><strong>{{ __('content.applicant') }}</strong></p>
             </div>
             <div class="value">
-                <p>{{ $needRequest->projectUser->user->person->fullName }}</p>
+                <p>{{ $needRequest->applicant->user->person->fullName }}</p>
             </div>
 
             {{-- zone --}}

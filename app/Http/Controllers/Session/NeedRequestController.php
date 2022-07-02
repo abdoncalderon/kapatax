@@ -18,7 +18,7 @@ class NeedRequestController extends Controller
 {
     public function index()
     {
-        $myNeedRequests = NeedRequest::where('project_user_id',current_user()->id)->get();
+        $myNeedRequests = NeedRequest::where('applicant_id',current_user()->id)->get();
         return view('session.myNeedRequests.index', compact('myNeedRequests'));
     }
 

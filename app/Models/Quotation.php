@@ -33,13 +33,11 @@ class Quotation extends Model
     public function status(){
         switch($this->status_id){
             case 0: return __('content.pending');
-            case 1: return __('content.accepted');
-            case 2: return __('content.rejected');
-            case 3: return __('content.answered');
-            case 4: return __('content.reviewed');
-            case 5: return __('content.approved');
-            case 6: return __('content.discarded');
-
+            case 1: return __('content.sent');
+            case 2: return __('content.reviewed');
+            case 3: return __('content.accepted');
+            case 4: return __('content.rejected');
         }
     }
+    
 }

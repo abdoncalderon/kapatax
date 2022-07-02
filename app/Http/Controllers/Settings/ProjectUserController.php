@@ -9,6 +9,7 @@ use App\Models\Role;
 use App\Models\ProjectUser;
 use App\Http\Requests\Settings\StoreProjectUserRequest;
 use App\Http\Requests\Settings\UpdateProjectUserRequest;
+use App\Models\ProjectRole;
 use Exception;
 use Illuminate\Http\Request;
 

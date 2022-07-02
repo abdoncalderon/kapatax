@@ -26,9 +26,11 @@ class QuotationRequest extends Model
     public function status(){
         switch($this->status_id){
             case 0: return __('content.pending');
-            case 1: return __('content.accepted');
-            case 2: return __('content.rejected');
-            case 3: return __('content.answered');
-        }
+            case 1: return __('content.rejected');
+            case 2: return __('content.accepted');
+            case 3: return __('content.quoted');
+            case 4: return __('messages.quotedAndRejected');
+            case 5: return __('content.requoted');
+        } 
     }
 }

@@ -66,7 +66,7 @@
 
                 <hr>
 
-                <a class="btn btn-danger btn-sm" href=" {{ route('roles.index') }} ">{{ __('content.return') }}</a>
+                <a class="btn btn-danger btn-sm" href=" {{ route('roles.index') }} ">{{ __('messages.goBack') }}</a>
 
             </div>
 

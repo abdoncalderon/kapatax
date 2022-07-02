@@ -18,8 +18,6 @@ class CreateStockMovementsTable extends Migration
             $table->id();
             $table->dateTime('date');
             $table->integer('transactionType_id');
-           /*  $table->foreignId('need_request_item_id');
-            $table->foreign('need_request_item_id')->references('id')->on('need_request_items')->onUpdate('cascade')->onDelete('restrict'); */
             $table->foreignId('material_id');
             $table->foreign('material_id')->references('id')->on('materials')->onUpdate('cascade')->onDelete('restrict');
             $table->integer('quantity');
@@ -29,7 +27,7 @@ class CreateStockMovementsTable extends Migration
             $table->foreign('warehouse_id')->references('id')->on('warehouses')->onUpdate('cascade')->onDelete('restrict');
             $table->foreignId('project_user_id');
             $table->foreign('project_user_id')->references('id')->on('project_users')->onUpdate('cascade')->onDelete('restrict');
-            $table->unsignedBigInteger('receiver_id')->nullable();
+            $table->unsignedBigInteger('stakeholder_person_id')->nullable();
             $table->timestamps();
         });
     }

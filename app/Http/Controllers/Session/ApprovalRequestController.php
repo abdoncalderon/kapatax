@@ -13,9 +13,10 @@ class ApprovalRequestController extends Controller
     public function index()
     {
         $needRequests = NeedRequest::select('need_requests.*')
-                    ->join('project_users','need_requests.project_user_id','=','project_users.id')
+                    ->join('project_users','need_requests.applicant_id','=','project_users.id')
                     ->where('project_users.project_id',current_user()->project_id)
                     ->where('need_requests.approver_id',current_user()->user->person_id)
+                    ->where('need_requests.status_id','>','0')
                     ->get();
         
         return view('session.myApprovalsRequests.index',)

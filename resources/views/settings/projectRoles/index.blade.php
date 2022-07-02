@@ -49,9 +49,10 @@
                             <tr>
                                 <td>{{ $projectRole->role->name }}</td>
                                 <td>
-                                    <a class="btn btn-info btn-xs" href="{{ route('projectRoles.destroy', $projectRole)}}">{{ __('content.delete') }}</a>
+                                    @if($projectRole->id!=1)
+                                        <a class="btn btn-info btn-xs" href="{{ route('projectRoles.destroy', $projectRole)}}">{{ __('content.delete') }}</a>
+                                    @endif
                                 </td>
-
                             </tr>
                         @endforeach
                     </tbody>
@@ -62,7 +63,7 @@
 
                 <hr>
 
-                <a class="btn btn-danger btn-sm" href=" {{ route('projects.index') }} ">{{ __('content.return') }}</a>
+                <a class="btn btn-danger btn-sm" href=" {{ route('projects.index') }} ">{{ __('messages.goBack') }}</a>
 
             </div>
 

@@ -29,7 +29,7 @@ class QuotationRequestController extends Controller
     public function accept(QuotationRequest $myQuotationRequest){
         try{
             $myQuotationRequest->update([
-                'status_id'=>'1',
+                'status_id'=>'2',
             ]);
 
             $myQuotation = Quotation::create([
@@ -46,9 +46,9 @@ class QuotationRequestController extends Controller
     public function reject(QuotationRequest $myQuotationRequest){
         try{
             $myQuotationRequest->update([
-                'status_id'=>'2',
+                'status_id'=>'1',
             ]);
-            return back();
+            return redirect()->route('myQuotationRequests.index');
         }catch(Exception $e){
             return back()->withErrors( $e->getMessage());
         }

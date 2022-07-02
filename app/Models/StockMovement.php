@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class StockMovement extends Model
 {
-    protected $fillable = ['date', 'transactionType_id', 'need_request_item_id', 'material_id', 'quantity', 'unitPrice', 'balance', 'warehouse_id', 'project_user_id', 'receiver_id'];
+    protected $fillable = ['date', 'transactionType_id', 'need_request_item_id', 'material_id', 'quantity', 'unitPrice', 'balance', 'warehouse_id', 'project_user_id', 'stakeholder_person_id'];
 
     public function needRequestItem(){
         return $this->belongsTo(NeedRequestItem::class);
@@ -31,9 +31,11 @@ class StockMovement extends Model
     public function transactionType(){
         switch($this->transactionType_id){
             case 1: return __('content.destocking');
-            case 2: return __('content.purchase');
+            case 2: return __('content.restock');
+            case 3: return __('content.return');
         }
     }
+
 
     
 }

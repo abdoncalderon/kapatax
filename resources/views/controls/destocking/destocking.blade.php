@@ -4,12 +4,12 @@
 
 @section('section', __('content.destocking'))
 
-@section('level', __('content.materials'))
+@section('level', __('content.controls'))
 
 @section('breadcrumb')
     <ol class="breadcrumb">
         <<li><a href="{{ route('home') }}"><i class="fa fa-home"></i>Home</a></li>
-        <li><a href="{{ route('destockingRequests.index')}}"> {{ __('content.destocking') }} </a></li>
+        <li><a href="{{ route('destocking.index')}}"> {{ __('content.destocking') }} </a></li>
         <li class="active">{{ __('content.process') }}</li>
     </ol>
 @endsection
@@ -28,7 +28,7 @@
 
                 {{-- Start Form  --}}
 
-                <form class="form-horizontal" method="POST" action="{{ route('stockMovements.destocking',$destockingRequestItem) }}">
+                <form class="form-horizontal" method="POST" action="{{ route('destocking.destocking',$needRequestItem) }}">
                     @csrf
                     @method('PATCH')
 
@@ -42,11 +42,11 @@
 
                             {{-- need request --}}
     
-                            <input id="need_request" type="hidden" name="need_request_id" value="{{ $destockingRequestItem->need_request_id }}">
+                            <input id="need_request" type="hidden" name="need_request_id" value="{{ $needRequestItem->need_request_id }}">
 
                             {{-- need request item --}}
     
-                            <input id="need_request_item" type="hidden" name="need_request_item_id" value="{{ $destockingRequestItem->need_request_item_id }}">
+                            <input id="need_request_item" type="hidden" name="need_request_item_id" value="{{ $needRequestItem->id }}">
 
                             {{-- warehouse --}}
 
@@ -62,7 +62,7 @@
                                 </div>
                             </div>
 
-                            {{-- receiver --}}
+                            {{-- stakeholder person --}}
     
                             <div class="form-group">
                                 <label class="col-sm-2 control-label">{{__('messages.withdrawnBy')}}</label>
@@ -79,7 +79,7 @@
                             <div class="form-group">
                                 <label class="col-sm-2 control-label">{{ __('content.reference') }}</label>
                                 <div class="input-group input-group-sm col-xs-12 col-sm-10" >
-                                    <textarea id="reference" class="form-control" name="reference" style="resize: vertical; height: 100px;" disabled>{{ $destockingRequestItem->reference }}</textarea>
+                                    <textarea id="reference" class="form-control" name="reference" style="resize: vertical; height: 100px;" disabled>{{ $needRequestItem->reference }}</textarea>
                                 </div>
                             </div>
 
@@ -101,9 +101,11 @@
                             <div class="form-group">
                                 <label class="col-sm-2 control-label">{{__('content.quantity')}}</label>
                                 <div class="input-group input-group-sm col-xs-12 col-sm-10" >
-                                    <input id="quantity" type="text" class="form-control" name="quantity" value="{{ $destockingRequestItem->quantity }}">
+                                    <input id="quantity" type="text" class="form-control" name="quantity" value="{{ $needRequestItem->quantity }}">
                                 </div>
                             </div>
+
+
 
                         </div>
 
@@ -113,7 +115,7 @@
 
                     <div class="box-footer">
                         <button id="processButton" type="submit" class="btn btn-success pull-left btn-sm" style="margin: 0px 5px; display:none;">{{ __('content.process') }}</button>
-                        <a class="btn btn-danger btn-sm" href=" {{ route('destockingRequests.open',$destockingRequestItem->destockingRequest) }} " >{{ __('content.cancel') }}</a>
+                        <a class="btn btn-danger btn-sm" href=" {{ route('destocking.open',$needRequestItem->needRequest) }} " >{{ __('content.cancel') }}</a>
                     </div>
 
                 </form>

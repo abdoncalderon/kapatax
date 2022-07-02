@@ -17,9 +17,9 @@ class PurchaseRequestController extends Controller
     public function index()
     {
         $purchaseRequests = PurchaseRequest::select('purchase_requests.*')
-                    ->join('project_users','purchase_requests.project_user_id','=','project_users.id')
+                    ->join('project_users','purchase_requests.sorter_id','=','project_users.id')
                     ->where('project_users.project_id',current_user()->project_id)
-                    ->where('purchase_requests.project_user_id',current_user()->id)
+                    // ->where('purchase_requests.buyer_id',current_user()->id)
                     ->get();
         return view('purchases.purchaseRequests.index', compact('purchaseRequests'));
     }
@@ -44,27 +44,61 @@ class PurchaseRequestController extends Controller
         }
     }
 
+    public function show(PurchaseRequest $purchaseRequest)
+    {
+        try{
+            $suppliers = Stakeholder::where('project_id',current_user()->project_id)
+                                    ->where('stakeholder_type_id',4)
+                                    ->get();
+            $notifications = PurchaseRequestNotification::select('purchase_request_notifications.*')
+                            ->join('stakeholders','purchase_request_notifications.stakeholder_id','=','stakeholders.id')
+                            ->join('purchase_requests','purchase_request_notifications.purchase_request_id','=','purchase_requests.id')
+                            ->where('stakeholders.project_id',current_user()->project_id)
+                            ->where('purchase_request_notifications.purchase_request_id',$purchaseRequest->id)
+                            ->get();
+            return view('purchases.purchaseRequests.show', compact('purchaseRequest'))
+            ->with(compact('suppliers'))
+            ->with(compact('notifications'));
+        }catch(Exception $e){
+            return back()->withErrors($e->getMessage());
+        }
+    }
+
     public function send(PurchaseRequest $purchaseRequest){
         try{
+
+            $purchaseRequest->update([
+                'buyer_id'=>current_user()->id,
+            ]);
             
+            /* send notifications to supplier */
+
             foreach($purchaseRequest->purchaseRequestNotifications as $notification){
 
-                Mail::to($notification->stakeholder->email)->queue(new RequestForQuote($purchaseRequest));
+                /* verify if notifications was not sent */
 
-                $notification->update([
-                    'status_id' => '1',
-                ]);
-                $quotationRequest = QuotationRequest::create([
-                    'purchase_request_id'=>$purchaseRequest->id,
-                    'stakeholder_id'=>$notification->stakeholder_id,
-                    'buyer_user_id'=>current_user()->id,
-                    'sendDate'=> Carbon::now()->toDateString(),
-                ]);
-                
+                if($notification->status_id==0){
+                    Mail::to($notification->stakeholder->email)->queue(new RequestForQuote($purchaseRequest));
+
+                    $notification->update([
+                        'status_id' => '1',
+                    ]);
+                    
+                    $quotationRequest = QuotationRequest::create([
+                        'purchase_request_id'=>$purchaseRequest->id,
+                        'stakeholder_id'=>$notification->stakeholder_id,
+                        'buyer_user_id'=>current_user()->id,
+                        'sendDate'=> Carbon::now()->toDateString(),
+                    ]);
+                }
             }
+
+            /** update status purchase request to sent */
+
             $purchaseRequest->update([
                 'status_id' => '1',
             ]);
+            
             return redirect()->route('purchaseRequests.index');
         }catch(Exception $e){
             return back()->withErrors($e->getMessage());

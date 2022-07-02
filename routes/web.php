@@ -45,12 +45,11 @@ Route::get('/myQuotationRequests/reject/{myQuotationRequest}','Session\Quotation
 Route::get('/myQuotations','Session\QuotationController@index')->name('myQuotations.index');
 Route::get('/myQuotations/quote/{myQuotation}','Session\QuotationController@quote')->name('myQuotations.quote');
 Route::get('/myQuotations/show/{myQuotation}','Session\QuotationController@show')->name('myQuotations.show');
-
 Route::get('/myQuotations/send/{myQuotation}','Session\QuotationController@send')->name('myQuotations.send');
 
 /* Routes My Quotation Items */
 Route::post('/myQuotationItems','Session\QuotationItemController@store')->name('myQuotationItems.store');
-Route::get('/myQuotationItems/{myQuotation}/{purchaseRequestItem}','Session\QuotationItemController@create')->name('myQuotationItems.create');
+Route::get('/myQuotationItems/{myQuotation}/{purchaseRequestItem}','Session\QuotationItemController@quote')->name('myQuotationItems.quote');
 Route::get('/myQuotationItems/destroy/{quotationItem}','Session\QuotationItemController@destroy')->name('myQuotationItems.destroy');
 
 /* Routes My Quotation Attachments */
@@ -283,10 +282,11 @@ Route::resource('subcategories','Project\SubcategoryController');
 Route::post('/subcategories/add','Project\SubcategoryController@add')->name('subcategories.add');
 
 /* Routes Project Users  */
-Route::get('/projectUsers','Project\ProjectUserController@index')->name('projectUsers.index');
-Route::get('/create/project','Project\ProjectUserController@create')->name('projectUsers.create');
-Route::post('/projectUsers','Project\ProjectUserController@store')->name('projectUsers.store');
-Route::get('/projectUsers/destroy/{projectUser}','Project\ProjectUserController@destroy')->name('projectUsers.destroy');
+Route::get('/projectUsers','Project\ProjectUserController@index')->name('projects.projectUsers.index');
+Route::get('/projectUsers/create','Project\ProjectUserController@create')->name('projects.projectUsers.create');
+Route::get('/projectUsers/edit','Project\ProjectUserController@edit')->name('projects.projectUsers.edit');
+Route::post('/projectUsers','Project\ProjectUserController@store')->name('projects.projectUsers.store');
+Route::get('/projectUsers/destroy/{projectUser}','Project\ProjectUserController@destroy')->name('projects.projectUsers.destroy');
 
 /*********************************** WORKBOOK ROUTES ************************************************************************* */
 
@@ -426,6 +426,7 @@ Route::patch('/employees/{stakeholderPerson}','People\EmployeeController@update'
 /* Route Purchase Request */
 Route::get('/purchaseRequests','Purchases\PurchaseRequestController@index')->name('purchaseRequests.index');
 Route::get('/purchaseRequests/open/{purchaseRequest}','Purchases\PurchaseRequestController@open')->name('purchaseRequests.open');
+Route::get('/purchaseRequests/show/{purchaseRequest}','Purchases\PurchaseRequestController@show')->name('purchaseRequests.show');
 Route::get('/purchaseRequests/dispatch/{purchaseRequest}','Purchases\PurchaseRequestController@send')->name('purchaseRequests.dispatch');
 
 /* Route Purchases Request Items */
@@ -439,6 +440,7 @@ Route::get('/purchaseRequestNotifications/destroy/{purchaseRequestNotification}'
 /* Route Quotations */
 Route::get('/quotations','Purchases\QuotationController@index')->name('quotations.index');
 Route::get('/quotations/open/{quotation}','Purchases\QuotationController@open')->name('quotations.open');
+Route::get('/quotations/show/{quotation}','Purchases\QuotationController@show')->name('quotations.show');
 Route::get('/quotations/approve/{quotation}','Purchases\QuotationController@approve')->name('quotations.approve');
 Route::get('/quotations/discard/{quotation}','Purchases\QuotationController@discard')->name('quotations.discard');
 Route::get('/quotation/send/{quotation}','Purchases\QuotationController@send')->name('quotations.send');
@@ -446,6 +448,7 @@ Route::get('/quotation/send/{quotation}','Purchases\QuotationController@send')->
 /* Route Purchase Orders */
 Route::get('/purchaseOrders','Purchases\PurchaseOrderController@index')->name('purchaseOrders.index');
 Route::get('/purchaseOrders/open/{purchaseOrder}','Purchases\PurchaseOrderController@open')->name('purchaseOrders.open');
+Route::get('/purchaseOrders/show/{purchaseOrder}','Purchases\PurchaseOrderController@show')->name('purchaseOrders.show');
 Route::post('/purchaseOrder/sendToApprove/{purchaseOrder}','Purchases\PurchaseOrderController@sendToApprove')->name('purchaseOrders.sendToApprove');
 
 /* Route Purchase Order Item */
@@ -456,13 +459,12 @@ Route::get('getQuantity/{id}','Purchases\PurchaseOrderItemController@getQuantity
 
 /* ******************************************************* MATERIALS ROUTES ******************************************************* */
 
-/* Route Stock Movements */
-Route::get('/stockMovements/createDestocking/{needRequestItem}','Materials\StockMovementController@createDestocking')->name('stockMovements.createDestocking');
-Route::patch('/stockMovements/destocking/{destokingRequestItem}','Materials\StockMovementController@destocking')->name('stockMovements.destocking');
-
 /* Routes Materials */
 Route::resource('materials','Materials\MaterialController');
 Route::get('getMaterial/{id}','Materials\MaterialController@getMaterial')->name('materials.getMaterial');
+
+/* Routes Materials */
+Route::get('/stockMovements/{material}','Materials\StockMovementController@index')->name('stockMovements.index');
 
 /* ******************************************************* CONTROLS ROUTES ******************************************************* */
 
@@ -470,7 +472,6 @@ Route::get('getMaterial/{id}','Materials\MaterialController@getMaterial')->name(
 Route::get('/needRequests','Controls\NeedRequestController@index')->name('needRequests.index');
 Route::get('/needRequests/review/{needRequest}','Controls\NeedRequestController@review')->name('needRequests.review');
 Route::get('/needRequests/show/{needRequest}','Controls\NeedRequestController@show')->name('needRequests.show');
-// Route::get('/needRequests/process/{needRequest}','Controls\NeedRequestController@process')->name('needRequests.process');
 Route::post('/needRequests/process','Controls\NeedRequestController@process')->name('needRequests.process');
 
 /* Route Need Request Item */
@@ -478,17 +479,12 @@ Route::get('/needRequestItems/edit/{needRequestItem}','Controls\NeedRequestItemC
 Route::patch('/needRequestItems/{needRequestItem}','Controls\NeedRequestItemController@update')->name('needRequestItems.update');
 Route::get('/needRequestItems/purchase/{needRequestItem}','Controls\NeedRequestItemController@purchase')->name('needRequestItems.purchase');
 Route::get('/needRequestItems/service/{needRequestItem}','Controls\NeedRequestItemController@service')->name('needRequestItems.service');
-Route::get('/needRequestItems/destocking/{needRequestItem}','Controls\NeedRequestItemController@destocking')->name('needRequestItems.destocking');
-
-
-/* Route Destocking Request */
-Route::get('/destockingRequests','Controls\DestockingRequestController@index')->name('destockingRequests.index');
-Route::get('/destockingRequests/open/{needRequest}','Controls\DestockingRequestController@open')->name('destockingRequests.open');
 
 /* Route Destocking */
 Route::get('/destocking','Controls\DestockingController@index')->name('destocking.index');
 Route::get('/destocking/open/{needRequest}','Controls\DestockingController@open')->name('destocking.open');
-
+Route::get('/destocking/create/{needRequestItem}','Controls\DestockingController@create')->name('destocking.create');
+Route::patch('/destocking/{needRequestItem}','Controls\DestockingController@destocking')->name('destocking.destocking');
 
 /* Route Receptions */
 Route::get('/receptions','Controls\ReceptionController@index')->name('receptions.index');
@@ -497,12 +493,18 @@ Route::get('/receptions/edit/{reception}','Controls\ReceptionController@edit')->
 Route::get('/receptions/show/{reception}','Controls\ReceptionController@show')->name('receptions.show');
 Route::post('/receptions','Controls\ReceptionController@store')->name('receptions.store');
 Route::get('/receptions/process/{reception}','Controls\ReceptionController@process')->name('receptions.process');
+Route::get('/receptions/destroy/{reception}','Controls\ReceptionController@destroy')->name('receptions.destroy');
 
-/* Route Receptions */
 
+/* Route Reception Items */
 Route::post('/receptionItems','Controls\ReceptionItemController@store')->name('receptionItems.store');
 Route::get('/receptionItems/destroy/{receptionItem}','Controls\ReceptionItemController@destroy')->name('receptionItems.destroy');
 
+
+/* Route Reception Item Details */
+Route::get('/receptionItemsDetails/{receptionItem}','Controls\ReceptionItemDetailController@index')->name('receptionItemDetails.index');
+Route::post('/receptionItemDetails','Controls\ReceptionItemDetailController@store')->name('receptionItemDetails.store');
+Route::get('/receptionItemDetails/destroy/{receptionItemDetail}','Controls\ReceptionItemDetailController@destroy')->name('receptionItemDetails.destroy');
 
 /* ******************************************************* CONTRACTS ROUTES ******************************************************* */
 

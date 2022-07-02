@@ -45,7 +45,7 @@
 
                             {{-- quotation request item --}}
     
-                            <input id="purchaseRequest" type="hidden" name="quotation_request_item_id" value="{{ $purchaseRequestItem->id }}">
+                            <input id="purchaseRequest" type="hidden" name="purchase_request_item_id" value="{{ $purchaseRequestItem->id }}">
     
                             {{-- request --}}
 
@@ -56,25 +56,32 @@
                                 </div>
                             </div>
 
+                            {{-- Required Quantity --}}
+    
+                            <div class="form-group">
+                                <label class="col-sm-2 control-label">{{__('messages.requiredQuantity')}}</label>
+                                <div class="input-group input-group-sm col-xs-12 col-sm-10" >
+                                    <input id="requiredQuantity" disabled class="form-control" value="{{ $purchaseRequestItem->quantity }}">
+                                </div>
+                            </div>
+
                             {{-- description --}}
 
                             <div class="form-group">
                                 <label class="col-sm-2 control-label">{{ __('content.description') }}</label>
                                 <div class="input-group input-group-sm col-xs-12 col-sm-10" >
-                                    <textarea id="description" class="form-control" name="description" style="resize: vertical; height: 100px;" rows="5" required></textarea>
+                                    <textarea id="description" class="form-control" name="description" style="resize: vertical; height: 100px;" rows="5" required>{{ old('description') }}</textarea>
                                 </div>
                             </div>
     
-                            {{-- Quantity --}}
+                            {{-- Offered Quantity --}}
     
                             <div class="form-group">
-                                <label class="col-sm-2 control-label">{{__('content.quantity')}}</label>
+                                <label class="col-sm-2 control-label">{{__('messages.offeredQuantity')}}</label>
                                 <div class="input-group input-group-sm col-xs-12 col-sm-10" >
-                                    <input id="quantity" type="number" class="form-control" name="quantity" value="1" min="1" required>
+                                    <input id="offeredQuantity" type="number" class="form-control" name="offeredQuantity" value="1" min="1" max="{{ $purchaseRequestItem->quantity }}" value="{{ old('offeredQuantity') }}" required>
                                 </div>
                             </div>
-
-                            {{-- unity --}}
     
                             <div class="form-group">
                                 <label class="col-sm-2 control-label">{{__('content.unity')}}</label>

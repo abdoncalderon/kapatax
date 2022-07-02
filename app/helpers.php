@@ -18,6 +18,7 @@ use App\Models\Quotation;
 use App\Models\QuotationRequest;
 use App\Models\StakeholderPerson;
 use App\Models\PurchaseOrder;
+use App\Models\Reception;
 use Carbon\Carbon;
 
 function yesNo($value){
@@ -375,7 +376,7 @@ if (! function_exists('update_need_request_items_status')) {
 if (! function_exists('my_pending_requests')) {
     function my_pending_requests()
     {
-        $pendingRequests = NeedRequest::where('project_user_id',current_user()->id)
+        $pendingRequests = NeedRequest::where('applicant_id',current_user()->id)
                                         ->where('status_id','<',5)
                                         ->get();
         return $pendingRequests->count();
@@ -436,7 +437,6 @@ if (! function_exists('status')) {
     }
 }
 
-
 if (! function_exists('dateFormat')) {
     function dateFormat($date, $format){
         return date($format,strtotime($date));
@@ -452,6 +452,41 @@ if (! function_exists('all_items_associated')) {
             {
                 $flag = false;
                 break;
+            }
+        }
+        return $flag;
+    }
+}
+
+if (! function_exists('all_items_delivered')) {
+    function all_items_delivered(NeedRequest $needRequest){
+        $flag = true;
+        foreach($needRequest->needRequestItems as $needRequestItem)
+        {
+            $flag = $flag && ($needRequestItem->status_id == 8);
+        }
+        return $flag;
+    }
+}
+
+if (! function_exists('all_items_received')) {
+    function all_items_received(NeedRequest $needRequest){
+        $flag = true;
+        foreach($needRequest->needRequestItems as $needRequestItem)
+        {
+            $flag = $flag && ($needRequestItem->status_id == 7);
+        }
+        return $flag;
+    }
+}
+
+if (! function_exists('assets_received_have_details')) {
+    function assets_received_have_details(Reception $reception){
+        $flag = true;
+        foreach($reception->receptionItems as $receptionItem)
+        {
+            if (($receptionItem->purchaseOrderItem->material->group_id == 3) || ($receptionItem->purchaseOrderItem->material->group_id == 4)){
+                $flag = $flag && (count($receptionItem->receptionItemDetails) == $receptionItem->quantity);
             }
         }
         return $flag;

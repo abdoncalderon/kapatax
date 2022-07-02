@@ -17,7 +17,7 @@ class UpdateNeedRequestRequest extends FormRequest
         return [
             'description'=>'required',
             'date'=>'required',
-            'project_user_id'=>'required',
+            'applicant_id'=>'required',
             'location_id'=>'required',
             'approver_id'=>'nullable',
             'cost_account_id'=>'nullable',

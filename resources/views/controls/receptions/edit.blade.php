@@ -10,7 +10,7 @@
     <ol class="breadcrumb">
         <li><a href="{{ route('home') }}"><i class="fa fa-home"></i>Home</a></li>
         <li><a href="{{ route('receptions.index')}}"> {{ __('content.receptions') }} </a></li>
-        <li class="active">{{ __('content.add') }}</li>
+        <li class="active">{{ __('messages.addItems') }}</li>
     </ol>
 @endsection
 
@@ -28,9 +28,6 @@
                     <h3 class="box-title"><strong>{{ __('messages.addItemsReceived') }}</strong></h3>
                 </div>
 
-           
-               
-
                 {{-- Form Body --}}
 
                 <div class="box-body">
@@ -39,9 +36,6 @@
 
                     <div class="col-sm-11 col-md-11 col-lg-11">
 
-                        {{-- receiver id --}}
-
-                        <input type="hidden" id="receiver_id" name="receiver_id" value="{{ current_user()->id }}">
 
                         {{-- purchase order --}}
 
@@ -102,13 +96,11 @@
                                         @foreach ($reception->receptionItems as $receptionItem)
                                             <tr>
                                                 <td>{{ $receptionItem->purchaseOrderItem->material->name }}</td>
-                                                
                                                 <td style="text-align: right; width: 10%;">{{ $receptionItem->quantity }}</td>
                                                 <td style="text-align: center; width: 10%;">{{ $receptionItem->purchaseOrderItem->unity->code }}</td>
                                                 <td style="text-align: right; width: 10%;">{{ $receptionItem->purchaseOrderItem->unitPrice }}</td>
-                                                {{-- <td style="text-align: center; width: 15%;">{{ dateFormat($receptionItem->deliveryDate, 'd-m-Y') }}</td> --}}
-                                                {{-- <td style="text-align: right; width: 10%;">{{ number_format($receptionItem->quantity * $receptionItem->unitPrice,2,',','.') }}</td> --}}
                                                 <td style="width: 15%;">
+                                                    <a class="btn btn-info btn-xs" href="{{ route('receptionItemDetails.index',$receptionItem)  }}">{{ __('content.details') }}</a>
                                                     <a class="btn btn-danger btn-xs" href="{{ route('receptionItems.destroy',$receptionItem)  }}">{{ __('content.delete') }}</a>
                                                 </td>
                                             </tr>
@@ -126,7 +118,9 @@
 
                 <div class="box-footer">
                     <a class="btn btn-danger btn-sm" href=" {{ route('receptions.index') }} ">{{ __('content.cancel') }}</a>
-                    <a class="btn btn-success btn-sm" href=" {{ route('receptions.process',$reception) }} ">{{ __('content.process') }}</a>
+                    @if (assets_received_have_details($reception))
+                        <a class="btn btn-success btn-sm" href=" {{ route('receptions.process',$reception) }} ">{{ __('content.process') }}</a>
+                    @endif
                 </div>
    
             </div>
@@ -154,6 +148,8 @@
                             {{-- reception --}}
     
                             <input id="reception" type="hidden" name="reception_id" value="{{ $reception->id }}">
+
+                            
 
                             {{-- Purchase Item --}}
     

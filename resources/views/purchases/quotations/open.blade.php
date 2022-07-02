@@ -26,8 +26,8 @@
 
                 <div class="box-header with-border">
                     <h3 class="box-title"><strong>{{ __('content.quotation') }} # {{ $quotation->id }}</strong></h3> |
-                    @if ($quotation->status_id==4 )
-                        <a class="btn btn-danger btn-sm" href="{{ route('quotations.discard',$quotation) }}">{{ __('content.discard') }}</a>
+                    @if ($quotation->status_id==2 )
+                        <button type="button" class="btn btn-danger btn-sm" data-toggle="modal" data-target="#addNeedRequestItem">{{ __('content.discard') }}</button>
                         <a class="btn btn-success btn-sm" href="{{ route('quotations.approve',$quotation) }}">{{ __('content.approve') }}</a>
                     @endif
                 </div>
@@ -188,7 +188,7 @@
                     {{-- Form Footer --}}
 
                     <div class="box-footer">
-                        <a class="btn btn-danger btn-sm" href="{{ route('quotations.index') }}">{{ __('content.return') }}</a>
+                        <a class="btn btn-danger btn-sm" href="{{ route('quotations.index') }}">{{ __('messages.goBack') }}</a>
                     </div>
 
                 {{-- End Form  --}}

@@ -53,7 +53,7 @@
                             <tr>
                                 <td>{{ $reception->id }}</td>
                                 <td>{{ $reception->purchase_order_id }}</td>
-                                <td>{{ $reception->date }}</td>
+                                <td>{{ dateFormat($reception->date,'Y-M-d') }}</td>
                                 <td>{{ $reception->type() }}</td>
                                 <td>{{ $reception->documentNumber }}</td>
                                 <td>{{ $reception->purchaseOrder->quotation->quotationRequest->stakeholder->name }}</td>
@@ -62,6 +62,7 @@
                                         <a class="btn btn-success btn-xs" href="{{ route('receptions.edit', $reception) }}">{{ __('content.edit') }}</a>
                                     @else
                                         <a class="btn btn-default btn-xs" href="{{ route('receptions.show', $reception) }}">{{ __('content.show') }}</a>
+                                        <a class="btn btn-danger btn-xs" href="{{ route('receptions.destroy', $reception) }}">{{ __('content.delete') }}</a>
                                     @endif
                                 </td>
                             </tr>
@@ -74,7 +75,7 @@
 
                 <hr>
 
-                <a class="btn btn-danger btn-sm" href=" {{ route('home') }} ">{{ __('content.return') }}</a>
+                <a class="btn btn-danger btn-sm" href=" {{ route('home') }} ">{{ __('messages.goBack') }}</a>
 
             </div>
 

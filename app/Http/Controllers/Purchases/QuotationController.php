@@ -27,9 +27,18 @@ class QuotationController extends Controller
     {
         try{
             $quotation->update([
-                'status_id'=>'4',
+                'status_id'=>'2',
             ]);
             return view('purchases.quotations.open', compact('quotation'));
+        }catch(Exception $e){
+            return back()->withErrors($e->getMessage());
+        }
+    }
+
+    public function show(Quotation $quotation)
+    {
+        try{
+            return view('purchases.quotations.show', compact('quotation'));
         }catch(Exception $e){
             return back()->withErrors($e->getMessage());
         }
@@ -38,17 +47,17 @@ class QuotationController extends Controller
     public function approve(Quotation $quotation){
         try{
             $quotation->update([
-                'status_id'=>'5',
+                'status_id'=>'3',
             ]);
             $purchaseOrder = PurchaseOrder::create([
                 'quotation_id'=>$quotation->id,
-                'date'=>Carbon::now()->toDateString(),
+                'sendDate'=>Carbon::now()->toDateString(),
                 'buyer_user_id'=>current_user()->id,
             ]);
             foreach ($quotation->quotationItems as $quotationItem){
                 PurchaseOrderItem::create([
                     'purchase_order_id'=>$purchaseOrder->id,
-                    'quotation_item_id'=>
+                    'quotation_item_id'=>$quotationItem->id,
                     'description'=>$quotationItem->description,
                     'quantity'=>$quotationItem->quantity,
                     'consumptionAvailable'=>$quotationItem->quantity,
@@ -66,11 +75,16 @@ class QuotationController extends Controller
     public function discard(Quotation $quotation){
         try{
             $quotation->update([
-                'status_id'=>'6',
+                'status_id'=>'4',
             ]);
-            return back();
+            $quotation->quotationRequest->update([
+                'status_id'=>'4',
+            ]);
+            return redirect()->route('quotations.index');
         }catch(Exception $e){
             return back()->withErrors( $e->getMessage());
         }
     }
+
+
 }

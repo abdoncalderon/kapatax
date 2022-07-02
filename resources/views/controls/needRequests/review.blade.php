@@ -129,19 +129,10 @@
                                                     <td>{{ $needRequestItem->status() }}</td>
                                                     <td>
                                                         <input type="hidden" name="needRequestItems[]" id="needRequestItems" value="{{ $needRequestItem->id }}" >
-                                                        <select class="form-control" name="class[]" id="class">
+                                                        <select class="form-control" name="processType[]" id="processType">
                                                             <option value="0">{{ __('content.purchase') }}</option>
                                                             <option value="1">{{ __('content.destocking') }}</option>
                                                         </select>
-                                                        {{-- @if ($needRequestItem->status_id==3)
-                                                            <a class="btn btn-success btn-xs" href=" {{ route('needRequestItems.purchase',$needRequestItem) }} ">{{ __('messages.purchaseRequest') }}</a>
-                                                            <a class="btn btn-danger btn-xs" href=" {{ route('needRequestItems.destocking',$needRequestItem) }} ">{{ __('content.destocking') }}</a>
-                                                        @elseif ($needRequestItem->status_id==4)
-                                                            <a class="btn btn-danger btn-xs" href=" {{ route('needRequestItems.destocking',$needRequestItem) }} ">{{ __('content.destocking') }}</a>
-                                                        @elseif ($needRequestItem->status_id==5)
-                                                            <a class="btn btn-success btn-xs" href=" {{ route('needRequestItems.purchase',$needRequestItem) }} ">{{ __('messages.purchaseRequest') }}</a>
-                                                        @endif --}}
-
                                                     </td>
                                                 </tr>
                                             @endforeach
@@ -160,8 +151,7 @@
                     {{-- Form Footer --}}
 
                     <div class="box-footer">
-                        <a class="btn btn-danger btn-sm" href=" {{ route('needRequests.index') }} ">{{ __('content.return') }}</a>
-                        {{-- <a class="btn btn-success btn-sm" href=" {{ route('needRequests.process',$needRequest) }} ">{{ __('content.process') }}</a> --}}
+                        <a class="btn btn-danger btn-sm" href=" {{ route('needRequests.index') }} ">{{ __('messages.goBack') }}</a>
                         <button type="submit" class="btn btn-success pull-left btn-sm" style="margin: 0px 5px;">{{ __('content.process') }}</button>
                     </div>
 
@@ -174,48 +164,5 @@
         </div>
 
     </section>
-
-    {{-- Modal Window Add Supplier Notification --}}
-
-    {{-- <div class="modal fade" id="addNotification" tabindex="-1" role="dialog" aria-labelledby="addModal" aria-hidden="true">
-
-        <div class="modal-dialog modal-dialog-centered" role="document">
-
-            <form method="POST" action="{{ route('purchaseRequestNotifications.store') }}">
-                @csrf
-                <div class="modal-content">
-
-                    <div class="modal-header">
-                        <h4 class="modal-title" id="exampleModalLongTitle">{{ __('content.add') }} {{ __('content.region') }}</h4>
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                            <span aria-hidden="true">&times;</span>
-                        </button>
-                    </div>
-
-                    <div class="modal-body">
-
-                        <div class="form-group">
-                            <label for="supplier_id">{{__('content.supplier')}}</label>
-                            <select id="unity_id" class="form-control" name="unity_id" class="form-control" required>
-                                <option value="">{{__('messages.select')}} {{__('content.unity')}}</option>
-                                @foreach ($unities as $unity)
-                                    <option value="{{ $unity->id }}">{{ $unity->name }}</option>
-                                @endforeach
-                            </select>
-                        </div>
-
-                    </div>
-                    <div class="modal-footer">
-                        <div class="col-md-6 offset-md-4">
-                            <button type="submit" class="btn btn-success pull-left btn-sm" style="margin: 0px 5px;">{{ __('content.save') }}</button>
-                            <button type="button" class="btn btn-danger pull-left btn-sm" data-dismiss="modal">{{ __('content.cancel') }}</button>
-                        </div>
-                    </div>
-                </div>
-            </form>
-            
-        </div>
-
-    </div> --}}
 
 @endsection

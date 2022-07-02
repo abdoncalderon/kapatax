@@ -1,10 +1,10 @@
 @extends('layouts.main')
 
-@section('title', __('content.warehouse'))
+@section('title', __('content.commercial'))
 
 @section('section', __('content.materials'))
 
-@section('level', __('content.warehouse'))
+@section('level', __('content.commercial'))
 
 @section('breadcrumb')
     <ol class="breadcrumb">
@@ -25,7 +25,7 @@
                 {{-- Title --}}
 
                 <div class="box-header with-border">
-                    <h3 class="box-title"><strong>{{ __('editMaterial') }} </strong></h3>
+                    <h3 class="box-title"><strong>{{ __('content.edit') }} </strong></h3>
                 </div>
 
                 {{-- Start Form  --}}

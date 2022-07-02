@@ -26,24 +26,10 @@ class Folio extends Model
     }
 
     public function status(){
-
         if(is_valid_date_for_open_folio($this->date,$this->location)){
             return __('content.opened');
         }else{
             return __('content.closed');
         }
-
-        /* $today = strtotime(Carbon::today()->toDateString());
-        $differenceInHours = abs(round(($date - $today)/60/60,0));
-        
-        // $locationMaxTimeOpenFolio = $this->location->max_time_open_folio;
-        $location = Location::find($this->location_id);
-        $locationMaxTimeOpenFolio = $location->max_time_open_folio;
-        if (($differenceInHours > $locationMaxTimeOpenFolio)){
-            return __('content.closed');
-        }else{
-            return __('content.opened');
-        } */
-        
     }
 }

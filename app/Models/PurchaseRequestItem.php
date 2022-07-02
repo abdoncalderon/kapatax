@@ -13,9 +13,9 @@ class PurchaseRequestItem extends Model
         return $this->belongsTo(PurchaseRequest::class);
     }
 
-    public function needRequest()
+    public function needRequestItem()
     {
-        return $this->belongsTo(NeedRequest::class);
+        return $this->belongsTo(NeedRequestItem::class);
     }
 
     public function unity()

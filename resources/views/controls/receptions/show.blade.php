@@ -25,7 +25,7 @@
                 {{-- Title --}}
 
                 <div class="box-header with-border">
-                    <h3 class="box-title"><strong>{{ __('messages.addItemsReceived') }}</strong></h3>
+                    <h3 class="box-title"><strong>{{ __('messages.showReceivedItems') }}</strong></h3>
                 </div>
 
                 {{-- Form Body --}}
@@ -52,9 +52,18 @@
                         {{-- type --}}
 
                         <div class="form-group">
-                            <label class="col-sm-2 control-label">{{ __('messages.purchaseOrder') }}</label>
+                            <label class="col-sm-2 control-label">{{ __('content.type') }}</label>
                             <div class="input-group input-group-sm col-xs-12 col-sm-10" >
                                 <input id="type" disabled type="text" class="form-control" name="type_id" value="{{ $reception->type() }}" placeholder="{{ __('content.number') }}" required>
+                            </div>
+                        </div>
+
+                        {{-- received by --}}
+
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label">{{ __('messages.receivedBy') }}</label>
+                            <div class="input-group input-group-sm col-xs-12 col-sm-10" >
+                                <input id="receiver" disabled type="text" class="form-control" name="receiver_id" value="{{ $reception->receiver->user->person->fullName }}" >
                             </div>
                         </div>
 
@@ -85,17 +94,21 @@
                                 <table id="purchaseRequests" class="table table-bordered table-striped">
                                     <thead>
                                         <tr>
+                                            <th style="text-align: center">{{ __('content.date') }}</th>
                                             <th style="text-align: center">{{ __('content.description') }}</th>
                                             <th style="text-align: center">{{ __('content.quantity') }}</th>
                                             <th style="text-align: center">{{ __('content.unity') }}</th>
-                                            <th style="text-align: center">{{ __('messages.unitPrice') }}</th>
-                                            <th style="text-align: center">{{ __('messages.deliveryDate') }}</th>
-                                            <th style="text-align: center">{{ __('content.subtotal') }}</th>
-                                            <th style="text-align: center">{{ __('content.actions') }}</th>
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        
+                                        @foreach ($reception->receptionItems as $receptionItem)
+                                            <tr>
+                                                <td>{{ dateFormat($receptionItem->date, 'd-M-Y') }}</td>
+                                                <td>{{ $receptionItem->purchaseOrderItem->material->name }}</td>
+                                                <td style="text-align: right; width: 10%;">{{ $receptionItem->quantity }}</td>
+                                                <td style="text-align: center; width: 10%;">{{ $receptionItem->purchaseOrderItem->unity->code }}</td>
+                                            </tr>
+                                        @endforeach
                                     </tbody>
                                 </table>
                             </div>

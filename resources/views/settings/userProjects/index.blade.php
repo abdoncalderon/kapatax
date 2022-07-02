@@ -66,7 +66,7 @@
 
                 <hr>
 
-                <a class="btn btn-danger btn-sm" href=" {{ route('people.edit',$user->person) }} ">{{ __('content.return') }}</a>
+                <a class="btn btn-danger btn-sm" href=" {{ route('people.edit',$user->person) }} ">{{ __('messages.goBack') }}</a>
 
             </div>
 

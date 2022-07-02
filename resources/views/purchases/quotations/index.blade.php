@@ -41,6 +41,7 @@
                             
                             <th>{{ __('content.supplier') }}</th>
                             <th>{{ __('content.seller') }}</th>
+                            <th>{{ __('content.cost') }}</th>
                             <th>{{ __('content.status') }}</th>
                             <th>{{ __('content.actions') }}</th>
                         </tr>
@@ -56,10 +57,13 @@
                                 <td>{{ $quotation->quotationRequest->purchaseRequest->need_request_id }}</td>
                                 <td>{{ $quotation->quotationRequest->stakeholder->name }}</td>
                                 <td>{{ $quotation->seller->user->person->fullName }}</td>
+                                <td>{{ $quotation->totalPrice }}</td>
                                 <td>{{ $quotation->status() }}</td>
                                 <td>
-                                    @if ($quotation->status_id < 4)
+                                    @if ($quotation->status_id == 1)
                                         <a class="btn btn-info btn-xs" href="{{ route('quotations.open', $quotation) }}">{{ __('content.open') }}</a>
+                                    @else
+                                        <a class="btn btn-default btn-xs" href="{{ route('quotations.show', $quotation) }}">{{ __('content.show') }}</a>
                                     @endif
                                 </td>
                             </tr>
@@ -72,12 +76,13 @@
 
                 <hr>
 
-                <a class="btn btn-danger btn-sm" href=" {{ route('home') }} ">{{ __('content.return') }}</a>
+                <a class="btn btn-danger btn-sm" href=" {{ route('home') }} ">{{ __('messages.goBack') }}</a>
 
             </div>
 
         </div>
 
     </section>
+
 
 @endsection

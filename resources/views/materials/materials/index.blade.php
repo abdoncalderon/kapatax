@@ -41,6 +41,7 @@
                             <th>{{ __('content.subcategory') }}</th>
                             <th>{{ __('content.brand') }}</th>
                             <th>{{ __('content.model') }}</th>
+                            <th>{{ __('content.stock') }}</th>
                             <th>{{ __('content.actions') }}</th>
                         </tr>
                     </thead>
@@ -55,9 +56,10 @@
                                 <td>{{ $material->subcategory->name }}</td>
                                 <td>{{ $material->model->brand->name }}</td>
                                 <td>{{ $material->model->name }}</td>
+                                <td>{{ $material->stock }}</td>
                                 <td>
                                     <a style="margin: 0.3em" class="btn btn-info btn-xs" href="{{ route('materials.edit', $material)}}">{{ __('content.edit') }}</a>
-                                    <a style="margin: 0.3em" class="btn btn-info btn-xs" href="#">{{ __('messages.stockMovements') }}</a>
+                                    <a style="margin: 0.3em" class="btn btn-info btn-xs" href="{{ route('stockMovements.index',$material)}}">{{ __('messages.stockMovements') }}</a>
                                     <a style="margin: 0.3em" class="btn btn-info btn-xs" href="#">{{ __('messages.priceHistory') }}</a>
                                     {{-- <a style="margin: 0.3em" class="btn btn-danger btn-xs" href="{{ route('materials.destroy', $material)}}">{{ __('content.delete') }}</a> --}}
                                 </td>

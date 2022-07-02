@@ -35,14 +35,24 @@ class QuotationController extends Controller
     public function send(Quotation $myQuotation){
         try{
             $myQuotation->update([
-                'status_id'=>'3',
+                'status_id'=>'1',
                 'seller_user_id'=>current_user()->id,
                 'answerDate'=>Carbon::now()->toDateString(),
+            ]);
+            foreach ($myQuotation->quotationItems as $quotationItem){
+                $quotationItem->purchaseRequestItem->needRequestItem->update([
+                    'status_id'=>'5',
+                ]);
+            }
+            $myQuotation->quotationRequest->update([
+                'status_id'=>'3',
             ]);
             return redirect()->route('myQuotations.index');
         }catch(Exception $e){
             return back()->withErrors( $e->getMessage());
         }
     }
+
+    
 }
  

@@ -47,7 +47,7 @@
                             <div class="form-group">
                                 <label class="col-sm-2 control-label">{{ __('content.applicant') }}</label>
                                 <div class="input-group input-group-sm col-xs-12 col-sm-10" >
-                                    <input id="project_user_id" disabled class="form-control" name="project_user_id" type="text" value="{{ $purchaseOrder->quotation->quotationRequest->purchaseRequest->needRequest->projectUser->user->person->fullName }}">
+                                    <input id="applicant" disabled class="form-control" name="applicant_id" type="text" value="{{ $purchaseOrder->quotation->quotationRequest->purchaseRequest->needRequest->applicant->user->person->fullName }}">
                                 </div>
                             </div>
 
@@ -130,7 +130,7 @@
                     {{-- Form Footer --}}
 
                     <div class="box-footer">
-                        <a class="btn btn-danger btn-sm" href=" {{ route('myApprovalOrders.index') }} ">{{ __('content.return') }}</a>
+                        <a class="btn btn-danger btn-sm" href=" {{ route('myApprovalOrders.index') }} ">{{ __('messages.goBack') }}</a>
                         
                     </div>
 

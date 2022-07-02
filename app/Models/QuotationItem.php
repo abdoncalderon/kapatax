@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class QuotationItem extends Model
 {
-    protected $fillable = ['quotation_id','pruchase_request_item_id','description','quantity','unity_id', 'unitPrice','deliveryDate', 'status_id'];
+    protected $fillable = ['quotation_id','purchase_request_item_id','description','quantity','unity_id', 'unitPrice','deliveryDate', 'status_id'];
 
     public function quotation()
     {

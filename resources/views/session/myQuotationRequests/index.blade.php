@@ -51,13 +51,13 @@
                             <tr>
                                 <td>{{ $myQuotationRequest->id }}</td>
                                 <td>{{ $myQuotationRequest->sendDate }}</td>
-                                <td>{{ $myQuotationRequest->stakeholder->name }}</td>
+                                <td>{{ active_stakeholder($myQuotationRequest->buyer->user->person)->stakeholder->name }}</td>
                                 <td>{{ $myQuotationRequest->buyer->user->person->fullName }}</td>
                                 <td>{{ $myQuotationRequest->status() }}</td>
                                 <td>
-                                    @if ( $myQuotationRequest->status_id<1 )
+                                    @if (($myQuotationRequest->status_id==0) || ($myQuotationRequest->status_id==4))
                                         <a class="btn btn-info btn-xs" href="{{ route('myQuotationRequests.open', $myQuotationRequest) }}">{{ __('content.open') }}</a>
-                                    @else
+                                   @else
                                         <a class="btn btn-default btn-xs" href="{{ route('myQuotationRequests.open', $myQuotationRequest) }}">{{ __('content.show') }}</a>
                                     @endif
                                 </td>
@@ -71,7 +71,7 @@
 
                 <hr>
 
-                <a class="btn btn-danger btn-sm" href=" {{ route('home') }} ">{{ __('content.return') }}</a>
+                <a class="btn btn-danger btn-sm" href=" {{ route('home') }} ">{{ __('messages.goBack') }}</a>
 
             </div>
 

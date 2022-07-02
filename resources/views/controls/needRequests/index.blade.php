@@ -38,7 +38,9 @@
                             <th>{{ __('content.number') }}</th>
                             <th>{{ __('content.date') }}</th>
                             <th>{{ __('content.applicant') }}</th>
+                            <th>{{ __('messages.approvedBy') }}</th>
                             <th>{{ __('content.description') }}</th>
+                            <th>{{ __('content.status') }}</th>
                             <th>{{ __('content.actions') }}</th>
                         </tr>
                     </thead>
@@ -50,8 +52,10 @@
                             <tr>
                                 <td>{{ $needRequest->id }}</td>
                                 <td>{{ $needRequest->date }}</td>
-                                <td>{{ $needRequest->projectUser->user->person->fullName }}</td>
+                                <td>{{ $needRequest->applicant->user->person->fullName }}</td>
+                                <td>{{ $needRequest->approver->person->fullName }}</td>
                                 <td>{{ $needRequest->description }}</td>
+                                <td>{{ $needRequest->status() }}</td>
                                 <td>
                                     @if ($needRequest->status_id == 3)
                                         <a class="btn btn-info btn-xs" href="{{ route('needRequests.review', $needRequest) }}">{{ __('content.review') }}</a>
@@ -70,7 +74,7 @@
 
                 <hr>
 
-                <a class="btn btn-danger btn-sm" href=" {{ route('home') }} ">{{ __('content.return') }}</a>
+                <a class="btn btn-danger btn-sm" href=" {{ route('home') }} ">{{ __('messages.goBack') }}</a>
 
             </div>
 

@@ -22,7 +22,7 @@ class CreateNeedRequestItemsTable extends Migration
             $table->foreignId('unity_id');
             $table->foreign('unity_id')->references('id')->on('unities')->onUpdate('cascade')->onDelete('restrict');
             $table->integer('status_id');
-            $table->integer('class_id')->default('0');
+            $table->integer('processType_id')->default('0');
             $table->timestamps();
         });
     }

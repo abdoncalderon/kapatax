@@ -38,6 +38,10 @@
                         <tr>
                             <th>{{ __('content.number') }}</th>
                             <th>{{ __('content.date') }}</th>
+                            <th>{{ __('content.request') }}</th>
+                            <th>{{ __('content.company') }}</th>
+                            <th>{{ __('content.buyer') }}</th>
+                            <th>{{ __('content.cost') }}</th>
                             <th>{{ __('content.status') }}</th>
                             <th>{{ __('content.actions') }}</th>
                         </tr>
@@ -49,7 +53,11 @@
                         @foreach($myQuotations as $myQuotation)
                             <tr>
                                 <td>{{ $myQuotation->id }}</td>
-                                <td>{{ $myQuotation->answerDate }}</td>
+                                <td>{{ dateFormat($myQuotation->answerDate,'Y-M-d') }}</td>
+                                <td>{{ $myQuotation->quotationRequest->id }}</td>
+                                <td>{{ active_stakeholder($myQuotation->quotationRequest->buyer->user->person)->stakeholder->name }}</td>
+                                <td>{{ $myQuotation->quotationRequest->buyer->user->person->fullName }}</td>
+                                <td>{{ $myQuotation->totalPrice }}</td>
                                 <td>{{ $myQuotation->status() }}</td>
                                 <td>
                                     <a class="btn btn-default btn-xs" href="{{ route('myQuotations.show', $myQuotation) }}">{{ __('content.show') }}</a>
@@ -64,7 +72,7 @@
 
                 <hr>
 
-                <a class="btn btn-danger btn-sm" href=" {{ route('home') }} ">{{ __('content.return') }}</a>
+                <a class="btn btn-danger btn-sm" href=" {{ route('home') }} ">{{ __('messages.goBack') }}</a>
 
             </div>
 

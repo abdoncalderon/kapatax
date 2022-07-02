@@ -24,7 +24,7 @@
 
             <div class="box-header with-border center-block">
                 <h3 class="box-title"><strong>{{ __('content.users') }} {{ current_user()->project->name }}</strong></h3> | 
-                <a class="btn btn-success btn-sm" href="{{ route('projectUsers.create') }}">{{ __('content.add') }}</a>
+                <a class="btn btn-success btn-sm" href="{{ route('projects.projectUsers.create') }}">{{ __('content.add') }}</a>
             </div>
             
             <div class="box-body">
@@ -51,6 +51,7 @@
                                 <td>{{ $projectUser->user->user }}</td>
                                 <td>{{ $projectUser->projectRole->role->name }}</td>
                                 <td>
+                                    <a class="btn btn-info btn-xs" href="{{ route('projects.projectUsers.edit') }}">{{ __('content.edit') }}</a>
                                     <a class="btn btn-info btn-xs" href="#">{{ __('content.deactivate') }}</a>
                                 </td>
                             </tr>

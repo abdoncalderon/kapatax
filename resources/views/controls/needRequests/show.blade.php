@@ -71,6 +71,15 @@
                                 </div>
                             </div>
 
+                            {{-- applicant --}}
+
+                            <div class="form-group">
+                                <label class="col-sm-2 control-label">{{ __('messages.requestedBy') }}</label>
+                                <div class="input-group input-group-sm col-xs-12 col-sm-10" >
+                                    <input id="approving_user" disabled class="form-control" name="approver_id" type="text" value="{{ $needRequest->applicant->user->person->fullName }}">
+                                </div>
+                            </div>
+
                             {{-- cost account --}}
 
                             <div class="form-group">
@@ -125,6 +134,7 @@
                                                 <th>{{ __('content.quantity') }}</th>
                                                 <th>{{ __('content.unity') }}</th>
                                                 <th>{{ __('messages.processedAs') }}</th>
+                                                <th>{{ __('messages.processedBy') }}</th>
                                             </tr>
                                         </thead>
                                         <tbody>
@@ -133,7 +143,8 @@
                                                     <td>{{ $needRequestItem->reference }}</td>
                                                     <td>{{ $needRequestItem->quantity }}</td>
                                                     <td>{{ $needRequestItem->unity->code }}</td>
-                                                    <td>{{ $needRequestItem->class() }}</td>
+                                                    <td>{{ $needRequestItem->processType() }}</td>
+                                                    <td>{{ $needRequestItem->needRequest->applicant->user->person->fullName }}</td>
                                                 </tr>
                                             @endforeach
                                         </tbody>
@@ -148,7 +159,7 @@
                     {{-- Form Footer --}}
 
                     <div class="box-footer">
-                        <a class="btn btn-danger btn-sm" href=" {{ route('needRequests.index') }} ">{{ __('content.return') }}</a>
+                        <a class="btn btn-danger btn-sm" href=" {{ route('needRequests.index') }} ">{{ __('messages.goBack') }}</a>
                     </div>
 
                 {{-- End Form  --}}
